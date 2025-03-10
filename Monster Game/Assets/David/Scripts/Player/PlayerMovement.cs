@@ -3,7 +3,7 @@ using UnityEngine.Windows;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] PlayerInputs _inputs;
+    //[SerializeField] PlayerInputs _inputs;
     private Rigidbody2D _rb;
     Vector2 _movementDirection;
     [SerializeField] float _normalSpeed = 5f;
@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        _movementDirection = _inputs.MovementVector.normalized;
+        _movementDirection = PlayerInputs.OnMoveChange().normalized;
         print(_movementDirection);
     }
     private void FixedUpdate()
