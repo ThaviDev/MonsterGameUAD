@@ -1,0 +1,992 @@
+fileFormatVersion: 2
+guid: 65a8ffd9d0d3d9348bf2e568fc105ec9
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6182866322679687958
+    second: hill_tiles_rock_animated_spritesheet_0
+  - first:
+      213: -1826235710519149830
+    second: hill_tiles_rock_animated_spritesheet_1
+  - first:
+      213: 7025872964029778613
+    second: hill_tiles_rock_animated_spritesheet_2
+  - first:
+      213: -5207710591000984406
+    second: hill_tiles_rock_animated_spritesheet_3
+  - first:
+      213: -8449764293737013030
+    second: hill_tiles_rock_animated_spritesheet_4
+  - first:
+      213: -296893021074927233
+    second: hill_tiles_rock_animated_spritesheet_5
+  - first:
+      213: -8757408920987701945
+    second: hill_tiles_rock_animated_spritesheet_6
+  - first:
+      213: -3256539768355932881
+    second: hill_tiles_rock_animated_spritesheet_7
+  - first:
+      213: -5998261481042121949
+    second: hill_tiles_rock_animated_spritesheet_8
+  - first:
+      213: -3543275576949423062
+    second: hill_tiles_rock_animated_spritesheet_9
+  - first:
+      213: -507663305548222921
+    second: hill_tiles_rock_animated_spritesheet_10
+  - first:
+      213: -5392324007623660741
+    second: hill_tiles_rock_animated_spritesheet_11
+  - first:
+      213: -6187302927501742332
+    second: hill_tiles_rock_animated_spritesheet_12
+  - first:
+      213: 9071217540718788937
+    second: hill_tiles_rock_animated_spritesheet_13
+  - first:
+      213: -7097450437364808117
+    second: hill_tiles_rock_animated_spritesheet_14
+  - first:
+      213: -7566181295548187398
+    second: hill_tiles_rock_animated_spritesheet_15
+  - first:
+      213: 6141797836145020705
+    second: hill_tiles_rock_animated_spritesheet_16
+  - first:
+      213: 4120246763136492073
+    second: hill_tiles_rock_animated_spritesheet_17
+  - first:
+      213: 5827905874586733076
+    second: hill_tiles_rock_animated_spritesheet_18
+  - first:
+      213: 3550576195524830386
+    second: hill_tiles_rock_animated_spritesheet_19
+  - first:
+      213: -685457703667507601
+    second: hill_tiles_rock_animated_spritesheet_20
+  - first:
+      213: -7622404688125738600
+    second: hill_tiles_rock_animated_spritesheet_21
+  - first:
+      213: 3726339539289679100
+    second: hill_tiles_rock_animated_spritesheet_22
+  - first:
+      213: 1752740372314617590
+    second: hill_tiles_rock_animated_spritesheet_23
+  - first:
+      213: -4550990337941390881
+    second: hill_tiles_rock_animated_spritesheet_24
+  - first:
+      213: -7728037895887731174
+    second: hill_tiles_rock_animated_spritesheet_25
+  - first:
+      213: -1206348568912315451
+    second: hill_tiles_rock_animated_spritesheet_26
+  - first:
+      213: 5096137185791998213
+    second: hill_tiles_rock_animated_spritesheet_27
+  - first:
+      213: -3258604181654687156
+    second: hill_tiles_rock_animated_spritesheet_28
+  - first:
+      213: -5226211932794047039
+    second: hill_tiles_rock_animated_spritesheet_29
+  - first:
+      213: 2340807406780148523
+    second: hill_tiles_rock_animated_spritesheet_30
+  - first:
+      213: -801594609698795000
+    second: hill_tiles_rock_animated_spritesheet_31
+  - first:
+      213: -4144853087580632658
+    second: hill_tiles_rock_animated_spritesheet_32
+  - first:
+      213: -2139085427494849991
+    second: hill_tiles_rock_animated_spritesheet_33
+  - first:
+      213: 8196251560459353359
+    second: hill_tiles_rock_animated_spritesheet_34
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_0
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 385
+        width: 123
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae493f676db023aa0800000000000000
+      internalID: -6182866322679687958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_1
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 257
+        width: 123
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa7f5e0c48e7a6e0800000000000000
+      internalID: -1826235710519149830
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_2
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 385
+        width: 123
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ba04027c3ae08160800000000000000
+      internalID: 7025872964029778613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_3
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 257
+        width: 123
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa4c8522fce7ab7b0800000000000000
+      internalID: -5207710591000984406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_4
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 384
+        width: 125
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ad0a604c4286cba80800000000000000
+      internalID: -8449764293737013030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_5
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 256
+        width: 125
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f71598ece5931ebf0800000000000000
+      internalID: -296893021074927233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_6
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 384
+        width: 126
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74de0bf2cfe677680800000000000000
+      internalID: -8757408920987701945
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_7
+      rect:
+        serializedVersion: 2
+        x: 387
+        y: 256
+        width: 126
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f253636a5527ec2d0800000000000000
+      internalID: -3256539768355932881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_8
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 384
+        width: 125
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32b639096f4e1cca0800000000000000
+      internalID: -5998261481042121949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_9
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 256
+        width: 125
+        height: 129
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a24cc96c2a1c3dec0800000000000000
+      internalID: -3543275576949423062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_10
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 385
+        width: 244
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73e2c4fc9ea64f8f0800000000000000
+      internalID: -507663305548222921
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_11
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 257
+        width: 244
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b3be7c382ed9a25b0800000000000000
+      internalID: -5392324007623660741
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_12
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 385
+        width: 123
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40f2688e4c8422aa0800000000000000
+      internalID: -6187302927501742332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_13
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 384
+        width: 125
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94106daba4073ed70800000000000000
+      internalID: 9071217540718788937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_14
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 384
+        width: 127
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b460eed5e6ac08d90800000000000000
+      internalID: -7097450437364808117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_15
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 384
+        width: 125
+        height: 378
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afc35a4f2368ff690800000000000000
+      internalID: -7566181295548187398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_16
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 385
+        width: 123
+        height: 377
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fcfa1679c0c3550800000000000000
+      internalID: 6141797836145020705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_17
+      rect:
+        serializedVersion: 2
+        x: 1538
+        y: 385
+        width: 125
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 92224bfd99e0e2930800000000000000
+      internalID: 4120246763136492073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_18
+      rect:
+        serializedVersion: 2
+        x: 1666
+        y: 385
+        width: 125
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41a872fe381e0e050800000000000000
+      internalID: 5827905874586733076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_19
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 385
+        width: 128
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b42732fc3e264130800000000000000
+      internalID: 3550576195524830386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_20
+      rect:
+        serializedVersion: 2
+        x: 1919
+        y: 384
+        width: 130
+        height: 372
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6ed758a9d3cc76f0800000000000000
+      internalID: -685457703667507601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_21
+      rect:
+        serializedVersion: 2
+        x: 2048
+        y: 385
+        width: 128
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8914ef54257c73690800000000000000
+      internalID: -7622404688125738600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_22
+      rect:
+        serializedVersion: 2
+        x: 2178
+        y: 385
+        width: 125
+        height: 371
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cf4aad7611e96b330800000000000000
+      internalID: 3726339539289679100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 2304
+        height: 257
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f67c4b051cf25810800000000000000
+      internalID: 1752740372314617590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_24
+      rect:
+        serializedVersion: 2
+        x: 895
+        y: 257
+        width: 123
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd9b4ca5662a7d0c0800000000000000
+      internalID: -4550990337941390881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_25
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 256
+        width: 125
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16cad48a7e70c490800000000000000
+      internalID: -7728037895887731174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_26
+      rect:
+        serializedVersion: 2
+        x: 1151
+        y: 256
+        width: 127
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5cb3eaa3e50324fe0800000000000000
+      internalID: -1206348568912315451
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_27
+      rect:
+        serializedVersion: 2
+        x: 1279
+        y: 256
+        width: 125
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5097acd15cd19b640800000000000000
+      internalID: 5096137185791998213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_28
+      rect:
+        serializedVersion: 2
+        x: 1407
+        y: 257
+        width: 123
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c42bed8f2cc17c2d0800000000000000
+      internalID: -3258604181654687156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_29
+      rect:
+        serializedVersion: 2
+        x: 1542
+        y: 257
+        width: 115
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c537e0dfe3c877b0800000000000000
+      internalID: -5226211932794047039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_30
+      rect:
+        serializedVersion: 2
+        x: 1670
+        y: 257
+        width: 116
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b2bebb03fe73c7020800000000000000
+      internalID: 2340807406780148523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_31
+      rect:
+        serializedVersion: 2
+        x: 1796
+        y: 256
+        width: 120
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 802190313f920e4f0800000000000000
+      internalID: -801594609698795000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_32
+      rect:
+        serializedVersion: 2
+        x: 1923
+        y: 256
+        width: 123
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea94394c3168a76c0800000000000000
+      internalID: -4144853087580632658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_33
+      rect:
+        serializedVersion: 2
+        x: 2052
+        y: 256
+        width: 120
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 93274f513217052e0800000000000000
+      internalID: -2139085427494849991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: hill_tiles_rock_animated_spritesheet_34
+      rect:
+        serializedVersion: 2
+        x: 2182
+        y: 257
+        width: 116
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0dbbee5e5feeb170800000000000000
+      internalID: 8196251560459353359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable: {}
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
