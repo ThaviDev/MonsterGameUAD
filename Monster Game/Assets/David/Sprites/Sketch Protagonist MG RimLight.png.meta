@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: fa1595307fc41c448a8d98c9dff93b27
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8776392009879035422
+    second: Sketch Protagonist MG RimLight_0
+  - first:
+      213: 161001441250823729
+    second: Sketch Protagonist MG RimLight_1
+  - first:
+      213: 4425512989336411523
+    second: Sketch Protagonist MG RimLight_2
+  - first:
+      213: 1708843572312337146
+    second: Sketch Protagonist MG RimLight_3
+  - first:
+      213: -6011119407312491103
+    second: Sketch Protagonist MG RimLight_4
+  - first:
+      213: -8239698286727090378
+    second: Sketch Protagonist MG RimLight_5
+  - first:
+      213: -2548985218554139048
+    second: Sketch Protagonist MG RimLight_6
+  - first:
+      213: -6794156606342573200
+    second: Sketch Protagonist MG RimLight_7
+  - first:
+      213: -61189586065309379
+    second: Sketch Protagonist MG RimLight_8
+  - first:
+      213: -1744447544394897771
+    second: Sketch Protagonist MG RimLight_9
+  - first:
+      213: 1920297251050839442
+    second: Sketch Protagonist MG RimLight_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_0
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 3601
+        width: 1589
+        height: 756
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1e9a6e98020cc970800000000000000
+      internalID: 8776392009879035422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_1
+      rect:
+        serializedVersion: 2
+        x: 1685
+        y: 2856
+        width: 1369
+        height: 1137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13ec41235fdfb3200800000000000000
+      internalID: 161001441250823729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_2
+      rect:
+        serializedVersion: 2
+        x: 3209
+        y: 3813
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 38d164ecd949a6d30800000000000000
+      internalID: 4425512989336411523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_3
+      rect:
+        serializedVersion: 2
+        x: 934
+        y: 2558
+        width: 529
+        height: 613
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afae268dc2807b710800000000000000
+      internalID: 1708843572312337146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_4
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 2155
+        width: 1645
+        height: 763
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1adaea05fb6349ca0800000000000000
+      internalID: -6011119407312491103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_5
+      rect:
+        serializedVersion: 2
+        x: 3115
+        y: 2701
+        width: 891
+        height: 742
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63fac336016b6ad80800000000000000
+      internalID: -8239698286727090378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_6
+      rect:
+        serializedVersion: 2
+        x: 3601
+        y: 2854
+        width: 115
+        height: 247
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85eeb56e27f20acd0800000000000000
+      internalID: -2548985218554139048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_7
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 2194
+        width: 104
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073d392409e46b1a0800000000000000
+      internalID: -6794156606342573200
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_8
+      rect:
+        serializedVersion: 2
+        x: 2814
+        y: 1535
+        width: 847
+        height: 675
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d31cf9a456c962ff0800000000000000
+      internalID: -61189586065309379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_9
+      rect:
+        serializedVersion: 2
+        x: 2818
+        y: 2105
+        width: 328
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5962a0b633a7ac7e0800000000000000
+      internalID: -1744447544394897771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sketch Protagonist MG RimLight_10
+      rect:
+        serializedVersion: 2
+        x: 1065
+        y: 1546
+        width: 874
+        height: 612
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29d5b08fc2446aa10800000000000000
+      internalID: 1920297251050839442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Sketch Protagonist MG RimLight_0: 8776392009879035422
+      Sketch Protagonist MG RimLight_1: 161001441250823729
+      Sketch Protagonist MG RimLight_10: 1920297251050839442
+      Sketch Protagonist MG RimLight_2: 4425512989336411523
+      Sketch Protagonist MG RimLight_3: 1708843572312337146
+      Sketch Protagonist MG RimLight_4: -6011119407312491103
+      Sketch Protagonist MG RimLight_5: -8239698286727090378
+      Sketch Protagonist MG RimLight_6: -2548985218554139048
+      Sketch Protagonist MG RimLight_7: -6794156606342573200
+      Sketch Protagonist MG RimLight_8: -61189586065309379
+      Sketch Protagonist MG RimLight_9: -1744447544394897771
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
