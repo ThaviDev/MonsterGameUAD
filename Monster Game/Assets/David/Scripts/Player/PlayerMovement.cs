@@ -16,7 +16,7 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _movementDirection = PlayerInputs.OnMoveChange().normalized;
-        print(_movementDirection);
+        //print(_movementDirection);
     }
     private void FixedUpdate()
     {

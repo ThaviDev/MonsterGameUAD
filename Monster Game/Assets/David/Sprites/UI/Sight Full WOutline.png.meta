@@ -1,16 +1,22 @@
 fileFormatVersion: 2
-guid: 294413cd783c6a145a71a870661fa921
+guid: f17aa459f1e3e2b4f8ea1a7c59de4902
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8628773720672196342
-    second: Isometric Assets 4_0
+      213: 7504639744268061818
+    second: Sight Full WOutline_0
   - first:
-      213: 6438284002837191812
-    second: Isometric Assets 4_1
+      213: 2032832790999880189
+    second: Sight Full WOutline_1
   - first:
-      213: 5065085175138927363
-    second: Isometric Assets 4_2
+      213: -5714030355363644525
+    second: Sight Full WOutline_2
+  - first:
+      213: 382211176737039976
+    second: Sight Full WOutline_3
+  - first:
+      213: -4876044499131569838
+    second: Sight Full WOutline_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -52,12 +58,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 200
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -106,67 +112,111 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Isometric Assets 4_0
+      name: Sight Full WOutline_0
       rect:
         serializedVersion: 2
-        x: 92
-        y: 28
-        width: 356
-        height: 293
+        x: 49
+        y: 632
+        width: 150
+        height: 156
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6f654e35bff8fb770800000000000000
-      internalID: 8628773720672196342
+      spriteID: a7c406c0616d52860800000000000000
+      internalID: 7504639744268061818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Isometric Assets 4_1
+      name: Sight Full WOutline_1
       rect:
         serializedVersion: 2
-        x: 601
-        y: 28
-        width: 356
-        height: 316
+        x: 150
+        y: 71
+        width: 717
+        height: 882
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48cd0386031695950800000000000000
-      internalID: 6438284002837191812
+      spriteID: df1505b27a2163c10800000000000000
+      internalID: 2032832790999880189
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Isometric Assets 4_2
+      name: Sight Full WOutline_2
       rect:
         serializedVersion: 2
-        x: 1093
-        y: 29
-        width: 352
-        height: 315
+        x: 825
+        y: 632
+        width: 150
+        height: 156
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 303c04d712cca4640800000000000000
-      internalID: 5065085175138927363
+      spriteID: 39b30c08aafa3b0b0800000000000000
+      internalID: -5714030355363644525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sight Full WOutline_3
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 236
+        width: 150
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 866689a4a03ed4500800000000000000
+      internalID: 382211176737039976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sight Full WOutline_4
+      rect:
+        serializedVersion: 2
+        x: 825
+        y: 236
+        width: 150
+        height: 156
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 259e348cc5fc45cb0800000000000000
+      internalID: -4876044499131569838
       vertices: []
       indices: 
       edges: []
@@ -175,21 +225,21 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 280d14eee8e8d944b89f6dfa55c9f667
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
-    secondaryTextures:
-    - texture: {fileID: 2800000, guid: fa1595307fc41c448a8d98c9dff93b27, type: 3}
-      name: _MaskTex
+    secondaryTextures: []
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Isometric Assets 4_0: 8628773720672196342
-      Isometric Assets 4_1: 6438284002837191812
-      Isometric Assets 4_2: 5065085175138927363
+      Sight Full WOutline_0: 7504639744268061818
+      Sight Full WOutline_1: 2032832790999880189
+      Sight Full WOutline_2: -5714030355363644525
+      Sight Full WOutline_3: 382211176737039976
+      Sight Full WOutline_4: -4876044499131569838
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
