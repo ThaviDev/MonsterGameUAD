@@ -23,8 +23,8 @@ public class MonsterAtkProximity : MonoBehaviour
     {
         if (_atkCurrentCooldown > 0)
         {
-            _atkCurrentCooldown -= Time.deltaTime;
             _atkCollider.enabled = false;
+            _atkCurrentCooldown -= Time.deltaTime;
         } else
         {
             _atkCollider.enabled = true;
@@ -33,6 +33,8 @@ public class MonsterAtkProximity : MonoBehaviour
         {
             StartCoroutine(AttackingSequence());
         }
+
+
     }
 
     IEnumerator AttackingSequence()
@@ -50,12 +52,14 @@ public class MonsterAtkProximity : MonoBehaviour
 
     private void ExecuteAttackContact()
     {
-        print("PAM");
+        print("Ataqueee!!");
+
     }
     private void OnTriggerEnter2D(Collider2D otherCol)
     {
         if (otherCol.gameObject.layer == 7) // Player Layer
         {
+            _atkCollider.enabled = false;
             print("Ataque al jugador yupi");
             _atkCurrentCooldown = _atkCooldown;
         }

@@ -19,7 +19,7 @@ public class PlayerStadistics : MonoBehaviour
     {
         
     }
-    private void PlayerWasHit()
+    private void PlayerWasHit(Collider2D otherCol)
     {
         print("Bajar Vida");
     }

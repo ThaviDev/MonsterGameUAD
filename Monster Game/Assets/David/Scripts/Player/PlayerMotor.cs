@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerMotor : MonoBehaviour
 {
-    public static Action OnPyrHit;
+    public static Action<Collider2D> OnPyrHit;
     void Start()
     {
         
@@ -22,7 +22,7 @@ public class PlayerMotor : MonoBehaviour
     {
         if (otherCol.gameObject.layer == 6) // Monster Layer
         {
-            OnPyrHit.Invoke();
+            OnPyrHit.Invoke(otherCol);
         }
     }
 }

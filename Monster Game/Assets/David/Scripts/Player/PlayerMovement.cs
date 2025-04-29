@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -10,19 +9,47 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float _normalSpeed = 5f;
     public float _curSpeed;
 
+    private float _hasSelfControl;
+
     FloatSCOB _pyrStamina;
+
+    [SerializeField] float _damageKnockback = 5f;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
         _curSpeed = _normalSpeed;
+
+        PlayerMotor.OnPyrHit += PlayerWasHit;
     }
     void Update()
     {
         _movementDirection = PlayerInputs.OnMoveChange().normalized;
+
+        if (_hasSelfControl > 0)
+        {
+            _hasSelfControl -= Time.deltaTime;
+        }
         //print(_movementDirection);
     }
     private void FixedUpdate()
     {
-        _rb.linearVelocity = _movementDirection * _curSpeed;
+        if (_hasSelfControl <= 0)
+        {
+            _rb.linearVelocity = _movementDirection * _curSpeed;
+        }
+    }
+
+    private void PlayerWasHit(Collider2D otherCol)
+    {
+        _hasSelfControl = 1;
+        print("Pushed Away by Hit");
+        Transform myTrans = transform;
+        Transform otherTrans = otherCol.transform;
+        Vector2 direction = myTrans.position - otherTrans.position;
+        Vector2 directionNormalized = direction.normalized;
+        print(directionNormalized);
+
+        _rb.AddForce(directionNormalized * _damageKnockback, ForceMode2D.Impulse);
+        _rb.
     }
 }
