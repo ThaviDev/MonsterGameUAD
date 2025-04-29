@@ -13,6 +13,7 @@ public class TestSnake : MonoBehaviour
     void Update()
     {
         //print(Mathf.Abs(_agent.velocity.x) + Mathf.Abs(_agent.velocity.y));
+        //print (_agent.)
     }
 
     private void OnCollisionEnter2D(Collision2D col)

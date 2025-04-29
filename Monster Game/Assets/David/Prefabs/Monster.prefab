@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2119797596201211299}
   - component: {fileID: 7008905073124934235}
   - component: {fileID: 4134545306309816398}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Monster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4176075083109444057}
   - component: {fileID: 8912768937258952691}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5104807105150289682}
   - component: {fileID: 2581614904294280639}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

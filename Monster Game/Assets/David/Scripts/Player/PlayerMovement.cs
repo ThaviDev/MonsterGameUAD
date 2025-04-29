@@ -6,8 +6,11 @@ public class PlayerMovement : MonoBehaviour
     //[SerializeField] PlayerInputs _inputs;
     private Rigidbody2D _rb;
     Vector2 _movementDirection;
+
     [SerializeField] float _normalSpeed = 5f;
-    float _curSpeed;
+    public float _curSpeed;
+
+    FloatSCOB _pyrStamina;
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
