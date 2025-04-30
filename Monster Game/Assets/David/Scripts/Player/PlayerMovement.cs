@@ -50,6 +50,5 @@ public class PlayerMovement : MonoBehaviour
         print(directionNormalized);
 
         _rb.AddForce(directionNormalized * _damageKnockback, ForceMode2D.Impulse);
-        _rb.
     }
 }
