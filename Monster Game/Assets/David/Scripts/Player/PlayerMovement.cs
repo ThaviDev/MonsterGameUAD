@@ -7,11 +7,11 @@ public class PlayerMovement : MonoBehaviour
     Vector2 _movementDirection;
 
     [SerializeField] float _normalSpeed = 5f;
-    public float _curSpeed;
+    private float _curSpeed;
 
     private float _hasSelfControl;
 
-    FloatSCOB _pyrStamina;
+    [SerializeField] FloatSCOB _pyrStamina;
 
     [SerializeField] float _damageKnockback = 5f;
     void Start()
@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
         _curSpeed = _normalSpeed;
 
         PlayerMotor.OnPyrHit += PlayerWasHit;
+        PlayerStadistics.OnPyrDeath += PlayerDeath;
     }
     void Update()
     {
@@ -50,5 +51,10 @@ public class PlayerMovement : MonoBehaviour
         print(directionNormalized);
 
         _rb.AddForce(directionNormalized * _damageKnockback, ForceMode2D.Impulse);
+    }
+
+    private void PlayerDeath()
+    {
+        _hasSelfControl = 999;
     }
 }

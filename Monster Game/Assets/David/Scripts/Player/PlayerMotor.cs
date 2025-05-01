@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerMotor : MonoBehaviour
 {
     public static Action<Collider2D> OnPyrHit;
+
+    Collider2D _yCol;
     void Start()
     {
         

@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee466378b0c4a254abba6eb757c6db6c, type: 3}
   m_Name: PyrHealth
   m_EditorClassIdentifier: 
-  SCOB_Value: 0
+  SCOB_Value: 100
