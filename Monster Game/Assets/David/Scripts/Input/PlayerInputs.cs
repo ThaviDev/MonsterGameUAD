@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputs : MonoBehaviour
 {
+    
     private static PlayerInputs _instance;
     public static PlayerInputs Instance
     {
@@ -26,13 +27,14 @@ public class PlayerInputs : MonoBehaviour
             }
             return _instance;
         }
-    } 
+    }
     static PlayerInput _input;
     [SerializeField] PlayerInput _inputRef;
 
     Vector2 _move;
     Vector2 _aim;
     bool _pause;
+    bool _run;
     private void Awake()
     {
         if (_instance == null)
@@ -49,6 +51,7 @@ public class PlayerInputs : MonoBehaviour
     public Vector2 MovementVector { get { return _move; } }
     public Vector2 AimingVector { get { return _aim; } }
     public bool PauseBool { get { return _pause; } }
+    public bool RuningBool { get { return _run; } }
 
     private void Update()
     {
@@ -70,5 +73,9 @@ public class PlayerInputs : MonoBehaviour
     public static bool OnPausePressed()
     {
         return _input.actions.FindAction("Pause").WasReleasedThisFrame();
+    }
+    public static bool OnRunPressed()
+    {
+        return _input.actions.FindAction("Sprint").IsPressed();
     }
 }

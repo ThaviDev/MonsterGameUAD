@@ -1,6 +1,7 @@
 using System;
-using TMPro.EditorUtilities;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.Windows;
 
 public class GMTestGameplay : MonoBehaviour
 {
@@ -35,9 +36,31 @@ public class GMTestGameplay : MonoBehaviour
     bool _pauseKeyPressed;
     bool _isPaused;
 
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject); // Evitar que el objeto sea destruido al cambiar de escena.
+        }
+        else if (_instance != this)
+        {
+            Destroy(gameObject); // Destruir instancias adicionales si ya existe una instancia.
+        }
+    }
+
     void Start()
     {
-        
+        Scene currentScene = SceneManager.GetActiveScene();
+        string sceneName = currentScene.name;
+        if (sceneName == "TestingMainMenu")
+        {
+            SetSceneToMainMenu();
+        }
+        if (sceneName == "TestingAStar")
+        {
+            SetScenetoGameplay();
+        }
     }
     void Update()
     {
@@ -71,7 +94,6 @@ public class GMTestGameplay : MonoBehaviour
     void AtGameplay()
     {
         PlayerStadistics.OnPyrDeath += StartGameOverSequence;
-
     }
     void AtMainMenu()
     {
@@ -79,18 +101,26 @@ public class GMTestGameplay : MonoBehaviour
     }
     void ResetEvents()
     {
-        PlayerStadistics.OnPyrDeath -= StartGameOverSequence;
+        //PlayerStadistics.OnPyrDeath -= StartGameOverSequence;
     }
     public void ChangeSceneToGameplay()
     {
-        ResetEvents();
-        //CambiarEscena
-        AtGameplay();
+        SceneManager.LoadScene("TestingAStar");
+        SetScenetoGameplay();
     }
     public void ChangeSceneToMainMenu()
     {
+        SceneManager.LoadScene("TestingMainMenu");
+        SetSceneToMainMenu();
+    }
+    void SetScenetoGameplay()
+    {
         ResetEvents();
-        //CambiarEscena
+        AtGameplay();
+    }
+    public void SetSceneToMainMenu()
+    {
+        ResetEvents();
         AtMainMenu();
     }
 
