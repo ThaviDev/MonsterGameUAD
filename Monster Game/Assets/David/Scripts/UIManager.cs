@@ -12,6 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Slider _healthSlider;
     [SerializeField] GameObject _gameOvrPanel;
     [SerializeField] GameObject _gameplayPanel;
+    [SerializeField] GameObject _pausePanel;
 
     float _matchTime;
     [SerializeField] int _secondsCount;
@@ -21,9 +22,11 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        _canPause = true;
         _canCount = true;
         PlayerStadistics.OnPyrDeath += StopCounting;
         GMTestGameplay.OnGameOver += GameOver;
+        GMTestGameplay.OnPause += PauseUnpause;
     }
     void Update()
     {
@@ -31,7 +34,13 @@ public class UIManager : MonoBehaviour
 
         CountTime();
     }
-
+    void PauseUnpause(bool isPaused)
+    {
+        if (!_canPause) {
+            return;
+        }
+        _pausePanel.SetActive(isPaused);
+    }
     void StopCounting()
     {
         _canCount = false;
@@ -44,18 +53,13 @@ public class UIManager : MonoBehaviour
         {
             return;
         }
-        bool canCountMinute = false;
         _matchTime += Time.deltaTime;
         _secondsCount = (int)_matchTime % 60;
         if (_secondsCount == 60)
         {
             _matchTime = 0;
             _secondsCount = 0;
-            canCountMinute = true;
-        }
-        if (_secondsCount == 0 && canCountMinute) {
             _minutesCount++;
-            canCountMinute = false;
         }
         _timeTxt.text = _minutesCount.ToString() + ":" + _secondsCount.ToString();
     }
@@ -63,6 +67,7 @@ public class UIManager : MonoBehaviour
     void GameOver()
     {
         print("End Game");
+        _canPause = false;
         _gameOvrPanel.SetActive(true);
         _gameplayPanel.SetActive(false);
     }

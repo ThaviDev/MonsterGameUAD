@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _checkRadius: 1.2
-  _monsterPrefab: {fileID: 1996150534071616760, guid: ea2c491a362359b439ee35dcd346806e, type: 3}
+  _monsterPrefab: {fileID: 1995619770299394887, guid: 226594be57ba38542868ff5ac3895624, type: 3}
   _checkLayers:
     serializedVersion: 2
     m_Bits: 4294967295
+  spawnedMonster: 0

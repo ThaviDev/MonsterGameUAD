@@ -25,7 +25,6 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         _movementDirection = PlayerInputs.OnMoveChange().normalized;
-
         if (_hasSelfControl > 0)
         {
             _hasSelfControl -= Time.deltaTime;
