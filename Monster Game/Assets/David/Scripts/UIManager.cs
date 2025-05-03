@@ -28,6 +28,7 @@ public class UIManager : MonoBehaviour
         PlayerStadistics.OnPyrDeath += StopCounting;
         GMTestGameplay.OnGameOver += GameOver;
         GMTestGameplay.OnPause += PauseUnpause;
+
     }
     void Update()
     {
@@ -73,5 +74,12 @@ public class UIManager : MonoBehaviour
         _canPause = false;
         _gameOvrPanel.SetActive(true);
         _gameplayPanel.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        PlayerStadistics.OnPyrDeath -= StopCounting;
+        GMTestGameplay.OnGameOver -= GameOver;
+        GMTestGameplay.OnPause -= PauseUnpause;
     }
 }

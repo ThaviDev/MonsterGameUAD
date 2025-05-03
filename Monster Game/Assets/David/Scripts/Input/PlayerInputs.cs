@@ -4,8 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerInputs : MonoBehaviour
 {
-    
-    private static PlayerInputs _instance;
+    //private static PlayerInputs _instance;
+    /*
     public static PlayerInputs Instance
     {
         get
@@ -27,7 +27,7 @@ public class PlayerInputs : MonoBehaviour
             }
             return _instance;
         }
-    }
+    } */
     static PlayerInput _input;
     [SerializeField] PlayerInput _inputRef;
 
@@ -37,6 +37,7 @@ public class PlayerInputs : MonoBehaviour
     bool _run;
     private void Awake()
     {
+        /*
         if (_instance == null)
         {
             _instance = this;
@@ -45,7 +46,7 @@ public class PlayerInputs : MonoBehaviour
         else if (_instance != this)
         {
             Destroy(gameObject); // Destruir instancias adicionales si ya existe una instancia.
-        }
+        } */
         _input = _inputRef;
     }
     public Vector2 MovementVector { get { return _move; } }

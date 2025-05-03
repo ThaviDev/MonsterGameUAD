@@ -33,12 +33,10 @@ public class PlayerMovement : MonoBehaviour
     {
         _movementDirection = PlayerInputs.OnMoveChange().normalized;
         _isPressingRun = PlayerInputs.OnRunPressed();
-        print(_movementDirection);
         if (_hasSelfControl > 0)
         {
             _hasSelfControl -= Time.deltaTime;
         }
-        //print(_movementDirection);
         var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
 
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 0 && _pyrStamina.SCOB_Value > 0)
@@ -81,5 +79,10 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerDeath()
     {
         _hasSelfControl = 999;
+    }
+    private void OnDestroy()
+    {
+        PlayerMotor.OnPyrHit -= PlayerWasHit;
+        PlayerStadistics.OnPyrDeath -= PlayerDeath;
     }
 }

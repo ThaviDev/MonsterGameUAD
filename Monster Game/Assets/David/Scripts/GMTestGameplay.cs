@@ -51,6 +51,7 @@ public class GMTestGameplay : MonoBehaviour
 
     void Start()
     {
+        _isPaused = false;
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
         if (sceneName == "TestingMainMenu")
@@ -64,6 +65,7 @@ public class GMTestGameplay : MonoBehaviour
     }
     void Update()
     {
+        print("Estoy pausado: " + _isPaused);
         _pauseKeyPressed = PlayerInputs.OnPausePressed();
         if (_pauseKeyPressed)
         {
@@ -75,12 +77,14 @@ public class GMTestGameplay : MonoBehaviour
     {
         // Esta funcion sirve para la tecla y para el boton de UI
         _isPaused = !_isPaused;
+        print(_isPaused);
         PauseLogic(_isPaused);
         OnPause?.Invoke(_isPaused);
     }
 
     void PauseLogic(bool currentPauseFlipFlop)
     {
+        print(currentPauseFlipFlop);
         switch (currentPauseFlipFlop) {
             case true:
                 Time.timeScale = 0;
@@ -101,7 +105,10 @@ public class GMTestGameplay : MonoBehaviour
     }
     void ResetEvents()
     {
-        //PlayerStadistics.OnPyrDeath -= StartGameOverSequence;
+        print("Reinicio");
+        Time.timeScale = 1;
+        _isPaused = false;
+        PlayerStadistics.OnPyrDeath -= StartGameOverSequence;
     }
     public void ChangeSceneToGameplay()
     {

@@ -22,10 +22,10 @@ public class PlayerStadistics : MonoBehaviour
         _pyrHealth.SCOB_Value = 100;
         _canGetHit = true;
         PlayerMotor.OnPyrHit += PlayerWasHit;
+        OnPyrDeath += PlayerDied;
     }
     void Update()
     {
-        OnPyrDeath += PlayerDied;
     }
 
     void PlayerDied()
@@ -49,5 +49,10 @@ public class PlayerStadistics : MonoBehaviour
         {
             OnPyrDeath?.Invoke();
         }
+    }
+    private void OnDestroy()
+    {
+        PlayerMotor.OnPyrHit -= PlayerWasHit;
+        OnPyrDeath -= PlayerDied;
     }
 }
