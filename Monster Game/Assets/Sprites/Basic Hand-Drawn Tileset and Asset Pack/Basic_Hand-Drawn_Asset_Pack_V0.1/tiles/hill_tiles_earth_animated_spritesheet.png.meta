@@ -162,6 +162,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -684,7 +697,30 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hill_tiles_earth_animated_spritesheet_0: -366427634147663119
+      hill_tiles_earth_animated_spritesheet_1: 5430922381304274861
+      hill_tiles_earth_animated_spritesheet_10: 7133714766814824088
+      hill_tiles_earth_animated_spritesheet_11: -6232296105313741262
+      hill_tiles_earth_animated_spritesheet_12: -5231892701495105269
+      hill_tiles_earth_animated_spritesheet_13: -6726251473397140382
+      hill_tiles_earth_animated_spritesheet_14: -823894571119627936
+      hill_tiles_earth_animated_spritesheet_15: -8215830671846151204
+      hill_tiles_earth_animated_spritesheet_16: 457566254392124793
+      hill_tiles_earth_animated_spritesheet_17: 580707714924743996
+      hill_tiles_earth_animated_spritesheet_18: -5817398338118526985
+      hill_tiles_earth_animated_spritesheet_19: -946193376353404494
+      hill_tiles_earth_animated_spritesheet_2: 3762089308020193333
+      hill_tiles_earth_animated_spritesheet_20: -4514237015814419859
+      hill_tiles_earth_animated_spritesheet_21: 535831716352843352
+      hill_tiles_earth_animated_spritesheet_22: 2395928960595600606
+      hill_tiles_earth_animated_spritesheet_3: 3113572367942658536
+      hill_tiles_earth_animated_spritesheet_4: 7378465189465569618
+      hill_tiles_earth_animated_spritesheet_5: 9001243983848263089
+      hill_tiles_earth_animated_spritesheet_6: 7951573015848776455
+      hill_tiles_earth_animated_spritesheet_7: -8632711874584996771
+      hill_tiles_earth_animated_spritesheet_8: 7109975500490132572
+      hill_tiles_earth_animated_spritesheet_9: -5115327897204819861
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

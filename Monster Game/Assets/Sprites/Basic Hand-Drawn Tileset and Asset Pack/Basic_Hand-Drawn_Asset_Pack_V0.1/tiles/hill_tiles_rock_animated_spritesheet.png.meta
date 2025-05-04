@@ -198,6 +198,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -984,7 +997,42 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      hill_tiles_rock_animated_spritesheet_0: -6182866322679687958
+      hill_tiles_rock_animated_spritesheet_1: -1826235710519149830
+      hill_tiles_rock_animated_spritesheet_10: -507663305548222921
+      hill_tiles_rock_animated_spritesheet_11: -5392324007623660741
+      hill_tiles_rock_animated_spritesheet_12: -6187302927501742332
+      hill_tiles_rock_animated_spritesheet_13: 9071217540718788937
+      hill_tiles_rock_animated_spritesheet_14: -7097450437364808117
+      hill_tiles_rock_animated_spritesheet_15: -7566181295548187398
+      hill_tiles_rock_animated_spritesheet_16: 6141797836145020705
+      hill_tiles_rock_animated_spritesheet_17: 4120246763136492073
+      hill_tiles_rock_animated_spritesheet_18: 5827905874586733076
+      hill_tiles_rock_animated_spritesheet_19: 3550576195524830386
+      hill_tiles_rock_animated_spritesheet_2: 7025872964029778613
+      hill_tiles_rock_animated_spritesheet_20: -685457703667507601
+      hill_tiles_rock_animated_spritesheet_21: -7622404688125738600
+      hill_tiles_rock_animated_spritesheet_22: 3726339539289679100
+      hill_tiles_rock_animated_spritesheet_23: 1752740372314617590
+      hill_tiles_rock_animated_spritesheet_24: -4550990337941390881
+      hill_tiles_rock_animated_spritesheet_25: -7728037895887731174
+      hill_tiles_rock_animated_spritesheet_26: -1206348568912315451
+      hill_tiles_rock_animated_spritesheet_27: 5096137185791998213
+      hill_tiles_rock_animated_spritesheet_28: -3258604181654687156
+      hill_tiles_rock_animated_spritesheet_29: -5226211932794047039
+      hill_tiles_rock_animated_spritesheet_3: -5207710591000984406
+      hill_tiles_rock_animated_spritesheet_30: 2340807406780148523
+      hill_tiles_rock_animated_spritesheet_31: -801594609698795000
+      hill_tiles_rock_animated_spritesheet_32: -4144853087580632658
+      hill_tiles_rock_animated_spritesheet_33: -2139085427494849991
+      hill_tiles_rock_animated_spritesheet_34: 8196251560459353359
+      hill_tiles_rock_animated_spritesheet_4: -8449764293737013030
+      hill_tiles_rock_animated_spritesheet_5: -296893021074927233
+      hill_tiles_rock_animated_spritesheet_6: -8757408920987701945
+      hill_tiles_rock_animated_spritesheet_7: -3256539768355932881
+      hill_tiles_rock_animated_spritesheet_8: -5998261481042121949
+      hill_tiles_rock_animated_spritesheet_9: -3543275576949423062
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

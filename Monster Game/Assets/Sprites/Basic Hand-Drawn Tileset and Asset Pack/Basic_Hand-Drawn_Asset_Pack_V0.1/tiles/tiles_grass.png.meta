@@ -186,6 +186,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -884,7 +897,38 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tiles_grass_0: 2643701575408776578
+      tiles_grass_1: -2329093501365934143
+      tiles_grass_10: -3259089412923157526
+      tiles_grass_11: 5677378209713849525
+      tiles_grass_12: 2417808711360879992
+      tiles_grass_13: -8546873581473005837
+      tiles_grass_14: -1239184129854262241
+      tiles_grass_15: -329303547951988989
+      tiles_grass_16: 5320545222883165402
+      tiles_grass_17: 8230783462444406620
+      tiles_grass_18: -265567403187017231
+      tiles_grass_19: 3880372764047011069
+      tiles_grass_2: 4112394684476542960
+      tiles_grass_20: -1341080640884419870
+      tiles_grass_21: 884101444196003649
+      tiles_grass_22: -8196499672505916535
+      tiles_grass_23: 8501910761931159024
+      tiles_grass_24: 7712597545808772794
+      tiles_grass_25: -7429128565480687113
+      tiles_grass_26: 197896115412154659
+      tiles_grass_27: -1722194724147266334
+      tiles_grass_28: 5536971723916751309
+      tiles_grass_29: -132785929943220967
+      tiles_grass_3: -2147397640760030034
+      tiles_grass_30: -8376069246634921472
+      tiles_grass_4: 3443742540947577668
+      tiles_grass_5: -8354556685433854010
+      tiles_grass_6: 3494021498443906135
+      tiles_grass_7: 1958514496467056555
+      tiles_grass_8: -4168297852996004023
+      tiles_grass_9: -6717216752082352121
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

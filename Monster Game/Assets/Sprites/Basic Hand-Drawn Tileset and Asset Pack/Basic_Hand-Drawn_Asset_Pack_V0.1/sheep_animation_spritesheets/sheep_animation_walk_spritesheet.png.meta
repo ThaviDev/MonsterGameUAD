@@ -123,6 +123,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -359,7 +372,17 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sheep_animation_walk_spritesheet_0: 8258281117447363721
+      sheep_animation_walk_spritesheet_1: 3099874054738399445
+      sheep_animation_walk_spritesheet_2: -2522087528205627698
+      sheep_animation_walk_spritesheet_3: -6460597071646456535
+      sheep_animation_walk_spritesheet_4: 8978578073388077830
+      sheep_animation_walk_spritesheet_5: 5843442527582891234
+      sheep_animation_walk_spritesheet_6: -7935075952612995369
+      sheep_animation_walk_spritesheet_7: 3620595630076828247
+      sheep_animation_walk_spritesheet_8: 5360982320833633084
+      sheep_animation_walk_spritesheet_9: 6718430816414820693
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

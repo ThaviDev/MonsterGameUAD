@@ -126,6 +126,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -384,7 +397,18 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      sheep_animation_graze_spritesheet_0: -5976879989656740708
+      sheep_animation_graze_spritesheet_1: 8109210001157428912
+      sheep_animation_graze_spritesheet_10: -1324257118984207541
+      sheep_animation_graze_spritesheet_2: -4092894004148273214
+      sheep_animation_graze_spritesheet_3: 4690237129115977486
+      sheep_animation_graze_spritesheet_4: -6386338140510640609
+      sheep_animation_graze_spritesheet_5: -2640784178496851433
+      sheep_animation_graze_spritesheet_6: 7725140285189348672
+      sheep_animation_graze_spritesheet_7: 558754717653436792
+      sheep_animation_graze_spritesheet_8: 9107791012695378061
+      sheep_animation_graze_spritesheet_9: 2518179949671607479
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

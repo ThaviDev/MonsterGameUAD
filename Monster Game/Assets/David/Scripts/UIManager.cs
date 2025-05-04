@@ -9,8 +9,12 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] TMP_Text _timeTxt;
     [SerializeField] TMP_Text _endTime;
-    [SerializeField] Slider _healthSlider;
-    [SerializeField] Slider _staminaSlider;
+    [SerializeField] Slider _healthSliderLeft;
+    [SerializeField] Slider _healthSliderRight;
+    [SerializeField] Slider _staminaSliderLeft;
+    [SerializeField] Slider _staminaSliderRight;
+    [SerializeField] TMP_Text _staminaText;
+    [SerializeField] TMP_Text _healthText;
     [SerializeField] GameObject _gameOvrPanel;
     [SerializeField] GameObject _gameplayPanel;
     [SerializeField] GameObject _pausePanel;
@@ -32,8 +36,16 @@ public class UIManager : MonoBehaviour
     }
     void Update()
     {
-        _healthSlider.value = _pyrHealth.SCOB_Value;
-        _staminaSlider.value = _pyrStamina.SCOB_Value;
+        //_healthSlider.value = _pyrHealth.SCOB_Value;
+        _healthSliderLeft.value = _pyrHealth.SCOB_Value;
+        _healthSliderRight.value = _pyrHealth.SCOB_Value;
+        _staminaSliderLeft.value = _pyrStamina.SCOB_Value;
+        _staminaSliderRight.value = _pyrStamina.SCOB_Value;
+        var intergerHealth = (int)_pyrHealth.SCOB_Value;
+        var intergerStamina = (int)_pyrStamina.SCOB_Value;
+        _healthText.text = intergerHealth.ToString();
+        _staminaText.text = intergerStamina.ToString();
+        
 
         CountTime();
     }

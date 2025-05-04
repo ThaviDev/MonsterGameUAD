@@ -4,27 +4,24 @@ public class PlayerMovement : MonoBehaviour
 {
     //[SerializeField] PlayerInputs _inputs;
     private Rigidbody2D _rb;
+    [SerializeField] PlayerStadistics _playerStats;
     Vector2 _movementDirection;
     bool _isPressingRun;
-    [SerializeField] float _staminaUseMult;
-    [SerializeField] float _staminaRestMult;
-
-    [SerializeField] float _maxStamina;
-
-    [SerializeField] float _normalSpeed = 5f;
-    [SerializeField] float _runSpeed = 10f;
-    private float _curSpeed;
 
     private float _hasSelfControl;
 
     [SerializeField] FloatSCOB _pyrStamina;
 
     [SerializeField] float _damageKnockback = 5f;
+
+    private int _movementStatus;
+    public int GetMovementStatus
+    {
+        get { return _movementStatus; }
+    }
     void Start()
     {
-        _pyrStamina.SCOB_Value = _maxStamina;
         _rb = GetComponent<Rigidbody2D>();
-        _curSpeed = _normalSpeed;
 
         PlayerMotor.OnPyrHit += PlayerWasHit;
         PlayerStadistics.OnPyrDeath += PlayerDeath;
@@ -41,10 +38,13 @@ public class PlayerMovement : MonoBehaviour
 
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 0 && _pyrStamina.SCOB_Value > 0)
         {
-            _curSpeed = _runSpeed;
-            _pyrStamina.SCOB_Value -= Time.deltaTime * _staminaUseMult;
+            _movementStatus = 1; // Is Running
+            //_curSpeed = _runSpeed;
+            //_pyrStamina.SCOB_Value -= Time.deltaTime * _staminaUseMult;
         } else
         {
+            _movementStatus = 0; // Is Walking
+            /*
             if (_pyrStamina.SCOB_Value < _maxStamina)
             {
                 _pyrStamina.SCOB_Value += Time.deltaTime * _staminaRestMult;
@@ -52,14 +52,14 @@ public class PlayerMovement : MonoBehaviour
             {
                 _pyrStamina.SCOB_Value = _maxStamina;
             }
-            _curSpeed = _normalSpeed;
+            _curSpeed = _normalSpeed; */
         }
     }
     private void FixedUpdate()
     {
         if (_hasSelfControl <= 0)
         {
-            _rb.linearVelocity = _movementDirection * _curSpeed;
+            _rb.linearVelocity = _movementDirection * _playerStats.GetSpeed;
         }
     }
 

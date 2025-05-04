@@ -150,6 +150,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -584,7 +597,26 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      tilled_dirt_tiles_0: 1769656000261779899
+      tilled_dirt_tiles_1: -8524195846950558747
+      tilled_dirt_tiles_10: -4799703081346368387
+      tilled_dirt_tiles_11: 3015922233151420540
+      tilled_dirt_tiles_12: -341858373193792947
+      tilled_dirt_tiles_13: -3572916174701380134
+      tilled_dirt_tiles_14: -3903809012967461636
+      tilled_dirt_tiles_15: -4458065963417404533
+      tilled_dirt_tiles_16: 7315724263732662686
+      tilled_dirt_tiles_17: 6527579522002377142
+      tilled_dirt_tiles_18: -1441878263567340559
+      tilled_dirt_tiles_2: -3615464927680626356
+      tilled_dirt_tiles_3: 455719873809347986
+      tilled_dirt_tiles_4: -871684680615994767
+      tilled_dirt_tiles_5: -6796331795674464545
+      tilled_dirt_tiles_6: -5882710658024195097
+      tilled_dirt_tiles_7: -6389153922781155544
+      tilled_dirt_tiles_8: 7037679775749592703
+      tilled_dirt_tiles_9: 7206515734807456798
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
