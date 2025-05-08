@@ -2,7 +2,7 @@ using Pathfinding;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class MonsterManager : MonoBehaviour
+public class MonsterChaserManager : MonoBehaviour
 {
     [SerializeField] FollowerEntity _myAI;
     [SerializeField] AIDestinationSetter _destinySet;

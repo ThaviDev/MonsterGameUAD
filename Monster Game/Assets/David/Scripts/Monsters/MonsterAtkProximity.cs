@@ -60,7 +60,6 @@ public class MonsterAtkProximity : MonoBehaviour
         if (otherCol.gameObject.layer == 7) // Player Layer
         {
             _atkCollider.enabled = false;
-            print("Ataque al jugador yupi");
             _atkCurrentCooldown = _atkCooldown;
         }
     }

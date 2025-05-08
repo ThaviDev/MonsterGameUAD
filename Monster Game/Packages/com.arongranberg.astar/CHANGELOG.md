@@ -1,4 +1,10 @@
-## Add simple GetNearestEdge method?
+## 5.3.7 (2025-05-06)
+- Significantly improved performance when scanning grid graphs when using Unity 6000.1+.
+		This optimization has been tried multiple times before, but due to Unity bugs it has had to be rolled back.
+		I think Unity has fixed the final physx bug relating to this now, so this optimization is back.
+		Please report in the forum if you notice any hard crashes of the unity editor, when scanning grid graphs, after this update.
+- Fixed using local avoidance on rotated graphs and isometric/hexagonal grid graphs could result in agents taking curved instead of straight paths.
+- Fixed enabling thick raycasts on grid graphs did not do anything.
 
 ## 5.3.6 (2025-04-25)
 - Fixed a tiny native memory leak accidentally introduced in 5.3.5.

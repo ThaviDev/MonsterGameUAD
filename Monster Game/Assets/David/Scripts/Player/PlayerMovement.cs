@@ -7,10 +7,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] PlayerStadistics _playerStats;
     Vector2 _movementDirection;
     bool _isPressingRun;
+    bool _isPressingBreathe;
 
     private float _hasSelfControl;
 
     [SerializeField] FloatSCOB _pyrStamina;
+    [SerializeField] FloatSCOB _pyrHealth;
 
     [SerializeField] float _damageKnockback = 5f;
 
@@ -30,18 +32,37 @@ public class PlayerMovement : MonoBehaviour
     {
         _movementDirection = PlayerInputs.OnMoveChange().normalized;
         _isPressingRun = PlayerInputs.OnRunPressed();
+        _isPressingBreathe = PlayerInputs.OnBreathePressed();
+
         if (_hasSelfControl > 0)
         {
             _hasSelfControl -= Time.deltaTime;
         }
-        var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
 
-        if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 0 && _pyrStamina.SCOB_Value > 0)
+        //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
+        var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
+        if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 2)
         {
-            _movementStatus = 1; // Is Running
+            //print(_rb.linearVelocity);
+            if (_pyrStamina.SCOB_Value > 0)
+            {
+                _movementStatus = 1; // Is Running With Stamina
+            }
+            else if (_pyrHealth.SCOB_Value > 20)
+            {
+                _movementStatus = 2; // Is Running With Health
+            } else
+            {
+                if (_movementStatus == 2 && _pyrHealth.SCOB_Value < 20 && _pyrHealth.SCOB_Value > 19)
+                {
+                    _pyrHealth.SCOB_Value = 20;
+                }
+                _movementStatus = 0; // Is Walking
+            }
             //_curSpeed = _runSpeed;
             //_pyrStamina.SCOB_Value -= Time.deltaTime * _staminaUseMult;
-        } else
+        } 
+        else
         {
             _movementStatus = 0; // Is Walking
             /*
@@ -54,6 +75,8 @@ public class PlayerMovement : MonoBehaviour
             }
             _curSpeed = _normalSpeed; */
         }
+
+
     }
     private void FixedUpdate()
     {
@@ -66,7 +89,6 @@ public class PlayerMovement : MonoBehaviour
     private void PlayerWasHit(Collider2D otherCol)
     {
         _hasSelfControl = 1;
-        print("Pushed Away by Hit");
         Transform myTrans = transform;
         Transform otherTrans = otherCol.transform;
         Vector2 direction = myTrans.position - otherTrans.position;

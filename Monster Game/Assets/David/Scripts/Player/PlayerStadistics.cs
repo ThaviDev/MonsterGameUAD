@@ -44,11 +44,15 @@ public class PlayerStadistics : MonoBehaviour
         _maxStamina = _pyrHealth.SCOB_Value;
         switch (_pyrMoveScript.GetMovementStatus)
         {
+            case 2:
+                _curSpeed = _runSpeed;
+                _pyrHealth.SCOB_Value -= Time.deltaTime * _staminaUseMult;
+                break;
             case 1: // Run
                 _curSpeed = _runSpeed;
                 _pyrStamina.SCOB_Value -= Time.deltaTime * _staminaUseMult;
                 break;
-            case 0:
+            case 0: // Walk
                 if (_pyrStamina.SCOB_Value < _maxStamina)
                 {
                     _pyrStamina.SCOB_Value += Time.deltaTime * _staminaRestMult;
@@ -69,7 +73,6 @@ public class PlayerStadistics : MonoBehaviour
     }
     private void PlayerWasHit(Collider2D otherCol)
     {
-        print("Si me pegan cierto?");
         if (!_canGetHit) {
             return;
         }
