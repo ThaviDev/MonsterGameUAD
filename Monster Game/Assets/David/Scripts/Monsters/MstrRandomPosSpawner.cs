@@ -42,7 +42,7 @@ public class MstrRandomPosSpawner : MonoBehaviour
         while (_curAttempts < maxAttempts && !_mnstrSpawned)
         {
             _curAttempts++;
-
+            
             Vector2 spawnPosition = GetRandomPositionInArea();
             var _mySpanwer = Instantiate(spawnerPrefab, spawnPosition, Quaternion.identity, transform);
 

@@ -65,7 +65,6 @@ public class GMTestGameplay : MonoBehaviour
     }
     void Update()
     {
-        print("Estoy pausado: " + _isPaused);
         _pauseKeyPressed = PlayerInputs.OnPausePressed();
         if (_pauseKeyPressed)
         {
@@ -105,7 +104,6 @@ public class GMTestGameplay : MonoBehaviour
     }
     void ResetEvents()
     {
-        print("Reinicio");
         Time.timeScale = 1;
         _isPaused = false;
         PlayerStadistics.OnPyrDeath -= StartGameOverSequence;

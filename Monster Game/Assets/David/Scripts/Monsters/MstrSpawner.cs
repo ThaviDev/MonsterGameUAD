@@ -3,7 +3,7 @@ using UnityEngine;
 public class MstrSpawner : MonoBehaviour
 {
     [SerializeField] float _checkRadius = 1f;
-    [SerializeField] GameObject _monsterPrefab;
+    [SerializeField] GameObject[] _monsterPrefab;
     [SerializeField] LayerMask _checkLayers;
     public bool spawnedMonster;
 
@@ -20,8 +20,8 @@ public class MstrSpawner : MonoBehaviour
         }
         else
         {
-            // Si no hay colisiones, instanciar el triángulo
-            Instantiate(_monsterPrefab, transform.position, Quaternion.identity);
+            // Si no hay colisiones, instanciar el triángulospawnerPrefab[Random.Range(0, 2)]
+            Instantiate(_monsterPrefab[Random.Range(0, 2)], transform.position, Quaternion.identity);
             spawnedMonster = true;
             Destroy(gameObject,1);
         }
