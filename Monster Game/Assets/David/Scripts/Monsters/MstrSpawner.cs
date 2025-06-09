@@ -6,24 +6,25 @@ public class MstrSpawner : MonoBehaviour
     [SerializeField] GameObject[] _monsterPrefab;
     [SerializeField] LayerMask _checkLayers;
     public bool spawnedMonster;
+    public AstarPath _myGraphPath;
 
     private void Start()
     {
         // Realizar el chequeo de colisiones circular
         bool hasCollision = Physics2D.OverlapCircle(transform.position, _checkRadius, _checkLayers);
 
-        if (hasCollision)
+        if (!hasCollision && _myGraphPath.IsPointOnNavmesh(this.gameObject.transform.position))
         {
-            // Si hay colisiones, destruir inmediatamente
-            spawnedMonster = false;
-            Destroy(gameObject,1);
+            // Si no hay colisiones y es un punto del navmesh, instanciar el triángulospawnerPrefab[Random.Range(0, 2)]
+            Instantiate(_monsterPrefab[Random.Range(0, 2)], transform.position, Quaternion.identity);
+            spawnedMonster = true;
+            Destroy(gameObject, 1);
         }
         else
         {
-            // Si no hay colisiones, instanciar el triángulospawnerPrefab[Random.Range(0, 2)]
-            Instantiate(_monsterPrefab[Random.Range(0, 2)], transform.position, Quaternion.identity);
-            spawnedMonster = true;
-            Destroy(gameObject,1);
+            // Si hay colisiones o no es un punto del navmesh, destruir inmediatamente
+            spawnedMonster = false;
+            Destroy(gameObject, 1);
         }
     }
 

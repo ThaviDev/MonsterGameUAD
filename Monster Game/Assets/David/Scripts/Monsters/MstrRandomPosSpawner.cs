@@ -9,6 +9,7 @@ public class MstrRandomPosSpawner : MonoBehaviour
     [SerializeField] float _curRespawnRate;
     [SerializeField] float _startRespawnRate;
     [SerializeField] float _respawnRateMult;
+    [SerializeField] AstarPath _myAIGraph;
 
     [Header("Debug")]
     [SerializeField] private int _curAttempts;
@@ -45,6 +46,9 @@ public class MstrRandomPosSpawner : MonoBehaviour
             
             Vector2 spawnPosition = GetRandomPositionInArea();
             var _mySpanwer = Instantiate(spawnerPrefab, spawnPosition, Quaternion.identity, transform);
+            // El spawner necesita el AstarPath para ver si el punto esta dentro del Graph
+            // Quiza se pueda hacer esto de una manera mas eficiente
+            _mySpanwer.GetComponent<MstrSpawner>()._myGraphPath = _myAIGraph;
 
             // Esperar un frame para permitir que el spawner complete su lógica
             yield return new WaitForEndOfFrame();
