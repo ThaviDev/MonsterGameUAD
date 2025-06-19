@@ -16,7 +16,7 @@ public class MstrSpawner : MonoBehaviour
         if (!hasCollision && _myGraphPath.IsPointOnNavmesh(this.gameObject.transform.position))
         {
             // Si no hay colisiones y es un punto del navmesh, instanciar el triángulospawnerPrefab[Random.Range(0, 2)]
-            Instantiate(_monsterPrefab[Random.Range(0, 2)], transform.position, Quaternion.identity);
+            Instantiate(_monsterPrefab[Random.Range(0, _monsterPrefab.Length)], transform.position, Quaternion.identity);
             spawnedMonster = true;
             Destroy(gameObject, 1);
         }

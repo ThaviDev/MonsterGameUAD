@@ -29,8 +29,10 @@ public class PlayerStadistics : MonoBehaviour
     [SerializeField] PlayerMotor _pm;
     [SerializeField] FloatSCOB _pyrStamina;
     [SerializeField] FloatSCOB _pyrHealth;
+    [SerializeField] IntSCOB _pyrScrapAmount;
     void Start()
     {
+        _pyrScrapAmount.SCOB_Value = 0;
         _pyrStamina.SCOB_Value = _maxStamina;
         _pyrHealth.SCOB_Value = _maxHealth;
         _curSpeed = _normalSpeed;

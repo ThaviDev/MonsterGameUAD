@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 2922735950901642063}
   m_Layer: 6
   m_Name: Monster AStar Chaser
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
   movement:
     follower:
       rotationSpeed: 600
-      speed: 2.8
+      speed: 2.4
       maxRotationSpeed: 720
       maxOnSpotRotationSpeed: 720
       slowdownTime: 0.5
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e66c852e2f8682d47904e4e2254cc4e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _aliveTime: 25
+  _aliveTime: 20
   _fadingTime: 1
   _sprtRen: {fileID: 5840110579667178926}
 --- !u!61 &2922735950901642063
@@ -297,7 +297,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8384395511949462795
 Transform:
   m_ObjectHideFlags: 0
@@ -336,7 +336,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fd4e0af61525cb749a663c710c9252d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -492,7 +492,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: fd4e0af61525cb749a663c710c9252d3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -513,8 +513,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -7872399416391744244, guid: 56336c8217ca06344ac8abeb9f85542d, type: 3}
-  m_Color: {r: 0.85882354, g: 0.6173847, b: 0.36078432, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 8e28a584bcb3c6940998f129922de83a, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

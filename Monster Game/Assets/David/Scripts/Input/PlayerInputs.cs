@@ -36,6 +36,7 @@ public class PlayerInputs : MonoBehaviour
     bool _pause;
     bool _run;
     bool _breathe;
+    bool _interact;
     private void Awake()
     {
         /*
@@ -55,6 +56,7 @@ public class PlayerInputs : MonoBehaviour
     public bool PauseBool { get { return _pause; } }
     public bool RuningBool { get { return _run; } }
     public bool BreathingBool { get { return _breathe; } }
+    public bool InteractBool { get { return _interact; } }
 
     private void Update()
     {
@@ -62,6 +64,7 @@ public class PlayerInputs : MonoBehaviour
         _aim = OnAimChange();
         _pause = OnPausePressed();
         _breathe = OnBreathePressed();
+        _interact = OnInteractPressed();
     }
 
     public static Vector2 OnMoveChange()
@@ -85,5 +88,9 @@ public class PlayerInputs : MonoBehaviour
     public static bool OnBreathePressed()
     {
         return _input.actions.FindAction("Jump").IsPressed();
+    }
+    public static bool OnInteractPressed()
+    {
+        return _input.actions.FindAction("Interact").WasReleasedThisFrame();
     }
 }

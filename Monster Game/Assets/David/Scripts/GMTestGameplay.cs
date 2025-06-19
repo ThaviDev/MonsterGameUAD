@@ -58,7 +58,7 @@ public class GMTestGameplay : MonoBehaviour
         {
             SetSceneToMainMenu();
         }
-        if (sceneName == "TestingAStar")
+        if (sceneName == "Level 1 Testing")
         {
             SetScenetoGameplay();
         }
@@ -110,7 +110,7 @@ public class GMTestGameplay : MonoBehaviour
     }
     public void ChangeSceneToGameplay()
     {
-        SceneManager.LoadScene("TestingAStar");
+        SceneManager.LoadScene("Level 1 Testing");
         SetScenetoGameplay();
     }
     public void ChangeSceneToMainMenu()

@@ -11,20 +11,40 @@ public class MstrRandomPosSpawner : MonoBehaviour
     [SerializeField] float _respawnRateMult;
     [SerializeField] AstarPath _myAIGraph;
 
+    [SerializeField] bool _isAHordeOn;
+    [SerializeField] float _maxHordeTime;
+    float _currentHordeTime;
+    
     [Header("Debug")]
     [SerializeField] private int _curAttempts;
     [SerializeField] private bool _mnstrSpawned;
 
     private void Start()
     {
+        _isAHordeOn = false;
         _curRespawnRate = _startRespawnRate;
-        StartCoroutine(SpawnRoutine());
+        //StartCoroutine(SpawnRoutine());
     }
 
     private void Update()
     {
+        if (_currentHordeTime > 0)
+        {
+            _currentHordeTime -= Time.deltaTime;
+            HordeManager();
+        }
+    }
+
+    public void ActivateHorde()
+    {
+        _currentHordeTime = _maxHordeTime;
+    }
+
+    private void HordeManager()
+    {
         _curRespawnRate -= Time.deltaTime;
-        if (_curRespawnRate <= 0) {
+        if (_curRespawnRate <= 0)
+        {
             StartCoroutine(SpawnRoutine());
             _startRespawnRate *= _respawnRateMult;
             if (_startRespawnRate <= 0.1)

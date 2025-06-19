@@ -5,7 +5,7 @@ using UnityEngine;
 public class MstrApearDissapear : MonoBehaviour
 {
     public static Action OnMonsterReady;
-    [SerializeField] float _aliveTime;
+    public float _aliveTime;
     [SerializeField] float _fadingTime;
 
     [SerializeField] private SpriteRenderer _sprtRen;

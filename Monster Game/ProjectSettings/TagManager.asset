@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BreakableObstacle
   - UnbreakableObstacle
+  - Monster
   layers:
   - Default
   - TransparentFX
