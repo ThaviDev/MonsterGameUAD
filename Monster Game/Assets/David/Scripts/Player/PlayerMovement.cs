@@ -2,7 +2,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    //[SerializeField] PlayerInputs _inputs;
     private Rigidbody2D _rb;
     [SerializeField] PlayerStadistics _playerStats;
     Vector2 _movementDirection;
