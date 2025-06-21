@@ -5,7 +5,7 @@ using UnityEngine;
 public class MstrApearDissapear : MonoBehaviour
 {
     public static Action OnMonsterReady;
-    public float _aliveTime;
+    [SerializeField] float _aliveTime;
     [SerializeField] float _fadingTime;
 
     [SerializeField] private SpriteRenderer _sprtRen;
@@ -21,6 +21,11 @@ public class MstrApearDissapear : MonoBehaviour
             StartCoroutine(Fading(true));
             _aliveTime = 999; // evitar repeticiones
         }
+    }
+
+    public void SetAliveTime(float newAliveTime)
+    {
+        _aliveTime = newAliveTime;
     }
 
     IEnumerator Fading(bool isDisapear)

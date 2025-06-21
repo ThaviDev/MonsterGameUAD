@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3185715928402032154}
   - component: {fileID: 3974217531991829945}
   m_Layer: 10
-  m_Name: Furniture
+  m_Name: Box
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -171,7 +171,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1533011366950940653}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a697b38f80111704fb2200456d95a44a, type: 3}
   m_Name: 

@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7281727477346315995}
   - component: {fileID: 3642386656528565216}
   - component: {fileID: 7793242143057193751}
+  - component: {fileID: 4179767459263174283}
   - component: {fileID: 8869453878066005437}
   - component: {fileID: 2045760542862434135}
-  - component: {fileID: 4179767459263174283}
   - component: {fileID: 2922735950901642063}
   m_Layer: 6
   m_Name: Monster AStar Chaser
@@ -74,7 +74,7 @@ MonoBehaviour:
   movement:
     follower:
       rotationSpeed: 600
-      speed: 2.4
+      speed: 2
       maxRotationSpeed: 720
       maxOnSpotRotationSpeed: 720
       slowdownTime: 0.5
@@ -147,6 +147,21 @@ MonoBehaviour:
   _atkCurrentCooldown: 0
   _atkCooldown: 4
   _atkCollider: {fileID: 2045760542862434135}
+--- !u!114 &4179767459263174283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995619770299394887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e66c852e2f8682d47904e4e2254cc4e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _aliveTime: 20
+  _fadingTime: 1
+  _sprtRen: {fileID: 5840110579667178926}
 --- !u!50 &8869453878066005437
 Rigidbody2D:
   serializedVersion: 5
@@ -220,21 +235,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &4179767459263174283
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995619770299394887}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e66c852e2f8682d47904e4e2254cc4e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _aliveTime: 20
-  _fadingTime: 1
-  _sprtRen: {fileID: 5840110579667178926}
 --- !u!61 &2922735950901642063
 BoxCollider2D:
   m_ObjectHideFlags: 0

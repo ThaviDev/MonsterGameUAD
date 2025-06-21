@@ -6,14 +6,17 @@ public class MstrRandomPosSpawner : MonoBehaviour
     [SerializeField] Vector2 areaSize = new Vector2(30f, 30f);
     [SerializeField] GameObject spawnerPrefab;
     [SerializeField] int maxAttempts = 15;
-    [SerializeField] float _curRespawnRate;
-    [SerializeField] float _startRespawnRate;
-    [SerializeField] float _respawnRateMult;
     [SerializeField] AstarPath _myAIGraph;
 
-    [SerializeField] bool _isAHordeOn;
+    [Header("Spawn Time Variables")]
+    [SerializeField] float _beginRespawnRate;
+    [SerializeField] float _curRespawnRate;
+    [SerializeField] float _newRespawnRate;
+    [SerializeField] float _respawnIncreaseRate;
+
+    [Header("Horde time")]
     [SerializeField] float _maxHordeTime;
-    float _currentHordeTime;
+    [SerializeField] float _currentHordeTime;
     
     [Header("Debug")]
     [SerializeField] private int _curAttempts;
@@ -21,8 +24,7 @@ public class MstrRandomPosSpawner : MonoBehaviour
 
     private void Start()
     {
-        _isAHordeOn = false;
-        _curRespawnRate = _startRespawnRate;
+        _curRespawnRate = _beginRespawnRate;
         //StartCoroutine(SpawnRoutine());
     }
 
@@ -32,6 +34,9 @@ public class MstrRandomPosSpawner : MonoBehaviour
         {
             _currentHordeTime -= Time.deltaTime;
             HordeManager();
+        } else
+        {
+            _newRespawnRate = _beginRespawnRate;
         }
     }
 
@@ -46,12 +51,17 @@ public class MstrRandomPosSpawner : MonoBehaviour
         if (_curRespawnRate <= 0)
         {
             StartCoroutine(SpawnRoutine());
-            _startRespawnRate *= _respawnRateMult;
-            if (_startRespawnRate <= 0.1)
+            // Condicion si el spawnRate no sea un numero muy bajo
+            if (_newRespawnRate <= 1)
             {
-                _startRespawnRate = 0.1f;
+                _newRespawnRate = 1f;
+            } else
+            {
+                // Reducir el tiempo de aparicion de cada monstruo
+                _newRespawnRate -= _respawnIncreaseRate;
             }
-            _curRespawnRate = _startRespawnRate;
+            // Reiniciar el bucle de spawnear con menos tiempo que antes
+            _curRespawnRate = _newRespawnRate;
         }
     }
 
