@@ -75,7 +75,7 @@ public class PauseManager : MonoBehaviour
 
         if (_isPaused) {
             _pauseUI_Obj?.SetActive(true);
-            _generalPanel.SetActive(true);
+            _generalPanel?.SetActive(true);
         } else
         {
             _generalPanel.SetActive(false);
