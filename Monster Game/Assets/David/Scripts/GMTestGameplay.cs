@@ -31,10 +31,9 @@ public class GMTestGameplay : MonoBehaviour
     }
 
     public static Action OnGameOver;
-    public static Action<bool> OnPause;
+    [SerializeField] string _menuSceneName;
+    [SerializeField] string _levelSceneName;
     bool _didChangeScene;
-    bool _pauseKeyPressed;
-    bool _isPaused;
 
     private void Awake()
     {
@@ -51,47 +50,20 @@ public class GMTestGameplay : MonoBehaviour
 
     void Start()
     {
-        _isPaused = false;
         Scene currentScene = SceneManager.GetActiveScene();
         string sceneName = currentScene.name;
-        if (sceneName == "TestingMainMenu")
+        if (sceneName == _menuSceneName)
         {
             SetSceneToMainMenu();
         }
-        if (sceneName == "Level 1 Testing")
+        if (sceneName == _levelSceneName)
         {
             SetScenetoGameplay();
         }
     }
     void Update()
     {
-        _pauseKeyPressed = PlayerInputs.OnPausePressed();
-        if (_pauseKeyPressed)
-        {
-            PressedPauseBtn();
-        }
-    }
 
-    public void PressedPauseBtn()
-    {
-        // Esta funcion sirve para la tecla y para el boton de UI
-        _isPaused = !_isPaused;
-        print(_isPaused);
-        PauseLogic(_isPaused);
-        OnPause?.Invoke(_isPaused);
-    }
-
-    void PauseLogic(bool currentPauseFlipFlop)
-    {
-        print(currentPauseFlipFlop);
-        switch (currentPauseFlipFlop) {
-            case true:
-                Time.timeScale = 0;
-                break;
-            case false:
-                Time.timeScale = 1;
-                break;
-        }
     }
 
     void AtGameplay()
@@ -104,18 +76,21 @@ public class GMTestGameplay : MonoBehaviour
     }
     void ResetEvents()
     {
-        Time.timeScale = 1;
-        _isPaused = false;
+        PauseManager.Instance.SetCanPause = true;
+        if (PauseManager.Instance.GetIsPaused)
+        {
+            PauseManager.Instance.PressedPauseKeyOrBtn();
+        }
         PlayerStadistics.OnPyrDeath -= StartGameOverSequence;
     }
     public void ChangeSceneToGameplay()
     {
-        SceneManager.LoadScene("Level 1 Testing");
+        SceneManager.LoadScene(_levelSceneName);
         SetScenetoGameplay();
     }
     public void ChangeSceneToMainMenu()
     {
-        SceneManager.LoadScene("TestingMainMenu");
+        SceneManager.LoadScene(_menuSceneName);
         SetSceneToMainMenu();
     }
     void SetScenetoGameplay()
@@ -128,7 +103,6 @@ public class GMTestGameplay : MonoBehaviour
         ResetEvents();
         AtMainMenu();
     }
-
     void StartGameOverSequence()
     {
         OnGameOver?.Invoke();

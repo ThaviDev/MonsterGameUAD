@@ -13,7 +13,7 @@ public class ScrapPickup : MonoBehaviour
 
     private void AddScrapAmmount()
     {
-        _SCOB_ScrapAmount.SCOB_Value += Random.Range(4,6);
+        _SCOB_ScrapAmount.SCOB_Value += 1;
         Destroy(this.gameObject);
     }
 }

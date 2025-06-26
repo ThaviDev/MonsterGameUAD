@@ -14,7 +14,7 @@ public class TradeFunction : MonoBehaviour
     void Start()
     {
         _canAccessTrade = true;
-        _tradeText.text = "I can open the door if you give me " + _scrapAmount.ToString() + " scrap";
+        _tradeText.text = "I can open the door if you give me " + _scrapAmount.ToString() + " Coins";
     }
 
     void Update()
