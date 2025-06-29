@@ -12,12 +12,21 @@ public class PlayerStadistics : MonoBehaviour
     [SerializeField] float _maxStamina;
     [SerializeField] float _maxHealth;
 
-    [SerializeField] float _normalSpeed = 5f;
-    [SerializeField] float _runSpeed = 10f;
-    private float _curSpeed;
-    public float GetSpeed
+    [SerializeField] float _normalMaxSpeed = 5f;
+    public float GetNormalMaxSpeed { get { return _normalMaxSpeed; } }
+    [SerializeField] float _runMaxSpeed = 10f;
+    public float GetRunningMaxSpeed { get { return _runMaxSpeed; } }
+    [SerializeField] float _normalAcceleration = 3f;
+    public float GetNormalAcceleration { get { return _normalAcceleration; } }
+    [SerializeField] float _runAcceleration = 5f;
+    public float GetRunningAcceleration { get { return _runAcceleration; } }
+    [SerializeField] float _deceleration = 3f;
+    public float GetDeceleration { get { return _deceleration; } }
+
+    private float _curMaxSpeed;
+    public float GetCurrentMaxSpeed
     {
-        get { return _curSpeed; }
+        get { return _curMaxSpeed; }
     }
 
     bool _isUsingStamina;
@@ -35,7 +44,7 @@ public class PlayerStadistics : MonoBehaviour
         _pyrScrapAmount.SCOB_Value = 0;
         _pyrStamina.SCOB_Value = _maxStamina;
         _pyrHealth.SCOB_Value = _maxHealth;
-        _curSpeed = _normalSpeed;
+        _curMaxSpeed = _normalMaxSpeed;
 
         _canGetHit = true;
         PlayerMotor.OnPyrHit += PlayerWasHit;
@@ -47,11 +56,11 @@ public class PlayerStadistics : MonoBehaviour
         switch (_pyrMoveScript.GetMovementStatus)
         {
             case 2:
-                _curSpeed = _runSpeed;
+                _curMaxSpeed = _runMaxSpeed;
                 _pyrHealth.SCOB_Value -= Time.deltaTime * _staminaUseMult;
                 break;
             case 1: // Run
-                _curSpeed = _runSpeed;
+                _curMaxSpeed = _runMaxSpeed;
                 _pyrStamina.SCOB_Value -= Time.deltaTime * _staminaUseMult;
                 break;
             case 0: // Walk
@@ -62,7 +71,7 @@ public class PlayerStadistics : MonoBehaviour
                 {
                     _pyrStamina.SCOB_Value = _maxStamina;
                 }
-                _curSpeed = _normalSpeed;
+                _curMaxSpeed = _normalMaxSpeed;
                 break;
             default:
                 break;

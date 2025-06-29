@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
         //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
         var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
+
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 2)
         {
             //print(_rb.linearVelocity);
@@ -79,10 +80,25 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (_hasSelfControl <= 0 && _movementDirection != Vector2.zero)
+        {
+            _rb.AddForce(_movementDirection * _playerStats.GetNormalAcceleration, ForceMode2D.Force);
+
+            if (_rb.linearVelocity.magnitude > _playerStats.GetCurrentMaxSpeed)
+            {
+                _rb.linearVelocity = _rb.linearVelocity.normalized * _playerStats.GetCurrentMaxSpeed;
+            }
+        }
+        else
+        {
+            _rb.AddForce(_rb.linearVelocity * -_playerStats.GetDeceleration, ForceMode2D.Force);
+        }
+        /*
         if (_hasSelfControl <= 0)
         {
             _rb.linearVelocity = _movementDirection * _playerStats.GetSpeed;
         }
+        */
     }
 
     private void PlayerWasHit(Collider2D otherCol)
