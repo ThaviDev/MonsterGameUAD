@@ -11,9 +11,9 @@ public class MstrSpawner : MonoBehaviour
     private void Start()
     {
         // Realizar el chequeo de colisiones circular
-        bool hasCollision = Physics2D.OverlapCircle(transform.position, _checkRadius, _checkLayers);
+        //bool hasCollision = Physics2D.OverlapCircle(transform.position, _checkRadius, _checkLayers);
 
-        if (!hasCollision && _myGraphPath.IsPointOnNavmesh(this.gameObject.transform.position))
+        if (_myGraphPath.IsPointOnNavmesh(this.gameObject.transform.position))
         {
             // Si no hay colisiones y es un punto del navmesh, instanciar el triángulospawnerPrefab[Random.Range(0, 2)]
             Instantiate(_monsterPrefab[Random.Range(0, _monsterPrefab.Length)], transform.position, Quaternion.identity);

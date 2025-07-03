@@ -1114,13 +1114,13 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 583527957}
+        m_TargetAssemblyTypeName: SliderAmountToText, Assembly-CSharp
+        m_MethodName: OnSliderChange
+        m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -13365,6 +13365,7 @@ GameObject:
   m_Component:
   - component: {fileID: 583527955}
   - component: {fileID: 583527956}
+  - component: {fileID: 583527957}
   m_Layer: 5
   m_Name: Master Volume
   m_TagString: Untagged
@@ -13401,6 +13402,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 583527954}
   m_CullTransparentMesh: 1
+--- !u!114 &583527957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 583527954}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8840174720946454bb075019a5e58389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startText: MsterVol
+  _UIText: {fileID: 1546250589}
 --- !u!1001 &591114419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18301,7 +18316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1073741824
   data:
-    dataString: UEsDBBQAAAgIAACQn+sOZrurjgIAAHkFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGdVF1P2zAU/StRngElKYWUx7WMTaIwtUxDoD3cODeJhWN3ttNSqv73+TpJG8akSetLmnPvuR/Hx9mFrAINzKJeQM4bE14F0dnoJAiZklY1eg6v11or7fCEUBRiyd/Qp0Vjh2xAvEAm8AvysrJdWg9OBa8zn0upNbwuhVoReRS179d5ibcoS1sR04NcLrDkSnZtaBbMuVX6gQvswDhJHWw74PED8nRAGoPEo72sbtAhK9S3sEU9VzkvOAPrelH4eRcKwmlcmkPl1Cn8Lvtllo0ugGHogqb9+3VGffYnwZE6+X9qOqD++Bfxp0NyXqM0bvx5x5r1QDIjRgbspdSqkfmDhjVqAxkX3G7fz0aZGgWuQdobDauq63koqu6UXeCvhmufy5QQyEi1JVrLZUni7QZwT/QqG6Ksqq3hzCwZSors9n9gyaxHvRZzMC8EBOEaREOMdBQHFLZQdsFnEkCDccZ15z11zXlO3a6CAoTBYXCOpsK/Rh5Qa+Dy6I1jROPQM7ZNbD1ew2qmNtJAvRJu/c/u9vj7MerEoUEWfaEZWuCCjsxFlZy2Kh1Gko0QtJhW1huxXfvVPU4n5MJt58Y3enoJCqUZ5p/oVM0UpfXW6TnxZcdJO85pfBZNzifuF39gd3ep46Z9u+QsiaMoGo36GuOxp5pKbWju+8a6tfEoDgXu3JlPlZStA4Zi97TeyQeaRNBo7NI9WHUvxfbxaUBDSd68g3XtuNPGG+3ILRuev3dImE6iNILsohinF1AU0Wl+meAFi9Mc0zTJzrPQb8EltxzEN1df2F5d900amEBC7SsukLlTDPydIBfnGjY3/K1WA2NwWaglc2aR922Nw9ru9EE4hfNr//Ea3JVwtw/3vwFQSwMEFAAACAgAAJCf66yDK2JuAAAAeQAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw1TPWs9BRUEovSizIKAYKGII4pZkpIHa0koWlgYVBYpJZmqmFWWJamoFuirlRqlmyoUVKqoWFUZJJklIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrpeUGpyYnGJO8hwpdhaAFBLAQItABQAAAgIAACQn+sOZrurjgIAAHkFAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACQn+usgytibgAAAHkAAAAJACQAAAAAAAAAAAAAANsCAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAlAMAAAAA
+    dataString: UEsDBBQAAAgIAACQn+uyIHKdjwIAAH0FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGdVF1P2zAU/StRngElKYWUx7WMTaIwtUxDoD3cODeJhWN3ttNSqv73+TpJG8akSetLmnN97se5x9mFrAINzKJeQM4bE14F0dnoJAiZklY1eg6v11or7fCEUBRiyd/QH4vGDtmAeIFM4BfkZWW7Yz04FbzO/Fk6WsPrUqgVkUdR+36dl3iLsrQVMT3I5QJLrmRXhnrBnFulH7jADoyT1MG2Ax4/IE8HpDFIPJrL6gYdskJ9C1vUc5XzgjOwrhaFn3ehIJzapT5UTpXC77IfZtnoAhiGLmjav19nVGd/Ehypk/+npgPqj38Rfzok5zVK49qfd6xZDyQzYmTAXkqtGpk/aFijNpBxwe32fW90UqPANUh7o2FVdTUPSdWdsgv81XDtzzIlBDJSbYnWclmSeLsB3BO9yoYoq2prODNLhpIishHiDzSZHXGvxxzMC+UNwjWIhljpKA72tGMou+AziaDBOPO6nU9dAzynildBAcLgMDhHU+FfIw+oNXB59McxonHoG9sebH1ew2qmNtJAvRJOgs/uBvk7MuoEokYWfaIZWuCC1uaiSk5bpQ4t0dg0mFbWm7Ed+9U9TifkxG3nyDd6egkKpRnmn2izZorSevv0nPiy46Qd5zQ+iybnE/eLP7C7+9Rx075ccpbEURSNRn2O8dhTTaU21Pd9Y93YeBSHAndu71MlZeuCodg9rXfzgSYRNBq7dA9W3UuxfXwa0FCSP+9gXTvutPFmO3LLhufvHRKmkyiNILsoxukFFEV0ml8meMHiNMc0TbLzLPRTcMktB/HN5Re2V9d9lwYmkFD7jAtkbouBvxfk5FzD5oa/1WpgDC4LtWTOLPK+zXEY220fhFM4v/YfsMF9CXf7cP8bUEsDBBQAAAgIAACQn+usgytibgAAAHkAAAAJACQAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0Bq1YqSy0qzszPU7JSMNUz1rPQUVBKL0osyCgGChiCOKWZKSB2tJKFpYGFQWKSWZqphVliWpqBboq5UapZsqFFSqqFhVGSSZJSLFB9SWVBql9ibipET0BiSUZaZl5KZl66XlBqcmJxiTvIcKXYWgBQSwECLQAUAAAICAAAkJ/rsiBynY8CAAB9BQAACwAkAAAAAAAAAAAAAAAAAAAAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwECLQAUAAAICAAAkJ/rrIMrYm4AAAB5AAAACQAkAAAAAAAAAAAAAADcAgAAbWV0YS5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsFBgAAAAACAAIAuAAAAJUDAAAAAA==
     file_cachedStartup: {fileID: 0}
     cacheStartup: 0
   showNavGraphs: 1
@@ -18608,25 +18623,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4208689907875863805, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
-      propertyPath: m_Mass
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4208689907875863805, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
-      propertyPath: m_LinearDamping
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
-      propertyPath: _deceleration
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
-      propertyPath: _runAcceleration
-      value: 50
+    - target: {fileID: 633396302310108738, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: _startRight
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
       propertyPath: _normalAcceleration
-      value: 30
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8064648078330909216, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -42506,7 +42509,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1582654970}
+        m_TargetAssemblyTypeName: SliderAmountToText, Assembly-CSharp
+        m_MethodName: OnSliderChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1237538112
 GameObject:
   m_ObjectHideFlags: 0
@@ -44173,7 +44188,19 @@ MonoBehaviour:
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1446337412}
+        m_TargetAssemblyTypeName: SliderAmountToText, Assembly-CSharp
+        m_MethodName: OnSliderChange
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1407971887
 GameObject:
   m_ObjectHideFlags: 0
@@ -44273,7 +44300,7 @@ GameObject:
   - component: {fileID: 1410478017}
   - component: {fileID: 1410478016}
   m_Layer: 8
-  m_Name: Tilemap Map1 (1)
+  m_Name: Tilemap Map1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -67630,6 +67657,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1446337410}
   - component: {fileID: 1446337411}
+  - component: {fileID: 1446337412}
   m_Layer: 5
   m_Name: Music Volume
   m_TagString: Untagged
@@ -67666,6 +67694,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1446337409}
   m_CullTransparentMesh: 1
+--- !u!114 &1446337412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1446337409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8840174720946454bb075019a5e58389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startText: MusicVol
+  _UIText: {fileID: 406421858}
 --- !u!1 &1453545905
 GameObject:
   m_ObjectHideFlags: 0
@@ -69540,6 +69582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1582654968}
   - component: {fileID: 1582654969}
+  - component: {fileID: 1582654970}
   m_Layer: 5
   m_Name: SFX Volume
   m_TagString: Untagged
@@ -69576,6 +69619,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1582654967}
   m_CullTransparentMesh: 1
+--- !u!114 &1582654970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1582654967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8840174720946454bb075019a5e58389, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _startText: SFX Vol
+  _UIText: {fileID: 1003249741}
 --- !u!1001 &1585368724
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -232,7 +232,7 @@ GameObject:
   - component: {fileID: 9182871297774432110}
   - component: {fileID: 7612591972788561608}
   m_Layer: 7
-  m_Name: GameObject
+  m_Name: Self Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -747,6 +747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8064648078330909216}
+  - component: {fileID: 633396302310108738}
   - component: {fileID: 8361813812467552510}
   - component: {fileID: 2678588651706503277}
   - component: {fileID: 2546226091338135423}
@@ -782,6 +783,22 @@ Transform:
   - {fileID: 9182871297774432110}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &633396302310108738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022527536521404671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60c51a758c98aa0458448c5ef07d0e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rb: {fileID: 4208689907875863805}
+  _renderer: {fileID: 3879597483555160559}
+  _startRight: 1
+  _currentOrientationRight: 1
 --- !u!114 &8361813812467552510
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -853,11 +870,11 @@ MonoBehaviour:
   _staminaRestMult: 3
   _maxStamina: 100
   _maxHealth: 100
-  _normalMaxSpeed: 3
+  _normalMaxSpeed: 2
   _runMaxSpeed: 6
-  _normalAcceleration: 30
-  _runAcceleration: 40
-  _deceleration: 30
+  _normalAcceleration: 25
+  _runAcceleration: 50
+  _deceleration: 15
   _hitDamage: 100
   _pm: {fileID: 2678588651706503277}
   _pyrStamina: {fileID: 11400000, guid: 117246b4d2b40fb4891ab074a8785376, type: 2}
@@ -875,8 +892,8 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 2
+  m_Mass: 0.4
+  m_LinearDamping: 1
   m_AngularDamping: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
