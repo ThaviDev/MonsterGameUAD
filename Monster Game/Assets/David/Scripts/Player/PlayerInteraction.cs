@@ -10,7 +10,7 @@ public class PlayerInteraction : MonoBehaviour
     }
     void Update()
     {
-        var interactBtn = PlayerInputs.OnInteractPressed();
+        var interactBtn = PlayerInputs.Instance.InteractBool;
         if (interactBtn == true)
         {
             print("Interactuo");

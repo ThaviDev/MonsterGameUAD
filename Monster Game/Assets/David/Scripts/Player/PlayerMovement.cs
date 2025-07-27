@@ -29,9 +29,9 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
-        _movementDirection = PlayerInputs.OnMoveChange().normalized;
-        _isPressingRun = PlayerInputs.OnRunPressed();
-        _isPressingBreathe = PlayerInputs.OnBreathePressed();
+        _movementDirection = PlayerInputs.Instance.MovementVector.normalized;
+        _isPressingRun = PlayerInputs.Instance.RuningBool;
+        _isPressingBreathe = PlayerInputs.Instance.BreathingBool;
 
         if (_hasSelfControl > 0)
         {

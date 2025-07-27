@@ -26,6 +26,22 @@ public class PauseManager : MonoBehaviour
         }
     }
 
+    // Propiedad para acceder al canvas con búsqueda bajo demanda
+    private GameObject _pauseCanvas;
+    private GameObject PauseCanvas
+    {
+        get
+        {
+            // Si no hay referencia o fue destruida, busca el canvas
+            if (_pauseCanvas == null)
+            {
+                var canvasTag = FindAnyObjectByType<PauseCanvasTag>();
+                if (canvasTag != null) _pauseCanvas = canvasTag.gameObject;
+            }
+            return _pauseCanvas;
+        }
+    }
+
     [SerializeField] GameObject _pauseUI_Obj;
     [SerializeField] GameObject _optionsPanel;
     [SerializeField] GameObject _generalPanel;
@@ -56,6 +72,18 @@ public class PauseManager : MonoBehaviour
     }
     void Update()
     {
+        if (_pauseUI_Obj == null)
+        {
+            _pauseUI_Obj = PauseCanvas.transform.GetChild(0).gameObject;
+        }
+        if (_optionsPanel == null) {
+            _optionsPanel = PauseCanvas.transform.GetChild(0).GetChild(0).gameObject;
+        }
+        if (_generalPanel == null)
+        {
+            _generalPanel = PauseCanvas.transform.GetChild(0).GetChild(1).gameObject;
+        }
+
         if (_pauseKeyPressed)
         {
             PressedPauseKeyOrBtn();
@@ -65,7 +93,7 @@ public class PauseManager : MonoBehaviour
             PressedPauseKeyOrBtn();
         } else
         {
-            _pauseKeyPressed = PlayerInputs.OnPausePressed();
+            _pauseKeyPressed = PlayerInputs.Instance.PauseBool;
         }
     }
     public void PressedPauseKeyOrBtn()

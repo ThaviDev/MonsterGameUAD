@@ -24,7 +24,7 @@ public class PlayerAim : MonoBehaviour
     // Rotación con joystick (lógica original)
     private void RotateWithJoystick()
     {
-        _inputDirection = PlayerInputs.OnAimChange();
+        _inputDirection = PlayerInputs.Instance.AimingVector;
         if (_inputDirection != Vector2.zero)
         {
             ApplyRotation(CalculateTargetRotation(_inputDirection));

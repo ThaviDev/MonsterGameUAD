@@ -1,11 +1,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.SceneManagement;
 
 public class PlayerInputs : MonoBehaviour
 {
-    //private static PlayerInputs _instance;
-    /*
+    private static PlayerInputs _instance;
+    
     public static PlayerInputs Instance
     {
         get
@@ -27,9 +26,8 @@ public class PlayerInputs : MonoBehaviour
             }
             return _instance;
         }
-    } */
+    } 
     static PlayerInput _input;
-    [SerializeField] PlayerInput _inputRef;
 
     Vector2 _move;
     Vector2 _aim;
@@ -39,17 +37,17 @@ public class PlayerInputs : MonoBehaviour
     bool _interact;
     private void Awake()
     {
-        /*
+        
         if (_instance == null)
         {
             _instance = this;
+            _input = GetComponent<PlayerInput>(); // Obtiene el PlayerInput del mismo objeto
             DontDestroyOnLoad(gameObject); // Evitar que el objeto sea destruido al cambiar de escena.
         }
         else if (_instance != this)
         {
             Destroy(gameObject); // Destruir instancias adicionales si ya existe una instancia.
-        } */
-        _input = _inputRef;
+        }
     }
     public Vector2 MovementVector { get { return _move; } }
     public Vector2 AimingVector { get { return _aim; } }
@@ -64,6 +62,7 @@ public class PlayerInputs : MonoBehaviour
         _aim = OnAimChange();
         _pause = OnPausePressed();
         _breathe = OnBreathePressed();
+        _run = OnRunPressed();
         _interact = OnInteractPressed();
     }
 
