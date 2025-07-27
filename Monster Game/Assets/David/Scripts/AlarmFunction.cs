@@ -3,6 +3,7 @@ using UnityEngine;
 public class AlarmFunction : MonoBehaviour
 {
     [SerializeField] MstrRandomPosSpawner _mstrSpawner;
+    [SerializeField] MusicManager _musicManager;
     void Start()
     {
         
@@ -15,5 +16,6 @@ public class AlarmFunction : MonoBehaviour
     public void ActivateAlarmCall()
     {
         _mstrSpawner.ActivateHorde();
+        _musicManager.SetMusic(1);
     }
 }
