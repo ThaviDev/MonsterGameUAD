@@ -4,7 +4,10 @@ using UnityEngine.InputSystem;
 public class PlayerInputs : MonoBehaviour
 {
     private static PlayerInputs _instance;
-    
+    static PlayerInput _input;
+
+    [SerializeField] private InputActionAsset _inputAsset; // Asset asignable desde Inspector
+
     public static PlayerInputs Instance
     {
         get
@@ -19,15 +22,15 @@ public class PlayerInputs : MonoBehaviour
                     // Crear un nuevo GameObject con el script adjunto si no se encuentra ninguna instancia.
                     GameObject singletonObject = new GameObject("Input Manager");
                     _instance = singletonObject.AddComponent<PlayerInputs>();
-
-                    // Opcional: Evitar que el objeto sea destruido al cambiar de escena.
                     DontDestroyOnLoad(singletonObject);
+
+                    // Asignar valores indispensables
+                    _instance.SetupInputComponent();
                 }
             }
             return _instance;
         }
     } 
-    static PlayerInput _input;
 
     Vector2 _move;
     Vector2 _aim;
@@ -47,6 +50,48 @@ public class PlayerInputs : MonoBehaviour
         else if (_instance != this)
         {
             Destroy(gameObject); // Destruir instancias adicionales si ya existe una instancia.
+        }
+    }
+
+    private void SetupInputComponent()
+    {
+        // 1. Obtener o crear PlayerInput
+        if (!TryGetComponent(out _input))
+        {
+            _input = gameObject.AddComponent<PlayerInput>();
+        }
+
+        // 2. Configurar Input Action Asset
+        if (_input.actions == null)
+        {
+            // Intento 1: Usar asset serializado (si se asignó en Inspector)
+            if (_inputAsset != null)
+            {
+                _input.actions = _inputAsset;
+            }
+            // Intento 2: Cargar desde Resources
+            else
+            {
+                _inputAsset = Resources.Load<InputActionAsset>("InputSystem_Actions");
+
+                if (_inputAsset != null)
+                {
+                    _input.actions = _inputAsset;
+                }
+                else
+                {
+                    Debug.LogError($"Input Action Asset no encontrado en: Resources/InputSystem_Actions");
+                    #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                    #endif
+                }
+            }
+        }
+
+        // 3. Activar el sistema de input
+        if (_input.actions != null && !_input.inputIsActive)
+        {
+            _input.ActivateInput();
         }
     }
     public Vector2 MovementVector { get { return _move; } }
