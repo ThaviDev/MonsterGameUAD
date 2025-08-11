@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     Vector2 _movementDirection;
     bool _isPressingRun;
     bool _isPressingBreathe;
+    float _moveStatusCooldown = 0;
 
     private float _hasSelfControl;
 
@@ -65,9 +66,30 @@ public class PlayerMovement : MonoBehaviour
             _hasSelfControl -= Time.deltaTime;
         }
 
+        print(_movementStatus);
         //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
         var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
 
+
+        if (_hasSelfControl <= 0 && _isPressingRun && _pyrHealth.SCOB_Value > 20)
+        {
+            if (_movementStatus <= 3 && _moveStatusCooldown <= 0)
+            {
+                _movementStatus++;
+            }
+            _moveStatusCooldown = 0.3f;
+        } else
+        {
+            if (_moveStatusCooldown > 0)
+            {
+                _moveStatusCooldown -= Time.deltaTime;
+            }
+        }
+        if (absMovement < 0.1f)
+        {
+            _movementStatus = 0;
+        }
+        /*
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 2)
         {
             //print(_rb.linearVelocity);
@@ -92,16 +114,8 @@ public class PlayerMovement : MonoBehaviour
         else
         {
             _movementStatus = 0; // Is Walking
-            /*
-            if (_pyrStamina.SCOB_Value < _maxStamina)
-            {
-                _pyrStamina.SCOB_Value += Time.deltaTime * _staminaRestMult;
-            } else
-            {
-                _pyrStamina.SCOB_Value = _maxStamina;
-            }
-            _curSpeed = _normalSpeed; */
         }
+        */
 
 
     }
@@ -109,7 +123,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (_hasSelfControl <= 0 && _movementDirection != Vector2.zero)
         {
-            _rb.AddForce(_movementDirection * _playerStats.GetNormalAcceleration, ForceMode2D.Force);
+            _rb.AddForce(_movementDirection * _playerStats.GetCurrentAcceleration, ForceMode2D.Force);
 
             if (_rb.linearVelocity.magnitude > _playerStats.GetCurrentMaxSpeed)
             {

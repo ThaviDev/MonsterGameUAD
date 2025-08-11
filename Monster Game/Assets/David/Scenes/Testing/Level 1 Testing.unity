@@ -17815,6 +17815,78 @@ PrefabInstance:
       propertyPath: _normalAcceleration
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: _accelLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: _speedLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_accelLevels.Array.data[0]'
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_accelLevels.Array.data[1]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_accelLevels.Array.data[2]'
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_accelLevels.Array.data[3]'
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_accelLevels.Array.data[4]'
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_speedLevels.Array.data[0]'
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_speedLevels.Array.data[1]'
+      value: 3.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_speedLevels.Array.data[2]'
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_speedLevels.Array.data[3]'
+      value: 4.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_speedLevels.Array.data[4]'
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: _staminaUseLevels.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_staminaUseLevels.Array.data[0]'
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_staminaUseLevels.Array.data[1]'
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_staminaUseLevels.Array.data[2]'
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_staminaUseLevels.Array.data[3]'
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6807330422614263273, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
+      propertyPath: '_staminaUseLevels.Array.data[4]'
+      value: -10
+      objectReference: {fileID: 0}
     - target: {fileID: 8064648078330909216, guid: 9ca394d93d76329478ce29e97bb13cb2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -52
