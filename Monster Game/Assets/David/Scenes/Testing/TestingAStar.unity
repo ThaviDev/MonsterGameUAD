@@ -909,10 +909,13 @@ MonoBehaviour:
   areaSize: {x: 30, y: 30}
   spawnerPrefab: {fileID: 548811242771119551, guid: 397dd746c76530743b95d3a57d44525d, type: 3}
   maxAttempts: 15
-  _curRespawnRate: 0
-  _startRespawnRate: 7
-  _respawnRateMult: 0.991
   _myAIGraph: {fileID: 989415379}
+  _beginRespawnRate: 0
+  _curRespawnRate: 0
+  _newRespawnRate: 0
+  _respawnIncreaseRate: 0
+  _maxHordeTime: 0
+  _currentHordeTime: 0
   _curAttempts: 0
   _mnstrSpawned: 0
 --- !u!4 &167366476
@@ -1011,7 +1014,7 @@ Transform:
   m_GameObject: {fileID: 178134053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.46, y: -5.01, z: 0}
+  m_LocalPosition: {x: -14.59, y: -4.91, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2838,6 +2841,9 @@ MonoBehaviour:
   _deadZoneX: 0.5
   _deadZoneY: 0.5
   _followSpeed: 7
+  _overshootIntensity: 0.5
+  _velocityOvershootFactor: 0.1
+  _maxOvershoot: 3
 --- !u!1 &989415378
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,7 +2876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1073741824
   data:
-    dataString: UEsDBBQAAAgIAACQn+vng5SdlAIAAH8FAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGdVF1v2jAU/SsozwOFAG3Y46DrJpV2AqZVrfZwcW4Sq47NbAdKEf99vo5D03XSpOXFybn33M/jHCNWggZmUS8h47WJPvbiwehDL2JKWlXrBTxfaa20wxNCUYgVf0HvFk8csgfxBBuBX5AXpQ1uLTgTvNp4X3Kt4Hkl1JbIo7j5vsoKvEFZ2JKYHuRyiQVXMqShWjDjVuk1FxjAYZI62Abg/h3ycEZqg8Sjvqyu0SFb1DdwQL1QGc85A+tykfnxGAnCqVyqQ2WUKfou22ZWtc6BYeSMpnn9Oqc8pw+9V+r0/6lph/rjX8SfDsl4hdK48heBNW+BZE6MDbCnQqtaZmsNO9QGNlxwe+gmID+NAncg7bWGbRkynkOqW2WX+Kvm2vsyJQQymtkKreWyoNEdO3BL9DM2RNmWB8OZWTGUZDme/sCSeYv6SSzAPBHQi3Ygar/tdDLpkd1CEayP1L8G43Tr1j1z2XlG6c5bPtsWaEq//hyEeWNZo9bA5V84a41dxdjGsVF4Bdu52ksD1Va49j+7u+NvxygMh+pYtoHmaIELasFZlZw1UzqXJGshqC+trJdh0/azO/pT0uAhaPGFTj+BXGmG2SfaqZmhtF44gTMMjH48GE/9Mw7c/nAQTydxHA8n76KEGxVijMchSDJIho6QjJMQY3TpqaZUe6r/rraufXwdEhlu3e5nSspGCd2ht7RWz2eaRNBo7ModrLyT4nD/0KGhJI3ewq5y3FntBffKLWqevVVKlE7jNIbNRT5JLyDP4352meAFG6YZpmmyGW8i3wWX3HIQ31x8Ydspuz9TRwwSKh9xicxts+fvBqk507C/5i+V6giEy1ytmBONvGtinNt2KgDhJpxd+V9Y585Ex1N0+g1QSwMEFAAACAgAAJCf6xl2sVVuAAAAeQAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw1TPWM9dRUEovSizIKAYKGII4pZkpIHa0koWlgYVBYpJZmqmFWWJamoFuirlRqlmyoUVKqoWFUZJJklIsUH1JZUGqX2JuKkRPQGJJRlpmXkpmXrpeUGpyYnGJO8hwpdhaAFBLAQItABQAAAgIAACQn+vng5SdlAIAAH8FAAALACQAAAAAAAAAAAAAAAAAAABncmFwaDAuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLAQItABQAAAgIAACQn+sZdrFVbgAAAHkAAAAJACQAAAAAAAAAAAAAAOECAABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQFQSwUGAAAAAAIAAgC4AAAAmgMAAAAA
+    dataString: UEsDBBQAAAgIAACQn+szwsh6lgIAAIMFAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGdVF1v2jAU/SsozwOFAG3Y46DrJpV2AqZVrfZwcW4Sq47NbIeWIv77fB0H0nXSpPEScq7P/Tj3OIeIlaCBWdRLyHhtoo+9eDD60IuYklbVegEvV1or7fCEUBRixV/RH4snDnkG8QQbgV+QF6UNx1pwJni18WfpaAUvK6G2RB7FzftVVuANysKWxPQgl0ssuJKhDPWCGbdKr7nAAA6T1ME2APfvkIcTUhskHs1ldY0O2aK+gT3qhcp4zhlYV4vCj4dIEE7tUh8qo0rRd9kOs6p1DgwjFzTN369zqnP80DtTp/9PTTvUH/8i/nRIxiuUxrW/CKx5CyRzYmyAPRVa1TJba9ihNrDhgtt9twCd0yhwB9Jea9iWoeIppbpVdom/aq79WaaEQEaardBaLguS7tCBW6LX2BBlW+4NZ2bFUFJE1kL8gSbzM+7VWIB5ory9aAei9htPJ5PekVYMRYg+kgYajPOuW/nMdcAzKnna9Cm2QFN6C+QgzJvIGrUGLv/CWWvsusY2BxuXV7Cdq2dpoNoKJ8Fnd3/8DRkFgaiPZZtojha4oBFcVMlZo9SpJRqb5tLKeis2Y7+4R39KPtwHP77S0yuQK80w+0R7NTOU1psncIaB0Y8H46n/jQO3PxzE00kcx8PJuyzhVoUc43FIkgySoSMk4yTkGF16qinVM/V/V1s3Pp5FosCt2/9MSdm4oSt6S2s9faJJBI3GrtyDlXdS7O8fOjSU5NNb2FWOO6u96c7coubZW6dE6TROY9hc5JP0AvI87meXCV6wYZphmiab8SbyU3DJLQfxzeUXtlXZfZ06ZpBQ+YxLZG6bPX8/yNGZhudr/lqpjkG4zNWKOdPIuybHaWznAhBO4ezKf8Y69yY6HKPjb1BLAwQUAAAICAAAkJ/rrIMrYm4AAAB5AAAACQAkAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAatWKkstKs7Mz1OyUjDVM9az0FFQSi9KLMgoBgoYgjilmSkgdrSShaWBhUFiklmaqYVZYlqagW6KuVGqWbKhRUqqhYVRkkmSUixQfUllQapfYm4qRE9AYklGWmZeSmZeul5QanJicYk7yHCl2FoAUEsBAi0AFAAACAgAAJCf6zPCyHqWAgAAgwUAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAAJCf66yDK2JuAAAAeQAAAAkAJAAAAAAAAAAAAAAA4wIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAACcAwAAAAA=
     file_cachedStartup: {fileID: 0}
     cacheStartup: 0
   showNavGraphs: 1
@@ -20250,7 +20256,6 @@ MonoBehaviour:
   _healthText: {fileID: 1009907207}
   _gameOvrPanel: {fileID: 1904770422}
   _gameplayPanel: {fileID: 1635318693}
-  _pausePanel: {fileID: 432085531}
   _secondsCount: 0
   _minutesCount: 0
 --- !u!114 &1528217852
@@ -21076,7 +21081,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05f343c789d4cdb46b7919924ea30a4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _inputRef: {fileID: 1740526530}
+  _inputAsset: {fileID: 0}
 --- !u!114 &1740526530
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -11,7 +11,7 @@ public class NavMeshRegulator : MonoBehaviour
         _agent = GetComponent<NavMeshAgent>();
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
-        MstrApearDissapear.OnMonsterReady += Activate;
+        MstrApearDissapear.OnMonsterSpawn += Activate;
         _target = FindAnyObjectByType<PlayerMotor>().transform;
     }
 
@@ -25,5 +25,10 @@ public class NavMeshRegulator : MonoBehaviour
         {
             _agent.destination = _target.position;
         }
+    }
+
+    private void OnDestroy()
+    {
+        MstrApearDissapear.OnMonsterSpawn -= Activate;
     }
 }

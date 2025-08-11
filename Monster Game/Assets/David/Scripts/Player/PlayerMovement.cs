@@ -29,9 +29,36 @@ public class PlayerMovement : MonoBehaviour
     }
     void Update()
     {
+        //test
+        bool useItem = PlayerInputs.Instance.UseItemBool;
+        if (useItem)
+        {
+            print("Uso Item Actual");
+        }
+        bool useApp = PlayerInputs.Instance.UseAppBool;
+        if (useApp)
+        {
+            print("Uso Applicacion Actual");
+        }
+        bool movetoPreviousItem = PlayerInputs.Instance.PreviousItemBool;
+        if (movetoPreviousItem)
+        {
+            print("Me muevo al item anterior");
+        }
+        bool moveToNextItem = PlayerInputs.Instance.NextItemBool;
+        if (moveToNextItem)
+            print("Me muevo al siguiente item");
+        bool cellPhoneMenu = PlayerInputs.Instance.CellPhoneMenuBool;
+        if (cellPhoneMenu)
+            print("Activo o desactivo celular");
+
+        //---
         _movementDirection = PlayerInputs.Instance.MovementVector.normalized;
         _isPressingRun = PlayerInputs.Instance.RuningBool;
         _isPressingBreathe = PlayerInputs.Instance.BreathingBool;
+        //---
+        if (_isPressingBreathe)
+            print("empiezo a respirar");
 
         if (_hasSelfControl > 0)
         {

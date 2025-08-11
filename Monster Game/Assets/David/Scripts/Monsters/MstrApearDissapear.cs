@@ -4,7 +4,13 @@ using UnityEngine;
 
 public class MstrApearDissapear : MonoBehaviour
 {
-    public static Action OnMonsterReady;
+    
+    public static Action OnMonsterSpawn;
+    /*
+    public static Action OnMonsterDespawn;
+    public static Action OnMonsterDestroy;
+    */
+    [SerializeField] MonsterChaserManager _chaserManager;
     [SerializeField] float _aliveTime;
     [SerializeField] float _fadingTime;
 
@@ -35,6 +41,8 @@ public class MstrApearDissapear : MonoBehaviour
         float targetAlpha = 1f; // Termina completamente visible
         if (isDisapear)
         {
+            _chaserManager.SetActiveMonster = false;
+            //OnMonsterDespawn?.Invoke();
             startAlpha = 1f; // Comienza visible
             targetAlpha = 0f; // Termina completamente transparente
         }
@@ -62,7 +70,8 @@ public class MstrApearDissapear : MonoBehaviour
         {
             spriteColor.a = targetAlpha;
             _sprtRen.color = spriteColor;
-            OnMonsterReady?.Invoke();
+            //OnMonsterSpawn?.Invoke();
+            _chaserManager.SetActiveMonster = true;
         }
     }
 }
