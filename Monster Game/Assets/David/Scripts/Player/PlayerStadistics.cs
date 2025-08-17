@@ -14,6 +14,7 @@ public class PlayerStadistics : MonoBehaviour
 
     [SerializeField] float[] _speedLevels;
     [SerializeField] float[] _accelLevels; // Acceleration Levels
+    [SerializeField] float[] _decelLevels; // Deceleration Levels
     [SerializeField] float[] _staminaUseLevels; // Uso de estamina en niveles
     //[SerializeField] float _normalMaxSpeed = 5f;
     //public float GetNormalMaxSpeed { get { return _normalMaxSpeed; } }
@@ -23,8 +24,8 @@ public class PlayerStadistics : MonoBehaviour
     //public float GetNormalAcceleration { get { return _normalAcceleration; } }
     //[SerializeField] float _runAcceleration = 5f;
     //public float GetRunningAcceleration { get { return _runAcceleration; } }
-    [SerializeField] float _deceleration = 3f;
-    public float GetDeceleration { get { return _deceleration; } }
+    float _curDeceleration;
+    public float GetCurrentDeceleration { get { return _curDeceleration; } }
 
     private float _curMaxSpeed;
     public float GetCurrentMaxSpeed
@@ -64,12 +65,14 @@ public class PlayerStadistics : MonoBehaviour
         _maxStamina = _pyrHealth.SCOB_Value;
         _curMaxSpeed = _speedLevels[_pyrMoveScript.GetMovementStatus];
         _curAcceleration = _accelLevels[_pyrMoveScript.GetMovementStatus];
+        _curDeceleration = _decelLevels[_pyrMoveScript.GetMovementStatus];
         _curStaminaUse = _staminaUseLevels[_pyrMoveScript.GetMovementStatus];
 
         if (_pyrStamina.SCOB_Value > 0)
         {
             _pyrStamina.SCOB_Value += Time.deltaTime * _curStaminaUse;
-        } else
+        } 
+        else
         {
             if (_curStaminaUse > 0) // Es positivo
             {
@@ -80,11 +83,7 @@ public class PlayerStadistics : MonoBehaviour
             }
         }
 
-        if (_pyrStamina.SCOB_Value < _maxStamina)
-        {
-            _pyrStamina.SCOB_Value += Time.deltaTime * _curStaminaUse;
-        }
-        else
+        if (_pyrStamina.SCOB_Value >= _maxStamina)
         {
             _pyrStamina.SCOB_Value = _maxStamina;
         }

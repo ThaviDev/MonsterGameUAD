@@ -88,6 +88,9 @@ public class PlayerMovement : MonoBehaviour
         if (absMovement < 0.1f)
         {
             _movementStatus = 0;
+        } else if (absMovement > 0.1f && _movementStatus == 0)
+        {
+            _movementStatus = 1;
         }
         /*
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 2)
@@ -132,7 +135,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            _rb.AddForce(_rb.linearVelocity * -_playerStats.GetDeceleration, ForceMode2D.Force);
+            _rb.AddForce(_rb.linearVelocity * -_playerStats.GetCurrentDeceleration, ForceMode2D.Force);
         }
         /*
         if (_hasSelfControl <= 0)

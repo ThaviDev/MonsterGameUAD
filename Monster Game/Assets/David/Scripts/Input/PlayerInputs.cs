@@ -46,7 +46,6 @@ public class PlayerInputs : MonoBehaviour
     bool _cellphoneMenu;
     private void Awake()
     {
-        
         if (_instance == null)
         {
             _instance = this;
