@@ -1715,7 +1715,7 @@ MonoBehaviour:
   spawnerPrefab: {fileID: 548811242771119551, guid: 397dd746c76530743b95d3a57d44525d, type: 3}
   maxAttempts: 15
   _myAIGraph: {fileID: 989415379}
-  _beginRespawnRate: 7
+  _beginRespawnRate: 9
   _curRespawnRate: 0
   _newRespawnRate: 0
   _respawnIncreaseRate: 0.01
