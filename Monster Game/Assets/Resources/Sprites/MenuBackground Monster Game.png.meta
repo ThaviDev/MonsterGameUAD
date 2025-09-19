@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      MenuBackground Monster Game_0: -2814263533403997056
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
