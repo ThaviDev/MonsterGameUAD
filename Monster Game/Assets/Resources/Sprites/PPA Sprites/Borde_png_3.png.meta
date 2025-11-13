@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: f17aa459f1e3e2b4f8ea1a7c59de4902
+guid: 95f6b7ea5563db24b8c32cc7fef98417
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7504639744268061818
-    second: Sight Full WOutline_0
+      213: -5025526702398491029
+    second: Borde_png_3_0
   - first:
-      213: 2032832790999880189
-    second: Sight Full WOutline_1
+      213: -2601411090050032947
+    second: Borde_png_3_1
   - first:
-      213: -5714030355363644525
-    second: Sight Full WOutline_2
-  - first:
-      213: 382211176737039976
-    second: Sight Full WOutline_3
-  - first:
-      213: -4876044499131569838
-    second: Sight Full WOutline_4
+      213: -7670414756749610883
+    second: Borde_png_3_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,12 +52,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -125,13 +119,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Sight Full WOutline_0
+      name: Borde_png_3_0
       rect:
         serializedVersion: 2
-        x: 49
-        y: 632
-        width: 150
-        height: 156
+        x: 0
+        y: 0
+        width: 1401
+        height: 1557
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -140,20 +134,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: a7c406c0616d52860800000000000000
-      internalID: 7504639744268061818
+      spriteID: b663c4e271eb14ab0800000000000000
+      internalID: -5025526702398491029
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sight Full WOutline_1
+      name: Borde_png_3_1
       rect:
         serializedVersion: 2
-        x: 150
-        y: 71
-        width: 717
-        height: 882
+        x: 170
+        y: 0
+        width: 9
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,20 +156,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: df1505b27a2163c10800000000000000
-      internalID: 2032832790999880189
+      spriteID: dca5ece756ee5ebd0800000000000000
+      internalID: -2601411090050032947
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Sight Full WOutline_2
+      name: Borde_png_3_2
       rect:
         serializedVersion: 2
-        x: 825
-        y: 632
-        width: 150
-        height: 156
+        x: 206
+        y: 0
+        width: 7
+        height: 9
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -184,52 +178,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 39b30c08aafa3b0b0800000000000000
-      internalID: -5714030355363644525
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sight Full WOutline_3
-      rect:
-        serializedVersion: 2
-        x: 49
-        y: 236
-        width: 150
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 866689a4a03ed4500800000000000000
-      internalID: 382211176737039976
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Sight Full WOutline_4
-      rect:
-        serializedVersion: 2
-        x: 825
-        y: 236
-        width: 150
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 259e348cc5fc45cb0800000000000000
-      internalID: -4876044499131569838
+      spriteID: d7076081b663d8590800000000000000
+      internalID: -7670414756749610883
       vertices: []
       indices: 
       edges: []
@@ -238,7 +188,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -248,11 +198,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Sight Full WOutline_0: 7504639744268061818
-      Sight Full WOutline_1: 2032832790999880189
-      Sight Full WOutline_2: -5714030355363644525
-      Sight Full WOutline_3: 382211176737039976
-      Sight Full WOutline_4: -4876044499131569838
+      Borde_png_3_0: -5025526702398491029
+      Borde_png_3_1: -2601411090050032947
+      Borde_png_3_2: -7670414756749610883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
