@@ -48,7 +48,9 @@ public class PlayerAim : MonoBehaviour
         {
             // Para 2D: mouse en coordenadas del mundo
             Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            return (mouseWorldPos - transform.position).normalized;
+            // Se resta 0.4f en la respuesta del mouse para tener en cuenta que el objeto se movió 0.4f hacia arriba
+            // para estar en el centro del jugador
+            return (mouseWorldPos - new Vector3(transform.position.x,transform.position.y - 0.4f)).normalized;
         }
         else
         {
