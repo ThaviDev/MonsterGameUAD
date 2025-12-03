@@ -66,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
             _hasSelfControl -= Time.deltaTime;
         }
 
-        print(_movementStatus);
+        //print(_movementStatus);
         //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
         var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
 
