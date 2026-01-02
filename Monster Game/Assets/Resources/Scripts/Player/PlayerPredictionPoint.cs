@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerPredictionPoint : MonoBehaviour
 {
     [SerializeField] float _arriveTime;
-    [SerializeField] PlayerStadistics _pStats; // para sacar speed y direction
+    [SerializeField] C_PlayerStats _pStats; // para sacar speed y direction
     [SerializeField] Transform _pyrTrans;
     Vector2 _dir;
     float _speed;
@@ -19,7 +19,7 @@ public class PlayerPredictionPoint : MonoBehaviour
     void Update()
     {
         _dir = PlayerInputs.Instance.MovementVector.normalized;
-        _speed = _pStats.GetCurrentMaxSpeed;
+        _speed = _pStats.GetCurrentSpeedGoal;
         transform.position = new Vector2(_pyrTrans.position.x,_pyrTrans.position.y) + (_dir * _speed * _arriveTime);
     }
 }

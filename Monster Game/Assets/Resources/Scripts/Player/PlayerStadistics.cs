@@ -16,28 +16,25 @@ public class PlayerStadistics : MonoBehaviour
     [SerializeField] float[] _accelLevels; // Acceleration Levels
     [SerializeField] float[] _decelLevels; // Deceleration Levels
     [SerializeField] float[] _staminaUseLevels; // Uso de estamina en niveles
-    //[SerializeField] float _normalMaxSpeed = 5f;
-    //public float GetNormalMaxSpeed { get { return _normalMaxSpeed; } }
-    //[SerializeField] float _runMaxSpeed = 10f;
-    //public float GetRunningMaxSpeed { get { return _runMaxSpeed; } }
-    //[SerializeField] float _normalAcceleration = 3f;
-    //public float GetNormalAcceleration { get { return _normalAcceleration; } }
-    //[SerializeField] float _runAcceleration = 5f;
-    //public float GetRunningAcceleration { get { return _runAcceleration; } }
-    float _curDeceleration;
-    public float GetCurrentDeceleration { get { return _curDeceleration; } }
+    
+    private float _curStaminaUse;
 
+    private float _curDeceleration;
     private float _curMaxSpeed;
+    private float _curAcceleration;
+
+    public float GetCurrentDeceleration 
+    { 
+        get { return _curDeceleration; } 
+    }
     public float GetCurrentMaxSpeed
     {
         get { return _curMaxSpeed; }
     }
-    private float _curAcceleration;
     public float GetCurrentAcceleration
     {
         get { return _curAcceleration; }
     }
-    private float _curStaminaUse;
 
     bool _isUsingStamina;
     bool _canGetHit;

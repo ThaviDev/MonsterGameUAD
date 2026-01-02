@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b030aa34cd3396f499c334c309aa3b79
+guid: 20f08aa2d88b1b442b089908e7f064aa
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8932201541812893726
-    second: S_Roca2_0
+      213: -570009770196976643
+    second: GrassTilePrototype3_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 0
-  spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 128
+  alignment: 9
+  spritePivot: {x: 0.5, y: 0.6666667}
+  spritePixelsToUnits: 1024
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -113,23 +113,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: S_Roca2_0
+      name: GrassTilePrototype3_0
       rect:
         serializedVersion: 2
-        x: 3
+        x: 0
         y: 0
-        width: 119
-        height: 103
-      alignment: 9
-      pivot: {x: 0.5, y: 0.11}
+        width: 1024
+        height: 1536
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e1834f93afd85fb70800000000000000
-      internalID: 8932201541812893726
+      spriteID: dfb38e0522be618f0800000000000000
+      internalID: -570009770196976643
       vertices: []
       indices: 
       edges: []
@@ -138,8 +138,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 917bbdeb892607243928cdcd9d42bae8
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
@@ -148,7 +148,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      S_Roca2_0: 8932201541812893726
+      GrassTilePrototype3_0: -570009770196976643
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

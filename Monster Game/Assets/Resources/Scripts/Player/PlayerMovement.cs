@@ -3,20 +3,25 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
-    [SerializeField] PlayerStadistics _playerStats;
+    //[SerializeField] PlayerStadistics _playerStats;
+    [SerializeField] C_PlayerStats _playerStats;
+
+    [SerializeField] C_DashTrail _dashTrail;
+    [SerializeField] GameObject _vfx_PlayerJump;
+
     Vector2 _movementDirection;
     bool _isPressingRun;
     bool _isPressingBreathe;
     float _moveStatusCooldown = 0;
 
-    private float _hasSelfControl;
+    private float _hasSelfControl = 0;
 
-    [SerializeField] FloatSCOB _pyrStamina;
+    //[SerializeField] FloatSCOB _pyrStamina;
     [SerializeField] FloatSCOB _pyrHealth;
 
     [SerializeField] float _damageKnockback = 5f;
 
-    private int _movementStatus;
+    [SerializeField] int _movementStatus;
     public int GetMovementStatus
     {
         get { return _movementStatus; }
@@ -34,6 +39,8 @@ public class PlayerMovement : MonoBehaviour
         bool useItem = PlayerInputs.Instance.UseItemBool;
         if (useItem)
         {
+            _dashTrail.m_startTrail = true;
+            Instantiate(_vfx_PlayerJump, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
             print("Uso Item Actual");
         }
         bool useApp = PlayerInputs.Instance.UseAppBool;
@@ -66,18 +73,25 @@ public class PlayerMovement : MonoBehaviour
             _hasSelfControl -= Time.deltaTime;
         }
 
+        if (_isPressingRun)
+        {
+        }
+
+
+
         //print(_movementStatus);
         //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
         var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
 
 
-        if (_hasSelfControl <= 0 && _isPressingRun && _pyrHealth.SCOB_Value > 20)
+        //print(_moveStatusCooldown);
+        if (_hasSelfControl <= 0 && _isPressingRun)
         {
-            if (_movementStatus <= 3 && _moveStatusCooldown <= 0)
+            if (_movementStatus < 5 && _moveStatusCooldown <= 0)
             {
                 _movementStatus++;
+                _moveStatusCooldown = 0.3f;
             }
-            _moveStatusCooldown = 0.3f;
         } else
         {
             if (_moveStatusCooldown > 0)
@@ -128,9 +142,9 @@ public class PlayerMovement : MonoBehaviour
         {
             _rb.AddForce(_movementDirection * _playerStats.GetCurrentAcceleration, ForceMode2D.Force);
 
-            if (_rb.linearVelocity.magnitude > _playerStats.GetCurrentMaxSpeed)
+            if (_rb.linearVelocity.magnitude > _playerStats.GetCurrentSpeedGoal)
             {
-                _rb.linearVelocity = _rb.linearVelocity.normalized * _playerStats.GetCurrentMaxSpeed;
+                _rb.linearVelocity = _rb.linearVelocity.normalized * _playerStats.GetCurrentSpeedGoal;
             }
         }
         else

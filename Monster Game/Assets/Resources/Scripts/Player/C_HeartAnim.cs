@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class C_HeartAnim : MonoBehaviour
 {
-    [SerializeField] C_HeartRate m_HeartRate;
+    [SerializeField] C_PlayerStats m_HeartRate;
     private float m_BPM;
     private Animator m_Animator;
     void Start()

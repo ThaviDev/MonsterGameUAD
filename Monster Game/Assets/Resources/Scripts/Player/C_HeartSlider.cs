@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class C_HeartSlider : MonoBehaviour
 {
-    [SerializeField] C_HeartRate m_HeartRate;
+    [SerializeField] C_PlayerStats m_HeartRate;
     private float m_DamageTaken;
     private float m_StaminaUsed;
     private float m_Fear;

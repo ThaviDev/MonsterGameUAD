@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8702837421112052087}
   - component: {fileID: 1580899634305322952}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: S_Arbol_Tronco_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5235711368999616694}
   - component: {fileID: 4179979217565782602}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Prop_Arbol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.22}
+  m_Offset: {x: 0, y: 0.07}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -177,7 +177,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2112230333144065006}
   - component: {fileID: 6786021623811296050}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: S_Arbol_Hojas_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
