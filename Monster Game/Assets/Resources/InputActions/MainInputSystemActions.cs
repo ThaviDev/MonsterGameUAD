@@ -110,7 +110,34 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Interaction"",
+                    ""name"": ""Speed Control"",
+                    ""type"": ""Button"",
+                    ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Dash Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlashLight"",
+                    ""type"": ""Button"",
+                    ""id"": ""ec9ba402-b976-4ea3-86b7-92ef428802a8"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Interaction And Pick Item"",
                     ""type"": ""Button"",
                     ""id"": ""6c2ab1b8-8984-453a-af3d-a3c78ae1679a"",
                     ""expectedControlType"": """",
@@ -128,45 +155,9 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Use App"",
+                    ""name"": ""Drop Item"",
                     ""type"": ""Button"",
                     ""id"": ""27c5f898-bc57-4ee1-8800-db469aca5fe3"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Speed Control"",
-                    ""type"": ""Button"",
-                    ""id"": ""f1ba0d36-48eb-4cd5-b651-1c94a6531f70"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Previous"",
-                    ""type"": ""Button"",
-                    ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Next"",
-                    ""type"": ""Button"",
-                    ""id"": ""b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Dash"",
-                    ""type"": ""Button"",
-                    ""id"": ""641cd816-40e6-41b4-8c3d-04687c349290"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -182,18 +173,18 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Breathing"",
+                    ""name"": ""Next Item"",
                     ""type"": ""Button"",
-                    ""id"": ""ec9ba402-b976-4ea3-86b7-92ef428802a8"",
+                    ""id"": ""b7230bb6-fc9b-4f52-8b25-f5e19cb2c2ba"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Cellphone Menu"",
+                    ""name"": ""Previous Item"",
                     ""type"": ""Button"",
-                    ""id"": ""6f720e4b-6015-48a6-825c-19203283b7e7"",
+                    ""id"": ""2776c80d-3c14-4091-8c56-d04ced07a2b0"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -373,7 +364,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Interaction"",
+                    ""action"": ""Interaction And Pick Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -384,7 +375,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Gamepad"",
-                    ""action"": ""Interaction"",
+                    ""action"": ""Interaction And Pick Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -395,7 +386,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Next"",
+                    ""action"": ""Next Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -406,29 +397,29 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Next"",
+                    ""action"": ""Next Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
-                    ""path"": ""<Keyboard>/leftShift"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Dash"",
+                    ""action"": ""Dash Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""8cbb2f4b-a784-49cc-8d5e-c010b8c7f4e6"",
-                    ""path"": ""<Gamepad>/leftStickPress"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Dash"",
+                    ""action"": ""Dash Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -439,14 +430,14 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""XR"",
-                    ""action"": ""Dash"",
+                    ""action"": ""Dash Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
                     ""id"": ""eb40bb66-4559-4dfa-9a2f-820438abb426"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -457,10 +448,21 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""daba33a1-ad0c-4742-a909-43ad1cdfbeb6"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""path"": ""<Gamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Speed Control"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c98d363-92ae-4e66-ba7b-61d4643a18a2"",
+                    ""path"": ""<Gamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
                     ""action"": ""Speed Control"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -472,7 +474,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Previous"",
+                    ""action"": ""Previous Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -483,7 +485,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Previous"",
+                    ""action"": ""Previous Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -516,7 +518,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
-                    ""action"": ""Use App"",
+                    ""action"": ""Drop Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -527,7 +529,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Use App"",
+                    ""action"": ""Drop Item"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -560,18 +562,18 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Breathing"",
+                    ""action"": ""FlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1b2a3192-0f5a-4fe7-bc22-323508f4f52d"",
-                    ""path"": ""<Keyboard>/tab"",
+                    ""id"": ""c1fd18e2-2c1a-443e-a407-9a39b71d2bce"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Cellphone Menu"",
+                    ""groups"": "";Gamepad"",
+                    ""action"": ""FlashLight"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1161,16 +1163,15 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
-        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
-        m_Player_UseItem = m_Player.FindAction("Use Item", throwIfNotFound: true);
-        m_Player_UseApp = m_Player.FindAction("Use App", throwIfNotFound: true);
         m_Player_SpeedControl = m_Player.FindAction("Speed Control", throwIfNotFound: true);
-        m_Player_Previous = m_Player.FindAction("Previous", throwIfNotFound: true);
-        m_Player_Next = m_Player.FindAction("Next", throwIfNotFound: true);
-        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
+        m_Player_DashJump = m_Player.FindAction("Dash Jump", throwIfNotFound: true);
+        m_Player_FlashLight = m_Player.FindAction("FlashLight", throwIfNotFound: true);
+        m_Player_InteractionAndPickItem = m_Player.FindAction("Interaction And Pick Item", throwIfNotFound: true);
+        m_Player_UseItem = m_Player.FindAction("Use Item", throwIfNotFound: true);
+        m_Player_DropItem = m_Player.FindAction("Drop Item", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
-        m_Player_Breathing = m_Player.FindAction("Breathing", throwIfNotFound: true);
-        m_Player_CellphoneMenu = m_Player.FindAction("Cellphone Menu", throwIfNotFound: true);
+        m_Player_NextItem = m_Player.FindAction("Next Item", throwIfNotFound: true);
+        m_Player_PreviousItem = m_Player.FindAction("Previous Item", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -1266,16 +1267,15 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
-    private readonly InputAction m_Player_Interaction;
-    private readonly InputAction m_Player_UseItem;
-    private readonly InputAction m_Player_UseApp;
     private readonly InputAction m_Player_SpeedControl;
-    private readonly InputAction m_Player_Previous;
-    private readonly InputAction m_Player_Next;
-    private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_DashJump;
+    private readonly InputAction m_Player_FlashLight;
+    private readonly InputAction m_Player_InteractionAndPickItem;
+    private readonly InputAction m_Player_UseItem;
+    private readonly InputAction m_Player_DropItem;
     private readonly InputAction m_Player_Pause;
-    private readonly InputAction m_Player_Breathing;
-    private readonly InputAction m_Player_CellphoneMenu;
+    private readonly InputAction m_Player_NextItem;
+    private readonly InputAction m_Player_PreviousItem;
     /// <summary>
     /// Provides access to input actions defined in input action map "Player".
     /// </summary>
@@ -1296,45 +1296,41 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
         /// </summary>
         public InputAction @Look => m_Wrapper.m_Player_Look;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Interaction".
+        /// Provides access to the underlying input action "Player/SpeedControl".
         /// </summary>
-        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
+        public InputAction @SpeedControl => m_Wrapper.m_Player_SpeedControl;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/DashJump".
+        /// </summary>
+        public InputAction @DashJump => m_Wrapper.m_Player_DashJump;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/FlashLight".
+        /// </summary>
+        public InputAction @FlashLight => m_Wrapper.m_Player_FlashLight;
+        /// <summary>
+        /// Provides access to the underlying input action "Player/InteractionAndPickItem".
+        /// </summary>
+        public InputAction @InteractionAndPickItem => m_Wrapper.m_Player_InteractionAndPickItem;
         /// <summary>
         /// Provides access to the underlying input action "Player/UseItem".
         /// </summary>
         public InputAction @UseItem => m_Wrapper.m_Player_UseItem;
         /// <summary>
-        /// Provides access to the underlying input action "Player/UseApp".
+        /// Provides access to the underlying input action "Player/DropItem".
         /// </summary>
-        public InputAction @UseApp => m_Wrapper.m_Player_UseApp;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/SpeedControl".
-        /// </summary>
-        public InputAction @SpeedControl => m_Wrapper.m_Player_SpeedControl;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Previous".
-        /// </summary>
-        public InputAction @Previous => m_Wrapper.m_Player_Previous;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Next".
-        /// </summary>
-        public InputAction @Next => m_Wrapper.m_Player_Next;
-        /// <summary>
-        /// Provides access to the underlying input action "Player/Dash".
-        /// </summary>
-        public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @DropItem => m_Wrapper.m_Player_DropItem;
         /// <summary>
         /// Provides access to the underlying input action "Player/Pause".
         /// </summary>
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         /// <summary>
-        /// Provides access to the underlying input action "Player/Breathing".
+        /// Provides access to the underlying input action "Player/NextItem".
         /// </summary>
-        public InputAction @Breathing => m_Wrapper.m_Player_Breathing;
+        public InputAction @NextItem => m_Wrapper.m_Player_NextItem;
         /// <summary>
-        /// Provides access to the underlying input action "Player/CellphoneMenu".
+        /// Provides access to the underlying input action "Player/PreviousItem".
         /// </summary>
-        public InputAction @CellphoneMenu => m_Wrapper.m_Player_CellphoneMenu;
+        public InputAction @PreviousItem => m_Wrapper.m_Player_PreviousItem;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1367,36 +1363,33 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
-            @Interaction.started += instance.OnInteraction;
-            @Interaction.performed += instance.OnInteraction;
-            @Interaction.canceled += instance.OnInteraction;
-            @UseItem.started += instance.OnUseItem;
-            @UseItem.performed += instance.OnUseItem;
-            @UseItem.canceled += instance.OnUseItem;
-            @UseApp.started += instance.OnUseApp;
-            @UseApp.performed += instance.OnUseApp;
-            @UseApp.canceled += instance.OnUseApp;
             @SpeedControl.started += instance.OnSpeedControl;
             @SpeedControl.performed += instance.OnSpeedControl;
             @SpeedControl.canceled += instance.OnSpeedControl;
-            @Previous.started += instance.OnPrevious;
-            @Previous.performed += instance.OnPrevious;
-            @Previous.canceled += instance.OnPrevious;
-            @Next.started += instance.OnNext;
-            @Next.performed += instance.OnNext;
-            @Next.canceled += instance.OnNext;
-            @Dash.started += instance.OnDash;
-            @Dash.performed += instance.OnDash;
-            @Dash.canceled += instance.OnDash;
+            @DashJump.started += instance.OnDashJump;
+            @DashJump.performed += instance.OnDashJump;
+            @DashJump.canceled += instance.OnDashJump;
+            @FlashLight.started += instance.OnFlashLight;
+            @FlashLight.performed += instance.OnFlashLight;
+            @FlashLight.canceled += instance.OnFlashLight;
+            @InteractionAndPickItem.started += instance.OnInteractionAndPickItem;
+            @InteractionAndPickItem.performed += instance.OnInteractionAndPickItem;
+            @InteractionAndPickItem.canceled += instance.OnInteractionAndPickItem;
+            @UseItem.started += instance.OnUseItem;
+            @UseItem.performed += instance.OnUseItem;
+            @UseItem.canceled += instance.OnUseItem;
+            @DropItem.started += instance.OnDropItem;
+            @DropItem.performed += instance.OnDropItem;
+            @DropItem.canceled += instance.OnDropItem;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
-            @Breathing.started += instance.OnBreathing;
-            @Breathing.performed += instance.OnBreathing;
-            @Breathing.canceled += instance.OnBreathing;
-            @CellphoneMenu.started += instance.OnCellphoneMenu;
-            @CellphoneMenu.performed += instance.OnCellphoneMenu;
-            @CellphoneMenu.canceled += instance.OnCellphoneMenu;
+            @NextItem.started += instance.OnNextItem;
+            @NextItem.performed += instance.OnNextItem;
+            @NextItem.canceled += instance.OnNextItem;
+            @PreviousItem.started += instance.OnPreviousItem;
+            @PreviousItem.performed += instance.OnPreviousItem;
+            @PreviousItem.canceled += instance.OnPreviousItem;
         }
 
         /// <summary>
@@ -1414,36 +1407,33 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
-            @Interaction.started -= instance.OnInteraction;
-            @Interaction.performed -= instance.OnInteraction;
-            @Interaction.canceled -= instance.OnInteraction;
-            @UseItem.started -= instance.OnUseItem;
-            @UseItem.performed -= instance.OnUseItem;
-            @UseItem.canceled -= instance.OnUseItem;
-            @UseApp.started -= instance.OnUseApp;
-            @UseApp.performed -= instance.OnUseApp;
-            @UseApp.canceled -= instance.OnUseApp;
             @SpeedControl.started -= instance.OnSpeedControl;
             @SpeedControl.performed -= instance.OnSpeedControl;
             @SpeedControl.canceled -= instance.OnSpeedControl;
-            @Previous.started -= instance.OnPrevious;
-            @Previous.performed -= instance.OnPrevious;
-            @Previous.canceled -= instance.OnPrevious;
-            @Next.started -= instance.OnNext;
-            @Next.performed -= instance.OnNext;
-            @Next.canceled -= instance.OnNext;
-            @Dash.started -= instance.OnDash;
-            @Dash.performed -= instance.OnDash;
-            @Dash.canceled -= instance.OnDash;
+            @DashJump.started -= instance.OnDashJump;
+            @DashJump.performed -= instance.OnDashJump;
+            @DashJump.canceled -= instance.OnDashJump;
+            @FlashLight.started -= instance.OnFlashLight;
+            @FlashLight.performed -= instance.OnFlashLight;
+            @FlashLight.canceled -= instance.OnFlashLight;
+            @InteractionAndPickItem.started -= instance.OnInteractionAndPickItem;
+            @InteractionAndPickItem.performed -= instance.OnInteractionAndPickItem;
+            @InteractionAndPickItem.canceled -= instance.OnInteractionAndPickItem;
+            @UseItem.started -= instance.OnUseItem;
+            @UseItem.performed -= instance.OnUseItem;
+            @UseItem.canceled -= instance.OnUseItem;
+            @DropItem.started -= instance.OnDropItem;
+            @DropItem.performed -= instance.OnDropItem;
+            @DropItem.canceled -= instance.OnDropItem;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
-            @Breathing.started -= instance.OnBreathing;
-            @Breathing.performed -= instance.OnBreathing;
-            @Breathing.canceled -= instance.OnBreathing;
-            @CellphoneMenu.started -= instance.OnCellphoneMenu;
-            @CellphoneMenu.performed -= instance.OnCellphoneMenu;
-            @CellphoneMenu.canceled -= instance.OnCellphoneMenu;
+            @NextItem.started -= instance.OnNextItem;
+            @NextItem.performed -= instance.OnNextItem;
+            @NextItem.canceled -= instance.OnNextItem;
+            @PreviousItem.started -= instance.OnPreviousItem;
+            @PreviousItem.performed -= instance.OnPreviousItem;
+            @PreviousItem.canceled -= instance.OnPreviousItem;
         }
 
         /// <summary>
@@ -1759,12 +1749,33 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLook(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Interaction" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Speed Control" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnInteraction(InputAction.CallbackContext context);
+        void OnSpeedControl(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Dash Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnDashJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "FlashLight" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnFlashLight(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Interaction And Pick Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnInteractionAndPickItem(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Use Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1773,40 +1784,12 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnUseItem(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Use App" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Drop Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnUseApp(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Speed Control" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnSpeedControl(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Previous" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnPrevious(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Next" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnNext(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Dash" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDash(InputAction.CallbackContext context);
+        void OnDropItem(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Pause" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -1815,19 +1798,19 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnPause(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Breathing" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Next Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnBreathing(InputAction.CallbackContext context);
+        void OnNextItem(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Cellphone Menu" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "Previous Item" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCellphoneMenu(InputAction.CallbackContext context);
+        void OnPreviousItem(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "UI" which allows adding and removing callbacks.

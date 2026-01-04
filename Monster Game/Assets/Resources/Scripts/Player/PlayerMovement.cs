@@ -43,11 +43,6 @@ public class PlayerMovement : MonoBehaviour
             Instantiate(_vfx_PlayerJump, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
             print("Uso Item Actual");
         }
-        bool useApp = PlayerInputs.Instance.UseAppBool;
-        if (useApp)
-        {
-            print("Uso Applicacion Actual");
-        }
         bool movetoPreviousItem = PlayerInputs.Instance.PreviousItemBool;
         if (movetoPreviousItem)
         {
@@ -56,28 +51,16 @@ public class PlayerMovement : MonoBehaviour
         bool moveToNextItem = PlayerInputs.Instance.NextItemBool;
         if (moveToNextItem)
             print("Me muevo al siguiente item");
-        bool cellPhoneMenu = PlayerInputs.Instance.CellPhoneMenuBool;
-        if (cellPhoneMenu)
-            print("Activo o desactivo celular");
 
         //---
         _movementDirection = PlayerInputs.Instance.MovementVector.normalized;
         _isPressingRun = PlayerInputs.Instance.RuningBool;
-        _isPressingBreathe = PlayerInputs.Instance.BreathingBool;
         //---
-        if (_isPressingBreathe)
-            print("empiezo a respirar");
 
         if (_hasSelfControl > 0)
         {
             _hasSelfControl -= Time.deltaTime;
         }
-
-        if (_isPressingRun)
-        {
-        }
-
-
 
         //print(_movementStatus);
         //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);

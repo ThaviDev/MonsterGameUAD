@@ -34,16 +34,15 @@ public class PlayerInputs : MonoBehaviour
 
     Vector2 _move;
     Vector2 _aim;
+    bool _run;
+    bool _dash;
+    bool _flashlight;
     bool _interact;
     bool _useItem;
-    bool _useApp;
-    bool _run;
+    bool _dropItem;
     bool _previousItem;
     bool _nextItem;
-    bool _dash;
     bool _pause;
-    bool _breathe;
-    bool _cellphoneMenu;
     private void Awake()
     {
         if (_instance == null)
@@ -101,31 +100,29 @@ public class PlayerInputs : MonoBehaviour
     }
     public Vector2 MovementVector { get { return _move; } }
     public Vector2 AimingVector { get { return _aim; } }
-    public bool InteractBool { get { return _interact; } }
-    public bool UseItemBool { get { return _useItem; } }
-    public bool UseAppBool { get { return _useApp; } }
     public bool RuningBool { get { return _run; } }
-    public bool PreviousItemBool { get { return _previousItem; } }
-    public bool NextItemBool { get { return _nextItem; } }
     public bool DashBool { get { return _dash; } }
+    public bool FlashLightBool { get { return _flashlight; } }
+    public bool InteractAndPickUpItemBool { get { return _interact; } }
+    public bool UseItemBool { get { return _useItem; } }
+    public bool DropItemBool { get { return _dropItem; } }
     public bool PauseBool { get { return _pause; } }
-    public bool BreathingBool { get { return _breathe; } }
-    public bool CellPhoneMenuBool { get { return _cellphoneMenu; } }
+    public bool NextItemBool { get { return _nextItem; } }
+    public bool PreviousItemBool { get { return _previousItem; } }
 
     private void Update()
     {
         _move = OnMoveChange();
         _aim = OnAimChange();
+        _run = OnRunPressed();
+        _dash = OnDashPressed();
+        _flashlight = OnFlashLightPressed();
         _interact = OnInteractPressed();
         _useItem = OnItemPressed();
-        _useApp = OnAppPressed();
-        _run = OnRunPressed();
-        _previousItem = OnPreviousItemPressed();
-        _nextItem = OnNextItemPressed();
-        _dash = OnDashPressed();
+        _dropItem = OnDropPressed();
         _pause = OnPausePressed();
-        _breathe = OnBreathePressing();
-        _cellphoneMenu = OnCellPhoneMenuPressed();
+        _nextItem = OnNextItemPressed();
+        _previousItem = OnPreviousItemPressed();
     }
 
     static Vector2 OnMoveChange()
@@ -138,45 +135,42 @@ public class PlayerInputs : MonoBehaviour
     {
         return _input.actions.FindAction("Look").ReadValue<Vector2>();
     }
+    static bool OnRunPressed()
+    {
+        return _input.actions.FindAction("Speed Control").WasReleasedThisFrame();
+    }
+    static bool OnDashPressed()
+    {
+        return _input.actions.FindAction("Dash Jump").WasReleasedThisFrame();
+    }
+    static bool OnFlashLightPressed()
+    {
+        return _input.actions.FindAction("FlashLight").WasReleasedThisFrame();
+    }
     static bool OnInteractPressed()
     {
-        return _input.actions.FindAction("Interaction").WasReleasedThisFrame();
+        return _input.actions.FindAction("Interaction And Pick Item").WasReleasedThisFrame();
     }
     static bool OnItemPressed()
     {
         return _input.actions.FindAction("Use Item").WasReleasedThisFrame();
     }
-    static bool OnAppPressed()
+    static bool OnDropPressed()
     {
-        return _input.actions.FindAction("Use App").WasReleasedThisFrame();
-    }
-    static bool OnRunPressed()
-    {
-        return _input.actions.FindAction("Speed Control").WasReleasedThisFrame();
-    }
-    static bool OnPreviousItemPressed()
-    {
-        return _input.actions.FindAction("Previous").WasReleasedThisFrame();
-    }
-    static bool OnNextItemPressed()
-    {
-        return _input.actions.FindAction("Next").WasReleasedThisFrame();
-    }
-    static bool OnDashPressed()
-    {
-        return _input.actions.FindAction("Dash").WasReleasedThisFrame();
+        return _input.actions.FindAction("Drop Item").WasReleasedThisFrame();
     }
     static bool OnPausePressed()
     {
         return _input.actions.FindAction("Pause").WasReleasedThisFrame();
     }
-    static bool OnBreathePressing()
+    static bool OnNextItemPressed()
     {
-        return _input.actions.FindAction("Breathing").IsPressed();
+        return _input.actions.FindAction("Next Item").WasReleasedThisFrame();
     }
-    static bool OnCellPhoneMenuPressed()
+    static bool OnPreviousItemPressed()
     {
-        return _input.actions.FindAction("Cellphone Menu").WasReleasedThisFrame();
+        return _input.actions.FindAction("Previous Item").WasReleasedThisFrame();
     }
+
 
 }
