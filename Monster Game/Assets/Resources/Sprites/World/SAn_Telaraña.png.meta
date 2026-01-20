@@ -1,0 +1,357 @@
+fileFormatVersion: 2
+guid: 39522884616232b42acb0d8a52741b99
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2365150276653002421
+    second: "SAn_Telara\xF1a_0"
+  - first:
+      213: -7669827290209070179
+    second: "SAn_Telara\xF1a_1"
+  - first:
+      213: -8387461657951000708
+    second: "SAn_Telara\xF1a_2"
+  - first:
+      213: 6959690959295813440
+    second: "SAn_Telara\xF1a_3"
+  - first:
+      213: 8954339278129694710
+    second: "SAn_Telara\xF1a_4"
+  - first:
+      213: -2756600846808832981
+    second: "SAn_Telara\xF1a_5"
+  - first:
+      213: 4258508581244981224
+    second: "SAn_Telara\xF1a_6"
+  - first:
+      213: 6602744736038592254
+    second: "SAn_Telara\xF1a_7"
+  - first:
+      213: -2862548938856240820
+    second: "SAn_Telara\xF1a_8"
+  - first:
+      213: 5014154946030139147
+    second: "SAn_Telara\xF1a_9"
+  - first:
+      213: -7552550778033390914
+    second: "SAn_Telara\xF1a_10"
+  - first:
+      213: 2614798640479330439
+    second: "SAn_Telara\xF1a_11"
+  - first:
+      213: -729990982313626992
+    second: "SAn_Telara\xF1a_12"
+  - first:
+      213: -3939172332850619128
+    second: "SAn_Telara\xF1a_13"
+  - first:
+      213: -3520906035019378924
+    second: "SAn_Telara\xF1a_14"
+  - first:
+      213: 5496056288234303271
+    second: "SAn_Telara\xF1a_15"
+  - first:
+      213: 556456993762582765
+    second: "SAn_Telara\xF1a_16"
+  - first:
+      213: -6166504811288448990
+    second: "SAn_Telara\xF1a_17"
+  - first:
+      213: -6558382472242574475
+    second: "SAn_Telara\xF1a_18"
+  - first:
+      213: -8671517570717412328
+    second: "SAn_Telara\xF1a_19"
+  - first:
+      213: -6930309179774674383
+    second: "SAn_Telara\xF1a_20"
+  - first:
+      213: -8611528695930355864
+    second: "SAn_Telara\xF1a_21"
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_0"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b415eafba5c4d2fd0800000000000000
+      internalID: -2365150276653002421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_1"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d93dd7e47bc4f8590800000000000000
+      internalID: -7669827290209070179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_2"
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c772f9e8f00c99b80800000000000000
+      internalID: -8387461657951000708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_3"
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 047135fad0ac59060800000000000000
+      internalID: 6959690959295813440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_4"
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f78f3f9124344c70800000000000000
+      internalID: 8954339278129694710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_5"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b242b6a82269eb9d0800000000000000
+      internalID: -2756600846808832981
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "SAn_Telara\xF1a_6"
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ef4f0afdf2491b30800000000000000
+      internalID: 4258508581244981224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4fa25b3d16dddbc489284e05fbded3ba
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      "SAn_Telara\xF1a_0": -2365150276653002421
+      "SAn_Telara\xF1a_1": -7669827290209070179
+      "SAn_Telara\xF1a_2": -8387461657951000708
+      "SAn_Telara\xF1a_3": 6959690959295813440
+      "SAn_Telara\xF1a_4": 8954339278129694710
+      "SAn_Telara\xF1a_5": -2756600846808832981
+      "SAn_Telara\xF1a_6": 4258508581244981224
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

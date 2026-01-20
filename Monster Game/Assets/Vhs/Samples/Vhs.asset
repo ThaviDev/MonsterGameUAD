@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8370247920593371965
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66f335fb1ffd8684294ad653bf1c7564, type: 3}
+  m_Name: ColorAdjustments
+  m_EditorClassIdentifier: 
+  active: 0
+  postExposure:
+    m_OverrideState: 0
+    m_Value: 0.3
+  contrast:
+    m_OverrideState: 1
+    m_Value: 28
+  colorFilter:
+    m_OverrideState: 1
+    m_Value: {r: 0.7924528, g: 0.6325587, b: 0.6242435, a: 1}
+  hueShift:
+    m_OverrideState: 0
+    m_Value: 0
+  saturation:
+    m_OverrideState: 1
+    m_Value: 8.5
+--- !u!114 &-4713384070230122667
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb2952b95454955ba507c3d96778a76, type: 3}
+  m_Name: VhsVol
+  m_EditorClassIdentifier: 
+  active: 1
+  _weight:
+    m_OverrideState: 1
+    m_Value: 0.25
+  _tape:
+    m_OverrideState: 0
+    m_Value: 1
+  _shades:
+    m_OverrideState: 0
+    m_Value: 1
+  _rocking:
+    m_OverrideState: 1
+    m_Value: 0.0145
+  _squeeze:
+    m_OverrideState: 1
+    m_Value: 0.221
+  _density:
+    m_OverrideState: 1
+    m_Value: 0.061
+  _intensity:
+    m_OverrideState: 1
+    m_Value: 0.131
+  _scale:
+    m_OverrideState: 1
+    m_Value: 3
+  _flickering:
+    m_OverrideState: 1
+    m_Value: 0
+  _lines:
+    m_OverrideState: 1
+    m_Value: 1
+  _color:
+    m_OverrideState: 1
+    m_Value: {r: 0.6415094, g: 0.079884745, b: 0, a: 1}
+  _bleed:
+    m_OverrideState: 1
+    m_Value: 0.37
+  _flow:
+    m_OverrideState: 0
+    m_Value: 1.3
+  _pulsation:
+    m_OverrideState: 0
+    m_Value: 0.87
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7fd9488000d3734a9e00ee676215985, type: 3}
+  m_Name: Vhs
+  m_EditorClassIdentifier: 
+  components:
+  - {fileID: -4713384070230122667}
+  - {fileID: -8370247920593371965}
+  - {fileID: 2846570248330515628}
+--- !u!114 &2846570248330515628
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b2db86121404754db890f4c8dfe81b2, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 0
+  skipIterations:
+    m_OverrideState: 0
+    m_Value: 1
+  threshold:
+    m_OverrideState: 0
+    m_Value: 5
+  intensity:
+    m_OverrideState: 1
+    m_Value: 2.56
+  scatter:
+    m_OverrideState: 1
+    m_Value: 0.503
+  clamp:
+    m_OverrideState: 0
+    m_Value: 65465.21
+  tint:
+    m_OverrideState: 1
+    m_Value: {r: 0.9292453, g: 0.98701435, b: 1, a: 1}
+  highQualityFiltering:
+    m_OverrideState: 0
+    m_Value: 0
+  downscale:
+    m_OverrideState: 0
+    m_Value: 0
+  maxIterations:
+    m_OverrideState: 0
+    m_Value: 6
+  dirtTexture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
+    dimension: 1
+  dirtIntensity:
+    m_OverrideState: 0
+    m_Value: 0

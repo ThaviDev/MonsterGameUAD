@@ -47,5 +47,8 @@ TagManager:
   - name: RimLight
     uniqueID: 1714250563
     locked: 0
+  - name: UI
+    uniqueID: 678758717
+    locked: 0
   m_RenderingLayers:
   - Default
