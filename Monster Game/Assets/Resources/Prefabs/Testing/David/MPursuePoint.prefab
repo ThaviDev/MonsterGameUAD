@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4920514604403386096}
   - component: {fileID: 3654070225988990531}
   m_Layer: 0
-  m_Name: MChaserPursuePoint
+  m_Name: MPursuePoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

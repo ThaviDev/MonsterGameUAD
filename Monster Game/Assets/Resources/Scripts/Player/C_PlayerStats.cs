@@ -7,7 +7,7 @@ public class C_PlayerStats : MonoBehaviour
     [SerializeField] float m_DamageTaken;
     private float m_DamageRegen = 2f;
     private float m_DamageRegenGoal;
-    
+
     [SerializeField] float m_Fear;
     private float m_FearRegen = 1f;
 
@@ -42,6 +42,9 @@ public class C_PlayerStats : MonoBehaviour
     private float m_CurAcceleration;
     private float m_CurDeceleration;
 
+    [SerializeField] float m_InvincibleTime;
+    float m_InvincibleTimeDefaultV = 1f;
+
     /* ---- Comunicar informacion de variables a otros codigos ---- */
     public float GetBPM { get { return m_BPM; } }
     public float GetDamageTaken { get { return m_DamageTaken; } }
@@ -51,13 +54,18 @@ public class C_PlayerStats : MonoBehaviour
     public float GetCurrentAcceleration { get { return m_CurAcceleration; } }
     public float GetCurrentDeceleration { get { return m_CurDeceleration; } }
 
+    public float GetPanicThreshold { get { return m_BPM_PanicThreshold; } }
+    public float GetRelaxThreshold { get { return m_BPM_RelaxThreshold; } }
+
     void Start()
     {
         m_BateryPercent = 1; // 1 = 100%
+        m_InvincibleTime = 0;
     }
 
     void Update()
     {
+        PlayerMotor.OnPyrHit += RecieveDamage;
         // Establecer los niveles de velocidad dependiendo de Player Move
         m_CurSpeedGoal = m_SpeedLevels[m_PyrMoveScript.GetMovementStatus];
         m_CurAcceleration = m_AccelLevels[m_PyrMoveScript.GetMovementStatus];
@@ -70,6 +78,10 @@ public class C_PlayerStats : MonoBehaviour
         Fear();
         Stamina();
         DamageTaken();
+        LimitMaxBPM();
+
+
+        InvincibilityFrames();
 
         // TESTING
         if (Input.GetKeyDown(KeyCode.V))
@@ -161,5 +173,57 @@ public class C_PlayerStats : MonoBehaviour
         {
             m_DamageRegenGoal = 0;
         }
+    }
+
+    void InvincibilityFrames()
+    {
+        if (m_InvincibleTime > 0)
+        {
+            m_InvincibleTime -= Time.deltaTime;
+        }
+    }
+
+    private void LimitMaxBPM()
+    {
+        if (m_BPM > m_BPM_Maximum)
+        {
+            float exceso = m_BPM - m_BPM_Maximum;
+
+            if (m_Fear > 0f)
+            {
+                float reduccionMiedo = Mathf.Min(m_Fear, exceso);
+                m_Fear -= reduccionMiedo;
+                exceso -= reduccionMiedo;
+            }
+
+            if (exceso > 0f && m_Stamina > 0f)
+            {
+                float reduccionEstamina = Mathf.Min(m_Stamina, exceso);
+                m_Stamina -= reduccionEstamina;
+                exceso -= reduccionEstamina;
+            }
+
+            if (exceso > 0f && m_DamageTaken > 0f)
+            {
+                float reduccionDanio = Mathf.Min(m_DamageTaken, exceso);
+                m_DamageTaken -= reduccionDanio;
+                exceso -= reduccionDanio;
+            }
+        }
+    }
+    private void RecieveDamage(Collider2D otherCol)
+    {
+        if (m_InvincibleTime <= 0)
+        {
+            m_DamageTaken += 20;
+            m_DamageRegenGoal += 20;
+            m_Fear += 10;
+            m_InvincibleTime = m_InvincibleTimeDefaultV;
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PlayerMotor.OnPyrHit -= RecieveDamage;
     }
 }

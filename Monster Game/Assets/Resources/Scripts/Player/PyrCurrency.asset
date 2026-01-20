@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57185a39ff08fbc419e15e545090dc52, type: 3}
   m_Name: PyrCurrency
   m_EditorClassIdentifier: 
-  SCOB_Value: 77
+  SCOB_Value: 0

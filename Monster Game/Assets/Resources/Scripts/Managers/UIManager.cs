@@ -26,8 +26,10 @@ public class UIManager : MonoBehaviour
     void Start()
     {
         _canCount = true;
-        PlayerStadistics.OnPyrDeath += StopCounting;
-        GMTestGameplay.OnGameOver += GameOver;
+        PlayerMotor.OnPyrDeath += StopCounting;
+        PlayerMotor.OnPyrDeath += GameOver;
+        //PlayerStadistics.OnPyrDeath += StopCounting;
+        //GMTestGameplay.OnGameOver += GameOver;
     }
     void Update()
     {
