@@ -56,11 +56,11 @@ public class PlayerMotor : MonoBehaviour
         if (otherCol.gameObject.layer == 6) // Monster Layer
         {
             OnPyrHit?.Invoke(otherCol);
-            if (m_playerStats.GetBPM >= 150)
+            if (m_IsInPanic)
             {
                 OnPyrDeath?.Invoke();
             }
-            if (m_IsInPanic)
+            else if (m_playerStats.GetBPM >= 150)
             {
                 OnPyrDeath?.Invoke();
             }
