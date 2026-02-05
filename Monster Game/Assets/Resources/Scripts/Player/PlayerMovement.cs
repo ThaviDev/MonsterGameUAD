@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerWasHit(Collider2D otherCol)
     {
-        _hasSelfControl = 1;
+        _hasSelfControl += 1;
         Transform myTrans = transform;
         Transform otherTrans = otherCol.transform;
         Vector2 direction = myTrans.position - otherTrans.position;

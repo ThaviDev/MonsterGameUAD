@@ -360,7 +360,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""05f6913d-c316-48b2-a6bb-e225f14c7960"",
-                    ""path"": ""<Keyboard>/e"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -404,7 +404,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""f2e9ba44-c423-42a7-ad56-f20975884794"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/leftShift"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -437,7 +437,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""eb40bb66-4559-4dfa-9a2f-820438abb426"",
-                    ""path"": ""<Mouse>/leftButton"",
+                    ""path"": ""<Keyboard>/space"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -492,7 +492,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""1c04ea5f-b012-41d1-a6f7-02e963b52893"",
-                    ""path"": ""<Keyboard>/r"",
+                    ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
@@ -558,7 +558,7 @@ public partial class @MainInputSystemActions: IInputActionCollection2, IDisposab
                 {
                     ""name"": """",
                     ""id"": ""1144f7c2-6c82-4ae8-8433-8715b487d5d2"",
-                    ""path"": ""<Keyboard>/f"",
+                    ""path"": ""<Mouse>/rightButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",

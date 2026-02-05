@@ -8,7 +8,7 @@ public class TestAStarFunctions : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        //_myGraph.heuristic = Heuristic.Manhattan;
     }
 
     // Update is called once per frame
@@ -16,5 +16,6 @@ public class TestAStarFunctions : MonoBehaviour
     {
         //_myGraph.IsPointOnNavmesh(_follower.transform.position);
         //_follower.
+        //_myGraph.graphs[1].
     }
 }
