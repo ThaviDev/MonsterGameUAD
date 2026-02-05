@@ -8,6 +8,8 @@ public class MonsterChaserManager : MonoBehaviour
     [SerializeField] AIDestinationSetter _destinySet;
     [SerializeField] GameObject _pursuePointPrefab;
     [SerializeField] MChaser_Pursue _curPursuePoint;
+
+    [SerializeField] Quaternion _myRotation;
     //Transform _target;
     bool _active = false;
     bool _lastActive = false;
@@ -33,6 +35,7 @@ public class MonsterChaserManager : MonoBehaviour
                 Deactivate();
             }
         }
+        _myRotation = _myAI.rotation;
     }
     void Activate()
     {
