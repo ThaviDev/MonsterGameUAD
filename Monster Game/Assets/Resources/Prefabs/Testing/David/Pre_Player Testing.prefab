@@ -4889,7 +4889,7 @@ ParticleSystemRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 678758717
-  m_SortingLayer: 1
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_RenderMode: 0
   m_MeshDistribution: 0
@@ -5338,6 +5338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4783609963714982747}
   - component: {fileID: 7110155754972689253}
+  - component: {fileID: 2465286131474998076}
   m_Layer: 0
   m_Name: FlashLight (2)
   m_TagString: Untagged
@@ -5412,6 +5413,19 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2465286131474998076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339196577580364245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e9d8d05d45ce4146b9c7c8cfff462f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BateryPercentage: 0
 --- !u!1 &8480366284515460250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5597,7 +5611,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1714250563
-  m_SortingLayer: -1
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f4702532d849f284c80cc11fd2222282, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -5842,7 +5856,7 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: 0.18}
   m_Radius: 0.18
 --- !u!81 &7221991744734570915
 AudioListener:
