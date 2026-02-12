@@ -8,11 +8,14 @@ public class C_PProcessingManager : MonoBehaviour
     // Serializado para probar el efecto
     [Range(0,1)]
     [SerializeField] float m_ppIntensity = 0;
-    public float SET_PostProcessingIntensity { set { m_ppIntensity = value; } }
+    public float PostProcessingIntensity { set { m_ppIntensity = value; } }
+    [SerializeField] bool m_IsFlashLightOn = true;
+
     [SerializeField] private Volume m_myVolume;
     [SerializeField] private VhsFx m_VhsEffect;
     [SerializeField] private ColorAdjustments m_colorAdjustments;
     [SerializeField] private Bloom m_Bloom;
+
     [Header("Valores")]
     [SerializeField] private float m_ContrastIntensity = 35f;
     [SerializeField] private float m_SatReductionIntensity = 100f;
