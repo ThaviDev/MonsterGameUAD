@@ -13,6 +13,11 @@ public class C_PProcessingManager : MonoBehaviour
     [SerializeField] private VhsFx m_VhsEffect;
     [SerializeField] private ColorAdjustments m_colorAdjustments;
     [SerializeField] private Bloom m_Bloom;
+    [Header("Valores")]
+    [SerializeField] private float m_ContrastIntensity = 35f;
+    [SerializeField] private float m_SatReductionIntensity = 100f;
+    [SerializeField] private float m_SaturationDefault = 50f;
+    [SerializeField] private float m_BloomIntensity = 2f;
     private void Start()
     {
         m_myVolume = GetComponent<Volume>();
@@ -30,12 +35,12 @@ public class C_PProcessingManager : MonoBehaviour
     {
         if (m_colorAdjustments != null)
         {
-            m_colorAdjustments.contrast.value = m_ppIntensity * 35;
-            m_colorAdjustments.saturation.value = (-m_ppIntensity * 150) + 50;
+            m_colorAdjustments.contrast.value = m_ppIntensity * m_ContrastIntensity;
+            m_colorAdjustments.saturation.value = (-m_ppIntensity * (m_SatReductionIntensity + m_SaturationDefault)) + m_SaturationDefault;
         }
         if (m_Bloom != null)
         {
-            m_Bloom.intensity.value = m_ppIntensity * 2;
+            m_Bloom.intensity.value = m_ppIntensity * m_BloomIntensity;
         }
     }
 }
