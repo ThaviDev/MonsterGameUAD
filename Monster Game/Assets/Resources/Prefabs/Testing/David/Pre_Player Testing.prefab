@@ -5378,7 +5378,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.75
   m_LightVolumeIntensity: 0
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 0000000043632d66
@@ -5425,7 +5425,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9d8d05d45ce4146b9c7c8cfff462f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_BateryPercentage: 0
+  m_BateryPercentage: 1
+  m_BateryUsageReduction: 1
+  m_LightIntensity: 1.75
+  m_MinimumLight: 0.5
+  m_LightRange: 5
+  m_MinimumRange: 3
 --- !u!1 &8480366284515460250
 GameObject:
   m_ObjectHideFlags: 0
