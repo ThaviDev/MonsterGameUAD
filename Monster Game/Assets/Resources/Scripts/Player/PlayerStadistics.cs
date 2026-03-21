@@ -42,7 +42,7 @@ public class PlayerStadistics : MonoBehaviour
     float _stamRegenCooldownT;
     float _stamRegenRate;
 
-    [SerializeField] PlayerMotor _pm;
+    [SerializeField] C_PlayerMotor _pm;
     [SerializeField] FloatSCOB _pyrStamina;
     [SerializeField] FloatSCOB _pyrHealth;
     [SerializeField] IntSCOB _pyrScrapAmount;
@@ -54,7 +54,7 @@ public class PlayerStadistics : MonoBehaviour
         _curMaxSpeed = _speedLevels[0];
 
         _canGetHit = true;
-        PlayerMotor.OnPyrHit += PlayerWasHit;
+        C_PlayerMotor.OnPyrHit += PlayerWasHit;
         OnPyrDeath += PlayerDied;
     }
     void Update()
@@ -153,7 +153,7 @@ public class PlayerStadistics : MonoBehaviour
     }
     private void OnDestroy()
     {
-        PlayerMotor.OnPyrHit -= PlayerWasHit;
+        C_PlayerMotor.OnPyrHit -= PlayerWasHit;
         OnPyrDeath -= PlayerDied;
     }
 }

@@ -12,7 +12,7 @@ public class NavMeshRegulator : MonoBehaviour
         _agent.updateRotation = false;
         _agent.updateUpAxis = false;
         MstrApearDissapear.OnMonsterSpawn += Activate;
-        _target = FindAnyObjectByType<PlayerMotor>().transform;
+        _target = FindAnyObjectByType<C_PlayerMotor>().transform;
     }
 
     void Activate()

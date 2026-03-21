@@ -65,7 +65,7 @@ public class C_PlayerStats : MonoBehaviour
 
     void Update()
     {
-        PlayerMotor.OnPyrHit += RecieveDamage;
+        C_PlayerMotor.OnPyrHit += RecieveDamage;
         // Establecer los niveles de velocidad dependiendo de Player Move
         m_CurSpeedGoal = m_SpeedLevels[m_PyrMoveScript.GetMovementStatus];
         m_CurAcceleration = m_AccelLevels[m_PyrMoveScript.GetMovementStatus];
@@ -224,6 +224,6 @@ public class C_PlayerStats : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerMotor.OnPyrHit -= RecieveDamage;
+        C_PlayerMotor.OnPyrHit -= RecieveDamage;
     }
 }

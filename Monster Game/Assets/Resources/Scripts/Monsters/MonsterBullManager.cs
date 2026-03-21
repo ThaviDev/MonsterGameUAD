@@ -30,7 +30,7 @@ public class MonsterBullManager : MonoBehaviour
     }
     void Start()
     {
-        _target = FindAnyObjectByType<PlayerMotor>().gameObject;
+        _target = FindAnyObjectByType<C_PlayerMotor>().gameObject;
         RestartChargeValues();
     }
 

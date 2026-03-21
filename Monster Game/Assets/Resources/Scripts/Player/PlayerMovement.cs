@@ -30,10 +30,10 @@ public class PlayerMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody2D>();
 
-        PlayerMotor.OnPyrHit += PlayerWasHit;
-        PlayerMotor.OnPyrDeath += PlayerNoMove;
-        PlayerMotor.OnPanic += PlayerNoMove;
-        PlayerMotor.OnRelax += PlayerCanMove;
+        C_PlayerMotor.OnPyrHit += PlayerWasHit;
+        C_PlayerMotor.OnPyrDeath += PlayerNoMove;
+        C_PlayerMotor.OnPanic += PlayerNoMove;
+        C_PlayerMotor.OnRelax += PlayerCanMove;
     }
     void Update()
     {
@@ -166,9 +166,9 @@ public class PlayerMovement : MonoBehaviour
     }
     private void OnDestroy()
     {
-        PlayerMotor.OnPyrHit -= PlayerWasHit;
-        PlayerMotor.OnPyrDeath -= PlayerNoMove;
-        PlayerMotor.OnPanic -= PlayerNoMove;
-        PlayerMotor.OnRelax -= PlayerCanMove;
+        C_PlayerMotor.OnPyrHit -= PlayerWasHit;
+        C_PlayerMotor.OnPyrDeath -= PlayerNoMove;
+        C_PlayerMotor.OnPanic -= PlayerNoMove;
+        C_PlayerMotor.OnRelax -= PlayerCanMove;
     }
 }
