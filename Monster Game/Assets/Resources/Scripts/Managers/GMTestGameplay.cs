@@ -68,7 +68,7 @@ public class GMTestGameplay : MonoBehaviour
 
     void AtGameplay()
     {
-        PlayerMotor.OnPyrDeath += StartGameOverSequence;
+        C_PlayerMotor.OnPyrDeath += StartGameOverSequence;
 
     }
     void AtMainMenu()
@@ -82,7 +82,7 @@ public class GMTestGameplay : MonoBehaviour
         {
             PauseManager.Instance.PressedPauseKeyOrBtn();
         }
-        PlayerMotor.OnPyrDeath -= StartGameOverSequence;
+        C_PlayerMotor.OnPyrDeath -= StartGameOverSequence;
     }
     public void ChangeSceneToGameplay()
     {

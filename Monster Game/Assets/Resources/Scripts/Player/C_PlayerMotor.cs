@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class PlayerMotor : MonoBehaviour
+public class C_PlayerMotor : MonoBehaviour
 {
     public static Action<Collider2D> OnPyrHit;
     public static Action OnPanic;
