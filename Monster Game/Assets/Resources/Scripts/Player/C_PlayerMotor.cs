@@ -18,32 +18,31 @@ public class C_PlayerMotor : MonoBehaviour
     // Temporal FeedbackQueue del sprite del jugador
     public SpriteRenderer m_sprite;
 
-    [SerializeField] private bool m_IsInPanic;
+    //[SerializeField] private bool m_IsInPanic;
 
     [SerializeField] private bool m_IsInvincible;
 
     Collider2D _yCol;
+
+    private PlayerState m_currentState;
     void Start()
     {
-        
+        if (m_IsInvincible)
+        {
+            ChangeState(new InvincibleState(this));
+        }
+        else
+        {
+            ChangeState(new RegularState(this));
+        }
     }
 
     void Update()
     {
-        if (m_playerStats.GetBPM >= m_playerStats.GetPanicThreshold && !m_IsInPanic)
-        {
-            m_IsInPanic = true;
-            OnPanic?.Invoke();
-            // Temporal Feedback Queue
-            m_sprite.color = Color.blue;
-        }
-        if (m_playerStats.GetBPM <= m_playerStats.GetRelaxThreshold && m_IsInPanic)
-        {
-            m_IsInPanic = false;
-            OnRelax?.Invoke();
-            // Temporal Feedback Queue
-            m_sprite.color = Color.white;
-        }
+        print(m_currentState);
+        // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
+        m_currentState?.MyUpdate();
+
         /*
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -53,6 +52,8 @@ public class C_PlayerMotor : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D otherCol)
     {
+        m_currentState?.MyTriggerColision(otherCol);
+        /*
         if (otherCol.gameObject.layer == 6) // Monster Layer
         {
             OnPyrHit?.Invoke(otherCol);
@@ -66,7 +67,154 @@ public class C_PlayerMotor : MonoBehaviour
             }
 
             // Temporal para clase de VFX
-            Instantiate(m_vfx_MonsterScream, new Vector3(otherCol.transform.position.x, otherCol.transform.position.y + 1.6f), Quaternion.identity);
+            //Instantiate(m_vfx_MonsterScream, new Vector3(otherCol.transform.position.x, otherCol.transform.position.y + 1.6f), Quaternion.identity);
+        }
+        */
+    }
+
+    private void ChangeState(PlayerState newState)
+    {
+        if (newState == null)
+        {
+            return;
+        }
+        m_currentState?.MyExit();
+        m_currentState = newState;
+        m_currentState.MyEnter();
+    }
+
+    private void CheckIfDeath()
+    {
+        if (m_playerStats.GetBPM >= 150)
+        {
+            OnPyrDeath?.Invoke();
+        }
+    }
+
+    // Estado Base
+    private abstract class PlayerState
+    {
+        protected readonly C_PlayerMotor _PM;
+        protected PlayerState(C_PlayerMotor motor) => _PM = motor;
+
+        public virtual void MyEnter() { }
+        public virtual void MyExit() { }
+        public virtual void MyUpdate() { }
+        public virtual void MyTriggerColision(Collider2D other) { }
+    }
+    private class RegularState : PlayerState
+    {
+        public RegularState(C_PlayerMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            OnRelax?.Invoke();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+            if (_PM.m_playerStats.GetBPM >= _PM.m_playerStats.GetPanicThreshold)
+            {
+                //m_IsInPanic = true;
+                _PM.ChangeState(new PanicState(_PM));
+                //OnPanic?.Invoke();
+                // Temporal Feedback Queue
+                //m_sprite.color = Color.blue;
+            }
+        }
+        public override void MyTriggerColision(Collider2D otherCol)
+        {
+            base.MyTriggerColision(otherCol);
+            if (otherCol.gameObject.layer == 6) // Monster Layer
+            {
+                OnPyrHit?.Invoke(otherCol);
+                _PM.CheckIfDeath();
+                /*
+                if (_PM.m_playerStats.GetBPM >= 150)
+                {
+                    OnPyrDeath?.Invoke();
+                }*/
+            }
+        }
+    }
+    private class PanicState : PlayerState
+    {
+        public PanicState(C_PlayerMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            OnPanic?.Invoke();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+            //if (_PM.m_playerStats.GetBPM <= _PM.m_playerStats.GetRelaxThreshold && _PM.m_isInPanic)
+
+            if (_PM.m_playerStats.GetBPM <= _PM.m_playerStats.GetRelaxThreshold)
+            {
+                //m_IsInPanic = false;
+                _PM.ChangeState(new RegularState(_PM));
+                //OnRelax?.Invoke();
+                // Temporal Feedback Queue
+                //_PM.m_sprite.color = Color.white;
+            }
+        }
+        public override void MyTriggerColision(Collider2D otherCol)
+        {
+            base.MyTriggerColision(otherCol);
+            if (otherCol.gameObject.layer == 6) // Monster Layer
+            {
+                OnPyrHit?.Invoke(otherCol);
+                OnPyrDeath?.Invoke();
+            }
+        }
+    }
+    private class InvincibleState : PlayerState
+    {
+        public InvincibleState(C_PlayerMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
+        }
+    }
+    private class StunnedState : PlayerState
+    {
+        public StunnedState(C_PlayerMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
         }
     }
 }
