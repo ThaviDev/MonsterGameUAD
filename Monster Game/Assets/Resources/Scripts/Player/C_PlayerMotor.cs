@@ -19,8 +19,8 @@ public class C_PlayerMotor : MonoBehaviour
 
     private PlayerState m_CurrentState;
 
-    // Idealmente, la variable debería de ser C_MonsterMotor
-    private C_HugAbilityTest m_MonsterThatGrabbed;
+    private C_Monster m_MonsterThatGrabbed;
+    private Vector2 m_PlayerGrabbedPos;
     private bool m_CanMashOutOfGrab;
     [SerializeField] private int m_GrabMashCount;
 
@@ -38,7 +38,7 @@ public class C_PlayerMotor : MonoBehaviour
 
     void Update()
     {
-        print(m_CurrentState);
+        //print(m_CurrentState);
         // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
         m_CurrentState?.MyUpdate();
 
@@ -92,8 +92,9 @@ public class C_PlayerMotor : MonoBehaviour
     }
 
     // Detonador de Estado Agarrado, se llama desde el script del monstruo que agarra al jugador
-    public void GetGrabbed(C_HugAbilityTest monsterThatGrabbed, bool canMashOut)
+    public void GetGrabbed(C_Monster monsterThatGrabbed, Vector2 playerGrabbedPos, bool canMashOut)
     {
+        m_PlayerGrabbedPos = playerGrabbedPos;
         m_MonsterThatGrabbed = monsterThatGrabbed;
         ChangeState(new GrabedState(this));
         m_CanMashOutOfGrab = canMashOut;
@@ -247,8 +248,8 @@ public class C_PlayerMotor : MonoBehaviour
         public override void MyUpdate()
         {
             base.MyUpdate();
-            _PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition +
-                (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
+            //_PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
+            _PM.transform.position = _PM.m_PlayerGrabbedPos + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
             if (_PM.m_CanMashOutOfGrab)
             {
                 KeyMeshingMinigame();
@@ -261,7 +262,9 @@ public class C_PlayerMotor : MonoBehaviour
                 m_CurMashCount--;
                 if (m_CurMashCount <= 0)
                 {
-                    _PM.m_MonsterThatGrabbed.Release();
+                    //_PM.m_MonsterThatGrabbed.ReleaseGrab();
+                    // Accion 1 es liberarse del agarre
+                    _PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;
                     _PM.ChangeState(new RegularState(_PM));
                 }
             }

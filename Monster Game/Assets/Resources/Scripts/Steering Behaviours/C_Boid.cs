@@ -67,6 +67,14 @@ namespace SteeringBehaviours
         [SerializeField] float m_EvadeImpetu;
         [SerializeField] Color m_EvadeColor = Color.cyan;
 
+        [Header("PathFollower")]
+        [SerializeField] Transform[] m_Path;
+        [SerializeField] float m_PathPosArriveRatio;
+        [SerializeField] float m_PathImpetu;
+        [SerializeField] Color m_PathColor = Color.green;
+        private Transform[] m_CurrentPath;
+        private int m_PathIndex = 0;
+
         //[Header("Avoid")] // Usado para evitar obstaculos
 
         //[SerializeField] List<Transform> m_Targets = new List<Transform>();
@@ -127,9 +135,15 @@ namespace SteeringBehaviours
                 Debug.DrawLine(transform.position, transform.position + fleeForce, m_FleeRatioColor);
                 Forces += fleeForce;
             }
+            if (m_Path != null && m_Path.Length > 0)
+            {
+                var pathForce = FollowPath(m_Path, m_PathPosArriveRatio);
+                Debug.DrawLine(transform.position, transform.position + pathForce, m_PathColor);
+                Forces += pathForce;
+            }
 
             // -- Arrive -- 
-            m_Speed = Arrive(m_Speed, m_SeekTarget.position, m_ArriveRatio);
+            //m_Speed = Arrive(m_Speed, m_SeekTarget.position, m_ArriveRatio);
             // -- Calculate PastForce --
             m_PastForce = (m_NewForce * m_Mass) + (Forces * (1 - m_Mass));
             // -- Move GameObject With PastForce Aplied --
@@ -270,7 +284,38 @@ namespace SteeringBehaviours
         {
             return Pursue(other, arriveTime, impetu) * -1;
         }
+        public Vector3 FollowPath(Transform[] Path, float posArriveRatio)
+        {
+            // Declarar camino y reiniciar indice si el camino es diferente al actual
+            if (m_CurrentPath != Path)
+            {
+                m_CurrentPath = Path;
+                m_PathIndex = 0;
+            }
 
+            if (Path == null 
+                || Path.Length == 0 
+                || m_PathIndex >= m_CurrentPath.Length)
+            {
+                return Vector3.zero;
+            }
+
+            var target = m_CurrentPath[m_PathIndex].position;
+            var toTarget = target - transform.position;
+            var dist = toTarget.magnitude;
+
+            if (dist <= posArriveRatio)
+            {
+                m_PathIndex++;
+                if (m_PathIndex >= m_CurrentPath.Length)
+                {
+                    return Vector3.zero;
+                }
+                target = m_CurrentPath[m_PathIndex].position;
+            }
+
+            return Seek(target, m_PathImpetu);
+        }
         private void OnDrawGizmos()
         {
             if (m_SeekRatioTarget != null)
