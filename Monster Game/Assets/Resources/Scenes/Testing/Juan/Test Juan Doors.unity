@@ -127,6 +127,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 855215160837757924, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 855215160837757924, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3664039593314447649, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+      propertyPath: sonidoAbrir
+      value: 
+      objectReference: {fileID: 131669467}
+    - target: {fileID: 3664039593314447649, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+      propertyPath: sonidoBloqueado
+      value: 
+      objectReference: {fileID: 131669466}
     - target: {fileID: 3664039593314447649, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
       propertyPath: 'palancasNecesarias.Array.data[0]'
       value: 
@@ -147,6 +163,14 @@ PrefabInstance:
       propertyPath: 'palancasNecesarias.Array.data[4]'
       value: 
       objectReference: {fileID: 1472872805}
+    - target: {fileID: 4762880574365111035, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4762880574365111035, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7361061384371124029, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
       propertyPath: m_Name
       value: Metal Door
@@ -196,6 +220,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+--- !u!82 &131669466 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 4762880574365111035, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+  m_PrefabInstance: {fileID: 100908997}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &131669467 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 855215160837757924, guid: 48f91be2fa1e7fb40b440ea045f456d4, type: 3}
+  m_PrefabInstance: {fileID: 100908997}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &290157366
 GameObject:
   m_ObjectHideFlags: 0
@@ -890,6 +924,10 @@ PrefabInstance:
       propertyPath: anim
       value: 
       objectReference: {fileID: 465635341}
+    - target: {fileID: 3932723041595005040, guid: ae73c7007c04e6e45aa4cd11cdcf7758, type: 3}
+      propertyPath: activarPorRango
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4226106936846340675, guid: ae73c7007c04e6e45aa4cd11cdcf7758, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

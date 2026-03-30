@@ -6,7 +6,8 @@ public class PalancaScript : MonoBehaviour
     public KeyCode teclaActivar = KeyCode.L;
 
     [Header("Configuración")]
-    public bool soloUnaVez = false; // 👈 decides en el editor
+    public bool soloUnaVez = false;
+    public bool activarPorRango = false; // 👈 NUEVO
 
     public Animator anim;
 
@@ -19,13 +20,13 @@ public class PalancaScript : MonoBehaviour
             anim = GetComponent<Animator>();
         }
 
-        // Sincroniza animación inicial
         anim.SetBool("Activado", activado);
     }
 
     void Update()
     {
-        if (jugadorEnRango && Input.GetKeyDown(teclaActivar))
+        // Modo tecla
+        if (!activarPorRango && jugadorEnRango && Input.GetKeyDown(teclaActivar))
         {
             CambiarEstado();
         }
@@ -33,7 +34,6 @@ public class PalancaScript : MonoBehaviour
 
     void CambiarEstado()
     {
-        // Si es solo una vez y ya está activado, no hace nada
         if (soloUnaVez && activado)
             return;
 
@@ -56,6 +56,12 @@ public class PalancaScript : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             jugadorEnRango = true;
+
+            // Modo automático
+            if (activarPorRango)
+            {
+                CambiarEstado();
+            }
         }
     }
 
