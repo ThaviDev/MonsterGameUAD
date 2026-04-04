@@ -11,26 +11,36 @@ namespace SteeringBehaviours
         [SerializeField] float m_Speed;
         public float BoidSpeed { get { return m_Speed; } }
         [SerializeField] float m_MaxSpeed;
+        public float BoidMaxSpeed { set { m_MaxSpeed = value; } }
+        [SerializeField] bool m_UseArriveSeek;
 
         [Header("Seek")]
         [SerializeField] Transform m_SeekTarget;
+        public Transform SeekTarget { get { return m_SeekTarget; } set { m_SeekTarget = value; } }
         [SerializeField] float m_SeekImpetu;
+        public float SeekImpetu { get { return m_SeekImpetu; } set { m_SeekImpetu = value; } }
         //public Color m_SeekColor = new Color(1,1,1,1);
         [SerializeField] Color m_SeekColor = Color.red;
 
         [Header("Flee")]
         [SerializeField] Transform m_FleeTarget;
+        public Transform FleeTarget { get { return m_FleeTarget; } set { m_FleeTarget = value; } }
         [SerializeField] float m_FleeImpetu;
+        public float FleeImpetu { get {return m_FleeImpetu; } set { m_FleeImpetu = value; } }
         [SerializeField] Color m_FleeColor = Color.yellow;
 
         [Header("SeekRatio")] // Seguir hasta cierto rango
         [SerializeField] Transform m_SeekRatioTarget;
+        public Transform SeekRatioTarget { get { return m_SeekRatioTarget; } set { m_SeekRatioTarget = value; } }
         [SerializeField] float m_SeekRatioImpetu;
-        [SerializeField] float m_SeekRatio;
+        public float SeekRatioImpetu { get { return m_SeekRatioImpetu; } set { m_SeekRatioImpetu = value; } }
+        [SerializeField] float m_SeekRatioRatio;
+        public float SeekRatioValue { get { return m_SeekRatioRatio; } set { m_SeekRatioRatio = value; } }
         [SerializeField] Color m_SeekRatioColor = Color.red;
 
         [Header("FleeRatio")] // Huir solo al estar en el rango
         [SerializeField] Transform m_FleeRatioTarget;
+        public Transform FleeRatioTarget { get { return m_FleeRatioTarget; } set { m_FleeRatioTarget = value; } }
         [SerializeField] float m_FleeRatioImpetu;
         [SerializeField] float m_FleeRatio;
         [SerializeField] Color m_FleeRatioColor = Color.yellow;
@@ -57,18 +67,21 @@ namespace SteeringBehaviours
 
         [Header("Pursue")]
         [SerializeField] C_Boid m_PursueOtherBoid;
+        public C_Boid PursueOtherBoid { get { return m_PursueOtherBoid; } set { m_PursueOtherBoid = value; } }
         [SerializeField] float m_PursueTimeToArrive;
         [SerializeField] float m_PursueImpetu;
         [SerializeField] Color m_PursueColor = Color.magenta;
 
         [Header("Evade")] // Usado para Huir de un perseguidor
         [SerializeField] C_Boid m_EvadeOtherBoid;
+        public C_Boid EvadeOtherBoid { get { return m_EvadeOtherBoid; } set { m_EvadeOtherBoid = value; } }
         [SerializeField] float m_EvadeTimeAsEscape;
         [SerializeField] float m_EvadeImpetu;
         [SerializeField] Color m_EvadeColor = Color.cyan;
 
         [Header("PathFollower")]
         [SerializeField] Transform[] m_Path;
+        public Transform[] Path { get { return m_Path; } set { m_Path = value; } }
         [SerializeField] float m_PathPosArriveRatio;
         [SerializeField] float m_PathImpetu;
         [SerializeField] Color m_PathColor = Color.green;
@@ -125,7 +138,7 @@ namespace SteeringBehaviours
             }
             if (m_SeekRatioTarget != null)
             {
-                var seekForce = SeekRatio(m_SeekRatio, m_SeekRatioTarget.position, m_SeekRatioImpetu);
+                var seekForce = SeekRatio(m_SeekRatioRatio, m_SeekRatioTarget.position, m_SeekRatioImpetu);
                 Debug.DrawLine(transform.position, transform.position + seekForce, m_SeekRatioColor);
                 Forces += seekForce;
             }
@@ -143,7 +156,10 @@ namespace SteeringBehaviours
             }
 
             // -- Arrive -- 
-            //m_Speed = Arrive(m_Speed, m_SeekTarget.position, m_ArriveRatio);
+            if (m_UseArriveSeek)
+            {
+                m_Speed = Arrive(m_Speed, m_SeekTarget.position, m_ArriveRatio);
+            }
             // -- Calculate PastForce --
             m_PastForce = (m_NewForce * m_Mass) + (Forces * (1 - m_Mass));
             // -- Move GameObject With PastForce Aplied --
@@ -321,7 +337,7 @@ namespace SteeringBehaviours
             if (m_SeekRatioTarget != null)
             {
                 Gizmos.color = m_SeekRatioColor;
-                Gizmos.DrawWireSphere(m_SeekRatioTarget.position, m_SeekRatio);
+                Gizmos.DrawWireSphere(m_SeekRatioTarget.position, m_SeekRatioRatio);
             }
             if (m_FleeRatioTarget != null)
             {

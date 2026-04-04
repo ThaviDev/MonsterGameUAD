@@ -35,15 +35,11 @@ public class C_M1_Animations : MonoBehaviour
         {
             m_Animator.SetBool("Grab", false);
         }
-        if (GrabPlayer)
-        {
-            m_StartGrabAnimation = false;
-        }
     }
     // Esta funcion es accedida por un Animation Event
     public void GrabTrigger()
     {
         m_GrabPlayer = true;
-        //m_StartGrabAnimation = false;
+        m_StartGrabAnimation = false;
     }
 }

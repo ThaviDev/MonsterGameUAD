@@ -187,13 +187,13 @@ AnimatorStateMachine:
     m_Position: {x: 330, y: -20, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 6103297733485279946}
-    m_Position: {x: 550, y: 50, z: 0}
+    m_Position: {x: 40, y: 120, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -7095999369790351477}
-    m_Position: {x: 540, y: 120, z: 0}
+    m_Position: {x: 40, y: 190, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 9079016925962796659}
-    m_Position: {x: 330, y: 200, z: 0}
+    m_Position: {x: 160, y: 250, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -4105648737141924675}
@@ -221,6 +221,12 @@ AnimatorController:
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   - m_Name: HasPlayer
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: SpawnedIn
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
