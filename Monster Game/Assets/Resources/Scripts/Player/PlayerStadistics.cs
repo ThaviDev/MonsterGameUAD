@@ -130,12 +130,12 @@ public class PlayerStadistics : MonoBehaviour
     {
         _canGetHit = false;
     }
-    private void PlayerWasHit(Collider2D otherCol)
+    private void PlayerWasHit(Collider2D otherCol, float damageAmount)
     {
         if (!_canGetHit) {
             return;
         }
-        _pyrHealth.SCOB_Value -= _hitDamage;
+        _pyrHealth.SCOB_Value -= damageAmount;
         if (_pyrStamina.SCOB_Value > _pyrHealth.SCOB_Value)
         {
             _pyrStamina.SCOB_Value = _pyrHealth.SCOB_Value;

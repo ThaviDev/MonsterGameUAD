@@ -144,7 +144,7 @@ public class PlayerMovement : MonoBehaviour
         */
     }
 
-    private void PlayerWasHit(Collider2D otherCol)
+    private void PlayerWasHit(Collider2D otherCol, float damageAmount)
     {
         _hasSelfControl += 1;
         Transform myTrans = transform;

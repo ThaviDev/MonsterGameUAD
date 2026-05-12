@@ -14,6 +14,10 @@ public class C_M1_Motor : C_Monster
     [Header("Grab Ability Settings")]
     [SerializeField] Vector2 m_ColOffset = new Vector2(-1, 0);
     [SerializeField] Vector2 m_ColSize = new Vector2(2, 2);
+
+    // Example: each child can have its own typed state machine
+    //private StateMachine<C_M1_Motor> m_M1StateMachine;
+
     protected override void Start()
     {
         base.Start();
@@ -22,11 +26,12 @@ public class C_M1_Motor : C_Monster
         {
             m_PlayerLayerMask = LayerMask.GetMask("Player");
         }
+        //m_M1StateMachine.ChangeState(new M1_IdleState(this));
     }
     protected override void Update()
     {
         base.Update();
-        // El codigo de aqui aplicara sin acceder a nada de otro monstruo
+
         // Animation system drives the grab attempt via GrabPlayer flag.
         if (m_AnimMan != null && m_AnimMan.GrabPlayer)
         {
@@ -54,9 +59,7 @@ public class C_M1_Motor : C_Monster
             if (m_AnimMan != null)
                 m_AnimMan.HasPlayer = true;
             m_PlayerGrabbed = hit.gameObject;
-            m_PlayerGrabbed.GetComponent<C_PlayerMotor>()?.GetGrabbed(this,m_PlayerGrabbedPosition, true);
-            //m_JugadorCapturado.GetComponent<C_PlayerMotor>()?.ChangeState(new CapturedState(m_JugadorCapturado.GetComponent<C_PlayerMotor>()));
-            //m_JugadorCapturado.transform.position = transform.position; // snap to hugger position; in a real scenario you'd want to lerp this or use a joint
+            m_PlayerGrabbed.GetComponent<C_PlayerMotor>()?.GetGrabbed(this, m_PlayerGrabbedPosition, true);
             m_DidIGrabPlayer = true;
         }
         else
@@ -83,4 +86,76 @@ public class C_M1_Motor : C_Monster
                 m_AnimMan.StartGrabAnimation = true;
         }
     }
+    public override void Spawn()
+    {
+        //base.Spawn();
+        //m_IsSpawnedIn = true;
+        //ChangeState(new TreeSpawnedState(this));
+    }
+    public override void Despawn()
+    {
+        //base.Despawn();
+        //m_IsSpawnedIn = false;
+        //ChangeState(new TreeDespawnedState(this));
+    }
+
+    private class TreeSpawnedState : SpawnedState
+    {
+        public TreeSpawnedState(C_Monster Monster) : base(Monster) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            print("Spawne como arbol");
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+            // example: add some spawn behavior specific to M1, like a spawn animation or effect
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+            // example: clean up spawn effect or reset flags
+        }
+    }
+    private class TreeDespawnedState : DespawnedState
+    {
+        public TreeDespawnedState(C_Monster Monster) : base(Monster) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            //ReleaseGrab();// ensure we release the player if we despawn while grabbing
+            print("Despawne como arbol");
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+    }
+
+    // Example child state -- create as many states as required for this monster
+    /*
+    private class M1_IdleState : State<C_M1_Motor>
+    {
+        public M1_IdleState(C_M1_Motor m) : base(m) { }
+        public override void Enter()
+        {
+            // example: set animator flag
+            if (Context.m_AnimMan != null)
+                Context.m_AnimMan.IsIdle = true;
+        }
+        public override void Update()
+        {
+            // child-specific per-frame logic here
+        }
+        public override void Exit()
+        {
+            if (Context.m_AnimMan != null)
+                Context.m_AnimMan.IsIdle = false;
+        }
+    }*/
 }

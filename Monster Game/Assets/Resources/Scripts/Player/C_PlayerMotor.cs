@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class C_PlayerMotor : MonoBehaviour
 {
-    public static Action<Collider2D> OnPyrHit;
+    public static Action<Collider2D, float> OnPyrHit;
     public static Action OnPanic;
     public static Action OnRelax;
     public static Action OnPyrDeath;
@@ -142,7 +142,7 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyTriggerColision(otherCol);
             if (otherCol.gameObject.layer == 6) // Monster Layer
             {
-                OnPyrHit?.Invoke(otherCol);
+                OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
                 _PM.CheckIfDeath();
                 /*
                 if (_PM.m_playerStats.GetBPM >= 150)
@@ -185,7 +185,8 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyTriggerColision(otherCol);
             if (otherCol.gameObject.layer == 6) // Monster Layer
             {
-                OnPyrHit?.Invoke(otherCol);
+                // Luego hay que detectar mejor esto
+                OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
                 OnPyrDeath?.Invoke();
             }
         }
@@ -248,6 +249,10 @@ public class C_PlayerMotor : MonoBehaviour
         public override void MyUpdate()
         {
             base.MyUpdate();
+
+            _PM.m_playerStats.RecieveDamage(_PM.m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),
+                _PM.m_MonsterThatGrabbed.GrabDamage);
+            _PM.CheckIfDeath();
             //_PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
             _PM.transform.position = _PM.m_PlayerGrabbedPos + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
             if (_PM.m_CanMashOutOfGrab)

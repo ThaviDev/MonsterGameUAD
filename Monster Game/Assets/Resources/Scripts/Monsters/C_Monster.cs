@@ -28,7 +28,13 @@ public class C_Monster : MonoBehaviour
     [SerializeField] private float m_EnergySetToDespawn;
     [SerializeField] private float m_EnergyRandomScaleSpawn;
     [SerializeField] private float m_EnergyRandomScaleDespawn;
-    
+
+    [SerializeField] private float m_GrabDamage;
+    public float GrabDamage { get { return m_GrabDamage; } }
+    [SerializeField] private float m_GroundHitDamage;
+    public float GroundHitDamage { get { return m_GroundHitDamage; } }
+    [SerializeField] private float m_ChargeDamage;
+    public float ChargeDamage { get { return m_ChargeDamage; } }
     // Player Action 1 es: Cualquier accion que el jugador toma para contrarestar alguna habilidad del monstruo
     /* Arbol: Mash out para liberarse del agarre
      * 
@@ -36,8 +42,10 @@ public class C_Monster : MonoBehaviour
     protected bool m_PlayerAction1;
     public bool PlayerAction1_Bool { get { return m_PlayerAction1; } set { m_PlayerAction1 = value; } }
 
-
+    // Generic state machine for base-level states (spawn/despawn)
+    //protected StateMachine<C_Monster> m_StateMachine;
     protected MonsterState m_CurrentState;
+
     protected virtual void Start()
     {
         if (m_Boid == null)
@@ -61,6 +69,7 @@ public class C_Monster : MonoBehaviour
     {
         // El codigo de aqui aplicara sin acceder a nada de otro monstruo
         Energy();
+        m_CurrentState?.MyUpdate();
     }
 
     protected virtual void RandomizeSpawnAndDespawnValues()
@@ -94,6 +103,7 @@ public class C_Monster : MonoBehaviour
             m_Energy += m_EnergyRegenRate * Time.deltaTime;
             if (m_Energy >= m_EnergySetToSpawn)
             {
+                print("Spawnear");
                 BegginSpawning();
             }
         }
@@ -104,12 +114,16 @@ public class C_Monster : MonoBehaviour
         m_VisualAnim.SetBool("SpawnedIn", true);
         m_IsSpawnedIn = true;
         RandomizeSpawnAndDespawnValues();
+        // Aquí sería mejor tener una animacion de spawn, pero por ahora se hace inmediatamente
+        Spawn();
     }
     protected virtual void BegginDespawning()
     {
         m_VisualAnim.SetBool("SpawnedIn", false);
         m_IsSpawnedIn = false;
         RandomizeSpawnAndDespawnValues();
+        // Aquí sería mejor tener una animacion de despawn, pero por ahora se hace inmediatamente
+        Despawn();
     }
     // Metodo llamado por la ANIMACION
     public virtual void Spawn()
@@ -126,12 +140,10 @@ public class C_Monster : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        MyColisionTrigger(col);
+         m_CurrentState?.MyTriggerColision(col);
     }
-    public virtual void MyColisionTrigger(Collider2D col)
-    {
 
-    }
+    // Base spawn/despawn states implemented using generic State<T>
     public abstract class MonsterState
     {
         protected C_Monster _M;
@@ -156,11 +168,12 @@ public class C_Monster : MonoBehaviour
     }
     protected class DespawnedState : MonsterState
     {
-        public DespawnedState(C_Monster monster) : base(monster) { }
+        public DespawnedState(C_Monster Monster) : base(Monster) { }
         public override void MyEnter()
         {
             _M.m_VisualSpr.enabled = false;
-
+            _M.m_Boid.BoidMaxSpeed = 0;
+            print("Despawneo Default");
         }
         public override void MyUpdate()
         {
@@ -173,22 +186,18 @@ public class C_Monster : MonoBehaviour
     }
     protected class SpawnedState : MonsterState
     {
-        public SpawnedState(C_Monster monster) : base(monster) { }
+        public SpawnedState(C_Monster Monster) : base(Monster) { }
         public override void MyEnter()
         {
-            print("Entered Idle State");
+            _M.m_Boid.BoidMaxSpeed = _M.m_Speed;
         }
         public override void MyUpdate()
         {
-            // Logic for idle behavior
+
         }
         public override void MyExit()
         {
-            print("Exited Idle State");
+
         }
     }
-    /* Quiza algunos otros estados de monstruos
-     * - Aturdido
-     * - 
-     */
 }

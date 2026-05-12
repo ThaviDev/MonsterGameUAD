@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor.Build;
+#endif
 using UnityEngine;
 using UnityEngine.Tilemaps;
 using UnityEngine.UIElements;
