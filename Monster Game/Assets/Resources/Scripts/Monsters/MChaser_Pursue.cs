@@ -7,7 +7,7 @@ public class MChaser_Pursue : MonoBehaviour
     // Igualar ese prediction point al target
     // Hacer la lógica de que el target se acerce al jugador en cierto rango (checa si necesita time to arrive)
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    private PlayerPredictionPoint _pyrPredPoint; // Accede a su posicion y su arrive time
+    private C_PlayerPredictionPoint _pyrPredPoint; // Accede a su posicion y su arrive time
     private Transform _mChaserTrans;
     private AIDestinationSetter _destinySet;
     private bool _monsterIsActive;
@@ -19,7 +19,7 @@ public class MChaser_Pursue : MonoBehaviour
 
     void Start()
     {
-        _pyrPredPoint = FindAnyObjectByType<PlayerPredictionPoint>();
+        _pyrPredPoint = FindAnyObjectByType<C_PlayerPredictionPoint>();
         _destinySet.target = transform;
         _monsterIsActive = false;
         _monsterIsAlive = true;

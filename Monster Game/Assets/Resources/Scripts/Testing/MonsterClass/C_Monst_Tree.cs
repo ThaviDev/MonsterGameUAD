@@ -45,14 +45,14 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyEnter()
         {
             base.MyEnter();
-            print("Estoy Iniciando Agarre");
+            m_Tree.Visual.AnimAbility();
+            //print("Estoy Iniciando Agarre");
         }
         public override void MyUpdate()
         {
             base.MyUpdate();
             _monst.DecreaseEnergy();
             _monst.DecreaseAgression();
-            //tree.m_Visual.AnimSpawn();
         }
         private void ApplyGrabDamage()
         {

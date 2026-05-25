@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerPredictionPoint : MonoBehaviour
+public class C_PlayerPredictionPoint : MonoBehaviour
 {
     [SerializeField] float _arriveTime;
     [SerializeField] C_PlayerStats _pStats; // para sacar speed y direction
@@ -14,7 +14,7 @@ public class PlayerPredictionPoint : MonoBehaviour
     public Transform GetPyrTrans { get { return _pyrTrans; } }
     void Start()
     {
-
+        _pyrTrans = FindAnyObjectByType<C_PlayerMotor>().transform;
     }
     void Update()
     {

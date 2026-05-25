@@ -7,6 +7,9 @@ public class S_Chasing : C_MonstState
     {
         base.MyEnter();
         Debug.Log("Estoy persiguiendo");
+        _monst.Visual.AnimChase();
+
+        _monst.Boid.SeekTarget = _monst.PredictionPoint;
     }
     public override void MyUpdate()
     {
@@ -21,7 +24,6 @@ public class S_Chasing : C_MonstState
     public override void MyTriggerColision(Collider2D other)
     {
         base.MyTriggerColision(other);
-        // Aquí iría la lógica de colisión con el jugador, como infligir daño
     }
 
 }

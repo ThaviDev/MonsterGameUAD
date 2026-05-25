@@ -6,7 +6,11 @@ public class S_Spawned : C_MonstState
     public override void MyEnter()
     {
         base.MyEnter();
+        _monst.Visual.AnimSpawn();
         Debug.Log("Estoy Spawneado");
+
+        _monst.Boid.SeekImpetu = 1;
+        _monst.Boid.BoidMaxSpeed = _monst.SpeedCur;
     }
     public override void MyUpdate()
     {

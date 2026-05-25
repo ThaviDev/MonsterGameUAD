@@ -6,7 +6,11 @@ public class S_Despawned : C_MonstState
     public override void MyEnter()
     {
         base.MyEnter();
+        _monst.Visual.AnimDespawn();
         Debug.Log("Estoy Despawneado");
+        _monst.Boid.SeekImpetu = 0;
+        _monst.Boid.BoidMaxSpeed = 0;
+        _monst.Boid.SeekTarget = null;
     }
     public override void MyUpdate()
     {

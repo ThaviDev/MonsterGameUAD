@@ -6,7 +6,13 @@ public class C_MonsterMotor : MonoBehaviour
     [Header("References")]
     protected GameObject m_PlayerObjRef;
     [SerializeField] protected C_Boid m_Boid;
+    public C_Boid Boid { get { return m_Boid; } }
     [SerializeField] protected C_MonsAnimBase m_Visual;
+    public C_MonsAnimBase Visual { get { return m_Visual; } }
+    [SerializeField] protected C_PlayerMotor m_PlayerMotor;
+    public C_PlayerMotor PlayerMotor { get { return m_PlayerMotor; } }
+    [SerializeField] protected Transform m_PredictionPoint;
+    public Transform PredictionPoint { get { return m_PredictionPoint; } }
     //[SerializeField] protected SpriteRenderer m_VisualSpr;
     //[SerializeField] protected Animator m_VisualAnim;
 
@@ -21,14 +27,14 @@ public class C_MonsterMotor : MonoBehaviour
     [SerializeField] protected float m_EnergyMinToSpawn = 500f;
     // The specific amount of energy for the monster to spawn
     [SerializeField] protected float m_EnergySetToSpawn = 750f;
-    protected float m_EnergyRandomScaleSpawn;
+    [SerializeField] protected float m_EnergyRandomScaleSpawn;
     [SerializeField] protected float m_MinimumTimeDespawned = 3f;
 
     // The minimum amount of energy the monster identifies to despawn
     [SerializeField] protected float m_EnergyMaxToDespawn = 200f;
     // The specific amount of energy for the monster to despawn
     [SerializeField] protected float m_EnergySetToDespawn = 100f;
-    protected float m_EnergyRandomScaleDespawn;
+    [SerializeField] protected float m_EnergyRandomScaleDespawn;
 
     [SerializeField] protected float m_Agression = 0;
     public float Agresion { get { return m_Agression; } }
@@ -38,21 +44,25 @@ public class C_MonsterMotor : MonoBehaviour
     [SerializeField] protected float m_AgressionChaseThreshold = 500f;
     public float AgressionChaseThreshold { get { return m_AgressionChaseThreshold; } }
 
-
     [SerializeField] protected float m_SpeedCur = 1;
+    public float SpeedCur { get { return m_SpeedCur; } }
     [SerializeField] protected float m_SpeedMax = 5;
 
     [Header("Settings")]
 
     [SerializeField] protected bool m_IsSpawnedIn;
 
-    [SerializeField] protected Vector3 m_PredictionPoint;
     [SerializeField] protected Vector3 m_StealthPoint;
 
     protected C_MonstState m_CurrentState;
     protected virtual void Start()
     {
         m_Visual = gameObject.transform.GetChild(0).gameObject.transform.GetComponent<C_MonsAnimBase>();
+        m_Boid = GetComponent<C_Boid>();
+        m_PlayerMotor = FindFirstObjectByType<C_PlayerMotor>();
+        m_PredictionPoint = FindFirstObjectByType<C_PlayerPredictionPoint>().transform;
+        RandomizeSpawnAndDespawnValues();
+        ChangeState(new S_Despawned(this));
     }
 
     protected virtual void Update()
@@ -111,7 +121,7 @@ public class C_MonsterMotor : MonoBehaviour
     {
         // Empezar animacion de spawn
         //m_VisualAnim.SetBool("SpawnedIn", true);
-        m_Visual.AnimSpawn();
+        //m_Visual.AnimSpawn();
         m_IsSpawnedIn = true;
         RandomizeSpawnAndDespawnValues();
         // Aquí sería mejor tener una animacion de spawn, pero por ahora se hace inmediatamente
@@ -120,7 +130,7 @@ public class C_MonsterMotor : MonoBehaviour
     protected virtual void CallDespawn()
     {
         //m_VisualAnim.SetBool("SpawnedIn", false);
-        m_Visual.AnimDespawn();
+        //m_Visual.AnimDespawn();
         m_IsSpawnedIn = false;
         RandomizeSpawnAndDespawnValues();
         // Aquí sería mejor tener una animacion de despawn, pero por ahora se hace inmediatamente
