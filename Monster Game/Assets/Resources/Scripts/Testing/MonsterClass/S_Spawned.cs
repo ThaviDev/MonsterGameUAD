@@ -6,6 +6,10 @@ public class S_Spawned : C_MonstState
     public override void MyEnter()
     {
         base.MyEnter();
+        if (_monst == null)
+        {
+            Debug.LogError("No tengo _monst");
+        }
         _monst.Visual.AnimSpawn();
         Debug.Log("Estoy Spawneado");
 

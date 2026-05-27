@@ -9,35 +9,34 @@ public class C_MonsAnimBase : MonoBehaviour
     protected bool m_IsDespawning;
     [SerializeField] public Color[] m_AnimColors = new Color[6];
 
-    private void Awake()
+    protected virtual void Awake()
     {
         m_Anim = GetComponent<Animator>();
         m_SprRend = GetComponent<SpriteRenderer>();
     }
-    public void AnimSpawn()
+    public virtual void AnimSpawn()
     {
         m_SprRend.color = m_AnimColors[0];
     }
-    public void AnimDespawn()
+    public virtual void AnimDespawn()
     {
         print ("Despawn Color");
         m_SprRend.color = m_AnimColors[1];
     }
-    public void AnimIdle()
+    public virtual void AnimIdle()
     {
         m_SprRend.color = m_AnimColors[2];
     }
-    public void AnimChase()
+    public virtual void AnimChase()
     {
         m_SprRend.color = m_AnimColors[3];
-
     }
-    public void AnimStealth()
+    public virtual void AnimStealth()
     {
         m_SprRend.color = m_AnimColors[4];
 
     }
-    public void AnimAbility()
+    public virtual void AnimAbility()
     {
         m_SprRend.color = m_AnimColors[5];
     }

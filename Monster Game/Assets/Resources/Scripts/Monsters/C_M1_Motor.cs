@@ -59,7 +59,7 @@ public class C_M1_Motor : C_Monster
             if (m_AnimMan != null)
                 m_AnimMan.HasPlayer = true;
             m_PlayerGrabbed = hit.gameObject;
-            m_PlayerGrabbed.GetComponent<C_PlayerMotor>()?.GetGrabbed(this, m_PlayerGrabbedPosition, true);
+            //m_PlayerGrabbed.GetComponent<C_PlayerMotor>()?.GetGrabbed(this, m_PlayerGrabbedPosition, true);
             m_DidIGrabPlayer = true;
         }
         else

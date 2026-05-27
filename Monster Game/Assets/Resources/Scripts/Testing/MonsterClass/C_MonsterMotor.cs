@@ -4,6 +4,9 @@ using UnityEngine;
 public class C_MonsterMotor : MonoBehaviour
 {
     [Header("References")]
+    // Expose layer mask so it's editable in Inspector; fallback to "Player" in Start.
+    [SerializeField] protected LayerMask m_PlayerLayerMask;
+    public LayerMask PlayerLayerMask { get { return m_PlayerLayerMask; } }
     protected GameObject m_PlayerObjRef;
     [SerializeField] protected C_Boid m_Boid;
     public C_Boid Boid { get { return m_Boid; } }

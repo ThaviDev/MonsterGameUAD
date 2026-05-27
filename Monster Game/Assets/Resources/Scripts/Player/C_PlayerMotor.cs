@@ -19,7 +19,7 @@ public class C_PlayerMotor : MonoBehaviour
 
     private PlayerState m_CurrentState;
 
-    private C_Monster m_MonsterThatGrabbed;
+    private C_MonsterMotor m_MonsterThatGrabbed;
     private Vector2 m_PlayerGrabbedPos;
     private bool m_CanMashOutOfGrab;
     [SerializeField] private int m_GrabMashCount;
@@ -92,7 +92,7 @@ public class C_PlayerMotor : MonoBehaviour
     }
 
     // Detonador de Estado Agarrado, se llama desde el script del monstruo que agarra al jugador
-    public void GetGrabbed(C_Monster monsterThatGrabbed, Vector2 playerGrabbedPos, bool canMashOut)
+    public void GetGrabbed(C_MonsterMotor monsterThatGrabbed, Vector2 playerGrabbedPos, bool canMashOut)
     {
         m_PlayerGrabbedPos = playerGrabbedPos;
         m_MonsterThatGrabbed = monsterThatGrabbed;
@@ -233,14 +233,22 @@ public class C_PlayerMotor : MonoBehaviour
     }
     private class GrabedState : PlayerState
     {
-        public GrabedState(C_PlayerMotor motor) : base(motor) { }
+        private float m_GrabDamage;
         private int m_CurMashCount;
+
+        public GrabedState(C_PlayerMotor motor) : base(motor) { }
         public override void MyEnter()
         {
             base.MyEnter();
             // Temporal Feedback Queue
             _PM.m_sprite.color = Color.red;
             m_CurMashCount = _PM.m_GrabMashCount;
+            if (_PM.m_MonsterThatGrabbed is C_Monst_Tree)
+            {
+                // Do something specific for C_Monst_Tree
+                m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
+                m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
+            }
         }
         public override void MyExit()
         {
@@ -250,8 +258,9 @@ public class C_PlayerMotor : MonoBehaviour
         {
             base.MyUpdate();
 
-            _PM.m_playerStats.RecieveDamage(_PM.m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),
-                _PM.m_MonsterThatGrabbed.GrabDamage);
+            _PM.m_playerStats.RecieveDamage
+                (_PM.m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),
+                m_GrabDamage);
             _PM.CheckIfDeath();
             //_PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
             _PM.transform.position = _PM.m_PlayerGrabbedPos + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
@@ -269,7 +278,9 @@ public class C_PlayerMotor : MonoBehaviour
                 {
                     //_PM.m_MonsterThatGrabbed.ReleaseGrab();
                     // Accion 1 es liberarse del agarre
-                    _PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;
+
+                    //_PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;
+
                     _PM.ChangeState(new RegularState(_PM));
                 }
             }
