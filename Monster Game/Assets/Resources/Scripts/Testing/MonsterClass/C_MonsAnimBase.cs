@@ -16,28 +16,22 @@ public class C_MonsAnimBase : MonoBehaviour
     }
     public virtual void AnimSpawn()
     {
-        m_SprRend.color = m_AnimColors[0];
+        m_Anim.SetBool("IsSpawned", true);
     }
     public virtual void AnimDespawn()
     {
-        print ("Despawn Color");
-        m_SprRend.color = m_AnimColors[1];
+        m_Anim.SetBool("IsSpawned", false);
     }
     public virtual void AnimIdle()
     {
-        m_SprRend.color = m_AnimColors[2];
+        m_Anim.SetBool("IsSpawned", true);
     }
     public virtual void AnimChase()
     {
-        m_SprRend.color = m_AnimColors[3];
+        m_Anim.SetBool("IsAggressive", true);
     }
     public virtual void AnimStealth()
     {
-        m_SprRend.color = m_AnimColors[4];
-
-    }
-    public virtual void AnimAbility()
-    {
-        m_SprRend.color = m_AnimColors[5];
+        m_Anim.SetBool("IsAggressive", false);
     }
 }

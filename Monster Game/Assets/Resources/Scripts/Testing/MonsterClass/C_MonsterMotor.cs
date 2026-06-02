@@ -57,7 +57,7 @@ public class C_MonsterMotor : MonoBehaviour
 
     [SerializeField] protected Vector3 m_StealthPoint;
 
-    protected C_MonstState m_CurrentState;
+    public C_MonstState m_CurrentState;
     protected virtual void Start()
     {
         m_Visual = gameObject.transform.GetChild(0).gameObject.transform.GetComponent<C_MonsAnimBase>();

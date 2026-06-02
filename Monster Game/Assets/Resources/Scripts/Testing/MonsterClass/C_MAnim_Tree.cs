@@ -5,7 +5,7 @@ public class C_MAnim_Tree : C_MonsAnimBase
     private C_Monst_Tree m_TreeMotor;
     //private bool m_StartGrabAnim;
     private bool m_GrabPlayer;
-    private bool m_isPlayerGrabed; // Funcion de Motor para
+    private bool m_isPlayerGrabed;
     //private bool m_ReleasePlayer;
     //private bool m_StartSlamAnim;
     private bool m_Slam;
@@ -23,9 +23,12 @@ public class C_MAnim_Tree : C_MonsAnimBase
     }
     private void Update()
     {
-        if (!m_isPlayerGrabed)
+        if (m_isPlayerGrabed)
         {
-            AnimationRelease();
+            m_Anim.SetBool("HasPlayer", true);
+        } else
+        {
+            m_Anim.SetBool("HasPlayer", false);
         }
     }
     public override void AnimSpawn()
@@ -36,29 +39,34 @@ public class C_MAnim_Tree : C_MonsAnimBase
     {
         base.AnimIdle();
     }
-    public void AnimationGrab()
+    public void AnimGrab()
     {
-        m_Anim.SetBool("Grab", true);
+        m_Anim.SetBool("Grabing", true);
     }
     public void TriggerGrabFunction()
     {
         m_GrabPlayer = true;
+        if (m_TreeMotor.m_CurrentState is S_Chasing)
+        {
+            
+        }
     }
-    private void AnimationRelease()
+    public void AnimGrabRelease()
     {
-        m_Anim.SetBool("Grab", false);
+        m_Anim.SetBool("Grabing", false);
+        m_GrabPlayer = false;
     }
-    public void AnimationSlam()
+    public void AnimSlam()
     {
-        m_Anim.SetBool("Slam", true);
+        m_Anim.SetBool("Slamimg", true);
     }
     public void TriggerSlamFunction()
     {
         m_Slam = true;
     }
-    public void AnimationCharge()
+    public void AnimCharge()
     {
-        m_Anim.SetBool("Charge", true);
+        m_Anim.SetBool("Charging", true);
     }
     public void TriggerChargeFunction()
     {

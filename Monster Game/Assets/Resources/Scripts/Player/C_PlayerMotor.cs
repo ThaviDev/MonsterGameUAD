@@ -246,7 +246,7 @@ public class C_PlayerMotor : MonoBehaviour
             if (_PM.m_MonsterThatGrabbed is C_Monst_Tree)
             {
                 // Do something specific for C_Monst_Tree
-                m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
+                //m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
                 m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
             }
         }
@@ -271,15 +271,20 @@ public class C_PlayerMotor : MonoBehaviour
         }
         private void KeyMeshingMinigame()
         {
+            Debug.Log("Cantidad de clicks necesarias: "+m_CurMashCount);
             if (PlayerInputs.Instance.InteractAndPickUpItemBool)
             {
+                Debug.Log("Player se liberó del agarre por mash out!");
+
                 m_CurMashCount--;
                 if (m_CurMashCount <= 0)
                 {
                     //_PM.m_MonsterThatGrabbed.ReleaseGrab();
-                    // Accion 1 es liberarse del agarre
 
                     //_PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;
+                    var Tree = _PM.m_MonsterThatGrabbed as C_Monst_Tree;
+                    var TreeVar = Tree.m_CurrentState as C_Monst_Tree.S_Tree_Grab;
+                    TreeVar.ReleasePlayer = true;
 
                     _PM.ChangeState(new RegularState(_PM));
                 }
