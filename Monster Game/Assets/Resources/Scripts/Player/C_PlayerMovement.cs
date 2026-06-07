@@ -1,36 +1,41 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class C_PlayerMovement : MonoBehaviour
 {
     private Rigidbody2D _rb;
     //[SerializeField] PlayerStadistics _playerStats;
-    [SerializeField] C_PlayerStats _playerStats;
+    [SerializeField] C_PlayerStats m_playerStats;
 
-    [SerializeField] C_DashTrail _dashTrail;
-    [SerializeField] GameObject _vfx_PlayerJump;
+    [SerializeField] C_DashTrail m_dashTrail;
+    [SerializeField] GameObject m_vfx_PlayerJump;
 
-    Vector2 _movementDirection;
-    bool _isPressingRun;
-    bool _isPressingBreathe;
-    float _moveStatusCooldown = 0;
+    Vector2 m_movementDirection;
+    bool m_isPressingRun;
+    bool m_isPressingBreathe;
+    float m_moveStatusCooldown = 0;
 
-    private float _hasSelfControl = 0;
+    private float m_hasSelfControl = 0;
 
     //[SerializeField] FloatSCOB _pyrStamina;
-    [SerializeField] FloatSCOB _pyrHealth;
+    //[SerializeField] FloatSCOB m_pyrHealth;
 
-    [SerializeField] float _damageKnockback = 5f;
+    // Multiplica el danio por el cual el jugador es golpeado
+    [SerializeField] float m_damageKnockbackMultiplier = 2f;
 
-    [SerializeField] int _movementStatus;
-    public int GetMovementStatus
-    {
-        get { return _movementStatus; }
-    }
+    /* Determina el estado de velocidad del jugador
+     * 0 = Idle
+     * 1 = Caminata Normal
+     * 2 = Trotar
+     * 3 = Correr
+     */
+    [SerializeField] int m_movementStatus;
+    public int GetMovementStatus { get { return m_movementStatus; } }
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
 
         C_PlayerMotor.OnPyrHit += PlayerWasHit;
+
         C_PlayerMotor.OnPyrDeath += PlayerNoMove;
         C_PlayerMotor.OnPanic += PlayerNoMove;
         C_PlayerMotor.OnRelax += PlayerCanMove;
@@ -38,11 +43,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         //test
-        bool useItem = PlayerInputs.Instance.UseItemBool;
-        if (useItem)
+        bool Dash = PlayerInputs.Instance.DashBool;
+        if (Dash)
         {
-            _dashTrail.m_startTrail = true;
-            Instantiate(_vfx_PlayerJump, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
+            m_dashTrail.m_startTrail = true;
+            Instantiate(m_vfx_PlayerJump, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
             print("Uso Item Actual");
         }
         bool movetoPreviousItem = PlayerInputs.Instance.PreviousItemBool;
@@ -55,13 +60,13 @@ public class PlayerMovement : MonoBehaviour
             print("Me muevo al siguiente item");
 
         //---
-        _movementDirection = PlayerInputs.Instance.MovementVector.normalized;
-        _isPressingRun = PlayerInputs.Instance.RuningBool;
+        m_movementDirection = PlayerInputs.Instance.MovementVector.normalized;
+        m_isPressingRun = PlayerInputs.Instance.RuningBool;
         //---
 
-        if (_hasSelfControl > 0)
+        if (m_hasSelfControl > 0)
         {
-            _hasSelfControl -= Time.deltaTime;
+            m_hasSelfControl -= Time.deltaTime;
         }
 
         //print(_movementStatus);
@@ -70,26 +75,26 @@ public class PlayerMovement : MonoBehaviour
 
 
         //print(_moveStatusCooldown);
-        if (_hasSelfControl <= 0 && _isPressingRun)
+        if (m_hasSelfControl <= 0 && m_isPressingRun)
         {
-            if (_movementStatus < 5 && _moveStatusCooldown <= 0)
+            if (m_movementStatus < 5 && m_moveStatusCooldown <= 0)
             {
-                _movementStatus++;
-                _moveStatusCooldown = 0.3f;
+                m_movementStatus++;
+                m_moveStatusCooldown = 0.3f;
             }
         } else
         {
-            if (_moveStatusCooldown > 0)
+            if (m_moveStatusCooldown > 0)
             {
-                _moveStatusCooldown -= Time.deltaTime;
+                m_moveStatusCooldown -= Time.deltaTime;
             }
         }
         if (absMovement < 0.1f)
         {
-            _movementStatus = 0;
-        } else if (absMovement > 0.1f && _movementStatus == 0)
+            m_movementStatus = 0;
+        } else if (absMovement > 0.1f && m_movementStatus == 0)
         {
-            _movementStatus = 1;
+            m_movementStatus = 1;
         }
         /*
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 2)
@@ -123,18 +128,18 @@ public class PlayerMovement : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (_hasSelfControl <= 0 && _movementDirection != Vector2.zero)
+        if (m_hasSelfControl <= 0 && m_movementDirection != Vector2.zero)
         {
-            _rb.AddForce(_movementDirection * _playerStats.GetCurrentAcceleration, ForceMode2D.Force);
+            _rb.AddForce(m_movementDirection * m_playerStats.GetCurrentAcceleration, ForceMode2D.Force);
 
-            if (_rb.linearVelocity.magnitude > _playerStats.GetCurrentSpeedGoal)
+            if (_rb.linearVelocity.magnitude > m_playerStats.GetCurrentSpeedGoal)
             {
-                _rb.linearVelocity = _rb.linearVelocity.normalized * _playerStats.GetCurrentSpeedGoal;
+                _rb.linearVelocity = _rb.linearVelocity.normalized * m_playerStats.GetCurrentSpeedGoal;
             }
         }
         else
         {
-            _rb.AddForce(_rb.linearVelocity * -_playerStats.GetCurrentDeceleration, ForceMode2D.Force);
+            _rb.AddForce(_rb.linearVelocity * -m_playerStats.GetCurrentDeceleration, ForceMode2D.Force);
         }
         /*
         if (_hasSelfControl <= 0)
@@ -146,23 +151,23 @@ public class PlayerMovement : MonoBehaviour
 
     private void PlayerWasHit(Collider2D otherCol, float damageAmount)
     {
-        _hasSelfControl += 1;
+        m_hasSelfControl += 1;
         Transform myTrans = transform;
         Transform otherTrans = otherCol.transform;
         Vector2 direction = myTrans.position - otherTrans.position;
         Vector2 directionNormalized = direction.normalized;
         print(directionNormalized);
 
-        _rb.AddForce(directionNormalized * _damageKnockback, ForceMode2D.Impulse);
+        _rb.AddForce(directionNormalized * (m_damageKnockbackMultiplier * damageAmount), ForceMode2D.Impulse);
     }
 
     private void PlayerNoMove()
     {
-        _hasSelfControl = 999;
+        m_hasSelfControl = 999;
     }
     private void PlayerCanMove()
     {
-        _hasSelfControl = 0;
+        m_hasSelfControl = 0;
     }
     private void OnDestroy()
     {

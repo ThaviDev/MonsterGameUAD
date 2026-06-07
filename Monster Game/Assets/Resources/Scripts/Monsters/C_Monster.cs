@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class C_Monster : MonoBehaviour
 {
+    // Script Viejo, se puede usar como referencia para el nuevo script de C_MonsterMotor, pero no se va a usar directamente.
     [Header("Monster Settings")]
     protected GameObject m_PlayerObjRef;
     [SerializeField] protected C_Boid m_Boid;

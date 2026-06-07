@@ -36,7 +36,7 @@ public class C_Monst_Tree : C_MonsterMotor
     protected override void Update()
     {
         base.Update();
-
+        Debug.Log("Current State: " + m_CurrentState);
     }
     private void CheckIfSlam()
     {
@@ -69,9 +69,8 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyEnter()
         {
             base.MyEnter();
+            // Llamar animación de agarre
             m_TreeAnim.AnimGrab();
-            //m_Tree.Visual.AnimAbility();
-            //print("Estoy Iniciando Agarre");
         }
         public override void MyUpdate()
         {
@@ -98,7 +97,8 @@ public class C_Monst_Tree : C_MonsterMotor
                 if (m_TreeAnim != null)
                     m_TreeAnim.IsPlayerGrabed = true;
                 m_GrabbedPlayer = hit.gameObject;
-                m_GrabbedPlayer.GetComponent<C_PlayerMotor>()?.GetGrabbed(m_Tree, m_Tree.m_PlayerGrabbedPosition, true);
+                C_PlayerMotor.OnGetGrabbed?.Invoke(m_Tree, m_Tree.m_PlayerGrabbedPosition, true);
+                //m_GrabbedPlayer.GetComponent<C_PlayerMotor>()?.GetGrabbed(m_Tree, m_Tree.m_PlayerGrabbedPosition, true);
             }
             else
             {

@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PlayerStadistics : MonoBehaviour
 {
+    // Script Viejo, se puede usar como referencia para el nuevo script de PlayerStats, pero no se va a usar directamente.
     public static Action OnPyrDeath;
 
-    [SerializeField] PlayerMovement _pyrMoveScript;
+    [SerializeField] C_PlayerMovement _pyrMoveScript;
     [SerializeField] float _staminaUseMult;
     [SerializeField] float _staminaRestMult;
 
@@ -55,7 +56,7 @@ public class PlayerStadistics : MonoBehaviour
 
         _canGetHit = true;
         C_PlayerMotor.OnPyrHit += PlayerWasHit;
-        OnPyrDeath += PlayerDied;
+        C_PlayerMotor.OnPyrDeath += PlayerDied;
     }
     void Update()
     {

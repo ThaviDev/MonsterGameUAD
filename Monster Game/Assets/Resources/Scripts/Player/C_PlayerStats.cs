@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class C_PlayerStats : MonoBehaviour
 {
-    [SerializeField] PlayerMovement m_PyrMoveScript;
+    [SerializeField] C_PlayerMovement m_PyrMoveScript;
 
     [SerializeField] float m_DamageTaken;
     private float m_DamageRegen = 2f;

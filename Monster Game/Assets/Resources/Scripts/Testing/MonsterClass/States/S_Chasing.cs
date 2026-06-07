@@ -1,5 +1,4 @@
 using UnityEngine;
-
 public class S_Chasing : C_MonstState
 {
     public S_Chasing(C_MonsterMotor motor) : base(motor) { }
@@ -27,3 +26,4 @@ public class S_Chasing : C_MonstState
     }
 
 }
+
