@@ -65,7 +65,8 @@ public class C_MonsterMotor : MonoBehaviour
         m_PlayerMotor = FindFirstObjectByType<C_PlayerMotor>();
         m_PredictionPoint = FindFirstObjectByType<C_PlayerPredictionPoint>().transform;
         RandomizeSpawnAndDespawnValues();
-        ChangeState(new S_Despawned(this));
+        Despawn();
+        //ChangeState(new S_Despawned(this));
     }
 
     protected virtual void Update()

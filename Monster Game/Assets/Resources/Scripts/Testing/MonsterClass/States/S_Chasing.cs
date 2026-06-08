@@ -6,15 +6,15 @@ public class S_Chasing : C_MonstState
     {
         base.MyEnter();
         Debug.Log("Estoy persiguiendo");
-        _monst.Visual.AnimChase();
+        Motor.Visual.AnimChase();
 
-        _monst.Boid.SeekTarget = _monst.PredictionPoint;
+        Motor.Boid.SeekTarget = Motor.PredictionPoint;
     }
     public override void MyUpdate()
     {
         base.MyUpdate();
-        _monst.DecreaseEnergy();
-        _monst.DecreaseAgression();
+        Motor.DecreaseEnergy();
+        Motor.DecreaseAgression();
     }
     public override void MyExit()
     {

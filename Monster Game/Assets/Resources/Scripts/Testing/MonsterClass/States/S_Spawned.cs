@@ -6,31 +6,34 @@ public class S_Spawned : C_MonstState
     public override void MyEnter()
     {
         base.MyEnter();
-        if (_monst == null)
+        if (Motor == null)
         {
-            Debug.LogError("No tengo _monst");
+            Debug.LogError("No tengo Motor");
         }
-        _monst.Visual.AnimSpawn();
+        Motor.Visual.AnimSpawn();
         Debug.Log("Estoy Spawneado");
 
-        _monst.Boid.SeekImpetu = 1;
-        _monst.Boid.BoidMaxSpeed = _monst.SpeedCur;
+        Motor.Boid.SeekImpetu = 1;
+        Motor.Boid.BoidMaxSpeed = Motor.SpeedCur;
     }
     public override void MyUpdate()
     {
         base.MyUpdate();
-        _monst.DecreaseEnergy();
-        _monst.RegenAgression();
-        
-        if (_monst.Agresion >= _monst.AgressionChaseThreshold)
+        Motor.DecreaseEnergy();
+        Motor.RegenAgression();
+
+        StablishState();
+    }
+    public virtual void StablishState()
+    {
+        if (Motor.Agresion >= Motor.AgressionChaseThreshold)
         {
-            _monst.ChangeState(new S_Chasing(_monst));
+            Motor.ChangeState(new S_Chasing(Motor));
         }
         else
         {
-            _monst.ChangeState(new S_Stealthy(_monst));
+            Motor.ChangeState(new S_Stealthy(Motor));
         }
-        
     }
     public override void MyExit()
     {

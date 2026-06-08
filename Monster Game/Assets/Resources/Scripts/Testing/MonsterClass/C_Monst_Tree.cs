@@ -14,7 +14,7 @@ public class C_Monst_Tree : C_MonsterMotor
     [SerializeField] private Vector2 m_ColSize = new Vector2(2, 2);
     [SerializeField] private Vector2 m_PlayerGrabbedPosition;
 
-    [SerializeField] private Vector2 m_GroundPoundRadius;
+    [SerializeField] private float m_GroundPoundRadius;
     [SerializeField] private float m_GroundPoundDamageAmount;
 
     [SerializeField] private Collider2D m_ChargeHitbox;
@@ -38,18 +38,141 @@ public class C_Monst_Tree : C_MonsterMotor
         base.Update();
         Debug.Log("Current State: " + m_CurrentState);
     }
-    private void CheckIfSlam()
+    protected override void Despawn()
     {
-
+        m_IsSpawnedIn = false;
+        ChangeState(new S_Tree_Despawned(this));
+    }
+    protected override void Spawn()
+    {
+        m_IsSpawnedIn = true;
+        ChangeState(new S_Tree_Spawned(this));
     }
     protected override void OnTriggerEnter2D(Collider2D otherCol)
     {
         base.OnTriggerEnter2D(otherCol);
-
-        // -- TRIGGER GRAB --
-        if (((1 << otherCol.gameObject.layer) & (int)m_PlayerLayerMask) != 0 && m_CurrentState is not S_Tree_Grab)
+    }
+    public class S_Tree_Despawned : S_Despawned
+    {
+        public S_Tree_Despawned(C_MonsterMotor motor) : base(motor) { }
+        public override void MyEnter()
         {
-            ChangeState(new S_Tree_Grab(this));
+            base.MyEnter();
+            Debug.Log("Estoy Despawneado y ademas soy arbol");
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
+        }
+    }
+    public class S_Tree_Spawned : S_Spawned
+    {
+        public S_Tree_Spawned(C_MonsterMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            Debug.Log("Estoy Spawneado y ademas soy arbol");
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
+        public override void StablishState()
+        {
+            if (Motor.Agresion >= Motor.AgressionChaseThreshold)
+            {
+                Motor.ChangeState(new S_Tree_Chasing(Motor));
+            }
+            else
+            {
+                Motor.ChangeState(new S_Tree_Stealthy(Motor));
+            }
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
+        }
+    }
+    public class S_Tree_Chasing : S_Chasing
+    {
+        private C_Monst_Tree m_Tree;
+        private float m_DistanceToPlayer;
+        public S_Tree_Chasing(C_MonsterMotor motor) : base(motor) {
+            m_Tree = motor as C_Monst_Tree;
+        }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            //m_Tree = Motor as C_Monst_Tree;
+            Debug.Log("Estoy persiguiendo y ademas soy arbol");
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+            m_DistanceToPlayer = Vector2.Distance(Motor.transform.position, Motor.PlayerMotor.transform.position);
+
+            CheckSlam();
+            CheckCharge();
+        }
+
+        public void CheckSlam()
+        {
+            if (m_DistanceToPlayer <= m_Tree.m_GroundPoundRadius)
+            {
+                m_Tree.ChangeState(new S_Tree_GroundPound(m_Tree));
+            }
+        }
+        public void CheckCharge()
+        {
+
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
+            
+            // -- TRIGGER GRAB --
+            if (((1 << other.gameObject.layer) & (int)Motor.PlayerLayerMask) != 0 && Motor.m_CurrentState is not S_Tree_Grab)
+            {
+                Motor.ChangeState(new S_Tree_Grab(Motor as C_Monst_Tree));
+            }
+
+        }
+    }
+    public class S_Tree_Stealthy : S_Stealthy
+    {
+        public S_Tree_Stealthy(C_MonsterMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            Debug.Log("Estoy sigiloso y ademas soy arbol");
+        }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
         }
     }
     public class S_Tree_Grab : C_MonstState
@@ -58,8 +181,9 @@ public class C_Monst_Tree : C_MonsterMotor
         private C_Monst_Tree m_Tree;
         private C_MAnim_Tree m_TreeAnim;
         private bool m_ReleasePlayer;
+        // Variable para comunicarse con C_PlayerMotor y liberar al jugador desde ahí
         public bool ReleasePlayer { get { return m_ReleasePlayer; } set { m_ReleasePlayer = value; } }
-        public S_Tree_Grab(C_Monst_Tree motor) : base(motor)
+        public S_Tree_Grab(C_MonsterMotor motor) : base(motor)
         {
             m_Tree = motor as C_Monst_Tree;
             m_TreeAnim = m_Tree.Visual as C_MAnim_Tree;
@@ -75,8 +199,8 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyUpdate()
         {
             base.MyUpdate();
-            _monst.DecreaseEnergy();
-            _monst.DecreaseAgression();
+            Motor.DecreaseEnergy();
+            Motor.DecreaseAgression();
             if (m_TreeAnim.GrabPlayer)
             {
                 TryGrab();
@@ -139,7 +263,7 @@ public class C_Monst_Tree : C_MonsterMotor
             m_Tree = motor as C_Monst_Tree;
             m_TreeAnim = m_Tree.Visual as C_MAnim_Tree;
             if (m_Tree == null)
-                Debug.LogError("S_Tree_Grab solo puede ser usado por C_Monst_Tree");
+                Debug.LogError("S_Tree_GroundPound solo puede ser usado por C_Monst_Tree");
         }
         public override void MyEnter()
         {
@@ -150,8 +274,8 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyUpdate()
         {
             base.MyUpdate();
-            _monst.DecreaseEnergy();
-            _monst.DecreaseAgression();
+            Motor.DecreaseEnergy();
+            Motor.DecreaseAgression();
         }
         public override void MyExit()
         {
@@ -164,7 +288,14 @@ public class C_Monst_Tree : C_MonsterMotor
     }
     public class S_Tree_Charge : C_MonstState
     {
-        public S_Tree_Charge(C_MonsterMotor motor) : base(motor) { }
+        private C_Monst_Tree m_Tree;
+        private C_MAnim_Tree m_TreeAnim;
+        public S_Tree_Charge(C_MonsterMotor motor) : base(motor) {
+            m_Tree = motor as C_Monst_Tree;
+            m_TreeAnim = m_Tree.Visual as C_MAnim_Tree;
+            if (m_Tree == null)
+                Debug.LogError("S_Tree_Charge solo puede ser usado por C_Monst_Tree");
+        }
         public override void MyEnter()
         {
             base.MyEnter();
@@ -174,8 +305,8 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyUpdate()
         {
             base.MyUpdate();
-            _monst.DecreaseEnergy();
-            _monst.DecreaseAgression();
+            Motor.DecreaseEnergy();
+            Motor.DecreaseAgression();
         }
         public override void MyExit()
         {

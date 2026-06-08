@@ -6,17 +6,17 @@ public class S_Despawned : C_MonstState
     public override void MyEnter()
     {
         base.MyEnter();
-        _monst.Visual.AnimDespawn();
+        Motor.Visual.AnimDespawn();
         Debug.Log("Estoy Despawneado");
-        _monst.Boid.SeekImpetu = 0;
-        _monst.Boid.BoidMaxSpeed = 0;
-        _monst.Boid.SeekTarget = null;
+        Motor.Boid.SeekImpetu = 0;
+        Motor.Boid.BoidMaxSpeed = 0;
+        Motor.Boid.SeekTarget = null;
     }
     public override void MyUpdate()
     {
         base.MyUpdate();
-        _monst.RegenEnergy();
-        _monst.RegenAgression();
+        Motor.RegenEnergy();
+        Motor.RegenAgression();
     }
     public override void MyExit()
     {

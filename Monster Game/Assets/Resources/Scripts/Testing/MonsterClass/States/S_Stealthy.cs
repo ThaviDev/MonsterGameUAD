@@ -7,18 +7,19 @@ public class S_Stealthy : C_MonstState
     {
         base.MyEnter();
         Debug.Log("Estoy sigiloso");
-        _monst.Visual.AnimStealth();
-        _monst.Boid.BoidMaxSpeed = _monst.SpeedCur/2;
+        Motor.Visual.AnimStealth();
+        // Movimiento reducido a la mitad solo para ejemplo
+        Motor.Boid.BoidMaxSpeed = Motor.SpeedCur/2;
 
         // Temporal, el monstruo debe seguir el punto de sigileza, no al jugador
-        _monst.Boid.SeekTarget = _monst.PlayerMotor.gameObject.transform;
+        Motor.Boid.SeekTarget = Motor.PlayerMotor.gameObject.transform;
 
     }
     public override void MyUpdate()
     {
         base.MyUpdate();
-        _monst.DecreaseEnergy();
-        _monst.RegenAgression();
+        Motor.DecreaseEnergy();
+        Motor.RegenAgression();
     }
     public override void MyExit()
     {
