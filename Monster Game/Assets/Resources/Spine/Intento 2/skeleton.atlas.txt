@@ -1,7 +1,6 @@
 skeleton.png
 size:1825,1240
 filter:Linear,Linear
-pma:true
 Boca (1)
 bounds:1815,1199,19,4
 offsets:131,123,256,256
