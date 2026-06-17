@@ -1,31 +1,36 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class C_PlayerMotor : MonoBehaviour
 {
-    public static Action<Collider2D> OnPyrHit;
+    public static Action<Collider2D, float> OnPyrHit;
     public static Action OnPanic;
     public static Action OnRelax;
     public static Action OnPyrDeath;
+    public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
 
+    [SerializeField] private C_PlayerStats m_PlayerStats;
+    public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
+
+    /*
     // Temporal por clase de VFX
     public GameObject m_vfx_MonsterScream;
-    public C_PlayerStats m_playerStats;
+
 
     // Temporal FeedbackQueue del sprite del jugador
     public SpriteRenderer m_sprite;
+    */
 
     [SerializeField] private bool m_IsInvincible;
 
     private PlayerState m_CurrentState;
 
-    // Idealmente, la variable debería de ser C_MonsterMotor
-    private C_HugAbilityTest m_MonsterThatGrabbed;
-    private bool m_CanMashOutOfGrab;
     [SerializeField] private int m_GrabMashCount;
 
     void Start()
     {
+        m_PlayerStats = GetComponent<C_PlayerStats>();
         if (m_IsInvincible)
         {
             ChangeState(new InvincibleState(this));
@@ -34,15 +39,14 @@ public class C_PlayerMotor : MonoBehaviour
         {
             ChangeState(new RegularState(this));
         }
+        OnGetGrabbed += GotGrabbed;
     }
 
     void Update()
     {
-        print(m_CurrentState);
+        //print(m_CurrentState);
         // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
         m_CurrentState?.MyUpdate();
-
-
 
         /*
         if (Input.GetKeyDown(KeyCode.V))
@@ -85,29 +89,36 @@ public class C_PlayerMotor : MonoBehaviour
 
     private void CheckIfDeath()
     {
-        if (m_playerStats.GetBPM >= 150)
+        if (m_PlayerStats.GetBPM >= 150)
         {
             OnPyrDeath?.Invoke();
         }
     }
 
-    // Detonador de Estado Agarrado, se llama desde el script del monstruo que agarra al jugador
-    public void GetGrabbed(C_HugAbilityTest monsterThatGrabbed, bool canMashOut)
+    private void GotGrabbed(C_MonsterMotor monsterThatGrabbed, Vector2 playerGrabbedPos, bool canMashOut)
     {
+        m_CurrentState?.MyExit();
+        m_CurrentState = new GrabedState(this, monsterThatGrabbed, playerGrabbedPos, canMashOut);
+        m_CurrentState.MyEnter();
+    }
+    /*
+    public void GetGrabbed(C_MonsterMotor monsterThatGrabbed, Vector2 playerGrabbedPos, bool canMashOut)
+    {
+        m_PlayerGrabbedPos = playerGrabbedPos;
         m_MonsterThatGrabbed = monsterThatGrabbed;
         ChangeState(new GrabedState(this));
         m_CanMashOutOfGrab = canMashOut;
-    }
+    } 
+    */
 
     // Estado Base
     private abstract class PlayerState
     {
         protected readonly C_PlayerMotor _PM;
         protected PlayerState(C_PlayerMotor motor) => _PM = motor;
-
         public virtual void MyEnter() { }
-        public virtual void MyExit() { }
         public virtual void MyUpdate() { }
+        public virtual void MyExit() { }
         public virtual void MyTriggerColision(Collider2D other) { }
     }
     private class RegularState : PlayerState
@@ -118,16 +129,12 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyEnter();
             OnRelax?.Invoke();
             // Temporal Feedback Queue
-            _PM.m_sprite.color = Color.white;
-        }
-        public override void MyExit()
-        {
-            base.MyExit();
+            //_PM.m_sprite.color = Color.white;
         }
         public override void MyUpdate()
         {
             base.MyUpdate();
-            if (_PM.m_playerStats.GetBPM >= _PM.m_playerStats.GetPanicThreshold)
+            if (_PM.PlayerStats.GetBPM >= _PM.PlayerStats.GetPanicThreshold)
             {
                 //m_IsInPanic = true;
                 _PM.ChangeState(new PanicState(_PM));
@@ -136,12 +143,16 @@ public class C_PlayerMotor : MonoBehaviour
                 //m_sprite.color = Color.blue;
             }
         }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
         public override void MyTriggerColision(Collider2D otherCol)
         {
             base.MyTriggerColision(otherCol);
             if (otherCol.gameObject.layer == 6) // Monster Layer
             {
-                OnPyrHit?.Invoke(otherCol);
+                OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
                 _PM.CheckIfDeath();
                 /*
                 if (_PM.m_playerStats.GetBPM >= 150)
@@ -159,18 +170,14 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyEnter();
             OnPanic?.Invoke();
             // Temporal Feedback Queue
-            _PM.m_sprite.color = Color.blue;
-        }
-        public override void MyExit()
-        {
-            base.MyExit();
+            //_PM.m_sprite.color = Color.blue;
         }
         public override void MyUpdate()
         {
             base.MyUpdate();
             //if (_PM.m_playerStats.GetBPM <= _PM.m_playerStats.GetRelaxThreshold && _PM.m_isInPanic)
 
-            if (_PM.m_playerStats.GetBPM <= _PM.m_playerStats.GetRelaxThreshold)
+            if (_PM.m_PlayerStats.GetBPM <= _PM.m_PlayerStats.GetRelaxThreshold)
             {
                 //m_IsInPanic = false;
                 _PM.ChangeState(new RegularState(_PM));
@@ -179,12 +186,17 @@ public class C_PlayerMotor : MonoBehaviour
                 //_PM.m_sprite.color = Color.white;
             }
         }
+        public override void MyExit()
+        {
+            base.MyExit();
+        }
         public override void MyTriggerColision(Collider2D otherCol)
         {
             base.MyTriggerColision(otherCol);
             if (otherCol.gameObject.layer == 6) // Monster Layer
             {
-                OnPyrHit?.Invoke(otherCol);
+                // Luego hay que detectar mejor esto
+                OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
                 OnPyrDeath?.Invoke();
             }
         }
@@ -196,13 +208,36 @@ public class C_PlayerMotor : MonoBehaviour
         {
             base.MyEnter();
         }
+        public override void MyUpdate()
+        {
+            base.MyUpdate();
+        }
         public override void MyExit()
         {
             base.MyExit();
         }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
+        }
+    }
+    private class DeadState : PlayerState
+    {
+        public DeadState(C_PlayerMotor motor) : base(motor) { }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            //OnPyrDeath?.Invoke();
+            // Temporal Feedback Queue
+            //_PM.m_sprite.color = Color.black;
+        }
         public override void MyUpdate()
         {
             base.MyUpdate();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
         }
         public override void MyTriggerColision(Collider2D other)
         {
@@ -216,13 +251,13 @@ public class C_PlayerMotor : MonoBehaviour
         {
             base.MyEnter();
         }
-        public override void MyExit()
-        {
-            base.MyExit();
-        }
         public override void MyUpdate()
         {
             base.MyUpdate();
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
         }
         public override void MyTriggerColision(Collider2D other)
         {
@@ -231,40 +266,68 @@ public class C_PlayerMotor : MonoBehaviour
     }
     private class GrabedState : PlayerState
     {
-        public GrabedState(C_PlayerMotor motor) : base(motor) { }
+        private float m_GrabDamage;
         private int m_CurMashCount;
+        private C_MonsterMotor m_MonsterThatGrabbed;
+        private Vector2 m_PlayerGrabbedPos;
+        private bool m_CanMashOutOfGrab;
+
+        public GrabedState(C_PlayerMotor motor, C_MonsterMotor monsterThatGrabbed, Vector2 playerGrabbedPos, 
+            bool canMashOutOfGrab) : base(motor) {
+            m_MonsterThatGrabbed = monsterThatGrabbed;
+            m_PlayerGrabbedPos = playerGrabbedPos;
+            m_CanMashOutOfGrab = canMashOutOfGrab;
+        }
         public override void MyEnter()
         {
             base.MyEnter();
             // Temporal Feedback Queue
-            _PM.m_sprite.color = Color.red;
+            //_PM.m_sprite.color = Color.red;
             m_CurMashCount = _PM.m_GrabMashCount;
-        }
-        public override void MyExit()
-        {
-            base.MyExit();
+            if (m_MonsterThatGrabbed is C_Monst_Tree)
+            {
+                // Do something specific for C_Monst_Tree
+                //m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
+                m_GrabDamage = (m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
+            }
         }
         public override void MyUpdate()
         {
             base.MyUpdate();
-            _PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition +
-                (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
-            if (_PM.m_CanMashOutOfGrab)
+
+            _PM.PlayerStats.RecieveDamage (m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),m_GrabDamage);
+            _PM.CheckIfDeath();
+            //_PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
+            _PM.transform.position = m_PlayerGrabbedPos + (Vector2)m_MonsterThatGrabbed.transform.position;
+            if (m_CanMashOutOfGrab)
             {
                 KeyMeshingMinigame();
             }
         }
         private void KeyMeshingMinigame()
         {
+            Debug.Log("Cantidad de clicks necesarias: "+m_CurMashCount);
             if (PlayerInputs.Instance.InteractAndPickUpItemBool)
             {
+                Debug.Log("Player se liberó del agarre por mash out!");
+
                 m_CurMashCount--;
                 if (m_CurMashCount <= 0)
                 {
-                    _PM.m_MonsterThatGrabbed.Release();
+                    //_PM.m_MonsterThatGrabbed.ReleaseGrab();
+
+                    //_PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;
+                    var Tree = m_MonsterThatGrabbed as C_Monst_Tree;
+                    var TreeVar = Tree.m_CurrentState as C_Monst_Tree.S_Tree_Grab;
+                    TreeVar.ReleasePlayer = true;
+
                     _PM.ChangeState(new RegularState(_PM));
                 }
             }
+        }
+        public override void MyExit()
+        {
+            base.MyExit();
         }
         public override void MyTriggerColision(Collider2D other)
         {

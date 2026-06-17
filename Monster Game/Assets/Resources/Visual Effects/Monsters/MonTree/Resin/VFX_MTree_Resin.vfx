@@ -105,8 +105,8 @@ MonoBehaviour:
       serializedVersion: 2
       x: 2137
       y: -290
-      width: 474
-      height: 1135
+      width: 476
+      height: 1095
     contents:
     - model: {fileID: 8926484042661614539}
       id: 0
@@ -160,7 +160,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: -657
     y: -290
-    width: 3268
+    width: 3270
     height: 1332
 --- !u!114 &114350483966674976
 MonoBehaviour:
@@ -1367,7 +1367,7 @@ MonoBehaviour:
   m_UIIgnoredErrors: []
   m_Parent: {fileID: 114350483966674976}
   m_Children: []
-  m_UIPosition: {x: 2162, y: 520}
+  m_UIPosition: {x: 2164, y: 480}
   m_UICollapsed: 0
   m_UISuperCollapsed: 0
   m_InputSlots:
@@ -3496,7 +3496,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":5.0,"outTangent":5.0,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":1.0,"value":5.0,"inTangent":5.0,"outTangent":5.0,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":4.989999771118164,"outTangent":4.989999771118164,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":1.0,"value":4.989999771118164,"inTangent":4.989999771118164,"outTangent":4.989999771118164,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: -1
   m_Property:
     name: curve
@@ -4133,7 +4133,7 @@ MonoBehaviour:
       m_Type:
         m_SerializableType: UnityEngine.AnimationCurve, UnityEngine.CoreModule, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":15.0,"outTangent":15.0,"tangentMode":0,"leftTangentMode":1,"rightTangentMode":1,"broken":false},{"time":0.20000000298023225,"value":3.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":4,"rightTangentMode":4,"broken":false},{"time":0.4000000059604645,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":4,"rightTangentMode":4,"broken":false},{"time":0.6000000238418579,"value":3.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":4,"rightTangentMode":4,"broken":false},{"time":0.800000011920929,"value":0.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":4,"rightTangentMode":4,"broken":false},{"time":1.0,"value":6.0,"inTangent":0.0,"outTangent":0.0,"tangentMode":0,"leftTangentMode":4,"rightTangentMode":4,"broken":false}],"preWrapMode":8,"postWrapMode":8,"version":1}'
+      m_SerializableObject: '{"frames":[{"time":0.0,"value":0.0,"inTangent":15.0,"outTangent":13.393531799316407,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.10000000149011612,"value":3.0,"inTangent":9.766233444213868,"outTangent":-11.854377746582032,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.20000000298023225,"value":0.0,"inTangent":-11.246271133422852,"outTangent":8.63654613494873,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.30000001192092898,"value":3.0,"inTangent":10.712767601013184,"outTangent":-13.122770309448243,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.4000000059604645,"value":0.0,"inTangent":-11.26331901550293,"outTangent":15.652222633361817,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.5,"value":3.0,"inTangent":12.099156379699707,"outTangent":-15.56261920928955,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.6000000238418579,"value":0.0,"inTangent":-15.241828918457032,"outTangent":12.337496757507325,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.699999988079071,"value":3.0,"inTangent":15.399673461914063,"outTangent":-21.54472541809082,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":0.800000011920929,"value":0.0,"inTangent":-17.824342727661134,"outTangent":20.873071670532228,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true},{"time":1.0,"value":6.0,"inTangent":22.126663208007814,"outTangent":0.0,"tangentMode":0,"leftTangentMode":0,"rightTangentMode":0,"broken":true}],"preWrapMode":8,"postWrapMode":8,"version":1}'
     m_Space: -1
   m_Property:
     name: curve

@@ -1326,7 +1326,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 100}
+  m_AnchoredPosition: {x: 0, y: 152.99998}
   m_SizeDelta: {x: 2067, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &846939571
@@ -1535,7 +1535,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 300}
+  m_AnchoredPosition: {x: 0, y: 250}
   m_SizeDelta: {x: 2067, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1103772812
@@ -1968,7 +1968,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1361751860
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1986,7 +1986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 200}
+  m_AnchoredPosition: {x: 0, y: 252.99998}
   m_SizeDelta: {x: 2067, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1361751861
@@ -2186,7 +2186,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Monster Game Playtest 4
+  m_text: 'The Scar''s Hunger
+
+    Showcase'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: bd4d8cfb29710d94a890d8cf7cb9b8a8, type: 2}
   m_sharedMaterial: {fileID: 4779398753190388195, guid: bd4d8cfb29710d94a890d8cf7cb9b8a8, type: 2}
@@ -2213,7 +2215,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 82
+  m_fontSize: 75.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

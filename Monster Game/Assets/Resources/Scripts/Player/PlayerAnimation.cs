@@ -5,7 +5,7 @@ public class PlayerAnimation : MonoBehaviour
 {
     [SerializeField] Animator _animator;
     int _movementStatus;
-    [SerializeField] PlayerMovement _Pmovement;
+    [SerializeField] C_PlayerMovement _Pmovement;
 
     void Start()
     {
@@ -23,7 +23,7 @@ public class PlayerAnimation : MonoBehaviour
                 _animator.SetBool("IsIdle",false);
                 break;
             default:
-                print("Not valid status for anim");
+                //print("Not valid status for anim");
                 break;
         }
     }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class C_PlayerStats : MonoBehaviour
 {
-    [SerializeField] PlayerMovement m_PyrMoveScript;
+    [SerializeField] C_PlayerMovement m_PyrMoveScript;
 
     [SerializeField] float m_DamageTaken;
     private float m_DamageRegen = 2f;
@@ -211,12 +211,12 @@ public class C_PlayerStats : MonoBehaviour
             }
         }
     }
-    private void RecieveDamage(Collider2D otherCol)
+    public void RecieveDamage(Collider2D otherCol, float damageAmount)
     {
         if (m_InvincibleTime <= 0)
         {
-            m_DamageTaken += 20;
-            m_DamageRegenGoal += 20;
+            m_DamageTaken += damageAmount;
+            m_DamageRegenGoal += damageAmount;
             m_Fear += 10;
             m_InvincibleTime = m_InvincibleTimeDefaultV;
         }

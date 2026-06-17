@@ -13,7 +13,7 @@ public class PlayerInteraction : MonoBehaviour
         var interactBtn = PlayerInputs.Instance.InteractAndPickUpItemBool;
         if (interactBtn == true)
         {
-            print("Interactuo");
+            //print("Interactuo");
             Interact();
         }
 

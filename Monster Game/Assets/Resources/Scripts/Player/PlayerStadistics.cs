@@ -3,9 +3,10 @@ using UnityEngine;
 
 public class PlayerStadistics : MonoBehaviour
 {
+    // Script Viejo, se puede usar como referencia para el nuevo script de PlayerStats, pero no se va a usar directamente.
     public static Action OnPyrDeath;
 
-    [SerializeField] PlayerMovement _pyrMoveScript;
+    [SerializeField] C_PlayerMovement _pyrMoveScript;
     [SerializeField] float _staminaUseMult;
     [SerializeField] float _staminaRestMult;
 
@@ -55,7 +56,7 @@ public class PlayerStadistics : MonoBehaviour
 
         _canGetHit = true;
         C_PlayerMotor.OnPyrHit += PlayerWasHit;
-        OnPyrDeath += PlayerDied;
+        C_PlayerMotor.OnPyrDeath += PlayerDied;
     }
     void Update()
     {
@@ -130,12 +131,12 @@ public class PlayerStadistics : MonoBehaviour
     {
         _canGetHit = false;
     }
-    private void PlayerWasHit(Collider2D otherCol)
+    private void PlayerWasHit(Collider2D otherCol, float damageAmount)
     {
         if (!_canGetHit) {
             return;
         }
-        _pyrHealth.SCOB_Value -= _hitDamage;
+        _pyrHealth.SCOB_Value -= damageAmount;
         if (_pyrStamina.SCOB_Value > _pyrHealth.SCOB_Value)
         {
             _pyrStamina.SCOB_Value = _pyrHealth.SCOB_Value;

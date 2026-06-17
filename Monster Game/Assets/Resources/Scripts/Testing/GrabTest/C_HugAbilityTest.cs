@@ -49,9 +49,7 @@ public class C_HugAbilityTest : MonoBehaviour
         if (hit != null)
         {
             m_JugadorCapturado = hit.gameObject;
-            m_JugadorCapturado.GetComponent<C_PlayerMotor>()?.GetGrabbed(this, true);
-            //m_JugadorCapturado.GetComponent<C_PlayerMotor>()?.ChangeState(new CapturedState(m_JugadorCapturado.GetComponent<C_PlayerMotor>()));
-            //m_JugadorCapturado.transform.position = transform.position; // snap to hugger position; in a real scenario you'd want to lerp this or use a joint
+            //m_JugadorCapturado.GetComponent<C_PlayerMotor>()?.GetGrabbed(this, true);
             m_AtrapeJugador = true;
             if (m_AnimMan != null)
                 m_AnimMan.HasPlayer = true;

@@ -1,7 +1,9 @@
 using Pathfinding;
 using System.Collections.Generic;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor.Experimental.GraphView;
+#endif
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -71,12 +73,13 @@ public class Q_AStar : MonoBehaviour
         }
 
         // Detect Input to run algorithm
+        /*
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Algorithm();
             }
-        }
+        }*/
     }
 
     public void Algorithm()
@@ -349,5 +352,33 @@ public class Q_AStar : MonoBehaviour
         m_allNodes.Clear();
         m_path = null;
         m_current = null;
+    }
+
+    // --- Added: provide path in world-space for agents to follow ---
+    public List<Vector3> GetPathWorldPositions()
+    {
+        if (m_path == null || m_path.Count == 0)
+            return null;
+
+        // Stack.ToArray() returns an array in LIFO order (top -> bottom)
+        // The stack was built by pushing from goal back to start; ToArray()
+        // therefore returns nodes from nearest-to-start to goal.
+        Vector3Int[] nodes = m_path.ToArray();
+        List<Vector3> worldPositions = new List<Vector3>(nodes.Length);
+
+        //for (int i = 0; i < nodes.Length; i++)
+        // Invertirlo por alguna razon que no se xd
+        for (int i = nodes.Length - 1; i >= 0; i--)
+        {
+            // Use cell center so the agent moves to the tile center
+            worldPositions.Add(m_tilemap.GetCellCenterWorld(nodes[i]));
+        }
+
+        return worldPositions;
+    }
+
+    public bool HasPath()
+    {
+        return m_path != null && m_path.Count > 0;
     }
 }

@@ -1,0 +1,52 @@
+skeleton.png
+size:1825,1240
+filter:Linear,Linear
+Boca (1)
+bounds:1815,1199,19,4
+offsets:131,123,256,256
+rotate:90
+brazo_derecho
+bounds:310,6,67,56
+offsets:38,63,256,256
+rotate:90
+brazo_izquierdo
+bounds:411,123,47,52
+offsets:157,67,256,256
+cabeza (1)
+bounds:2,2,173,237
+offsets:28,15,256,256
+rotate:90
+cuerpo (1)
+bounds:310,75,100,99
+offsets:78,39,256,256
+rotate:90
+derecha
+bounds:761,628,610,1052
+offsets:774,7,1920,1080
+rotate:90
+espalda real
+bounds:2,177,757,1061
+offsets:593,6,1920,1080
+izquierda
+bounds:761,19,607,1052
+offsets:570,7,1920,1080
+rotate:90
+lentes
+bounds:241,3,172,67
+offsets:42,130,256,256
+rotate:90
+linterna
+bounds:411,76,37,45
+offsets:158,46,256,256
+pata_derecha
+bounds:368,18,38,55
+offsets:87,6,256,256
+pata_izquierda
+bounds:408,18,36,55
+offsets:136,5,256,256
+pupila_derecha
+bounds:1815,1230,8,8
+offsets:86,159,256,256
+pupila_izquierda
+bounds:1815,1220,8,8
+offsets:160,161,256,256
