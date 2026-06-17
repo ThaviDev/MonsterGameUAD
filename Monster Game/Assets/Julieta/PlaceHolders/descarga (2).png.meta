@@ -1,0 +1,337 @@
+fileFormatVersion: 2
+guid: c33f4785d7599ed42a8941f4faab920a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -528204828700983729
+    second: descarga (2)_0
+  - first:
+      213: -7000423083429468357
+    second: descarga (2)_1
+  - first:
+      213: -4024698631002833887
+    second: descarga (2)_2
+  - first:
+      213: -5709185698498052903
+    second: descarga (2)_3
+  - first:
+      213: 7754428715538077129
+    second: descarga (2)_4
+  - first:
+      213: -5517428875166007568
+    second: descarga (2)_5
+  - first:
+      213: -6712468676976784049
+    second: descarga (2)_6
+  - first:
+      213: -4147912538320370999
+    second: descarga (2)_7
+  - first:
+      213: -4427618667534129659
+    second: descarga (2)_8
+  - first:
+      213: -7394630523615117200
+    second: descarga (2)_9
+  - first:
+      213: -2963556825361600543
+    second: descarga (2)_10
+  - first:
+      213: -2696279390644448123
+    second: descarga (2)_11
+  - first:
+      213: -1337339094171896989
+    second: descarga (2)_12
+  - first:
+      213: -1856071359362969297
+    second: descarga (2)_13
+  - first:
+      213: 2669312498014893403
+    second: descarga (2)_14
+  - first:
+      213: 8834261819651447750
+    second: descarga (2)_15
+  - first:
+      213: -1527430546208156055
+    second: descarga (2)_16
+  - first:
+      213: -3370849984575040106
+    second: descarga (2)_17
+  - first:
+      213: 3350602949753928105
+    second: descarga (2)_18
+  - first:
+      213: -3533035613408828693
+    second: descarga (2)_19
+  - first:
+      213: -1311285061959188929
+    second: descarga (2)_20
+  - first:
+      213: 5914424025224724115
+    second: descarga (2)_21
+  - first:
+      213: -1216363649411359933
+    second: descarga (2)_22
+  - first:
+      213: -6113828255740345824
+    second: descarga (2)_23
+  - first:
+      213: -4523333971485424935
+    second: descarga (2)_24
+  - first:
+      213: 9196923935407037170
+    second: descarga (2)_25
+  - first:
+      213: -479677868900018022
+    second: descarga (2)_26
+  - first:
+      213: 2308804524914460803
+    second: descarga (2)_27
+  - first:
+      213: -5639507091248588330
+    second: descarga (2)_28
+  - first:
+      213: 3122048888511972197
+    second: descarga (2)_29
+  - first:
+      213: -3054100438581134189
+    second: descarga (2)_30
+  - first:
+      213: 7452900271607543878
+    second: descarga (2)_31
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: descarga (2)_32
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 449
+        width: 423
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: caa34327fbc69ef4aba5ef08eb3c6033
+      internalID: 402596167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: descarga (2)_33
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 304
+        width: 265
+        height: 77
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54f78701c4d3a14488a871924da2d257
+      internalID: -1513002439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: descarga (2)_34
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 187
+        width: 290
+        height: 75
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8163e860f81dc0c4a99609f5e19a27ee
+      internalID: 373125251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: descarga (2)_35
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 61
+        width: 198
+        height: 80
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76b0cedd02c65d34095911350a512dbd
+      internalID: 1206550947
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 613596db1d842824a8cc58841dcf9578
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      descarga (2)_0: -528204828700983729
+      descarga (2)_1: -7000423083429468357
+      descarga (2)_10: -2963556825361600543
+      descarga (2)_11: -2696279390644448123
+      descarga (2)_12: -1337339094171896989
+      descarga (2)_13: -1856071359362969297
+      descarga (2)_14: 2669312498014893403
+      descarga (2)_15: 8834261819651447750
+      descarga (2)_16: -1527430546208156055
+      descarga (2)_17: -3370849984575040106
+      descarga (2)_18: 3350602949753928105
+      descarga (2)_19: -3533035613408828693
+      descarga (2)_2: -4024698631002833887
+      descarga (2)_20: -1311285061959188929
+      descarga (2)_21: 5914424025224724115
+      descarga (2)_22: -1216363649411359933
+      descarga (2)_23: -6113828255740345824
+      descarga (2)_24: -4523333971485424935
+      descarga (2)_25: 9196923935407037170
+      descarga (2)_26: -479677868900018022
+      descarga (2)_27: 2308804524914460803
+      descarga (2)_28: -5639507091248588330
+      descarga (2)_29: 3122048888511972197
+      descarga (2)_3: -5709185698498052903
+      descarga (2)_30: -3054100438581134189
+      descarga (2)_31: 7452900271607543878
+      descarga (2)_32: 402596167
+      descarga (2)_33: -1513002439
+      descarga (2)_34: 373125251
+      descarga (2)_35: 1206550947
+      descarga (2)_4: 7754428715538077129
+      descarga (2)_5: -5517428875166007568
+      descarga (2)_6: -6712468676976784049
+      descarga (2)_7: -4147912538320370999
+      descarga (2)_8: -4427618667534129659
+      descarga (2)_9: -7394630523615117200
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
