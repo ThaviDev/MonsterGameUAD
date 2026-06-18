@@ -8,7 +8,6 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
-/*
 public enum TileType
 {
     START = 0,
@@ -17,9 +16,9 @@ public enum TileType
     GRASS,
     PATH
 }
-*/
 
-public class Q_AStar : MonoBehaviour
+
+public class C_AStar : MonoBehaviour
 {
     private TileType m_tileType;
 
@@ -27,17 +26,20 @@ public class Q_AStar : MonoBehaviour
 
     [SerializeField] private Tile[] m_tiles;
 
-    [SerializeField] private RuleTile m_water; 
+    [SerializeField] private RuleTile m_water;
 
     [SerializeField] private Camera m_camera;
 
     [SerializeField] private LayerMask m_mask;
 
+    // Define qué tipos bloquean (puedes poner aquí todos los que quieras)
+    [SerializeField] private TileType[] m_obstacleTypes = { TileType.WATER }; // Por defecto solo agua
+
     private Vector3Int m_startPos, m_goalPos;
 
     private bool m_startIsSet, m_goalIsSet;
 
-    private List<Vector3Int> m_waterTiles = new List<Vector3Int>();
+    private List<Vector3Int> m_blockedTiles = new List<Vector3Int>();
 
     private HashSet<Q_Node> m_openList;
 
@@ -53,12 +55,13 @@ public class Q_AStar : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
 
     void Update()
     {
+        /*
         // Detect mouse
         if (true == Input.GetMouseButtonDown(0))
         {
@@ -71,51 +74,144 @@ public class Q_AStar : MonoBehaviour
 
                 ChangeTile(clickPos);
             }
-        }
+        } */
 
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Algorithm();
+
             }
         }
     }
 
-    public void Algorithm()
+    private bool IsObstacle(TileType type)
     {
-        Debug.Log("Running Algoritm");
-        if (null == m_current)
+        return System.Array.Exists(m_obstacleTypes, t => t == type);
+    }
+
+    private Stack<Vector3Int> AStarSearch(Vector3Int startCell, Vector3Int goalCell)
+    {
+        // Verificar si inicio o fin son agua (o no transitables)
+        if (m_blockedTiles.Contains(startCell) || m_blockedTiles.Contains(goalCell))
+            return null;
+
+        var openList = new HashSet<Q_Node>();
+        var closedList = new HashSet<Q_Node>();
+        var allNodes = new Dictionary<Vector3Int, Q_Node>();
+
+        Q_Node startNode = GetOrCreateNode(startCell, allNodes);
+        Q_Node goalNode = GetOrCreateNode(goalCell, allNodes);
+
+        openList.Add(startNode);
+
+        while (openList.Count > 0)
         {
-            Initialize();
-        }
+            Q_Node current = openList.OrderBy(x => x.F).First();
+            openList.Remove(current);
+            closedList.Add(current);
 
-        while (m_openList.Count > 0 && m_path == null) 
-        {
-            List<Q_Node> neighbors = FindNeighbors(m_current.m_position);
-
-            ExamineNeighbors(neighbors, m_current);
-
-            UpdateCurrentTile(ref m_current);
-
-            m_path = GeneratePath(m_current);
-        }
-        
-
-        // set tiles to path tiles 
-        if (m_path != null)
-        {
-            foreach(Vector3Int pos in m_path)
+            // Meta alcanzada
+            if (current.m_position == goalCell)
             {
-                if (pos != m_goalPos)
+                return BuildPath(current, startCell);
+            }
+
+            // Expandir vecinos
+            List<Q_Node> neighbors = FindNeighbors(current.m_position, allNodes);
+            foreach (Q_Node neighbor in neighbors)
+            {
+                if (!IsConnectedDiagonally(current, neighbor))
+                    continue;
+
+                int gCost = DetermineGScore(neighbor.m_position, current.m_position);
+
+                if (openList.Contains(neighbor))
                 {
-                    m_tilemap.SetTile(pos, m_tiles[2]);
+                    if (current.G + gCost < neighbor.G)
+                        UpdateNodeValues(current, neighbor, gCost, goalCell);
+                }
+                else if (!closedList.Contains(neighbor))
+                {
+                    UpdateNodeValues(current, neighbor, gCost, goalCell);
+                    openList.Add(neighbor);
                 }
             }
         }
+        return null; // no se encontró camino
+    }
 
-        // debug
-        var tileDebug = Q_AstarDebug.instance;
-        tileDebug.CraeteTiles(m_openList, m_closedList, m_allNodes, m_startPos, m_goalPos, m_path);
+    private Q_Node GetOrCreateNode(Vector3Int pos, Dictionary<Vector3Int, Q_Node> allNodes)
+    {
+        if (!allNodes.TryGetValue(pos, out Q_Node node))
+        {
+            node = new Q_Node(pos);
+            allNodes[pos] = node;
+        }
+        return node;
+    }
+
+    private void UpdateNodeValues(Q_Node parent, Q_Node neighbor, int cost, Vector3Int goal)
+    {
+        neighbor.m_parent = parent;
+        neighbor.G = parent.G + cost;
+        neighbor.H = (Mathf.Abs(neighbor.m_position.x - goal.x) + Mathf.Abs(neighbor.m_position.y - goal.y)) * 10;
+        neighbor.F = neighbor.G + neighbor.H;
+    }
+
+    private Stack<Vector3Int> BuildPath(Q_Node goalNode, Vector3Int startCell)
+    {
+        Stack<Vector3Int> path = new Stack<Vector3Int>();
+        Q_Node current = goalNode;
+        while (current.m_position != startCell)
+        {
+            path.Push(current.m_position);
+            current = current.m_parent;
+        }
+        return path;
+    }
+
+    private List<Q_Node> FindNeighbors(Vector3Int parentPosition, Dictionary<Vector3Int, Q_Node> allNodes)
+    {
+        List<Q_Node> neighbors = new List<Q_Node>();
+        for (int x = -1; x <= 1; x++)
+        {
+            for (int y = -1; y <= 1; y++)
+            {
+                if (x == 0 && y == 0) continue;
+                Vector3Int nPos = new Vector3Int(parentPosition.x - x, parentPosition.y - y, parentPosition.z);
+                if (nPos != m_startPos && !m_blockedTiles.Contains(nPos) && m_tilemap.GetTile(nPos))
+                    neighbors.Add(GetOrCreateNode(nPos, allNodes));
+            }
+        }
+        return neighbors;
+    }
+
+    private bool IsConnectedDiagonally(Q_Node currentNode, Q_Node neighbor)
+    {
+        Vector3Int direct = currentNode.m_position - neighbor.m_position;
+        Vector3Int first = new Vector3Int(currentNode.m_position.x + (direct.x * -1), currentNode.m_position.y, currentNode.m_position.z);
+        Vector3Int second = new Vector3Int(currentNode.m_position.x, currentNode.m_position.y + (direct.y * -1), currentNode.m_position.z);
+        if (m_blockedTiles.Contains(first) || m_blockedTiles.Contains(second))
+            return false;
+        return true;
+    }
+    public void Algorithm()
+    {
+        Debug.Log("Running Algorithm");
+        Stack<Vector3Int> path = AStarSearch(m_startPos, m_goalPos);
+        if (path != null)
+        {
+            m_path = path;
+            foreach (Vector3Int pos in m_path)
+            {
+                if (pos != m_goalPos)
+                    m_tilemap.SetTile(pos, m_tiles[(int)TileType.PATH]); // usa tu índice de PATH
+            }
+        }
+        // Debug visual
+        // Necesitarás pasar las listas internas; la opción más limpia es refactorizar
+        // Q_AstarDebug para aceptar los datos de la búsqueda. Por ahora puedes omitir.
     }
 
 
@@ -146,7 +242,7 @@ public class Q_AStar : MonoBehaviour
 
                 if (y != 0 || x != 0)
                 {
-                    if (neighborPos != m_startPos && !m_waterTiles.Contains(neighborPos) && m_tilemap.GetTile(neighborPos)) // the tile exists
+                    if (neighborPos != m_startPos && !m_blockedTiles.Contains(neighborPos) && m_tilemap.GetTile(neighborPos)) // the tile exists
                     {
                         Q_Node neighbor = getNode(neighborPos);
                         neighbors.Add(neighbor);
@@ -163,7 +259,7 @@ public class Q_AStar : MonoBehaviour
     {
         for (int i = 0; i < neighbors.Count; i++)
         {
-            Q_Node neighbor = neighbors[i]; 
+            Q_Node neighbor = neighbors[i];
 
             if (!ConectedDiagonally(current, neighbor))
             {
@@ -203,10 +299,10 @@ public class Q_AStar : MonoBehaviour
     private int DetermineGScore(Vector3Int neighbor, Vector3Int current)
     {
         int gScore = 0;
-        int x  = current.x - neighbor.x;
-        int y  = current.y - neighbor.y;
+        int x = current.x - neighbor.x;
+        int y = current.y - neighbor.y;
 
-        if (Mathf.Abs(x-y) % 2 == 1)
+        if (Mathf.Abs(x - y) % 2 == 1)
         {
             gScore = 10;
         }
@@ -249,37 +345,37 @@ public class Q_AStar : MonoBehaviour
         m_tileType = _button.tileType;
     }
 
-    private void ChangeTile(Vector3Int _clickPos) // this need a lot of changes 
+    private void ChangeTile(Vector3Int _clickPos)
     {
-        if (m_tileType == TileType.WATER)
+        if (m_tileType == TileType.START || m_tileType == TileType.GOAL)
         {
-            m_tilemap.SetTile(_clickPos, m_water);
-            m_waterTiles.Add(_clickPos);
-        }
-        else
-        {
+            // Lógica para start y goal (sin cambios)
             if (m_tileType == TileType.START)
             {
-                if(m_startIsSet)
-                {
-                    m_tilemap.SetTile(m_startPos, m_tiles[3]);
-                }
+                if (m_startIsSet) m_tilemap.SetTile(m_startPos, m_tiles[3]);
                 m_startIsSet = true;
                 m_startPos = _clickPos;
-
             }
-            else if (m_tileType == TileType.GOAL)
+            else
             {
-                if (m_goalIsSet)
-                {
-                    m_tilemap.SetTile(m_goalPos, m_tiles[3]);
-                }
+                if (m_goalIsSet) m_tilemap.SetTile(m_goalPos, m_tiles[3]);
                 m_goalIsSet = true;
                 m_goalPos = _clickPos;
             }
 
             m_tilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
-
+            m_changedTiles.Add(_clickPos);
+        }
+        else if (IsObstacle(m_tileType))
+        {
+            // Para cualquier tipo de obstáculo (agua, lava, muro, etc.)
+            m_tilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]); // o usa el tile específico
+            m_blockedTiles.Add(_clickPos);
+        }
+        else
+        {
+            // Tile normal (GRASS, PATH...)
+            m_tilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
             m_changedTiles.Add(_clickPos);
         }
     }
@@ -287,10 +383,10 @@ public class Q_AStar : MonoBehaviour
     private bool ConectedDiagonally(Q_Node currentNode, Q_Node neighbor)
     {
         Vector3Int direct = currentNode.m_position - neighbor.m_position;
-        Vector3Int first = new Vector3Int(m_current.m_position.x + (direct.x *-1), m_current.m_position.y, m_current.m_position.z);
+        Vector3Int first = new Vector3Int(m_current.m_position.x + (direct.x * -1), m_current.m_position.y, m_current.m_position.z);
         Vector3Int second = new Vector3Int(m_current.m_position.x, m_current.m_position.y + (direct.y * -1), m_current.m_position.z);
 
-        if (m_waterTiles.Contains(first) || m_waterTiles.Contains(second))
+        if (m_blockedTiles.Contains(first) || m_blockedTiles.Contains(second))
         {
             return false;
         }
@@ -302,17 +398,17 @@ public class Q_AStar : MonoBehaviour
         if (current.m_position == m_goalPos)
         {
             Stack<Vector3Int> finalPath = new Stack<Vector3Int>();
-    
+
             while (current.m_position != m_startPos)
             {
                 finalPath.Push(current.m_position);
-    
+
                 current = current.m_parent;
             }
-    
+
             return finalPath;
         }
-    
+
         return null;
     }
 
@@ -334,7 +430,7 @@ public class Q_AStar : MonoBehaviour
             m_tilemap.SetTile(pos, m_tiles[3]);
         }
 
-        foreach (Vector3Int pos in m_waterTiles)
+        foreach (Vector3Int pos in m_blockedTiles)
         {
             m_tilemap.SetTile(pos, m_tiles[3]);
         }
@@ -347,10 +443,31 @@ public class Q_AStar : MonoBehaviour
         m_startIsSet = false;
         m_goalIsSet = false;
 
-        m_waterTiles.Clear();
+        m_blockedTiles.Clear();
         m_allNodes.Clear();
         m_path = null;
         m_current = null;
+    }
+    public List<Vector3> GetPath(Vector3 worldStart, Vector3 worldGoal)
+    {
+        Vector3Int startCell = m_tilemap.WorldToCell(worldStart);
+        Vector3Int goalCell = m_tilemap.WorldToCell(worldGoal);
+
+        // Opcional: evitar que start/goal sean agua
+        if (m_blockedTiles.Contains(startCell) || m_blockedTiles.Contains(goalCell))
+            return null;
+
+        Stack<Vector3Int> path = AStarSearch(startCell, goalCell);
+        if (path == null || path.Count == 0)
+            return null;
+
+        // Convertir a posiciones mundo
+        List<Vector3> worldPath = new List<Vector3>(path.Count);
+        foreach (Vector3Int cell in path)
+        {
+            worldPath.Add(m_tilemap.GetCellCenterWorld(cell));
+        }
+        return worldPath;
     }
 
     // --- Added: provide path in world-space for agents to follow ---

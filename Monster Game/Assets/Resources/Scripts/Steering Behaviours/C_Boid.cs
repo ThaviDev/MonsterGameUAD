@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SteeringBehaviours
@@ -80,12 +81,12 @@ namespace SteeringBehaviours
         [SerializeField] Color m_EvadeColor = Color.cyan;
 
         [Header("PathFollower")]
-        [SerializeField] Transform[] m_Path;
-        public Transform[] Path { get { return m_Path; } set { m_Path = value; } }
+        [SerializeField] List<Vector3> m_Path = new List<Vector3>();
+        public List<Vector3> Path { get { return m_Path; } set { m_Path = value; } }
         [SerializeField] float m_PathPosArriveRatio;
         [SerializeField] float m_PathImpetu;
         [SerializeField] Color m_PathColor = Color.green;
-        private Transform[] m_CurrentPath;
+        private List<Vector3> m_CurrentPath = null;
         private int m_PathIndex = 0;
 
         //[Header("Avoid")] // Usado para evitar obstaculos
@@ -148,7 +149,7 @@ namespace SteeringBehaviours
                 Debug.DrawLine(transform.position, transform.position + fleeForce, m_FleeRatioColor);
                 Forces += fleeForce;
             }
-            if (m_Path != null && m_Path.Length > 0)
+            if (m_Path != null && m_Path.Count > 0)
             {
                 var pathForce = FollowPath(m_Path, m_PathPosArriveRatio);
                 Debug.DrawLine(transform.position, transform.position + pathForce, m_PathColor);
@@ -300,8 +301,9 @@ namespace SteeringBehaviours
         {
             return Pursue(other, arriveTime, impetu) * -1;
         }
-        public Vector3 FollowPath(Transform[] Path, float posArriveRatio)
+        public Vector3 FollowPath(List<Vector3> Path, float posArriveRatio)
         {
+            print("Sigo Camino");
             // Declarar camino y reiniciar indice si el camino es diferente al actual
             if (m_CurrentPath != Path)
             {
@@ -310,24 +312,24 @@ namespace SteeringBehaviours
             }
 
             if (Path == null 
-                || Path.Length == 0 
-                || m_PathIndex >= m_CurrentPath.Length)
+                || Path.Count == 0 
+                || m_PathIndex >= m_CurrentPath.Count)
             {
                 return Vector3.zero;
             }
 
-            var target = m_CurrentPath[m_PathIndex].position;
+            var target = m_CurrentPath[m_PathIndex];
             var toTarget = target - transform.position;
             var dist = toTarget.magnitude;
 
             if (dist <= posArriveRatio)
             {
                 m_PathIndex++;
-                if (m_PathIndex >= m_CurrentPath.Length)
+                if (m_PathIndex >= m_CurrentPath.Count)
                 {
                     return Vector3.zero;
                 }
-                target = m_CurrentPath[m_PathIndex].position;
+                target = m_CurrentPath[m_PathIndex];
             }
 
             return Seek(target, m_PathImpetu);

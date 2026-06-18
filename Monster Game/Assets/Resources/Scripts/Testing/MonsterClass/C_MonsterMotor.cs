@@ -1,4 +1,5 @@
 using SteeringBehaviours;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class C_MonsterMotor : MonoBehaviour
@@ -16,6 +17,8 @@ public class C_MonsterMotor : MonoBehaviour
     public C_PlayerMotor PlayerMotor { get { return m_PlayerMotor; } }
     [SerializeField] protected Transform m_PredictionPoint;
     public Transform PredictionPoint { get { return m_PredictionPoint; } }
+    [SerializeField] protected C_AStar m_PathFinder;
+    public C_AStar PathFinder { get { return m_PathFinder; } }
     //[SerializeField] protected SpriteRenderer m_VisualSpr;
     //[SerializeField] protected Animator m_VisualAnim;
 
@@ -64,6 +67,7 @@ public class C_MonsterMotor : MonoBehaviour
         m_Boid = GetComponent<C_Boid>();
         m_PlayerMotor = FindFirstObjectByType<C_PlayerMotor>();
         m_PredictionPoint = FindFirstObjectByType<C_PlayerPredictionPoint>().transform;
+        m_PathFinder = FindFirstObjectByType<C_AStar>();
         RandomizeSpawnAndDespawnValues();
         Despawn();
         //ChangeState(new S_Despawned(this));
