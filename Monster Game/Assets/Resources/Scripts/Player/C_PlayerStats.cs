@@ -52,6 +52,10 @@ public class C_PlayerStats : MonoBehaviour
     private float m_CurAcceleration;
     private float m_CurDeceleration;
 
+    private float m_LastSpeedGoal;
+    private float m_CurSpeed;
+    private float m_SpeedReduction;
+
 
 
     /* ---- Comunicar informacion de variables a otros codigos ---- */
@@ -90,7 +94,6 @@ public class C_PlayerStats : MonoBehaviour
         Stamina();
         DamageTaken();
         LimitMaxBPM();
-
 
         InvincibilityFrames();
 
@@ -131,6 +134,10 @@ public class C_PlayerStats : MonoBehaviour
         if (m_Fear < 0)
         {
             m_Fear = 0;
+        }
+        if (m_Fear >= m_MaxStat)
+        {
+            m_Fear = m_MaxStat;
         }
     }
     void Stamina()
@@ -173,6 +180,10 @@ public class C_PlayerStats : MonoBehaviour
             // Manten actualizado el valor
             m_LastStamina = m_Stamina;
         }
+        if (m_Stamina == m_MaxStat)
+        {
+            m_Stamina = m_MaxStat;
+        }
     }
     void DamageTaken()
     {
@@ -183,6 +194,10 @@ public class C_PlayerStats : MonoBehaviour
         if (m_DamageRegenGoal < 0)
         {
             m_DamageRegenGoal = 0;
+        }
+        if (m_DamageTaken >= m_MaxStat)
+        {
+            m_DamageTaken = m_MaxStat;
         }
     }
 
@@ -221,6 +236,16 @@ public class C_PlayerStats : MonoBehaviour
                 exceso -= reduccionDanio;
             }
         }
+    }
+    public void UseStamina(float staminaAmount)
+    {
+        m_Stamina += staminaAmount;
+        if (m_Stamina == m_MaxStat)
+        {
+            m_Stamina = m_MaxStat;
+        }
+        m_StabilizeStaminaTime = m_StabilizeStaminaTimeDefaultV;
+        m_LastStamina = m_Stamina;
     }
     public void RecieveDamage(Collider2D otherCol, float damageAmount)
     {
