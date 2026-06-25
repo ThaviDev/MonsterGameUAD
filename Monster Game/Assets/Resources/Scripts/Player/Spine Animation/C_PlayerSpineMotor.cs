@@ -14,7 +14,7 @@ public class C_PlayerSpineMotor : MonoBehaviour
     void Start()
     {
         m_boneAim = m_SkeletonAnimation.Skeleton.FindBone(m_boneAimName);
-        Debug.Log("Player Spine Motor Start");
+        //Debug.Log("Player Spine Motor Start");
         m_SkeletonAnimation.AnimationState.SetAnimation(0, "frente", true);
     }
 

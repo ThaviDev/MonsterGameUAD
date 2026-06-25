@@ -1,4 +1,3 @@
-using Pathfinding;
 using System.Collections.Generic;
 using System.Linq;
 #if UNITY_EDITOR
@@ -22,8 +21,11 @@ public class C_AStar : MonoBehaviour
 {
     private TileType m_tileType;
 
-    [SerializeField] private Tilemap m_tilemap;
+    [Header("Tilemaps")]
+    [SerializeField] private Tilemap m_floorTilemap;                    // main map used for world conversions and "floor" tiles
+    [SerializeField] private Tilemap[] m_obstacleTilemaps;              // one or more maps containing walls/obstacles
 
+    [Header("Tiles")]
     [SerializeField] private Tile[] m_tiles;
 
     [SerializeField] private RuleTile m_water;
@@ -55,7 +57,8 @@ public class C_AStar : MonoBehaviour
 
     void Start()
     {
-
+        // Build blocked list from obstacle tilemaps at start (if any)
+        BuildBlockedTilesFromObstacleMaps();
     }
 
 
@@ -70,11 +73,13 @@ public class C_AStar : MonoBehaviour
             if (hit.collider != null)
             {
                 Vector3 mouseWorldPos = m_camera.ScreenToWorldPoint(Input.mousePosition);
-                Vector3Int clickPos = m_tilemap.WorldToCell(new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z));
+                Vector3Int clickPos = (m_floorTilemap != null)
+                    ? m_floorTilemap.WorldToCell(new Vector3(mouseWorldPos.x, mouseWorldPos.y, transform.position.z))
+                    : Vector3Int.FloorToInt(mouseWorldPos);
 
                 ChangeTile(clickPos);
             }
-        } */
+        }*/
 
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -90,10 +95,47 @@ public class C_AStar : MonoBehaviour
         return System.Array.Exists(m_obstacleTypes, t => t == type);
     }
 
+    // Helper: returns true if there's a floor tile at this cell and not blocked by obstacle maps/list
+    private bool IsWalkableCell(Vector3Int cell)
+    {
+        // must have a floor tile (so agents can stand on it)
+        if (m_floorTilemap == null || m_floorTilemap.GetTile(cell) == null)
+            return false;
+
+        // not present in blocked list
+        if (m_blockedTiles.Contains(cell))
+            return false;
+
+        return true;
+    }
+
+    // Build blocked list by scanning obstacle tilemaps (runs in Start)
+    private void BuildBlockedTilesFromObstacleMaps()
+    {
+        m_blockedTiles.Clear();
+        if (m_obstacleTilemaps == null || m_obstacleTilemaps.Length == 0)
+            return;
+
+        foreach (var obs in m_obstacleTilemaps)
+        {
+            if (obs == null) continue;
+            BoundsInt b = obs.cellBounds;
+            for (int x = b.xMin; x < b.xMax; x++)
+            {
+                for (int y = b.yMin; y < b.yMax; y++)
+                {
+                    Vector3Int pos = new Vector3Int(x, y, b.z);
+                    if (obs.GetTile(pos) != null && !m_blockedTiles.Contains(pos))
+                        m_blockedTiles.Add(pos);
+                }
+            }
+        }
+    }
+
     private Stack<Vector3Int> AStarSearch(Vector3Int startCell, Vector3Int goalCell)
     {
         // Verificar si inicio o fin son agua (o no transitables)
-        if (m_blockedTiles.Contains(startCell) || m_blockedTiles.Contains(goalCell))
+        if (!IsWalkableCell(startCell) || !IsWalkableCell(goalCell))
             return null;
 
         var openList = new HashSet<Q_Node>();
@@ -171,6 +213,7 @@ public class C_AStar : MonoBehaviour
         return path;
     }
 
+    // Updated neighbor finder: uses IsWalkableCell
     private List<Q_Node> FindNeighbors(Vector3Int parentPosition, Dictionary<Vector3Int, Q_Node> allNodes)
     {
         List<Q_Node> neighbors = new List<Q_Node>();
@@ -180,7 +223,7 @@ public class C_AStar : MonoBehaviour
             {
                 if (x == 0 && y == 0) continue;
                 Vector3Int nPos = new Vector3Int(parentPosition.x - x, parentPosition.y - y, parentPosition.z);
-                if (nPos != m_startPos && !m_blockedTiles.Contains(nPos) && m_tilemap.GetTile(nPos))
+                if (nPos != m_startPos && !m_blockedTiles.Contains(nPos) && IsWalkableCell(nPos))
                     neighbors.Add(GetOrCreateNode(nPos, allNodes));
             }
         }
@@ -206,7 +249,7 @@ public class C_AStar : MonoBehaviour
             foreach (Vector3Int pos in m_path)
             {
                 if (pos != m_goalPos)
-                    m_tilemap.SetTile(pos, m_tiles[(int)TileType.PATH]); // usa tu índice de PATH
+                    m_floorTilemap.SetTile(pos, m_tiles[(int)TileType.PATH]); // use floor map for visual path
             }
         }
         // Debug visual
@@ -242,7 +285,7 @@ public class C_AStar : MonoBehaviour
 
                 if (y != 0 || x != 0)
                 {
-                    if (neighborPos != m_startPos && !m_blockedTiles.Contains(neighborPos) && m_tilemap.GetTile(neighborPos)) // the tile exists
+                    if (neighborPos != m_startPos && !m_blockedTiles.Contains(neighborPos) && IsWalkableCell(neighborPos)) // the tile exists and not blocked
                     {
                         Q_Node neighbor = getNode(neighborPos);
                         neighbors.Add(neighbor);
@@ -352,30 +395,41 @@ public class C_AStar : MonoBehaviour
             // Lógica para start y goal (sin cambios)
             if (m_tileType == TileType.START)
             {
-                if (m_startIsSet) m_tilemap.SetTile(m_startPos, m_tiles[3]);
+                if (m_startIsSet) m_floorTilemap.SetTile(m_startPos, m_tiles[3]);
                 m_startIsSet = true;
                 m_startPos = _clickPos;
             }
             else
             {
-                if (m_goalIsSet) m_tilemap.SetTile(m_goalPos, m_tiles[3]);
+                if (m_goalIsSet) m_floorTilemap.SetTile(m_goalPos, m_tiles[3]);
                 m_goalIsSet = true;
                 m_goalPos = _clickPos;
             }
 
-            m_tilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
+            m_floorTilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
             m_changedTiles.Add(_clickPos);
         }
         else if (IsObstacle(m_tileType))
         {
-            // Para cualquier tipo de obstáculo (agua, lava, muro, etc.)
-            m_tilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]); // o usa el tile específico
-            m_blockedTiles.Add(_clickPos);
+            // Put obstacle tile into the first obstacle tilemap (if configured)
+            if (m_obstacleTilemaps != null && m_obstacleTilemaps.Length > 0 && m_obstacleTilemaps[0] != null)
+            {
+                m_obstacleTilemaps[0].SetTile(_clickPos, m_tiles[(int)m_tileType]);
+                if (!m_blockedTiles.Contains(_clickPos))
+                    m_blockedTiles.Add(_clickPos);
+            }
+            else
+            {
+                // fallback: mark in blocked list and paint on floor map
+                m_floorTilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
+                if (!m_blockedTiles.Contains(_clickPos))
+                    m_blockedTiles.Add(_clickPos);
+            }
         }
         else
         {
             // Tile normal (GRASS, PATH...)
-            m_tilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
+            m_floorTilemap.SetTile(_clickPos, m_tiles[(int)m_tileType]);
             m_changedTiles.Add(_clickPos);
         }
     }
@@ -421,24 +475,24 @@ public class C_AStar : MonoBehaviour
         //changed tiles now are grass
         foreach (Vector3Int pos in m_changedTiles)
         {
-            m_tilemap.SetTile(pos, m_tiles[3]);
+            m_floorTilemap.SetTile(pos, m_tiles[3]);
         }
 
         // path is grass now 
         foreach (Vector3Int pos in m_path)
         {
-            m_tilemap.SetTile(pos, m_tiles[3]);
+            m_floorTilemap.SetTile(pos, m_tiles[3]);
         }
 
         foreach (Vector3Int pos in m_blockedTiles)
         {
-            m_tilemap.SetTile(pos, m_tiles[3]);
+            m_floorTilemap.SetTile(pos, m_tiles[3]);
         }
 
 
         //set start and goal to grass
-        m_tilemap.SetTile(m_startPos, m_tiles[3]);
-        m_tilemap.SetTile(m_goalPos, m_tiles[3]);
+        m_floorTilemap.SetTile(m_startPos, m_tiles[3]);
+        m_floorTilemap.SetTile(m_goalPos, m_tiles[3]);
 
         m_startIsSet = false;
         m_goalIsSet = false;
@@ -450,8 +504,8 @@ public class C_AStar : MonoBehaviour
     }
     public List<Vector3> GetPath(Vector3 worldStart, Vector3 worldGoal)
     {
-        Vector3Int startCell = m_tilemap.WorldToCell(worldStart);
-        Vector3Int goalCell = m_tilemap.WorldToCell(worldGoal);
+        Vector3Int startCell = m_floorTilemap.WorldToCell(worldStart);
+        Vector3Int goalCell = m_floorTilemap.WorldToCell(worldGoal);
 
         // Opcional: evitar que start/goal sean agua
         if (m_blockedTiles.Contains(startCell) || m_blockedTiles.Contains(goalCell))
@@ -465,7 +519,7 @@ public class C_AStar : MonoBehaviour
         List<Vector3> worldPath = new List<Vector3>(path.Count);
         foreach (Vector3Int cell in path)
         {
-            worldPath.Add(m_tilemap.GetCellCenterWorld(cell));
+            worldPath.Add(m_floorTilemap.GetCellCenterWorld(cell));
         }
         return worldPath;
     }
@@ -488,7 +542,7 @@ public class C_AStar : MonoBehaviour
         for (int i = 0; i < nodes.Length; i++)
         {
             // Use cell center so the agent moves to the tile center
-            worldPositions.Add(m_tilemap.GetCellCenterWorld(nodes[i]));
+            worldPositions.Add(m_floorTilemap.GetCellCenterWorld(nodes[i]));
         }
 
         return worldPositions;

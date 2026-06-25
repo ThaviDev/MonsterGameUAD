@@ -10,6 +10,7 @@ public class C_PlayerStats : MonoBehaviour
 
     [SerializeField] float m_Fear;
     private float m_FearRegen = 1f;
+    private float m_FearWhenHitDefault = 10f;
 
     [SerializeField] float m_Stamina;
     private float m_LastStamina;
@@ -27,12 +28,21 @@ public class C_PlayerStats : MonoBehaviour
     private float m_BPM_RelaxThreshold = 160;
     /* Umbral minimo de BPM que tiene que pasar el BPM para salir del estado de pánico*/
 
-    private float m_StabilizeStaminaTime_DefaultValue = 1.5f;
-    private float m_StabilizeStaminaTime = 0;
     /* Tiempo que tiene que pasar para que la estmina se regenere al no utilizarla */
+    [SerializeField] float m_StabilizeStaminaTimeDefaultV = 1.5f;
+    private float m_StabilizeStaminaTime = 0;
+    /* Tiempo donde el jugador no puede recibir danio despues de recibir danio */
+    [SerializeField] float m_InvincibleTimeDefaultV = 1f;
+    float m_InvincibleTime;
 
-    [SerializeField] float m_BateryPercent;
+    //[SerializeField] float m_BateryPercent;
 
+    /* Determina el estado de velocidad del jugador
+     * 0 = Idle
+     * 1 = Caminata Normal
+     * 2 = Trotar
+     * 3 = Correr
+     */
     [SerializeField] float[] m_SpeedLevels;
     [SerializeField] float[] m_AccelLevels; // Acceleration Levels
     [SerializeField] float[] m_DecelLevels; // Deceleration Levels
@@ -42,8 +52,7 @@ public class C_PlayerStats : MonoBehaviour
     private float m_CurAcceleration;
     private float m_CurDeceleration;
 
-    [SerializeField] float m_InvincibleTime;
-    float m_InvincibleTimeDefaultV = 1f;
+
 
     /* ---- Comunicar informacion de variables a otros codigos ---- */
     public float GetBPM { get { return m_BPM; } }
@@ -59,13 +68,13 @@ public class C_PlayerStats : MonoBehaviour
 
     void Start()
     {
-        m_BateryPercent = 1; // 1 = 100%
+        //m_BateryPercent = 1; // 1 = 100%
         m_InvincibleTime = 0;
+        C_PlayerMotor.OnPyrHit += RecieveDamage;
     }
 
     void Update()
     {
-        C_PlayerMotor.OnPyrHit += RecieveDamage;
         // Establecer los niveles de velocidad dependiendo de Player Move
         m_CurSpeedGoal = m_SpeedLevels[m_PyrMoveScript.GetMovementStatus];
         m_CurAcceleration = m_AccelLevels[m_PyrMoveScript.GetMovementStatus];
@@ -74,6 +83,8 @@ public class C_PlayerStats : MonoBehaviour
 
         // Los beats por minuto dependen de 3 estadisticas y su minimo
         m_BPM = m_DamageTaken + m_Stamina + m_Fear + m_BPM_Minimum;
+
+        print("Velocidad: " + m_CurSpeedGoal + " Uso de estamina: " + m_CurStaminaMoveUse);
 
         Fear();
         Stamina();
@@ -154,7 +165,7 @@ public class C_PlayerStats : MonoBehaviour
         // Si el valor de estamina AUMENTO, desestabiliza la estamina
         if (m_Stamina > m_LastStamina)
         {
-            m_StabilizeStaminaTime = m_StabilizeStaminaTime_DefaultValue;
+            m_StabilizeStaminaTime = m_StabilizeStaminaTimeDefaultV;
             m_LastStamina = m_Stamina;
         }
         else
@@ -217,8 +228,28 @@ public class C_PlayerStats : MonoBehaviour
         {
             m_DamageTaken += damageAmount;
             m_DamageRegenGoal += damageAmount;
-            m_Fear += 10;
+            m_Fear += m_FearWhenHitDefault;
             m_InvincibleTime = m_InvincibleTimeDefaultV;
+        }
+    }
+    public void RecieveDamage(Collider2D otherCol, float damageAmount, float invincibleTime)
+    {
+        if (m_InvincibleTime <= 0)
+        {
+            m_DamageTaken += damageAmount;
+            m_DamageRegenGoal += damageAmount;
+            m_Fear += m_FearWhenHitDefault;
+            m_InvincibleTime = invincibleTime;
+        }
+    }
+    public void RecieveDamage(Collider2D otherCol, float damageAmount, float invincibleTime, float fearHitAmount)
+    {
+        if (m_InvincibleTime <= 0)
+        {
+            m_DamageTaken += damageAmount;
+            m_DamageRegenGoal += damageAmount;
+            m_Fear += fearHitAmount;
+            m_InvincibleTime = invincibleTime;
         }
     }
 

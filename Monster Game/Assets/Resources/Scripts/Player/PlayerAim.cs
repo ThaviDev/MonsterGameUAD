@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerAim : MonoBehaviour
 {
-    [Header("Configuración")]
+    [Header("Configuration")]
     [SerializeField] private float _rotationSpeed = 10f;
     [SerializeField] private bool _is2D = true;
     [SerializeField] private bool _useMouseRotation = false; // Nuevo flag para alternar entre joystick/mouse
@@ -44,6 +44,9 @@ public class PlayerAim : MonoBehaviour
     // Obtiene la dirección del mouse relativa al objeto
     private Vector2 GetMouseDirection()
     {
+        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        return (mouseWorldPos - new Vector3(transform.position.x, transform.position.y)).normalized;
+        /*
         if (_is2D)
         {
             // Para 2D: mouse en coordenadas del mundo
@@ -66,13 +69,15 @@ public class PlayerAim : MonoBehaviour
             }
             return Vector2.zero;
         }
+        */
     }
 
     // Calcula la rotación objetivo
     private Quaternion CalculateTargetRotation(Vector2 direction)
     {
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-
+        return Quaternion.Euler(0, 0, angle - 90);
+        /*
         if (_is2D)
         {
             return Quaternion.Euler(0, 0, angle - 90);
@@ -81,6 +86,7 @@ public class PlayerAim : MonoBehaviour
         {
             return Quaternion.Euler(0, angle, 0);
         }
+        */
     }
 
     // Aplica la rotación suavizada

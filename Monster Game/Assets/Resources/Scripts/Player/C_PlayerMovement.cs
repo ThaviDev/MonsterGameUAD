@@ -11,6 +11,7 @@ public class C_PlayerMovement : MonoBehaviour
 
     Vector2 m_movementDirection;
     bool m_isPressingRun;
+    bool m_isDashing;
     bool m_isPressingBreathe;
     float m_moveStatusCooldown = 0;
 
@@ -22,12 +23,6 @@ public class C_PlayerMovement : MonoBehaviour
     // Multiplica el danio por el cual el jugador es golpeado
     [SerializeField] float m_damageKnockbackMultiplier = 2f;
 
-    /* Determina el estado de velocidad del jugador
-     * 0 = Idle
-     * 1 = Caminata Normal
-     * 2 = Trotar
-     * 3 = Correr
-     */
     [SerializeField] int m_movementStatus;
     public int GetMovementStatus { get { return m_movementStatus; } }
     void Start()
@@ -43,13 +38,6 @@ public class C_PlayerMovement : MonoBehaviour
     void Update()
     {
         //test
-        bool Dash = PlayerInputs.Instance.DashBool;
-        if (Dash)
-        {
-            m_dashTrail.m_startTrail = true;
-            Instantiate(m_vfx_PlayerJump, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
-            print("Uso Item Actual");
-        }
         bool movetoPreviousItem = PlayerInputs.Instance.PreviousItemBool;
         if (movetoPreviousItem)
         {
@@ -59,42 +47,14 @@ public class C_PlayerMovement : MonoBehaviour
         if (moveToNextItem)
             print("Me muevo al siguiente item");
 
-        //---
-        m_movementDirection = PlayerInputs.Instance.MovementVector.normalized;
-        m_isPressingRun = PlayerInputs.Instance.RuningBool;
-        //---
+
 
         if (m_hasSelfControl > 0)
         {
             m_hasSelfControl -= Time.deltaTime;
-        }
-
-        //print(_movementStatus);
-        //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
-        var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
-
-
-        //print(_moveStatusCooldown);
-        if (m_hasSelfControl <= 0 && m_isPressingRun)
-        {
-            if (m_movementStatus < 5 && m_moveStatusCooldown <= 0)
-            {
-                m_movementStatus++;
-                m_moveStatusCooldown = 0.3f;
-            }
         } else
         {
-            if (m_moveStatusCooldown > 0)
-            {
-                m_moveStatusCooldown -= Time.deltaTime;
-            }
-        }
-        if (absMovement < 0.1f)
-        {
-            m_movementStatus = 0;
-        } else if (absMovement > 0.1f && m_movementStatus == 0)
-        {
-            m_movementStatus = 1;
+            HandleMovement();
         }
         /*
         if (_hasSelfControl <= 0 && _isPressingRun && absMovement > 2)
@@ -125,6 +85,48 @@ public class C_PlayerMovement : MonoBehaviour
         */
 
 
+    }
+    private void HandleMovement()
+    {
+        //---
+        m_movementDirection = PlayerInputs.Instance.MovementVector.normalized;
+        m_isPressingRun = PlayerInputs.Instance.RuningBool;
+        m_isDashing = PlayerInputs.Instance.DashBool;
+        //---
+
+        //print(_movementStatus);
+        //var absMovement = Mathf.Abs(_movementDirection.x) + Mathf.Abs(_movementDirection.y);
+        var absMovement = Mathf.Abs(_rb.linearVelocity.x) + Mathf.Abs(_rb.linearVelocity.y);
+
+        //print(_moveStatusCooldown);
+        if (m_isPressingRun)
+        {
+            if (m_movementStatus < 5 && m_moveStatusCooldown <= 0)
+            {
+                m_movementStatus++;
+                m_moveStatusCooldown = 0.3f;
+            }
+        }
+        else
+        {
+            if (m_moveStatusCooldown > 0)
+            {
+                m_moveStatusCooldown -= Time.deltaTime;
+            }
+        }
+        if (absMovement < 0.1f)
+        {
+            m_movementStatus = 0;
+        }
+        else if (absMovement > 0.1f && m_movementStatus == 0)
+        {
+            m_movementStatus = 1;
+        }
+        if (m_isDashing)
+        {
+            m_dashTrail.m_startTrail = true;
+            Instantiate(m_vfx_PlayerJump, new Vector3(transform.position.x, transform.position.y), Quaternion.identity);
+        }
     }
     private void FixedUpdate()
     {
@@ -163,6 +165,7 @@ public class C_PlayerMovement : MonoBehaviour
 
     private void PlayerNoMove()
     {
+        m_movementStatus = 0;
         m_hasSelfControl = 999;
     }
     private void PlayerCanMove()

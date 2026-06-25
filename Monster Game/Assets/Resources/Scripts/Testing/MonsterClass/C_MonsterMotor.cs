@@ -1,4 +1,5 @@
 using SteeringBehaviours;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -50,17 +51,27 @@ public class C_MonsterMotor : MonoBehaviour
     [SerializeField] protected float m_AgressionChaseThreshold = 500f;
     public float AgressionChaseThreshold { get { return m_AgressionChaseThreshold; } }
 
+    [Header("General Variables")]
     [SerializeField] protected float m_SpeedCur = 1;
     public float SpeedCur { get { return m_SpeedCur; } }
     [SerializeField] protected float m_SpeedMax = 5;
+    [SerializeField] protected bool m_HasBeenFoundByPlayer;
+    public bool HasBeenFoundByPlayer { get { return m_HasBeenFoundByPlayer; } set { m_HasBeenFoundByPlayer = value; } }
+    [SerializeField] protected float m_EnergyDecreasedWhenFound;
+    [SerializeField] protected float m_EnergyIncreasedWhenScreamer;
+    [SerializeField] protected bool m_IsMoving;
 
     [Header("Settings")]
 
-    [SerializeField] protected bool m_IsSpawnedIn;
+    //[SerializeField] protected bool m_IsSpawnedIn;
 
     [SerializeField] protected Vector3 m_StealthPoint;
 
     public C_MonstState m_CurrentState;
+
+    protected List<Vector3> m_ChasePath;
+
+    protected bool m_IsTurnedLeft;
     protected virtual void Start()
     {
         m_Visual = gameObject.transform.GetChild(0).gameObject.transform.GetComponent<C_MonsAnimBase>();
@@ -72,10 +83,43 @@ public class C_MonsterMotor : MonoBehaviour
         Despawn();
         //ChangeState(new S_Despawned(this));
     }
-
     protected virtual void Update()
     {
         m_CurrentState?.MyUpdate();
+
+        if (m_Boid.BoidMoveForce.x > 0)
+        {
+            m_IsTurnedLeft = true;
+        }
+        else if (m_Boid.BoidMoveForce.x < 0)
+        {
+            m_IsTurnedLeft = false;
+        }
+        // IsTurnedLeft tambien es usado por el agarre para saber a donde ve el monstruo
+        m_Visual.GetComponent<SpriteRenderer>().flipX = m_IsTurnedLeft;
+    }
+    public virtual void StartPathUpdater()
+    {
+        m_IsMoving = true;
+        StartCoroutine(UpdatePath());
+        Debug.Log("Empezar a seguir al jugador");
+    }
+    public virtual void StopPathUpdater()
+    {
+        m_IsMoving = false;
+        m_ChasePath = null;
+        Boid.Path = null;
+        StopCoroutine(UpdatePath());
+        Debug.Log("Dejar de seguir al jugador");
+    }
+    public virtual IEnumerator UpdatePath()
+    {
+        while (m_IsMoving)
+        {
+            m_ChasePath = PathFinder.GetPath(gameObject.transform.position, PredictionPoint.position);
+            Boid.Path = m_ChasePath;
+            yield return new WaitForSeconds(0.2f); // Actualiza el camino cada 0.5 segundos
+        }
     }
 
     public virtual void RegenEnergy() {
@@ -89,8 +133,8 @@ public class C_MonsterMotor : MonoBehaviour
 
         if (m_Energy >= m_EnergySetToSpawn)
         {
-            print("Spawnear");
-            CallSpawn();
+            //print("Spawnear");
+            Spawn();
         }
     }
     public virtual void DecreaseEnergy() {
@@ -104,8 +148,8 @@ public class C_MonsterMotor : MonoBehaviour
 
         if (m_Energy <= m_EnergySetToDespawn)
         {
-            print("Despawnear");
-            CallDespawn();
+            //print("Despawnear");
+            Despawn();
         }
     }
     public virtual void RegenAgression() {
@@ -124,37 +168,19 @@ public class C_MonsterMotor : MonoBehaviour
             m_Agression = 0;
         }
     }
-
-    protected virtual void CallSpawn()
+    public virtual void Spawn()
     {
-        // Empezar animacion de spawn
-        //m_VisualAnim.SetBool("SpawnedIn", true);
-        //m_Visual.AnimSpawn();
-        m_IsSpawnedIn = true;
+        //m_IsSpawnedIn = true;
         RandomizeSpawnAndDespawnValues();
-        // Aquí sería mejor tener una animacion de spawn, pero por ahora se hace inmediatamente
-        Spawn();
-    }
-    protected virtual void CallDespawn()
-    {
-        //m_VisualAnim.SetBool("SpawnedIn", false);
-        //m_Visual.AnimDespawn();
-        m_IsSpawnedIn = false;
-        RandomizeSpawnAndDespawnValues();
-        // Aquí sería mejor tener una animacion de despawn, pero por ahora se hace inmediatamente
-        Despawn();
-    }
-    protected virtual void Spawn()
-    {
-        m_IsSpawnedIn = true;
         ChangeState(new S_Spawned(this));
     }
-    protected virtual void Despawn()
+    public virtual void Despawn()
     {
-        m_IsSpawnedIn = false;
+        //m_IsSpawnedIn = false;
+        RandomizeSpawnAndDespawnValues();
         ChangeState(new S_Despawned(this));
     }
-    protected virtual void RandomizeSpawnAndDespawnValues()
+    public virtual void RandomizeSpawnAndDespawnValues()
     {
         m_EnergySetToSpawn = Random.Range(m_EnergyMinToSpawn, m_EnergyMinToSpawn + m_EnergyRandomScaleSpawn);
         m_EnergySetToDespawn = Random.Range(m_EnergyMaxToDespawn - m_EnergyRandomScaleDespawn, m_EnergyMaxToDespawn);
@@ -168,6 +194,14 @@ public class C_MonsterMotor : MonoBehaviour
         m_CurrentState?.MyExit();
         m_CurrentState = newState;
         m_CurrentState.MyEnter();
+    }
+    public virtual void DecreasingEnergyWhenFound()
+    {
+        m_Energy -= m_EnergyDecreasedWhenFound;
+    }
+    public virtual void IncreasingEneryWhenScreamer()
+    {
+        m_Energy += m_EnergyIncreasedWhenScreamer;
     }
     protected virtual void OnTriggerEnter2D(Collider2D otherCol)
     {

@@ -8,23 +8,14 @@ public class S_Chasing : C_MonstState
     public override void MyEnter()
     {
         base.MyEnter();
-        Debug.Log("Estoy persiguiendo");
+        //Debug.Log("Estoy persiguiendo");
         Motor.Visual.AnimChase();
 
         //Motor.Boid.SeekTarget = Motor.PredictionPoint;
 
         //m_ChasePath = Motor.PathFinder.GetPath(Motor.gameObject.transform.position, Motor.PredictionPoint.position);
         //Motor.Boid.Path = m_ChasePath;
-        Motor.StartCoroutine(UpdatePath());
-    }
-    public IEnumerator UpdatePath()
-    {
-        while (true)
-        {
-            m_ChasePath = Motor.PathFinder.GetPath(Motor.gameObject.transform.position, Motor.PredictionPoint.position);
-            Motor.Boid.Path = m_ChasePath;
-            yield return new WaitForSeconds(0.5f); // Actualiza el camino cada 0.5 segundos
-        }
+        Motor.StartPathUpdater();
     }
     public override void MyUpdate()
     {
@@ -34,6 +25,7 @@ public class S_Chasing : C_MonstState
     }
     public override void MyExit()
     {
+        Motor.StopPathUpdater();
         base.MyExit();
     }
     public override void MyTriggerColision(Collider2D other)
