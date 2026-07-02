@@ -9,6 +9,7 @@ public class C_PlayerMotor : MonoBehaviour
     public static Action OnRelax;
     public static Action OnPyrDeath;
     public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
+    public GameObject test_ScreamerImage;
 
     [SerializeField] private C_PlayerStats m_PlayerStats;
     public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
@@ -44,6 +45,15 @@ public class C_PlayerMotor : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            MusicManager.Instance.PlaySoundCue(2);
+            test_ScreamerImage.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            MusicManager.Instance.SetMusic(2);
+        }
         //print(m_CurrentState);
         // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
         m_CurrentState?.MyUpdate();

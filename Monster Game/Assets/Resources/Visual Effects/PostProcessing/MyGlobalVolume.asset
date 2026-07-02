@@ -146,7 +146,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   scale:
     m_OverrideState: 1
-    m_Value: 0.99
+    m_Value: 1
 --- !u!114 &4563508509135693899
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -217,7 +217,7 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 0.175
+    m_Value: 0
   cropToFit:
     m_OverrideState: 1
     m_Value: 0

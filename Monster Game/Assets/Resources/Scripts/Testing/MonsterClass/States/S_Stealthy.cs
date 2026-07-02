@@ -42,7 +42,9 @@ public class S_Stealthy : C_MonstState
     public override void MyTriggerColision(Collider2D other)
     {
         base.MyTriggerColision(other);
-        // Aquí iría la lógica de colisión con el jugador, como infligir daño
     }
-
+    public override void MyColision(Collision2D other)
+    {
+        base.MyColision(other);
+    }
 }

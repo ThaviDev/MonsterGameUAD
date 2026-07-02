@@ -20,6 +20,7 @@ public class C_MonsterMotor : MonoBehaviour
     public Transform PredictionPoint { get { return m_PredictionPoint; } }
     [SerializeField] protected C_AStar m_PathFinder;
     public C_AStar PathFinder { get { return m_PathFinder; } }
+    [SerializeField] protected AudioSource m_AudioSource;
     //[SerializeField] protected SpriteRenderer m_VisualSpr;
     //[SerializeField] protected Animator m_VisualAnim;
 
@@ -79,6 +80,7 @@ public class C_MonsterMotor : MonoBehaviour
         m_PlayerMotor = FindFirstObjectByType<C_PlayerMotor>();
         m_PredictionPoint = FindFirstObjectByType<C_PlayerPredictionPoint>().transform;
         m_PathFinder = FindFirstObjectByType<C_AStar>();
+        m_AudioSource = GetComponent<AudioSource>();
         RandomizeSpawnAndDespawnValues();
         Despawn();
         //ChangeState(new S_Despawned(this));
@@ -206,5 +208,10 @@ public class C_MonsterMotor : MonoBehaviour
     protected virtual void OnTriggerEnter2D(Collider2D otherCol)
     {
         m_CurrentState?.MyTriggerColision(otherCol);
+    }
+    protected virtual void OnCollisionEnter2D(Collision2D otherCol)
+    {
+        print("Choque con algo: " + otherCol.gameObject.layer);
+        m_CurrentState?.MyColision(otherCol);
     }
 }

@@ -27,4 +27,8 @@ public class S_Despawned : C_MonstState
     {
         base.MyTriggerColision(other);
     }
+    public override void MyColision(Collision2D other)
+    {
+        base.MyColision(other);
+    }
 }
