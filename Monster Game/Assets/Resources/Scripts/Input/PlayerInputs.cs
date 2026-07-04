@@ -7,7 +7,6 @@ public class PlayerInputs : MonoBehaviour
     static PlayerInput _input;
 
     [SerializeField] private InputActionAsset _inputAsset; // Asset asignable desde Inspector
-
     public static PlayerInputs Instance
     {
         get

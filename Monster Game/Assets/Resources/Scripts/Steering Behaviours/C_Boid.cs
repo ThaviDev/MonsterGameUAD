@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SteeringBehaviours
@@ -5,7 +6,8 @@ namespace SteeringBehaviours
     public class C_Boid : MonoBehaviour
     {
         //[SerializeField] t_BoidTypes m_CurBoidType;
-
+        float m_StopMovementTime;
+        public float StopMovementTime { get { return m_StopMovementTime; } set { m_StopMovementTime = value; } }
         [Header("Data")]
         [SerializeField] float m_Mass;
         [SerializeField] float m_Speed;
@@ -80,12 +82,12 @@ namespace SteeringBehaviours
         [SerializeField] Color m_EvadeColor = Color.cyan;
 
         [Header("PathFollower")]
-        [SerializeField] Transform[] m_Path;
-        public Transform[] Path { get { return m_Path; } set { m_Path = value; } }
+        [SerializeField] List<Vector3> m_Path = new List<Vector3>();
+        public List<Vector3> Path { get { return m_Path; } set { m_Path = value; } }
         [SerializeField] float m_PathPosArriveRatio;
         [SerializeField] float m_PathImpetu;
         [SerializeField] Color m_PathColor = Color.green;
-        private Transform[] m_CurrentPath;
+        private List<Vector3> m_CurrentPath = null;
         private int m_PathIndex = 0;
 
         //[Header("Avoid")] // Usado para evitar obstaculos
@@ -103,6 +105,17 @@ namespace SteeringBehaviours
         [Header ("Momentum")]
         [SerializeField] Vector3 m_PastForce;
         [SerializeField] Vector3 m_NewForce;
+        public Vector3 BoidMoveForce { get { return m_NewForce; } }
+
+        [Header("Gizmos")]
+        [SerializeField] bool m_DrawGizmos = true;
+        [SerializeField] bool m_DrawOnlyWhenSelected = false;
+        [SerializeField] Color m_GizmoPathPointColor = Color.green;
+        [SerializeField] Color m_GizmoPathLineColor = Color.green;
+        [SerializeField] float m_GizmoPointRadius = 0.12f;
+        [SerializeField] Color m_GizmoDirectionColor = Color.cyan;
+        [SerializeField] float m_GizmoDirectionLength = 1.0f;
+
         private void Start()
         {
 
@@ -148,15 +161,22 @@ namespace SteeringBehaviours
                 Debug.DrawLine(transform.position, transform.position + fleeForce, m_FleeRatioColor);
                 Forces += fleeForce;
             }
-            if (m_Path != null && m_Path.Length > 0)
+            if (m_Path != null && m_Path.Count > 0)
             {
                 var pathForce = FollowPath(m_Path, m_PathPosArriveRatio);
                 Debug.DrawLine(transform.position, transform.position + pathForce, m_PathColor);
                 Forces += pathForce;
             }
+            if (m_StopMovementTime > 0)
+            {
+                m_StopMovementTime -= Time.deltaTime;
+                m_PastForce = Vector3.zero;
+                m_NewForce = Vector3.zero;
+                return;
+            }
 
             // -- Arrive -- 
-            if (m_UseArriveSeek)
+            if (m_UseArriveSeek && m_SeekTarget != null)
             {
                 m_Speed = Arrive(m_Speed, m_SeekTarget.position, m_ArriveRatio);
             }
@@ -300,7 +320,7 @@ namespace SteeringBehaviours
         {
             return Pursue(other, arriveTime, impetu) * -1;
         }
-        public Vector3 FollowPath(Transform[] Path, float posArriveRatio)
+        public Vector3 FollowPath(List<Vector3> Path, float posArriveRatio)
         {
             // Declarar camino y reiniciar indice si el camino es diferente al actual
             if (m_CurrentPath != Path)
@@ -310,30 +330,39 @@ namespace SteeringBehaviours
             }
 
             if (Path == null 
-                || Path.Length == 0 
-                || m_PathIndex >= m_CurrentPath.Length)
+                || Path.Count == 0 
+                || m_PathIndex >= m_CurrentPath.Count)
             {
                 return Vector3.zero;
             }
 
-            var target = m_CurrentPath[m_PathIndex].position;
+            var target = m_CurrentPath[m_PathIndex];
             var toTarget = target - transform.position;
             var dist = toTarget.magnitude;
 
             if (dist <= posArriveRatio)
             {
                 m_PathIndex++;
-                if (m_PathIndex >= m_CurrentPath.Length)
+                if (m_PathIndex >= m_CurrentPath.Count)
                 {
                     return Vector3.zero;
                 }
-                target = m_CurrentPath[m_PathIndex].position;
+                target = m_CurrentPath[m_PathIndex];
             }
 
             return Seek(target, m_PathImpetu);
         }
         private void OnDrawGizmos()
         {
+            if (!m_DrawGizmos)
+                return;
+
+#if UNITY_EDITOR
+            if (m_DrawOnlyWhenSelected && UnityEditor.Selection.activeGameObject != gameObject)
+                return;
+#endif
+
+            // Existing behavior gizmos (seek/flee ratio spheres)
             if (m_SeekRatioTarget != null)
             {
                 Gizmos.color = m_SeekRatioColor;
@@ -344,6 +373,51 @@ namespace SteeringBehaviours
                 Gizmos.color = m_FleeRatioColor;
                 Gizmos.DrawWireSphere(m_FleeRatioTarget.position, m_FleeRatio);
             }
+
+            // Draw path points and connecting lines
+            List<Vector3> drawPath = m_CurrentPath ?? m_Path;
+            if (drawPath != null && drawPath.Count > 0)
+            {
+                Gizmos.color = m_GizmoPathPointColor;
+                for (int i = 0; i < drawPath.Count; i++)
+                {
+                    Gizmos.DrawSphere(drawPath[i], m_GizmoPointRadius);
+                }
+
+                Gizmos.color = m_GizmoPathLineColor;
+                for (int i = 0; i < drawPath.Count - 1; i++)
+                {
+                    Gizmos.DrawLine(drawPath[i], drawPath[i + 1]);
+                }
+
+                // highlight current target point if available
+                if (Application.isPlaying && m_CurrentPath != null && m_PathIndex < m_CurrentPath.Count)
+                {
+                    Gizmos.color = Color.yellow;
+                    Gizmos.DrawWireSphere(m_CurrentPath[m_PathIndex], m_GizmoPointRadius * 1.4f);
+                    Gizmos.DrawLine(transform.position, m_CurrentPath[m_PathIndex]);
+                }
+            }
+
+            // Draw agent direction (based on past force or transform up as fallback)
+            Vector3 dir = Vector3.zero;
+            if (m_PastForce != Vector3.zero)
+                dir = m_PastForce.normalized;
+            else if (m_NewForce != Vector3.zero)
+                dir = m_NewForce.normalized;
+            else
+                dir = transform.up; // default forward for top-down 2D
+
+            Gizmos.color = m_GizmoDirectionColor;
+            Gizmos.DrawLine(transform.position, transform.position + dir * m_GizmoDirectionLength);
+
+            // Arrow head
+            float headAngle = 20f;
+            float headLength = Mathf.Max(0.15f, m_GizmoDirectionLength * 0.25f);
+            Vector3 right = Quaternion.Euler(0, 0, headAngle) * (-dir) * headLength;
+            Vector3 left = Quaternion.Euler(0, 0, -headAngle) * (-dir) * headLength;
+            Gizmos.DrawLine(transform.position + dir * m_GizmoDirectionLength, transform.position + dir * m_GizmoDirectionLength + right);
+            Gizmos.DrawLine(transform.position + dir * m_GizmoDirectionLength, transform.position + dir * m_GizmoDirectionLength + left);
         }
     }
 }

@@ -9,6 +9,7 @@ public class C_PlayerMotor : MonoBehaviour
     public static Action OnRelax;
     public static Action OnPyrDeath;
     public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
+    public GameObject test_ScreamerImage;
 
     [SerializeField] private C_PlayerStats m_PlayerStats;
     public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
@@ -44,6 +45,15 @@ public class C_PlayerMotor : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            MusicManager.Instance.PlaySoundCue(2);
+            test_ScreamerImage.SetActive(true);
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            MusicManager.Instance.SetMusic(2);
+        }
         //print(m_CurrentState);
         // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
         m_CurrentState?.MyUpdate();
@@ -150,16 +160,13 @@ public class C_PlayerMotor : MonoBehaviour
         public override void MyTriggerColision(Collider2D otherCol)
         {
             base.MyTriggerColision(otherCol);
+            /*
             if (otherCol.gameObject.layer == 6) // Monster Layer
             {
                 OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
                 _PM.CheckIfDeath();
-                /*
-                if (_PM.m_playerStats.GetBPM >= 150)
-                {
-                    OnPyrDeath?.Invoke();
-                }*/
             }
+            */
         }
     }
     private class PanicState : PlayerState
@@ -283,6 +290,7 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyEnter();
             // Temporal Feedback Queue
             //_PM.m_sprite.color = Color.red;
+            print("Este solo es enter cierto?");
             m_CurMashCount = _PM.m_GrabMashCount;
             if (m_MonsterThatGrabbed is C_Monst_Tree)
             {
@@ -295,7 +303,11 @@ public class C_PlayerMotor : MonoBehaviour
         {
             base.MyUpdate();
 
-            _PM.PlayerStats.RecieveDamage (m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),m_GrabDamage);
+            _PM.PlayerStats.RecieveDamage 
+                (m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>()
+                ,(m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval
+                ,(m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageIntervalTime,
+                (m_MonsterThatGrabbed as C_Monst_Tree).GrabFearAmountPerInterval);
             _PM.CheckIfDeath();
             //_PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
             _PM.transform.position = m_PlayerGrabbedPos + (Vector2)m_MonsterThatGrabbed.transform.position;
@@ -306,14 +318,14 @@ public class C_PlayerMotor : MonoBehaviour
         }
         private void KeyMeshingMinigame()
         {
-            Debug.Log("Cantidad de clicks necesarias: "+m_CurMashCount);
+            Debug.Log("Cantidad de clicks necesarias: " + m_CurMashCount);
             if (PlayerInputs.Instance.InteractAndPickUpItemBool)
             {
-                Debug.Log("Player se liberó del agarre por mash out!");
-
                 m_CurMashCount--;
+                Debug.Log("Player hizo mash! " + m_CurMashCount);
                 if (m_CurMashCount <= 0)
                 {
+                    Debug.Log("Player se liberó del agarre completamente!");
                     //_PM.m_MonsterThatGrabbed.ReleaseGrab();
 
                     //_PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;

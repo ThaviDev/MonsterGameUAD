@@ -7,4 +7,5 @@ public abstract class C_MonstState
     public virtual void MyExit() { }
     public virtual void MyUpdate() { }
     public virtual void MyTriggerColision(Collider2D other) { }
+    public virtual void MyColision(Collision2D other) { }
 }

@@ -11,7 +11,7 @@ public class S_Spawned : C_MonstState
             Debug.LogError("No tengo Motor");
         }
         Motor.Visual.AnimSpawn();
-        Debug.Log("Estoy Spawneado");
+        //Debug.Log("Estoy Spawneado");
 
         Motor.Boid.SeekImpetu = 1;
         Motor.Boid.BoidMaxSpeed = Motor.SpeedCur;
@@ -42,5 +42,9 @@ public class S_Spawned : C_MonstState
     public override void MyTriggerColision(Collider2D other)
     {
         base.MyTriggerColision(other);
+    }
+    public override void MyColision(Collision2D other)
+    {
+        base.MyColision(other);
     }
 }

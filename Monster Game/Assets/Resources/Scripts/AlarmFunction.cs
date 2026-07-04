@@ -16,6 +16,6 @@ public class AlarmFunction : MonoBehaviour
     public void ActivateAlarmCall()
     {
         _mstrSpawner.ActivateHorde();
-        _musicManager.SetMusic(1);
+        //_musicManager.SetMusic(1);
     }
 }

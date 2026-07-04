@@ -8,6 +8,7 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 
+/*
 public enum TileType
 {
     START = 0,
@@ -16,7 +17,7 @@ public enum TileType
     GRASS,
     PATH
 }
-
+*/
 
 public class Q_AStar : MonoBehaviour
 {
@@ -72,14 +73,12 @@ public class Q_AStar : MonoBehaviour
             }
         }
 
-        // Detect Input to run algorithm
-        /*
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Algorithm();
             }
-        }*/
+        }
     }
 
     public void Algorithm()
@@ -366,9 +365,10 @@ public class Q_AStar : MonoBehaviour
         Vector3Int[] nodes = m_path.ToArray();
         List<Vector3> worldPositions = new List<Vector3>(nodes.Length);
 
+        //for (int i = nodes.Length - 1; i >= 0; i--)
         //for (int i = 0; i < nodes.Length; i++)
         // Invertirlo por alguna razon que no se xd
-        for (int i = nodes.Length - 1; i >= 0; i--)
+        for (int i = 0; i < nodes.Length; i++)
         {
             // Use cell center so the agent moves to the tile center
             worldPositions.Add(m_tilemap.GetCellCenterWorld(nodes[i]));
