@@ -69,7 +69,6 @@ public class GMTestGameplay : MonoBehaviour
     void AtGameplay()
     {
         C_PlayerMotor.OnPyrDeath += StartGameOverSequence;
-
     }
     void AtMainMenu()
     {
@@ -106,6 +105,7 @@ public class GMTestGameplay : MonoBehaviour
     }
     void StartGameOverSequence()
     {
+        print("Game Over");
         OnGameOver?.Invoke();
     }
 }

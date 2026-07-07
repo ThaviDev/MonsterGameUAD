@@ -27,13 +27,14 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    // Music
+    [Header("Music")]
     [SerializeField] AudioClip m_AmbientMusic;
     [SerializeField] AudioClip m_HordeMusic;
     [SerializeField] AudioClip m_ChaseMusic;
     [SerializeField] AudioClip m_MainMenu;
+    [SerializeField] AudioClip m_GameOver;
 
-    // Sound Cues
+    [Header("Sound Cues")]
     [SerializeField] AudioClip m_MonsterReveal;
     [SerializeField] AudioClip m_MonsterNearCue;
     [SerializeField] AudioClip m_Screamer;
@@ -96,6 +97,9 @@ public class MusicManager : MonoBehaviour
                 break;
             case 3:
                 _source.clip = m_MainMenu;
+                break;
+            case 4:
+                _source.clip = m_GameOver;
                 break;
         }
         _source.Play();

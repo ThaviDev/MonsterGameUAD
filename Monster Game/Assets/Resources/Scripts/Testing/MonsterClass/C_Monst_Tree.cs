@@ -87,7 +87,7 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyEnter()
         {
             base.MyEnter();
-            MusicManager.Instance.SetMusic(0);
+            //MusicManager.Instance.SetMusic(0);
             m_Tree.StopSound(); // TEST
             //Debug.Log("Estoy Despawneado y ademas soy arbol");
         }
@@ -265,7 +265,7 @@ public class C_Monst_Tree : C_MonsterMotor
     {
         private C_Monst_Tree m_Tree;
         private C_MAnim_Tree m_TreeAnim;
-        private float m_ScreamerTime = 1.5f;
+        private float m_ScreamerTime = 1.55f;
         private GameObject m_ScreamLight;
         private GameObject m_vfx_MonsterScream;
         public S_Tree_Screamer(C_MonsterMotor motor) : base(motor) {
@@ -305,7 +305,7 @@ public class C_Monst_Tree : C_MonsterMotor
         }
         public override void MyExit()
         {
-            m_TreeAnim.AnimNotScreaming();
+            m_TreeAnim.AnimNotScream();
             Destroy(m_vfx_MonsterScream);
             Destroy(m_ScreamLight);
             MusicManager.Instance.SetMusic(2);

@@ -10,7 +10,6 @@ public class C_PlayerMotor : MonoBehaviour
     public static Action OnPyrDeath;
     public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
     public static Action<C_MonsterMotor> OnScreamer;
-    public GameObject test_ScreamerImage;
 
     [SerializeField] private C_PlayerStats m_PlayerStats;
     public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
@@ -42,23 +41,14 @@ public class C_PlayerMotor : MonoBehaviour
             ChangeState(new RegularState(this));
         }
         OnGetGrabbed += GotGrabbed;
+        OnPyrDeath += KillPlayerRegardless;
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            MusicManager.Instance.PlaySoundCue(2);
-            test_ScreamerImage.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            MusicManager.Instance.SetMusic(2);
-        }
         //print(m_CurrentState);
         // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
         m_CurrentState?.MyUpdate();
-
         /*
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -121,6 +111,11 @@ public class C_PlayerMotor : MonoBehaviour
         m_CanMashOutOfGrab = canMashOut;
     } 
     */
+
+    private void KillPlayerRegardless()
+    {
+        ChangeState(new DeadState(this));
+    }
 
     // Estado Base
     private abstract class PlayerState
@@ -235,6 +230,7 @@ public class C_PlayerMotor : MonoBehaviour
         public override void MyEnter()
         {
             base.MyEnter();
+            MusicManager.Instance.SetMusic(4);
             //OnPyrDeath?.Invoke();
             // Temporal Feedback Queue
             //_PM.m_sprite.color = Color.black;
