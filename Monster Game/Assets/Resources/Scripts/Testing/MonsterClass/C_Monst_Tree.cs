@@ -1,10 +1,11 @@
-using UnityEditor.XR;
+using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class C_Monst_Tree : C_MonsterMotor
 {
     [Header("Monster Tree Settings")]
+    [SerializeField] private float m_ScreamingFearIncreaseAmount = 2f;
+    [SerializeField] private List<Transform> m_SpawnPoints = new List<Transform>();
 
     [Header("Abilities")]
     [SerializeField] private float m_GrabDamageIntervalTime;
@@ -97,6 +98,24 @@ public class C_Monst_Tree : C_MonsterMotor
         }
         public override void MyExit()
         {
+            // Spawn at the closest spawn point to the player
+            var playerPosition = m_Tree.PlayerMotor.transform.position;
+            Transform closestSpawnPointToPlayer = null;
+            float closestDistance = float.MaxValue;
+            foreach (var spawnPoint in m_Tree.m_SpawnPoints)
+            {
+                float distance = Vector2.Distance(playerPosition, spawnPoint.position);
+                if (distance < closestDistance)
+                {
+                    closestDistance = distance;
+                    closestSpawnPointToPlayer = spawnPoint;
+                }
+            }
+            if (closestSpawnPointToPlayer != null)
+            {
+                m_Tree.transform.position = closestSpawnPointToPlayer.position;
+            }
+
             base.MyExit();
         }
         public override void MyTriggerColision(Collider2D other)
@@ -290,7 +309,7 @@ public class C_Monst_Tree : C_MonsterMotor
 
             m_Tree.PlaySound(m_Tree.m_Screamer);
             m_Tree.Boid.StopMovementTime = m_ScreamerTime;
-            C_PlayerMotor.OnScreamer?.Invoke(m_Tree);
+            C_PlayerMotor.OnScreamer?.Invoke(m_Tree, m_Tree.m_ScreamingFearIncreaseAmount);
         }
         public override void MyUpdate()
         {

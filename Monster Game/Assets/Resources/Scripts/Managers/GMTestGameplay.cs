@@ -31,9 +31,18 @@ public class GMTestGameplay : MonoBehaviour
     }
 
     public static Action OnGameOver;
+    public static Action OnVictory;
+    // Colected Pages, Pages to Collect;
+    public static Action<int,int> OnPageCollected;
     [SerializeField] string _menuSceneName;
     [SerializeField] string _levelSceneName;
     bool _didChangeScene;
+
+    // Test Collectable Pages
+    [SerializeField] int m_PagesCollected;
+    public int PagesCollected { get { return m_PagesCollected; } set { m_PagesCollected = value; } }
+    [SerializeField] int m_PagesToCollect;
+    public int PagesToCollect { get { return m_PagesToCollect; } set { m_PagesToCollect = value; } }
 
     private void Awake()
     {
@@ -60,6 +69,7 @@ public class GMTestGameplay : MonoBehaviour
         {
             SetScenetoGameplay();
         }
+
     }
     void Update()
     {
@@ -85,6 +95,7 @@ public class GMTestGameplay : MonoBehaviour
     }
     public void ChangeSceneToGameplay()
     {
+        m_PagesCollected = 0;
         SceneManager.LoadScene(_levelSceneName);
         SetScenetoGameplay();
     }
@@ -105,7 +116,24 @@ public class GMTestGameplay : MonoBehaviour
     }
     void StartGameOverSequence()
     {
+        m_PagesCollected = 0;
         print("Game Over");
         OnGameOver?.Invoke();
+    }
+    void StartVictorySequence()
+    {
+        m_PagesCollected = 0;
+        print("Victory");
+        OnVictory?.Invoke();
+    }
+    public void CollectPage()
+    {
+        m_PagesCollected++;
+        print("Pages Collected: " + m_PagesCollected);
+        OnPageCollected?.Invoke(m_PagesCollected,m_PagesToCollect);
+        if (m_PagesCollected >= m_PagesToCollect)
+        {
+            StartVictorySequence();
+        }
     }
 }

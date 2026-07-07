@@ -278,6 +278,11 @@ public class C_PlayerStats : MonoBehaviour
         }
     }
 
+    public void RecieveFear(float fearAmount)
+    {
+        m_Fear += fearAmount;
+    }
+
     private void OnDestroy()
     {
         C_PlayerMotor.OnPyrHit -= RecieveDamage;

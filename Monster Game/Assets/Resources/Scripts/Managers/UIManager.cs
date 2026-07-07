@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
     [SerializeField] TMP_Text _healthText;
     [SerializeField] GameObject _gameOvrPanel;
     [SerializeField] GameObject _gameplayPanel;
+    [SerializeField] GameObject _victoryPanel;
+    [SerializeField] TMP_Text _pagesCollectedText;
 
     float _matchTime;
     [SerializeField] int _secondsCount;
@@ -29,6 +31,8 @@ public class UIManager : MonoBehaviour
         //PlayerStadistics.OnPyrDeath += StopCounting;
         GMTestGameplay.OnGameOver += GameOver;
         GMTestGameplay.OnGameOver += StopCounting;
+        GMTestGameplay.OnVictory += SetVictoryPanel;
+        GMTestGameplay.OnPageCollected += UpdatePagesCollected;
     }
     void Update()
     {
@@ -50,7 +54,12 @@ public class UIManager : MonoBehaviour
         _canCount = false;
         _endTime.text = _minutesCount.ToString() + ":" + _secondsCount.ToString();
     }
-
+    void SetVictoryPanel()
+    {
+        PauseManager.Instance.SetCanPause = false;
+        _victoryPanel.SetActive(true);
+        _gameplayPanel.SetActive(false);
+    }
     void CountTime()
     {
         if (!_canCount)
@@ -67,6 +76,10 @@ public class UIManager : MonoBehaviour
             _minutesCount++;
         }
         _timeTxt.text = _minutesCount.ToString() + ":" + _secondsCount.ToString();
+    }
+    public void UpdatePagesCollected(int pagesColected, int pagesToCollect)
+    {
+        _pagesCollectedText.text = "Pages: \n" + pagesColected.ToString() + " / " + pagesToCollect.ToString();
     }
 
     void GameOver()
