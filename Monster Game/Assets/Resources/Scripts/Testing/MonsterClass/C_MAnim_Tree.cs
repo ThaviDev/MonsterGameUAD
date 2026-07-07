@@ -35,21 +35,17 @@ public class C_MAnim_Tree : C_MonsAnimBase
     {
         base.AnimSpawn();
     }
-    public override void AnimIdle()
+    public void AnimScream()
     {
-        base.AnimIdle();
+        m_Anim.SetBool("IsScreaming", true);
+    }
+    public void AnimNotScreaming()
+    {
+        m_Anim.SetBool("IsScreaming", false);
     }
     public void AnimGrab()
     {
         m_Anim.SetBool("Grabing", true);
-    }
-    public void TriggerGrabFunction()
-    {
-        m_GrabPlayer = true;
-        if (m_TreeMotor.m_CurrentState is S_Chasing)
-        {
-            
-        }
     }
     public void AnimGrabRelease()
     {
@@ -59,10 +55,6 @@ public class C_MAnim_Tree : C_MonsAnimBase
     public void AnimSlam()
     {
         m_Anim.SetBool("Slamimg", true);
-    }
-    public void TriggerSlamFunction()
-    {
-        m_Slam = true;
     }
     public void AnimCharge()
     {

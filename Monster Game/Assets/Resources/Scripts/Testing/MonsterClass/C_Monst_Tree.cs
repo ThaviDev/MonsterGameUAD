@@ -1,5 +1,6 @@
 using UnityEditor.XR;
 using UnityEngine;
+using UnityEngine.VFX;
 
 public class C_Monst_Tree : C_MonsterMotor
 {
@@ -31,6 +32,12 @@ public class C_Monst_Tree : C_MonsterMotor
     [SerializeField] private C_MAnim_Tree m_AnimTree;
 
     [SerializeField] private AudioClip m_StealthWalk;
+
+    [Header("Testing")]
+    [SerializeField] private GameObject m_vfx_MonsterScream;
+    [SerializeField] private AudioClip m_Screamer;
+    [SerializeField] private GameObject m_ScreamLight;
+
     protected override void Start()
     {
         base.Start();
@@ -53,9 +60,9 @@ public class C_Monst_Tree : C_MonsterMotor
         RandomizeSpawnAndDespawnValues();
         ChangeState(new S_Tree_Spawned(this));
     }
-    public void PlaySound() // Testing
+    public void PlaySound(AudioClip myClip) // Testing
     {
-        m_AudioSource.clip = m_StealthWalk;
+        m_AudioSource.clip = myClip;
         m_AudioSource.Play();
     }
     public void StopSound() // Testing
@@ -68,6 +75,7 @@ public class C_Monst_Tree : C_MonsterMotor
     }
     protected override void OnCollisionEnter2D(Collision2D otherCol)
     {
+        print("Choque y soy arbol");
         base.OnCollisionEnter2D(otherCol);
     }
     public class S_Tree_Despawned : S_Despawned
@@ -79,6 +87,7 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyEnter()
         {
             base.MyEnter();
+            MusicManager.Instance.SetMusic(0);
             m_Tree.StopSound(); // TEST
             //Debug.Log("Estoy Despawneado y ademas soy arbol");
         }
@@ -116,6 +125,7 @@ public class C_Monst_Tree : C_MonsterMotor
             if (Motor.Agresion >= Motor.AgressionChaseThreshold)
             {
                 Motor.ChangeState(new S_Tree_Chasing(Motor));
+                MusicManager.Instance.SetMusic(2);
             }
             else
             {
@@ -145,6 +155,7 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyEnter()
         {
             base.MyEnter();
+            //MusicManager.Instance.SetMusic(2);
             //m_Tree = Motor as C_Monst_Tree;
             //Debug.Log("Estoy persiguiendo y ademas soy arbol");
         }
@@ -207,7 +218,7 @@ public class C_Monst_Tree : C_MonsterMotor
         {
             base.MyEnter();
             //Debug.Log("Estoy sigiloso y ademas soy arbol");
-            m_Tree.PlaySound();
+            m_Tree.PlaySound(m_Tree.m_StealthWalk);
         }
         public override void MyUpdate()
         {
@@ -238,14 +249,76 @@ public class C_Monst_Tree : C_MonsterMotor
             if (other.gameObject.tag == "Player")
             {
                 Debug.Log("Toque a jugador, tag");
+                m_Tree.ChangeState(new S_Tree_Screamer(m_Tree));
             }
-
+            /*
             if (other.gameObject.layer == m_Tree.PlayerLayerMask) // Monster Layer
             {
                 Debug.Log("Toque a jugador");
                 // Temporal para clase de VFX
                 //Instantiate(m_vfx_MonsterScream, new Vector3(otherCol.transform.position.x, otherCol.transform.position.y + 1.6f), Quaternion.identity);
             }
+            */
+        }
+    }
+    public class S_Tree_Screamer : C_MonstState
+    {
+        private C_Monst_Tree m_Tree;
+        private C_MAnim_Tree m_TreeAnim;
+        private float m_ScreamerTime = 1.5f;
+        private GameObject m_ScreamLight;
+        private GameObject m_vfx_MonsterScream;
+        public S_Tree_Screamer(C_MonsterMotor motor) : base(motor) {
+            m_Tree = motor as C_Monst_Tree;
+            m_TreeAnim = m_Tree.Visual as C_MAnim_Tree;
+        }
+        public override void MyEnter()
+        {
+            base.MyEnter();
+            m_TreeAnim.AnimScream();
+
+            m_Tree.m_Energy += m_Tree.m_EnergyIncreasedWhenScreamer;
+
+            m_vfx_MonsterScream = Instantiate(m_Tree.m_vfx_MonsterScream,
+                new Vector3(m_Tree.transform.position.x,
+                m_Tree.transform.position.y + 1.6f),
+                Quaternion.identity);
+            m_ScreamLight = Instantiate(m_Tree.m_ScreamLight,
+                new Vector3(m_Tree.transform.position.x,
+                m_Tree.transform.position.y + 1.6f),
+                Quaternion.identity);
+
+            m_Tree.PlaySound(m_Tree.m_Screamer);
+            m_Tree.Boid.StopMovementTime = m_ScreamerTime;
+            C_PlayerMotor.OnScreamer?.Invoke(m_Tree);
+        }
+        public override void MyUpdate()
+        {
+            m_ScreamerTime -= Time.deltaTime;
+            base.MyUpdate();
+            Motor.DecreaseEnergy();
+            Motor.DecreaseAgression();
+            if (m_ScreamerTime <= 0)
+            {
+                m_Tree.ChangeState(new S_Tree_Chasing(m_Tree));
+            }
+        }
+        public override void MyExit()
+        {
+            m_TreeAnim.AnimNotScreaming();
+            Destroy(m_vfx_MonsterScream);
+            Destroy(m_ScreamLight);
+            MusicManager.Instance.SetMusic(2);
+            m_Tree.StopSound();
+            base.MyExit();
+        }
+        public override void MyTriggerColision(Collider2D other)
+        {
+            base.MyTriggerColision(other);
+        }
+        public override void MyColision(Collision2D other)
+        {
+            base.MyColision(other);
         }
     }
     public class S_Tree_Grab : C_MonstState
@@ -271,10 +344,10 @@ public class C_Monst_Tree : C_MonsterMotor
             m_TreeAnim.AnimGrab();
             m_GrabTrigger = true;
             m_Tree.Boid.StopMovementTime = 999f;
+            //MusicManager.Instance.SetMusic(2);
         }
         public override void MyUpdate()
         {
-            print("Puedo liberar a jugaror: " + m_ReleasePlayer);
             base.MyUpdate();
             Motor.DecreaseEnergy();
             Motor.DecreaseAgression();

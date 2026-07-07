@@ -9,6 +9,7 @@ public class C_PlayerMotor : MonoBehaviour
     public static Action OnRelax;
     public static Action OnPyrDeath;
     public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
+    public static Action<C_MonsterMotor> OnScreamer;
     public GameObject test_ScreamerImage;
 
     [SerializeField] private C_PlayerStats m_PlayerStats;

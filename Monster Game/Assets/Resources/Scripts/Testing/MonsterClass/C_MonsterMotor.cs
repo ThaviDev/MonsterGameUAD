@@ -211,7 +211,7 @@ public class C_MonsterMotor : MonoBehaviour
     }
     protected virtual void OnCollisionEnter2D(Collision2D otherCol)
     {
-        print("Choque con algo: " + otherCol.gameObject.layer);
+        print("Choque con algo: " + otherCol.gameObject.layer + " " + otherCol);
         m_CurrentState?.MyColision(otherCol);
     }
 }
