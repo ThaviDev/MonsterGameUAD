@@ -9,7 +9,7 @@ public class C_PlayerMotor : MonoBehaviour
     public static Action OnRelax;
     public static Action OnPyrDeath;
     public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
-    public GameObject test_ScreamerImage;
+    public static Action<C_MonsterMotor, float> OnScreamer;
 
     [SerializeField] private C_PlayerStats m_PlayerStats;
     public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
@@ -28,6 +28,7 @@ public class C_PlayerMotor : MonoBehaviour
     private PlayerState m_CurrentState;
 
     [SerializeField] private int m_GrabMashCount;
+    private float m_CurStunDuration;
 
     void Start()
     {
@@ -41,23 +42,23 @@ public class C_PlayerMotor : MonoBehaviour
             ChangeState(new RegularState(this));
         }
         OnGetGrabbed += GotGrabbed;
+        OnPyrDeath += KillPlayerRegardless;
+        OnScreamer += GotScreamedAt;
+        //OnScreamer += (monster, fearAmount) => m_PlayerStats.RecieveFear(fearAmount);
+    }
+
+    void GotScreamedAt(C_MonsterMotor monster, float fearAmount)
+    {
+        print("AAAAH ME ASUSTO" + monster);
+        // ANIADIR LUEGO FUNCIONALIDAD DE KNOCKBACK
+        m_PlayerStats.RecieveFear(fearAmount);
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            MusicManager.Instance.PlaySoundCue(2);
-            test_ScreamerImage.SetActive(true);
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            MusicManager.Instance.SetMusic(2);
-        }
         //print(m_CurrentState);
         // Esto actualiza constantemente cualquiera que sea el estado actual del jugador
         m_CurrentState?.MyUpdate();
-
         /*
         if (Input.GetKeyDown(KeyCode.V))
         {
@@ -68,6 +69,12 @@ public class C_PlayerMotor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D otherCol)
     {
         m_CurrentState?.MyTriggerColision(otherCol);
+        if (otherCol.gameObject.GetComponent<TAG_PageCollectable>() != null)
+        {
+            print ("Page Collected");
+            Destroy(otherCol.gameObject);
+            GMTestGameplay.Instance.CollectPage();
+        }
         /*
         if (otherCol.gameObject.layer == 6) // Monster Layer
         {
@@ -86,6 +93,7 @@ public class C_PlayerMotor : MonoBehaviour
         }
         */
     }
+
     private void ChangeState(PlayerState newState)
     {
         if (newState == null)
@@ -120,6 +128,11 @@ public class C_PlayerMotor : MonoBehaviour
         m_CanMashOutOfGrab = canMashOut;
     } 
     */
+
+    private void KillPlayerRegardless()
+    {
+        ChangeState(new DeadState(this));
+    }
 
     // Estado Base
     private abstract class PlayerState
@@ -234,6 +247,7 @@ public class C_PlayerMotor : MonoBehaviour
         public override void MyEnter()
         {
             base.MyEnter();
+            MusicManager.Instance.SetMusic(4);
             //OnPyrDeath?.Invoke();
             // Temporal Feedback Queue
             //_PM.m_sprite.color = Color.black;
@@ -253,6 +267,7 @@ public class C_PlayerMotor : MonoBehaviour
     }
     private class StunnedState : PlayerState
     {
+        private float m_StunDuration = 2f; // Duration of the stun in seconds
         public StunnedState(C_PlayerMotor motor) : base(motor) { }
         public override void MyEnter()
         {
@@ -290,7 +305,6 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyEnter();
             // Temporal Feedback Queue
             //_PM.m_sprite.color = Color.red;
-            print("Este solo es enter cierto?");
             m_CurMashCount = _PM.m_GrabMashCount;
             if (m_MonsterThatGrabbed is C_Monst_Tree)
             {
@@ -329,6 +343,7 @@ public class C_PlayerMotor : MonoBehaviour
                     //_PM.m_MonsterThatGrabbed.ReleaseGrab();
 
                     //_PM.m_MonsterThatGrabbed.PlayerAction1_Bool = true;
+                    // DEBE DE HABER ALGUNA MEJOR MANERA PARA COMUNICARSE CON EL MONSTRUO QUE AGARRÓ AL JUGADOR, PERO POR AHORA ESTO FUNCIONA
                     var Tree = m_MonsterThatGrabbed as C_Monst_Tree;
                     var TreeVar = Tree.m_CurrentState as C_Monst_Tree.S_Tree_Grab;
                     TreeVar.ReleasePlayer = true;

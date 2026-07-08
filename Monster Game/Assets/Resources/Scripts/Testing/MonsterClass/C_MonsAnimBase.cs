@@ -22,10 +22,6 @@ public class C_MonsAnimBase : MonoBehaviour
     {
         m_Anim.SetBool("IsSpawned", false);
     }
-    public virtual void AnimIdle()
-    {
-        m_Anim.SetBool("IsSpawned", true);
-    }
     public virtual void AnimChase()
     {
         m_Anim.SetBool("IsAggressive", true);

@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -26,13 +27,14 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    // Music
+    [Header("Music")]
     [SerializeField] AudioClip m_AmbientMusic;
     [SerializeField] AudioClip m_HordeMusic;
     [SerializeField] AudioClip m_ChaseMusic;
     [SerializeField] AudioClip m_MainMenu;
+    [SerializeField] AudioClip m_GameOver;
 
-    // Sound Cues
+    [Header("Sound Cues")]
     [SerializeField] AudioClip m_MonsterReveal;
     [SerializeField] AudioClip m_MonsterNearCue;
     [SerializeField] AudioClip m_Screamer;
@@ -41,6 +43,7 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
+        _source = GetComponent<AudioSource>();
         if (_instance == null)
         {
             _instance = this;
@@ -53,7 +56,6 @@ public class MusicManager : MonoBehaviour
     }
     void Start()
     {
-        _source = GetComponent<AudioSource>();
         SetMusic(0);
     }
     public void PlaySoundCue(int musicID)
@@ -73,6 +75,11 @@ public class MusicManager : MonoBehaviour
     }
     public void PlayMusic()
     {
+        if (_source == null)
+        {
+            Debug.LogWarning("AudioSource is null. Please ensure that the MusicManager has an AudioSource component attached.");
+            return;
+        }
         if (_source.clip != null)
         {
             _source.Stop();
@@ -90,6 +97,9 @@ public class MusicManager : MonoBehaviour
                 break;
             case 3:
                 _source.clip = m_MainMenu;
+                break;
+            case 4:
+                _source.clip = m_GameOver;
                 break;
         }
         _source.Play();

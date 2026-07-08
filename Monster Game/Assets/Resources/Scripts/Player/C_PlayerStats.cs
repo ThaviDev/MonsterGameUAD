@@ -88,7 +88,7 @@ public class C_PlayerStats : MonoBehaviour
         // Los beats por minuto dependen de 3 estadisticas y su minimo
         m_BPM = m_DamageTaken + m_Stamina + m_Fear + m_BPM_Minimum;
 
-        print("Velocidad: " + m_CurSpeedGoal + " Uso de estamina: " + m_CurStaminaMoveUse);
+        //print("Velocidad: " + m_CurSpeedGoal + " Uso de estamina: " + m_CurStaminaMoveUse);
 
         Fear();
         Stamina();
@@ -276,6 +276,11 @@ public class C_PlayerStats : MonoBehaviour
             m_Fear += fearHitAmount;
             m_InvincibleTime = invincibleTime;
         }
+    }
+
+    public void RecieveFear(float fearAmount)
+    {
+        m_Fear += fearAmount;
     }
 
     private void OnDestroy()

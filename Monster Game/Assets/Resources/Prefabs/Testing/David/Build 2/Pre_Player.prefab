@@ -130,7 +130,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739773520727480807}
   serializedVersion: 8
-  lengthInSec: 0.5
+  lengthInSec: 0.25
   simulationSpeed: 1
   stopAction: 0
   cullingMode: 0
@@ -1086,11 +1086,11 @@ ParticleSystem:
         - serializedVersion: 3
           time: 1
           value: 0
-          inSlope: -3.3758278
-          outSlope: -3.3758278
+          inSlope: -2.4424453
+          outSlope: -2.4424453
           tangentMode: 0
           weightedMode: 0
-          inWeight: 0.10476202
+          inWeight: 0.08965528
           outWeight: 0
         m_PreInfinity: 2
         m_PostInfinity: 2
@@ -5208,7 +5208,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &200126384704204583
 Transform:
   m_ObjectHideFlags: 0
@@ -5218,7 +5218,7 @@ Transform:
   m_GameObject: {fileID: 3037788377439771747}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.0000003874302, z: 0}
+  m_LocalPosition: {x: 0, y: 0.000000029802322, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5291,9 +5291,16 @@ MonoBehaviour:
   m_BateryPercentage: 1
   m_BateryUsageReduction: 1
   m_LightIntensity: 1.75
+  m_MaximumLight: 2
   m_MinimumLight: 0.5
   m_LightRange: 5
+  m_MaximumRange: 5
   m_MinimumRange: 3
+  m_OuterRangeExcess: 0.5
+  m_LightAngle: 70
+  m_MaximumAngle: 70
+  m_MinimumAngle: 10
+  m_OuterAngleExcess: 70
 --- !u!114 &4306217226483245846
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5686,13 +5693,14 @@ GameObject:
   - component: {fileID: 4783609963714982747}
   - component: {fileID: 7110155754972689253}
   - component: {fileID: 2465286131474998076}
+  - component: {fileID: 7240804613277081099}
   m_Layer: 0
   m_Name: FlashLight (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4783609963714982747
 Transform:
   m_ObjectHideFlags: 0
@@ -5702,7 +5710,7 @@ Transform:
   m_GameObject: {fileID: 7339196577580364245}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5746,8 +5754,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 68.22314
-  m_PointLightOuterAngle: 135.70248
+  m_PointLightInnerAngle: 70
+  m_PointLightOuterAngle: 140
   m_PointLightInnerRadius: 8
   m_PointLightOuterRadius: 8.5
   m_ShapeLightParametricSides: 5
@@ -5775,9 +5783,35 @@ MonoBehaviour:
   m_BateryPercentage: 1
   m_BateryUsageReduction: 1
   m_LightIntensity: 1.75
-  m_MinimumLight: 0.5
-  m_LightRange: 5
-  m_MinimumRange: 3
+  m_MaximumLight: 1.75
+  m_MinimumLight: 1
+  m_LightRange: 8
+  m_MaximumRange: 5
+  m_MinimumRange: 3.5
+  m_OuterRangeExcess: 0.5
+  m_LightAngle: 70
+  m_MaximumAngle: 70
+  m_MinimumAngle: 30
+  m_OuterAngleExcess: 70
+--- !u!114 &7240804613277081099
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7339196577580364245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e08043b61337aa4194e31cc56fc6cab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_LightMotor: {fileID: 2465286131474998076}
+  m_MonsterLayerMask:
+    serializedVersion: 2
+    m_Bits: 64
+  m_ObstacleLayerMask:
+    serializedVersion: 2
+    m_Bits: 1073742336
 --- !u!1 &8480366284515460250
 GameObject:
   m_ObjectHideFlags: 0
@@ -5995,7 +6029,7 @@ GameObject:
   - component: {fileID: 3252782000664606462}
   - component: {fileID: 7221991744734570915}
   m_Layer: 7
-  m_Name: Pre_Player Testing
+  m_Name: Pre_Player
   m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -6055,6 +6089,10 @@ MonoBehaviour:
   m_vfx_PlayerJump: {fileID: 4234904184719947649, guid: dd2a61bff797f7b4fbd5946096b72e7d, type: 3}
   m_damageKnockbackMultiplier: 2
   m_movementStatus: 0
+  m_movementStatusTotal: 3
+  m_DashImpulse: 0.5
+  m_DashTime: 0.15
+  m_DashStaminaUse: 7.5
 --- !u!114 &6116470578589331392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6072,12 +6110,13 @@ MonoBehaviour:
   m_Fear: 0
   m_Stamina: 0
   m_BPM: 0
-  m_BateryPercent: 1
+  m_StabilizeStaminaTimeDefaultV: 1.5
+  m_InvincibleTimeDefaultV: 1
   m_SpeedLevels:
-  - 1.5
+  - 0
   - 2
-  - 2.75
-  - 4.25
+  - 3
+  - 4
   - 5.5
   - 7
   m_AccelLevels:
@@ -6101,7 +6140,6 @@ MonoBehaviour:
   - 4
   - 9
   - 18
-  m_InvincibleTime: 0
 --- !u!114 &633396302310108738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6109,7 +6147,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9022527536521404671}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60c51a758c98aa0458448c5ef07d0e65, type: 3}
   m_Name: 
@@ -6124,7 +6162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9022527536521404671}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7d359e1d7b401f46a5ce3fdbbfcf6f6, type: 3}
   m_Name: 
