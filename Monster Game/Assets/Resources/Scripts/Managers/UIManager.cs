@@ -47,7 +47,7 @@ public class UIManager : MonoBehaviour
         _staminaText.text = intergerStamina.ToString();
         
 
-        CountTime();
+        //CountTime();
     }
     void StopCounting()
     {

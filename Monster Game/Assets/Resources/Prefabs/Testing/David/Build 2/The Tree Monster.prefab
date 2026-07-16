@@ -275,9 +275,10 @@ GameObject:
   - component: {fileID: 361728051308697312}
   - component: {fileID: 4842189517389793007}
   - component: {fileID: 3055282580669215595}
-  - component: {fileID: 1842267067078599936}
+  - component: {fileID: 850802497874353151}
   - component: {fileID: 2034740831650382726}
   - component: {fileID: 1288301768125687416}
+  - component: {fileID: 1121302206382741248}
   m_Layer: 6
   m_Name: The Tree Monster
   m_TagString: Monster
@@ -323,11 +324,11 @@ MonoBehaviour:
   m_PredictionPoint: {fileID: 0}
   m_PathFinder: {fileID: 0}
   m_AudioSource: {fileID: 0}
-  m_Energy: 250
+  m_Energy: 0
   m_EnergyMax: 1000
   m_EnergyMin: 0
-  m_EnergyRegenIncrement: 12.5
-  m_EnergySpawnedDecrement: 7.5
+  m_EnergyRegenIncrement: 10
+  m_EnergySpawnedDecrement: 15
   m_EnergyMinToSpawn: 500
   m_EnergySetToSpawn: 750
   m_EnergyRandomScaleSpawn: 450
@@ -337,7 +338,7 @@ MonoBehaviour:
   m_EnergyRandomScaleDespawn: 175
   m_Agression: 0
   m_AgressionMax: 1000
-  m_AgressionRegenIncrement: 7
+  m_AgressionRegenIncrement: 5
   m_AgressionChaseDecrement: 25
   m_AgressionChaseThreshold: 500
   m_SpeedCur: 1
@@ -347,17 +348,34 @@ MonoBehaviour:
   m_EnergyIncreasedWhenScreamer: 50
   m_IsMoving: 0
   m_StealthPoint: {x: 0, y: 0, z: 0}
+  m_ScreamingFearIncreaseAmount: 40
+  m_SpawnPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   m_GrabDamageIntervalTime: 0.4
-  m_GrabDamageAmountPerInterval: 4
-  m_GrabFearAmountPerInterval: 2
-  m_GrabHitbox: {fileID: 1842267067078599936}
+  m_GrabDamageAmountPerInterval: 3
+  m_GrabFearAmountPerInterval: 1.5
+  m_GrabHitbox: {fileID: 0}
   m_ColOffset: {x: -1, y: 0.75}
   m_ColSize: {x: 1.5, y: 1.5}
   m_PlayerGrabbedPositionLeft: {x: 0.6, y: 0}
   m_PlayerGrabbedPositionRight: {x: -0.6, y: 0}
   m_GroundPoundRadius: 0
   m_GroundPoundDamageAmount: 0
-  m_ChargeHitbox: {fileID: 0}
+  m_ChargeHitbox: {fileID: 850802497874353151}
   m_ChargeSpeed: 0
   m_ChargeDuration: 0
   m_ChargeDamageAmount: 0
@@ -428,7 +446,7 @@ MonoBehaviour:
   m_GizmoPointRadius: 0.12
   m_GizmoDirectionColor: {r: 0, g: 1, b: 1, a: 1}
   m_GizmoDirectionLength: 1
---- !u!61 &1842267067078599936
+--- !u!61 &850802497874353151
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -568,6 +586,103 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!82 &1121302206382741248
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6733921196225944077}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -774496366062983273, guid: 15cdb7bbba8d1054aa5767edff309ca3, type: 2}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 130
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

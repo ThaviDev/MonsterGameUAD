@@ -5,9 +5,11 @@ public class C_HeartAnim : MonoBehaviour
     [SerializeField] C_PlayerStats m_HeartRate;
     private float m_BPM;
     private Animator m_Animator;
+    private AudioSource m_AudioSource;
     void Start()
     {
         m_Animator = GetComponent<Animator>();
+        m_AudioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -15,5 +17,10 @@ public class C_HeartAnim : MonoBehaviour
     {
         m_BPM = m_HeartRate.GetBPM;
         m_Animator.speed = m_BPM/60f;
+        m_AudioSource.pitch = m_BPM/60f;
+    }
+    public void TriggerBPMSound()
+    {
+        m_AudioSource.Play();
     }
 }
