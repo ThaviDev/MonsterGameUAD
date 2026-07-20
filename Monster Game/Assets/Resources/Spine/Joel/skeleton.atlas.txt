@@ -1,52 +1,186 @@
 skeleton.png
-size:1825,1240
+size:1982,1286
 filter:Linear,Linear
-Boca (1)
-bounds:1815,1199,19,4
-offsets:131,123,256,256
+pma:true
+Joel Cabeza Asustado/boca asustado
+bounds:306,12,44,19
+offsets:112,123,256,256
+Joel Cabeza Asustado/cabeza asustado
+bounds:805,91,139,133
+offsets:61,115,256,256
 rotate:90
+Joel Cabeza Asustado/lentes asustado
+bounds:945,21,156,68
+offsets:51,144,256,256
+Joel Cabeza Asustado/pupila derecha asustado
+bounds:426,20,18,20
+offsets:141,167,256,256
+Joel Cabeza Asustado/pupila izquierda asustado
+bounds:382,57,17,24
+offsets:96,162,256,256
+rotate:90
+Joel Cabeza Cansado/Cabeza Cansado
+bounds:523,82,139,139
+offsets:61,109,256,256
+Joel Cabeza Cansado/Lentes cansado
+bounds:446,2,152,51
+offsets:54,139,256,256
+Joel Cabeza Cansado/Pupila Izquieda Cansado
+bounds:406,19,21,18
+offsets:90,157,256,256
+rotate:90
+Joel Cabeza Cansado/Pupila derecha cansado
+bounds:430,55,18,19
+offsets:144,153,256,256
+Joel Cabeza Cansado/boca cansado
+bounds:274,14,30,17
+offsets:140,117,256,256
+Joel Cabeza Curioso/Cabeza cuiroso
+bounds:940,91,139,133
+offsets:61,115,256,256
+rotate:90
+Joel Cabeza Curioso/Lentes cuiroso
+bounds:1103,24,159,65
+offsets:49,136,256,256
+Joel Cabeza Curioso/boca Curioso
+bounds:408,58,16,11
+offsets:109,125,256,256
+rotate:90
+Joel Cabeza Curioso/pupila derecha curioso
+bounds:261,2,11,10
+offsets:147,177,256,256
+Joel Cabeza Curioso/pupila izquierda curioso
+bounds:274,2,10,11
+offsets:98,175,256,256
+rotate:90
+Joel Cabeza Feliz/boca feliz
+bounds:406,6,19,11
+offsets:142,132,256,256
+Joel Cabeza Feliz/cabeza feliz
+bounds:1075,91,139,133
+offsets:61,115,256,256
+rotate:90
+Joel Cabeza Feliz/lentes feliz
+bounds:1264,9,161,57
+offsets:47,147,256,256
+Joel Cabeza Feliz/pupila derecha feliz
+bounds:326,39,27,16
+offsets:152,166,256,256
+Joel Cabeza Feliz/pupila izquieda feliz
+bounds:355,39,27,16
+offsets:77,166,256,256
+Joel Cabeza Gritando/Boca gritando
+bounds:1851,24,65,52
+offsets:97,91,256,256
+rotate:90
+Joel Cabeza Gritando/cabeza gritando
+bounds:241,57,139,164
+offsets:61,84,256,256
+Joel Cabeza Gritando/lentes gritando
+bounds:1588,32,150,57
+offsets:55,144,256,256
+Joel Cabeza Gritando/pupila derecha gritando
+bounds:121,12,51,34
+offsets:142,155,256,256
+Joel Cabeza Gritando/pupila izquierda gritando
+bounds:221,14,51,32
+offsets:67,157,256,256
+Joel Cabeza Lastimada/Cabeza Lastimada
+bounds:1373,91,139,137
+offsets:61,115,256,256
+rotate:90
+Joel Cabeza Lastimada/Lentes Lastimados
+bounds:1312,68,162,57
+offsets:47,140,256,256
+rotate:90
+Joel Cabeza Lastimada/boca lastimada
+bounds:121,2,24,8
+offsets:101,130,256,256
+Joel Cabeza Lastimada/pupila derecha Lastimada
+bounds:384,42,21,13
+offsets:148,162,256,256
+Joel Cabeza Lastimada/pupila izquierda lastimada
+bounds:407,42,21,13
+offsets:92,161,256,256
+Joel Cabeza Triste/boca triste
+bounds:274,33,50,22
+offsets:105,116,256,256
+Joel Cabeza Triste/cabeza triste
+bounds:664,82,139,139
+offsets:61,109,256,256
+Joel Cabeza Triste/lentes triste
+bounds:600,10,169,70
+offsets:47,131,256,256
+Joel Cabeza Triste/pupila derecha triste
+bounds:352,11,26,25
+offsets:157,155,256,256
+rotate:90
+Joel Cabeza Triste/pupila izquierda triste
+bounds:379,11,26,25
+offsets:73,155,256,256
+rotate:90
+Joel Cabeza aterrado/Cabeza aterrado
+bounds:382,76,139,145
+offsets:61,108,256,256
+Joel Cabeza aterrado/boca aterrado
+bounds:1740,7,82,51
+offsets:82,111,256,256
+rotate:90
+Joel Cabeza aterrado/lentes aterrado
+bounds:1427,32,159,57
+offsets:51,152,256,256
+Joel Cabeza aterrado/pupila derecha aterrado
+bounds:243,3,16,9
+offsets:147,178,256,256
+Joel Cabeza aterrado/pupila izquierda aterrado
+bounds:221,3,20,9
+offsets:95,182,256,256
 brazo_derecho
-bounds:310,6,67,56
+bounds:1793,22,67,56
 offsets:38,63,256,256
 rotate:90
 brazo_izquierdo
-bounds:411,123,47,52
+bounds:1905,42,47,52
 offsets:157,67,256,256
-cabeza (1)
-bounds:2,2,173,237
-offsets:28,15,256,256
 rotate:90
 cuerpo (1)
-bounds:310,75,100,99
-offsets:78,39,256,256
+bounds:1210,129,101,100
+offsets:78,38,256,256
 rotate:90
 derecha
-bounds:761,628,610,1052
+bounds:761,232,610,1052
 offsets:774,7,1920,1080
-rotate:90
 espalda real
-bounds:2,177,757,1061
+bounds:2,223,757,1061
 offsets:593,6,1920,1080
 izquierda
-bounds:761,19,607,1052
+bounds:1373,232,607,1052
 offsets:570,7,1920,1080
+joel cabeza base/Boca (1)
+bounds:62,2,19,4
+offsets:131,123,256,256
+joel cabeza base/cabeza (1)
+bounds:2,48,173,237
+offsets:28,15,256,256
 rotate:90
-lentes
-bounds:241,3,172,67
+joel cabeza base/lentes
+bounds:771,13,172,67
 offsets:42,130,256,256
-rotate:90
-linterna
-bounds:411,76,37,45
-offsets:158,46,256,256
-pata_derecha
-bounds:368,18,38,55
-offsets:87,6,256,256
-pata_izquierda
-bounds:408,18,36,55
-offsets:136,5,256,256
-pupila_derecha
-bounds:1815,1230,8,8
+joel cabeza base/pupila_derecha
+bounds:147,2,8,8
 offsets:86,159,256,256
-pupila_izquierda
-bounds:1815,1220,8,8
+joel cabeza base/pupila_izquierda
+bounds:157,2,8,8
 offsets:160,161,256,256
+linterna
+bounds:174,9,37,45
+offsets:158,46,256,256
+rotate:90
+pata_derecha
+bounds:2,6,40,58
+offsets:86,4,256,256
+rotate:90
+pata_izquierda
+bounds:62,8,38,57
+offsets:135,4,256,256
+rotate:90

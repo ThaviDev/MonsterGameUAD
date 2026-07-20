@@ -29,9 +29,10 @@ public class C_PlayerSpineMotor : MonoBehaviour
     void Update()
     {
         UpdateCursorLocation();
+        // TESTING
         if (PlayerInputs.Instance.UseItemBool)
         {
-            SetHitColor(Color.red);
+            Front_Walk();
         }
         if (PlayerInputs.Instance.DashBool)
         {
@@ -63,6 +64,6 @@ public class C_PlayerSpineMotor : MonoBehaviour
     }
     private void Front_Walk()
     {
-        m_SkeletonAnimation.AnimationState.AddAnimation(0, "caminar", true, 0);
+        m_SkeletonAnimation.AnimationState.AddAnimation(0, "Side_walk", true, 0);
     }
 }
