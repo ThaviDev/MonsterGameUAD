@@ -17,7 +17,7 @@ public class C_HeartAnim : MonoBehaviour
     {
         m_BPM = m_HeartRate.GetBPM;
         m_Animator.speed = m_BPM/60f;
-        m_AudioSource.pitch = m_BPM/60f;
+        m_AudioSource.pitch = m_BPM/85f;
     }
     public void TriggerBPMSound()
     {
