@@ -6029,7 +6029,7 @@ GameObject:
   - component: {fileID: 3252782000664606462}
   - component: {fileID: 7221991744734570915}
   m_Layer: 7
-  m_Name: Pre_Player
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0

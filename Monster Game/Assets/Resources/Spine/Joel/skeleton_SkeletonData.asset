@@ -25,10 +25,13 @@ MonoBehaviour:
     screenMaterials: []
   skeletonDataModifiers: []
   fromAnimation:
-  - 
+  - Side_walk
+  - idle
   toAnimation:
-  - 
+  - idle
+  - Side_walk
   duration:
-  - 0
+  - 0.1
+  - 0.1
   defaultMix: 0.2
   controller: {fileID: 0}

@@ -73,7 +73,7 @@ public class C_PlayerMotor : MonoBehaviour
         {
             print ("Page Collected");
             Destroy(otherCol.gameObject);
-            GMTestGameplay.Instance.CollectPage();
+            GMTestGameplay.Instance.CollectPage(1);
         }
         /*
         if (otherCol.gameObject.layer == 6) // Monster Layer

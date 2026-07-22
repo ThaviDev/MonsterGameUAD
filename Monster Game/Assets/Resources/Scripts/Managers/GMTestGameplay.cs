@@ -106,6 +106,8 @@ public class GMTestGameplay : MonoBehaviour
     }
     void SetScenetoGameplay()
     {
+        m_PagesCollected = 0;
+        CollectPage(0);
         ResetEvents();
         AtGameplay();
     }
@@ -126,9 +128,9 @@ public class GMTestGameplay : MonoBehaviour
         print("Victory");
         OnVictory?.Invoke();
     }
-    public void CollectPage()
+    public void CollectPage(int pages)
     {
-        m_PagesCollected++;
+        m_PagesCollected += pages;
         print("Pages Collected: " + m_PagesCollected);
         OnPageCollected?.Invoke(m_PagesCollected,m_PagesToCollect);
         if (m_PagesCollected >= m_PagesToCollect)

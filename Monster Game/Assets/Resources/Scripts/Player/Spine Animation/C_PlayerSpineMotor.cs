@@ -36,7 +36,7 @@ public class C_PlayerSpineMotor : MonoBehaviour
         }
         if (PlayerInputs.Instance.DashBool)
         {
-            print("Dash");
+            Idle();
             ResetColor();
         }
     }
@@ -65,5 +65,9 @@ public class C_PlayerSpineMotor : MonoBehaviour
     private void Front_Walk()
     {
         m_SkeletonAnimation.AnimationState.AddAnimation(0, "Side_walk", true, 0);
+    }
+    private void Idle()
+    {
+        m_SkeletonAnimation.AnimationState.AddAnimation(0, "idle", true, 0);
     }
 }

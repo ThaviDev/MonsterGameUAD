@@ -13,7 +13,7 @@ public class SliderAmountToText : MonoBehaviour
     {
         float valueTimes100 = value * 100;
         int newValue = (int)valueTimes100;
-        print(newValue);
+        //print(newValue);
         _UIText.text = _startText + ": " + newValue.ToString();
     }
 }
