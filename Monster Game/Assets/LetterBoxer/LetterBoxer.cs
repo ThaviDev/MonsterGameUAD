@@ -16,8 +16,15 @@ public class LetterBoxer : MonoBehaviour
     public bool onAwake = true;
     public bool onUpdate = true;
 
+    // --- Added fields for texture background support ---
+    public bool useTexture = false;
+    public Texture2D matteTexture = null;
+    public LayerMask backgroundLayer = 0; // choose the (single) layer that will hold the background sprite
+
     private Camera cam;
     private Camera letterBoxerCamera;
+    private GameObject backgroundObject;
+    private Sprite backgroundSprite;
 
     public void Awake()
     {
@@ -63,17 +70,113 @@ public class LetterBoxer : MonoBehaviour
             }
         }
 
-        // create a camera to render bcakground used for matte bars
+        // create a camera to render background used for matte bars
         letterBoxerCamera = new GameObject().AddComponent<Camera>();
-        letterBoxerCamera.backgroundColor = matteColor;
-        letterBoxerCamera.cullingMask = 0;
-        letterBoxerCamera.depth = -100;
         letterBoxerCamera.farClipPlane = 1;
         letterBoxerCamera.useOcclusionCulling = false;
         letterBoxerCamera.allowHDR = false;
         letterBoxerCamera.allowMSAA = false;
-        letterBoxerCamera.clearFlags = CameraClearFlags.Color;
-        letterBoxerCamera.name = "Letter Boxer Camera";        
+        letterBoxerCamera.depth = -100;
+        letterBoxerCamera.name = "Letter Boxer Camera";
+
+        // Move the camera to a far, non-playable position and hide it from the Hierarchy so players can't find it.
+        // Large negative Y is unlikely to be reachable; hideFlags keeps it out of normal editing.
+        letterBoxerCamera.transform.position = new Vector3(0f, -100000f, 0f);
+        letterBoxerCamera.gameObject.hideFlags = HideFlags.HideAndDontSave;
+
+        // If using a texture, create a background sprite and configure culling only to the selected background layer.
+        if (useTexture && matteTexture != null && backgroundLayer.value != 0)
+        {
+            // set clear flags (still clear color to avoid garbage if sprite has transparent regions)
+            letterBoxerCamera.clearFlags = CameraClearFlags.Color;
+            letterBoxerCamera.backgroundColor = Color.black;
+
+            // set camera to render only the chosen background layer
+            letterBoxerCamera.cullingMask = backgroundLayer.value;
+
+            // create background GameObject (sprite) as child of the letterbox camera
+            // pick the first selected layer index from the LayerMask
+            int layerIndex = 0;
+            int mask = backgroundLayer.value;
+            for (int i = 0; i < 32; i++)
+            {
+                if ((mask & (1 << i)) != 0)
+                {
+                    layerIndex = i;
+                    break;
+                }
+            }
+
+            // destroy previous background if exists
+            if (backgroundObject != null)
+            {
+                DestroyImmediate(backgroundObject);
+            }
+
+            backgroundObject = new GameObject("LetterBox Background");
+            backgroundObject.layer = layerIndex;
+            backgroundObject.transform.SetParent(letterBoxerCamera.transform, false);
+
+            // hide background GameObject from Hierarchy as well
+            backgroundObject.hideFlags = HideFlags.HideAndDontSave;
+
+            // position the sprite just in front of the camera near clip plane (local Z)
+            float distance = letterBoxerCamera.nearClipPlane + 0.01f;
+            backgroundObject.transform.localPosition = new Vector3(0f, 0f, distance);
+            backgroundObject.transform.localRotation = Quaternion.identity;
+
+            // create sprite and sprite renderer
+            backgroundSprite = Sprite.Create(matteTexture, new Rect(0, 0, matteTexture.width, matteTexture.height), new Vector2(0.5f, 0.5f), 100f);
+            var sr = backgroundObject.AddComponent<SpriteRenderer>();
+            sr.sprite = backgroundSprite;
+
+            // use an unlit material so the background isn't affected by scene lights
+            Material unlit = new Material(Shader.Find("Unlit/Texture"));
+            if (unlit != null)
+                sr.sharedMaterial = unlit;
+
+            // initial size update
+            UpdateBackgroundScale();
+        }
+        else
+        {
+            // default (color matte) behavior
+            letterBoxerCamera.cullingMask = 0;
+            letterBoxerCamera.backgroundColor = matteColor;
+            letterBoxerCamera.clearFlags = CameraClearFlags.Color;
+
+            // remove any previous background object added for texture mode
+            if (backgroundObject != null)
+            {
+                DestroyImmediate(backgroundObject);
+                backgroundObject = null;
+                backgroundSprite = null;
+            }
+        }
+    }
+
+    // Update the background sprite scale to match the current screen aspect
+    private void UpdateBackgroundScale()
+    {
+        if (backgroundObject == null || backgroundSprite == null || letterBoxerCamera == null)
+            return;
+
+        // compute world size at the sprite distance
+        float d = letterBoxerCamera.nearClipPlane + 0.01f;
+        float fovRad = letterBoxerCamera.fieldOfView * Mathf.Deg2Rad;
+        float worldHeight = 2.0f * d * Mathf.Tan(fovRad * 0.5f);
+
+        // use current screen aspect to compute world width (this ensures horizontal stretching on wide screens)
+        float windowaspect = (float)Screen.width / (float)Screen.height;
+        float worldWidth = worldHeight * windowaspect;
+
+        float spriteWorldWidth = (backgroundSprite.rect.width / backgroundSprite.pixelsPerUnit);
+        float spriteWorldHeight = (backgroundSprite.rect.height / backgroundSprite.pixelsPerUnit);
+
+        float scaleX = worldWidth / spriteWorldWidth;
+        float scaleY = worldHeight / spriteWorldHeight;
+
+        backgroundObject.transform.localScale = new Vector3(scaleX, scaleY, 1f);
     }
 
     // based on logic here from http://gamedesigntheory.blogspot.com/2010/09/controlling-aspect-ratio-in-unity.html
@@ -118,6 +221,12 @@ public class LetterBoxer : MonoBehaviour
             rect.y = 0;
 
             cam.rect = rect;
+        }
+
+        // ensure background sprite matches current screen aspect / camera parameters
+        if (useTexture && matteTexture != null && backgroundObject != null)
+        {
+            UpdateBackgroundScale();
         }
     }
 }

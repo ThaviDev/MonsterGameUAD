@@ -93,5 +93,7 @@ public class UIManager : MonoBehaviour
     {
         GMTestGameplay.OnGameOver -= GameOver;
         GMTestGameplay.OnGameOver -= StopCounting;
+        GMTestGameplay.OnVictory -= SetVictoryPanel;
+        GMTestGameplay.OnPageCollected -= UpdatePagesCollected;
     }
 }
