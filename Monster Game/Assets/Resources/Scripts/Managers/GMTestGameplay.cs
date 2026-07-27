@@ -28,7 +28,7 @@ public class GMTestGameplay : MonoBehaviour
         }
     }
 
-    //public static Action OnGameOver;
+    public static Action OnGameOver;
     public static Action OnVictory;
     // Colected Pages, Pages to Collect;
     public static Action<int, int> OnPageCollected;
@@ -74,14 +74,15 @@ public class GMTestGameplay : MonoBehaviour
     }
     void Update()
     {
-    }
-
-    void AtGameplay()
-    {
         if (m_PlayerDied)
         {
             StartGameOverSequence();
         }
+    }
+
+    void AtGameplay()
+    {
+
     }
     void AtMainMenu()
     {
@@ -108,6 +109,7 @@ public class GMTestGameplay : MonoBehaviour
     }
     void SetScenetoGameplay()
     {
+        m_PlayerDied = false;
         m_PagesCollected = 0;
         CollectPage(0);
         ResetEvents();

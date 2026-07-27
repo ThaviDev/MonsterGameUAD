@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class TrackMouse : MonoBehaviour {
 
@@ -10,14 +8,14 @@ public class TrackMouse : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         hitLayeMask = LayerMask.GetMask(new string[] { "Target", "Decoy", "Background" });
     }
 
     // Update is called once per frame
     void Update()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
         Vector3 pos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1);
         pos = Camera.main.ScreenToWorldPoint(pos);
         transform.position = pos;

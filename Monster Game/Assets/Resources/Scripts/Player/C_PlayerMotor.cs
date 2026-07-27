@@ -47,7 +47,6 @@ public class C_PlayerMotor : MonoBehaviour
 
     void GotScreamedAt(C_MonsterMotor monster, float fearAmount)
     {
-        print("AAAAH ME ASUSTO" + monster);
         // ANIADIR LUEGO FUNCIONALIDAD DE KNOCKBACK
         m_PlayerStats.RecieveFear(fearAmount);
     }
@@ -67,9 +66,9 @@ public class C_PlayerMotor : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D otherCol)
     {
         m_CurrentState?.MyTriggerColision(otherCol);
+
         if (otherCol.gameObject.GetComponent<TAG_PageCollectable>() != null)
         {
-            print ("Page Collected");
             Destroy(otherCol.gameObject);
             GMTestGameplay.Instance.CollectPage(1);
         }
@@ -91,6 +90,13 @@ public class C_PlayerMotor : MonoBehaviour
         }
         */
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.layer == 6) // Monster Layer
+        {
+            m_CurrentState?.MyTriggerColision(collision.collider);
+        }
+    }
 
     private void ChangeState(PlayerState newState)
     {
@@ -108,7 +114,7 @@ public class C_PlayerMotor : MonoBehaviour
         if (m_PlayerStats.GetBPM >= 180)
         {
             GMTestGameplay.PlayerDied = true;
-            KillPlayerRegardless();
+            KillPlayer();
         }
     }
 
@@ -128,8 +134,9 @@ public class C_PlayerMotor : MonoBehaviour
     } 
     */
 
-    private void KillPlayerRegardless()
+    private void KillPlayer()
     {
+        print ("IM KILLING PLAYER");
         ChangeState(new DeadState(this));
     }
 
@@ -142,6 +149,7 @@ public class C_PlayerMotor : MonoBehaviour
         public virtual void MyUpdate() { }
         public virtual void MyExit() { }
         public virtual void MyTriggerColision(Collider2D other) { }
+        public virtual void MyCollisionEnter(Collision2D collision) { }
     }
     private class RegularState : PlayerState
     {
@@ -217,8 +225,18 @@ public class C_PlayerMotor : MonoBehaviour
                 // Luego hay que detectar mejor esto
                 //OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
                 //GMTestGameplay.OnGameOver?.Invoke();
-                GMTestGameplay.PlayerDied = true;
-                print("Player Died");
+                _PM.KillPlayer();
+            }
+        }
+        public override void MyCollisionEnter(Collision2D collision)
+        {
+            base.MyCollisionEnter(collision);
+            if (collision.gameObject.layer == 6) // Monster Layer
+            {
+                // Luego hay que detectar mejor esto
+                //OnPyrHit?.Invoke(collision.collider, collision.gameObject.GetComponent<C_Monster>().GroundHitDamage);
+                //GMTestGameplay.OnGameOver?.Invoke();
+                _PM.KillPlayer();
             }
         }
     }

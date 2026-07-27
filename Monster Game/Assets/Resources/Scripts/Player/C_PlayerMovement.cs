@@ -31,15 +31,16 @@ public class C_PlayerMovement : MonoBehaviour
     [SerializeField] float m_DashTime;
     [SerializeField] float m_DashStaminaUse;
     private float m_DashCurTime;
-    void Start()
+    private void Awake()
     {
-        m_RB = GetComponent<Rigidbody2D>();
-
         C_PlayerMotor.OnPyrHit += PlayerWasHit;
-
         GMTestGameplay.OnGameOver += PlayerNoMove;
         C_PlayerMotor.OnPanic += PlayerNoMove;
         C_PlayerMotor.OnRelax += PlayerCanMove;
+    }
+    void Start()
+    {
+        m_RB = GetComponent<Rigidbody2D>();
     }
     void Update()
     {
