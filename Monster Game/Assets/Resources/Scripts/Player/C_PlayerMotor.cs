@@ -7,9 +7,8 @@ public class C_PlayerMotor : MonoBehaviour
     public static Action<Collider2D, float> OnPyrHit;
     public static Action OnPanic;
     public static Action OnRelax;
-    public static Action OnPyrDeath;
     public static Action<C_MonsterMotor, Vector2, bool> OnGetGrabbed;
-    public static Action<C_MonsterMotor, float> OnScreamer;
+    public static Action<C_MonsterMotor, float> OnScreamedAt;
 
     [SerializeField] private C_PlayerStats m_PlayerStats;
     public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
@@ -42,8 +41,7 @@ public class C_PlayerMotor : MonoBehaviour
             ChangeState(new RegularState(this));
         }
         OnGetGrabbed += GotGrabbed;
-        OnPyrDeath += KillPlayerRegardless;
-        OnScreamer += GotScreamedAt;
+        OnScreamedAt += GotScreamedAt;
         //OnScreamer += (monster, fearAmount) => m_PlayerStats.RecieveFear(fearAmount);
     }
 
@@ -107,9 +105,10 @@ public class C_PlayerMotor : MonoBehaviour
 
     private void CheckIfDeath()
     {
-        if (m_PlayerStats.GetBPM >= 150)
+        if (m_PlayerStats.GetBPM >= 180)
         {
-            OnPyrDeath?.Invoke();
+            GMTestGameplay.PlayerDied = true;
+            KillPlayerRegardless();
         }
     }
 
@@ -216,8 +215,10 @@ public class C_PlayerMotor : MonoBehaviour
             if (otherCol.gameObject.layer == 6) // Monster Layer
             {
                 // Luego hay que detectar mejor esto
-                OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
-                OnPyrDeath?.Invoke();
+                //OnPyrHit?.Invoke(otherCol, otherCol.gameObject.GetComponent<C_Monster>().GroundHitDamage);
+                //GMTestGameplay.OnGameOver?.Invoke();
+                GMTestGameplay.PlayerDied = true;
+                print("Player Died");
             }
         }
     }

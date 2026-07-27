@@ -56,7 +56,7 @@ public class PlayerStadistics : MonoBehaviour
 
         _canGetHit = true;
         C_PlayerMotor.OnPyrHit += PlayerWasHit;
-        C_PlayerMotor.OnPyrDeath += PlayerDied;
+        GMTestGameplay.OnGameOver += PlayerDied;
     }
     void Update()
     {
@@ -155,6 +155,6 @@ public class PlayerStadistics : MonoBehaviour
     private void OnDestroy()
     {
         C_PlayerMotor.OnPyrHit -= PlayerWasHit;
-        OnPyrDeath -= PlayerDied;
+        GMTestGameplay.OnGameOver -= PlayerDied;
     }
 }

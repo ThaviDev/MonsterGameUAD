@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraFollowPro : MonoBehaviour
@@ -20,9 +21,17 @@ public class CameraFollowPro : MonoBehaviour
     [SerializeField] float _velocityOvershootFactor = 0.1f; // Influencia de la velocidad
     [SerializeField] float _maxOvershoot = 3f; // Límite máximo de desplazamiento
 
+    [Header("Camera Shake")]
+    [SerializeField] float _shakeDuration = 0.5f;
+    [SerializeField] float _shakeMagnitude = 0.5f;
+
     float _xSpeed;
     float _ySpeed;
     Vector2 _lastCamVelocity;
+
+    // Shake internals
+    Coroutine _shakeCoroutine;
+    Vector3 _lastShakeOffset = Vector3.zero;
 
     void Update()
     {
@@ -118,6 +127,63 @@ public class CameraFollowPro : MonoBehaviour
             transform.position += new Vector3(0f, positiveDistanceFromDeadZoneY, 0f);
         }
     }
+
+    public void TriggerScreenShake(float duration, float magnitude)
+    {
+        // Actualizar parámetros
+        _shakeDuration = duration;
+        _shakeMagnitude = magnitude;
+
+        // Si ya hay una corutina de shake corriendo, detenerla para reiniciar
+        if (_shakeCoroutine != null)
+        {
+            StopCoroutine(_shakeCoroutine);
+            // Asegurar que se limpie cualquier offset pendiente
+            if (_lastShakeOffset != Vector3.zero)
+            {
+                transform.position -= _lastShakeOffset;
+                _lastShakeOffset = Vector3.zero;
+            }
+            _shakeCoroutine = null;
+        }
+
+        _shakeCoroutine = StartCoroutine(ScreenShakeCoroutine());
+    }
+
+    IEnumerator ScreenShakeCoroutine()
+    {
+        float elapsed = 0f;
+
+        while (elapsed < _shakeDuration)
+        {
+            // Progreso 0..1
+            float progress = elapsed / _shakeDuration;
+            // Damper para disminuir intensidad con el tiempo (suavizado)
+            float damper = 1f - Mathf.Clamp01(progress);
+
+            // Generar offset en X/Y (2D) usando Random.insideUnitCircle para variación natural
+            Vector2 offset2D = Random.insideUnitCircle * (_shakeMagnitude * damper);
+            Vector3 newOffset = new Vector3(offset2D.x, offset2D.y, 0f);
+
+            // Aplicar nuevo offset en relación al offset anterior (evita drift cuando la cámara se mueve)
+            transform.position -= _lastShakeOffset;
+            transform.position += newOffset;
+            _lastShakeOffset = newOffset;
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        // Limpiar offset final
+        if (_lastShakeOffset != Vector3.zero)
+        {
+            transform.position -= _lastShakeOffset;
+            _lastShakeOffset = Vector3.zero;
+        }
+
+        _shakeCoroutine = null;
+    }
+
 }
 
 /*

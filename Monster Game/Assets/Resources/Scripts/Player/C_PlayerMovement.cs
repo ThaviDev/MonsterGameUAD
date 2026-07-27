@@ -37,7 +37,7 @@ public class C_PlayerMovement : MonoBehaviour
 
         C_PlayerMotor.OnPyrHit += PlayerWasHit;
 
-        C_PlayerMotor.OnPyrDeath += PlayerNoMove;
+        GMTestGameplay.OnGameOver += PlayerNoMove;
         C_PlayerMotor.OnPanic += PlayerNoMove;
         C_PlayerMotor.OnRelax += PlayerCanMove;
     }
@@ -110,7 +110,6 @@ public class C_PlayerMovement : MonoBehaviour
     }
     private void HandleMovement()
     {
-        print("Me puedo mover");
         //---
         m_movementDirection = PlayerInputs.Instance.MovementVector.normalized;
         //m_isPressingRun = PlayerInputs.Instance.RuningBool;
@@ -200,7 +199,7 @@ public class C_PlayerMovement : MonoBehaviour
     private void OnDestroy()
     {
         C_PlayerMotor.OnPyrHit -= PlayerWasHit;
-        C_PlayerMotor.OnPyrDeath -= PlayerNoMove;
+        GMTestGameplay.OnGameOver -= PlayerNoMove;
         C_PlayerMotor.OnPanic -= PlayerNoMove;
         C_PlayerMotor.OnRelax -= PlayerCanMove;
     }

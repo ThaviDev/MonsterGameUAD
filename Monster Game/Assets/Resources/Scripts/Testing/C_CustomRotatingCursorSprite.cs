@@ -1,14 +1,16 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class C_CustomRotatingCursorSprite : MonoBehaviour
 {
     [Header("Referencias")]
     [SerializeField] Transform m_PlayerAim;
-    [SerializeField] SpriteRenderer cursorSpriteRenderer;
+    //[SerializeField] SpriteRenderer cursorSpriteRenderer;
+    //[SerializeField] Image cursorSpriteRenderer;
 
     void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     void Update()

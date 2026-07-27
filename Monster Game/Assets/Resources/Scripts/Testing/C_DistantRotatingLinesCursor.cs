@@ -7,7 +7,7 @@ public class C_DistantRotatingLinesCursor : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = false;
+        //Cursor.visible = false;
     }
 
     void Update()

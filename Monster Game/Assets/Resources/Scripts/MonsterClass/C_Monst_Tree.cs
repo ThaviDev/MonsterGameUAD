@@ -309,7 +309,7 @@ public class C_Monst_Tree : C_MonsterMotor
 
             m_Tree.PlaySound(m_Tree.m_Screamer);
             m_Tree.Boid.StopMovementTime = m_ScreamerTime;
-            C_PlayerMotor.OnScreamer?.Invoke(m_Tree, m_Tree.m_ScreamingFearIncreaseAmount);
+            C_PlayerMotor.OnScreamedAt?.Invoke(m_Tree, m_Tree.m_ScreamingFearIncreaseAmount);
         }
         public override void MyUpdate()
         {

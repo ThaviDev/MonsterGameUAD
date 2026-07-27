@@ -25,14 +25,17 @@ public class UIManager : MonoBehaviour
     [SerializeField] int _minutesCount;
     bool _canCount;
 
-    void Start()
+    private void Awake()
     {
-        _canCount = true;
-        //PlayerStadistics.OnPyrDeath += StopCounting;
         GMTestGameplay.OnGameOver += GameOver;
         GMTestGameplay.OnGameOver += StopCounting;
         GMTestGameplay.OnVictory += SetVictoryPanel;
         GMTestGameplay.OnPageCollected += UpdatePagesCollected;
+    }
+    void Start()
+    {
+        _canCount = true;
+        //PlayerStadistics.OnPyrDeath += StopCounting;
     }
     void Update()
     {
@@ -79,11 +82,13 @@ public class UIManager : MonoBehaviour
     }
     public void UpdatePagesCollected(int pagesColected, int pagesToCollect)
     {
+        print("Actualizo mi texto de paginas");
         _pagesCollectedText.text = "Pages: \n" + pagesColected.ToString() + " / " + pagesToCollect.ToString();
     }
 
     void GameOver()
     {
+        print("Se Acabo");
         PauseManager.Instance.SetCanPause = false;
         _gameOvrPanel.SetActive(true);
         _gameplayPanel.SetActive(false);

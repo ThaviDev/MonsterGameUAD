@@ -1,11 +1,9 @@
 using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Windows;
 
 public class GMTestGameplay : MonoBehaviour
 {
-    // Game Manager Test Gameplay
     private static GMTestGameplay _instance;
     public static GMTestGameplay Instance
     {
@@ -30,19 +28,23 @@ public class GMTestGameplay : MonoBehaviour
         }
     }
 
-    public static Action OnGameOver;
+    //public static Action OnGameOver;
     public static Action OnVictory;
     // Colected Pages, Pages to Collect;
-    public static Action<int,int> OnPageCollected;
-    [SerializeField] string _menuSceneName;
+    public static Action<int, int> OnPageCollected;
+    // Game Manager Test Gameplay
+
+    [SerializeField] static string _menuSceneName;
     [SerializeField] string _levelSceneName;
-    bool _didChangeScene;
 
     // Test Collectable Pages
-    [SerializeField] int m_PagesCollected;
-    public int PagesCollected { get { return m_PagesCollected; } set { m_PagesCollected = value; } }
+    [SerializeField] static int m_PagesCollected;
+    public static int PagesCollected { get { return m_PagesCollected; } set { m_PagesCollected = value; } }
     [SerializeField] int m_PagesToCollect;
     public int PagesToCollect { get { return m_PagesToCollect; } set { m_PagesToCollect = value; } }
+
+    private static bool m_PlayerDied;
+    public static bool PlayerDied { get { return m_PlayerDied; } set { m_PlayerDied = value; } }
 
     private void Awake()
     {
@@ -69,20 +71,20 @@ public class GMTestGameplay : MonoBehaviour
         {
             SetScenetoGameplay();
         }
-
     }
     void Update()
     {
-
     }
 
     void AtGameplay()
     {
-        C_PlayerMotor.OnPyrDeath += StartGameOverSequence;
+        if (m_PlayerDied)
+        {
+            StartGameOverSequence();
+        }
     }
     void AtMainMenu()
     {
-
     }
     void ResetEvents()
     {
@@ -91,10 +93,10 @@ public class GMTestGameplay : MonoBehaviour
         {
             PauseManager.Instance.PressedPauseKeyOrBtn();
         }
-        C_PlayerMotor.OnPyrDeath -= StartGameOverSequence;
     }
     public void ChangeSceneToGameplay()
     {
+        print("restartGame");
         m_PagesCollected = 0;
         SceneManager.LoadScene(_levelSceneName);
         SetScenetoGameplay();
