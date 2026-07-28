@@ -29,9 +29,12 @@ public class C_PlayerSpineMotor : MonoBehaviour
     void Update()
     {
         UpdateCursorLocation();
+        //
+        /*
         // TESTING
         if (PlayerInputs.Instance.UseItemBool)
         {
+            SetHitColor(Color.red);
             Front_Walk();
         }
         if (PlayerInputs.Instance.DashBool)
@@ -39,6 +42,7 @@ public class C_PlayerSpineMotor : MonoBehaviour
             Idle();
             ResetColor();
         }
+        */
     }
 
     public void SetHitColor(Color color)
