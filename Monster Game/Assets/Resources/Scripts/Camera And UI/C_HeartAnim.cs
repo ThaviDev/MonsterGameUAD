@@ -6,8 +6,9 @@ public class C_HeartAnim : MonoBehaviour
     private float m_BPM;
     private Animator m_Animator;
     private AudioSource m_AudioSource;
-    void Start()
+    private void Awake()
     {
+        m_HeartRate = FindAnyObjectByType<C_PlayerStats>();
         m_Animator = GetComponent<Animator>();
         m_AudioSource = GetComponent<AudioSource>();
     }

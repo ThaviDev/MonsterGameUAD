@@ -40,6 +40,10 @@ public class CameraFollowPro : MonoBehaviour
 
         HandleCameraMovement(targetPosition);
         ApplyDeadZones(targetPosition);
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            TriggerScreenShake(_shakeDuration, _shakeMagnitude);
+        }
     }
 
     Vector2 CalculateOvershoot()
