@@ -4,7 +4,7 @@ using UnityEngine;
 public class C_DoorLocked : C_Door
 {
     //[SerializeField] private Dictionary m_keyValues;
-    [SerializeField] private string m_KeyReq;
+    [SerializeField] private List<string> m_KeyReq;
     [SerializeField] private bool m_IsLocked;
     public override void Awake()
     {
@@ -35,7 +35,10 @@ public class C_DoorLocked : C_Door
             if (other.gameObject.TryGetComponent(out C_InventoryManager inventory))
             {
                 Debug.Log("Player Tiene Inventory, vamos a checar si tiene la llave");
-                inventory.CheckIfHasKey(m_KeyReq, this);
+                for (int i = 0; i < m_KeyReq.Count; i++)
+                {
+                    inventory.CheckIfHasKey(m_KeyReq[i], this);
+                }
             } else
             {
                 Debug.Log("Player no tiene Inventory");
@@ -45,7 +48,16 @@ public class C_DoorLocked : C_Door
             base.OnCollisionEnter2D(other);
         }
     }
-    public void UnlockDoor()
+    public void UsedKeyOnDoor(string key)
+    {
+        // Eliminate key from keys needed
+        m_KeyReq.Remove(key);
+        if (m_KeyReq.Count <= 0)
+        {
+            UnlockDoor();
+        }
+    }
+    private void UnlockDoor()
     {
         m_IsLocked = false;
     }

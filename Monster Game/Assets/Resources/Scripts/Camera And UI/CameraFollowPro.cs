@@ -40,7 +40,7 @@ public class CameraFollowPro : MonoBehaviour
 
         HandleCameraMovement(targetPosition);
         ApplyDeadZones(targetPosition);
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.H))
         {
             TriggerScreenShake(_shakeDuration, _shakeMagnitude);
         }

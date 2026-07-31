@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: RedItem
   m_EditorClassIdentifier: 
   m_ItemName: Red
-  m_Sprite: {fileID: 0}
-  m_Description: 
+  m_Sprite: {fileID: 21300000, guid: 970f97c01be1fad49b687159926543ed, type: 3}
+  m_Description: Red Example Key

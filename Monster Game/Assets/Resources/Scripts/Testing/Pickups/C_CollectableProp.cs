@@ -3,15 +3,6 @@ using UnityEngine;
 public class C_CollectableProp : C_PickUpProp
 {
     // PickUp de Coleccionable sirve para desbloquear 
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    protected override void Update()
-    {
-        base.Update();
-    }
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         base.OnTriggerEnter2D(collision);
