@@ -30,30 +30,25 @@ public class C_PlayerSpineMotor : MonoBehaviour
     {
         UpdateCursorLocation();
         //
-        /*
+        
         // TESTING
-        if (PlayerInputs.Instance.UseItemBool)
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            SetHitColor(Color.red);
-            Front_Walk();
+            Front_Walk(0);
         }
-        if (PlayerInputs.Instance.DashBool)
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            Idle();
-            ResetColor();
+            Idle(0);
         }
-        */
-    }
+        if (Input.GetKeyDown(KeyCode.U))
+        {
+            Front_Walk(1);
+        }
+        if (Input.GetKeyDown(KeyCode.I))
+        {
+            Idle(1);
+        }
 
-    public void SetHitColor(Color color)
-    {
-        m_renderer.GetPropertyBlock(m_propertyBlock);
-        m_propertyBlock.SetColor("_Color", color);
-        m_renderer.SetPropertyBlock(m_propertyBlock);
-    }
-    public void ResetColor()
-    {
-        m_renderer.SetPropertyBlock(null);
     }
 
     private void UpdateCursorLocation()
@@ -66,12 +61,12 @@ public class C_PlayerSpineMotor : MonoBehaviour
         m_boneAim.SetLocalPosition(skeletonSpacePoint);
         //transform.position = new Vector3(cursorPos.x, cursorPos.y, 0);
     }
-    private void Front_Walk()
+    private void Front_Walk(int i)
     {
-        m_SkeletonAnimation.AnimationState.AddAnimation(0, "Side_walk", true, 0);
+        m_SkeletonAnimation.AnimationState.AddAnimation(i, "Side_walk", true, 0);
     }
-    private void Idle()
+    private void Idle(int i)
     {
-        m_SkeletonAnimation.AnimationState.AddAnimation(0, "idle", true, 0);
+        m_SkeletonAnimation.AnimationState.AddAnimation(i, "idle", true, 0);
     }
 }

@@ -75,6 +75,7 @@ public class C_PlayerStats : MonoBehaviour
         //m_BateryPercent = 1; // 1 = 100%
         m_InvincibleTime = 0;
         C_PlayerMotor.OnPyrHit += RecieveDamage;
+        C_PlayerMotor.OnScreamedAt += RecieveFearFromPlayerGotScreamedAt;
     }
 
     void Update()
@@ -257,17 +258,17 @@ public class C_PlayerStats : MonoBehaviour
             m_InvincibleTime = m_InvincibleTimeDefaultV;
         }
     }
-    public void RecieveDamage(Collider2D otherCol, float damageAmount, float invincibleTime)
+    public void RecieveDamage(Collider2D otherCol, float damageAmount, float fearHitAmount)
     {
         if (m_InvincibleTime <= 0)
         {
             m_DamageTaken += damageAmount;
             m_DamageRegenGoal += damageAmount;
-            m_Fear += m_FearWhenHitDefault;
-            m_InvincibleTime = invincibleTime;
+            m_Fear += fearHitAmount;
+            m_InvincibleTime = m_InvincibleTimeDefaultV;
         }
     }
-    public void RecieveDamage(Collider2D otherCol, float damageAmount, float invincibleTime, float fearHitAmount)
+    public void RecieveDamage(Collider2D otherCol, float damageAmount, float fearHitAmount, float invincibleTime)
     {
         if (m_InvincibleTime <= 0)
         {
@@ -277,7 +278,10 @@ public class C_PlayerStats : MonoBehaviour
             m_InvincibleTime = invincibleTime;
         }
     }
-
+    private void RecieveFearFromPlayerGotScreamedAt(C_MonsterMotor otherMonster, float fearAmount)
+    {
+        RecieveFear(fearAmount);
+    }
     public void RecieveFear(float fearAmount)
     {
         m_Fear += fearAmount;

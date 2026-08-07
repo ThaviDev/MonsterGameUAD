@@ -176,7 +176,7 @@ public class C_PlayerMovement : MonoBehaviour
         }
     }
 
-    private void PlayerWasHit(Collider2D otherCol, float damageAmount)
+    private void PlayerWasHit(Collider2D otherCol, float damageAmount, float fearAmount)
     {
         m_CantMoveTime += 1;
         Transform myTrans = transform;

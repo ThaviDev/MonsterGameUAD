@@ -361,6 +361,7 @@ public class C_Monst_Tree : C_MonsterMotor
             base.MyEnter();
             // Llamar animación de agarre
             m_TreeAnim.AnimGrab();
+            m_Tree.m_CharSound.OnPlaySoundEvent?.Invoke("GrabTry");
             m_GrabTrigger = true;
             m_Tree.Boid.StopMovementTime = 999f;
             //MusicManager.Instance.SetMusic(2);
@@ -404,9 +405,7 @@ public class C_Monst_Tree : C_MonsterMotor
                 // Checa si esta izquierda o derecha(IF-THEN-ELSE) Este-> ? : 
                 C_PlayerMotor.OnGetGrabbed?.Invoke
                     (m_Tree,
-                    m_Tree.m_IsTurnedLeft ? 
-                    m_Tree.m_PlayerGrabbedPositionLeft : 
-                    m_Tree.m_PlayerGrabbedPositionRight
+                    m_Tree.m_IsTurnedLeft ? m_Tree.m_PlayerGrabbedPositionLeft : m_Tree.m_PlayerGrabbedPositionRight
                     , true);
                 //m_GrabbedPlayer.GetComponent<C_PlayerMotor>()?.GetGrabbed(m_Tree, m_Tree.m_PlayerGrabbedPosition, true);
             }

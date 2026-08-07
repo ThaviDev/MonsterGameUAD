@@ -21,6 +21,9 @@ public class C_MonsterMotor : MonoBehaviour
     [SerializeField] protected C_AStar m_PathFinder;
     public C_AStar PathFinder { get { return m_PathFinder; } }
     [SerializeField] protected AudioSource m_AudioSource;
+    public C_CharSound CharSound { get { return m_CharSound; } }
+    [SerializeField] protected C_CharSound m_CharSound;
+
     //[SerializeField] protected SpriteRenderer m_VisualSpr;
     //[SerializeField] protected Animator m_VisualAnim;
 
@@ -81,6 +84,7 @@ public class C_MonsterMotor : MonoBehaviour
         m_PredictionPoint = FindFirstObjectByType<C_PlayerPredictionPoint>().transform;
         m_PathFinder = FindFirstObjectByType<C_AStar>();
         m_AudioSource = GetComponent<AudioSource>();
+        m_CharSound = GetComponent<C_CharSound>();
         RandomizeSpawnAndDespawnValues();
         Despawn();
         //ChangeState(new S_Despawned(this));

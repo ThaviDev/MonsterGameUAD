@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -30,6 +31,7 @@ public class GMTestGameplay : MonoBehaviour
 
     public static Action OnGameOver;
     public static Action OnVictory;
+    public static Action<float, float> OnSlowDownTime;
     // Colected Pages, Pages to Collect;
     public static Action<int, int> OnPageCollected;
     // Game Manager Test Gameplay
@@ -71,6 +73,7 @@ public class GMTestGameplay : MonoBehaviour
         {
             SetScenetoGameplay();
         }
+        OnSlowDownTime += SlowDownTime;
     }
     void Update()
     {
@@ -80,9 +83,20 @@ public class GMTestGameplay : MonoBehaviour
         }
     }
 
-    void AtGameplay()
+    void SlowDownTime(float amount, float duration)
     {
+        SlowDownTimeCoroutine(amount, duration);
+    }
+    IEnumerable SlowDownTimeCoroutine(float amount, float duration)
+    {
+        float originalTimeScale = Time.timeScale;
+        Time.timeScale = amount;
+        yield return new WaitForSecondsRealtime(duration);
+        Time.timeScale = originalTimeScale;
+    }
 
+    void AtGameplay()
+    { 
     }
     void AtMainMenu()
     {
