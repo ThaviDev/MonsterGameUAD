@@ -38,14 +38,29 @@ public class C_MAnim_Tree : C_MonsAnimBase
     }
     public void AnimScream()
     {
+        if (m_Anim == null)
+        {
+            Debug.LogWarning("Animator is not assigned.");
+            return;
+        }
         m_Anim.SetBool("IsScreaming", true);
     }
     public void AnimNotScream()
     {
+        if (m_Anim == null)
+        {
+            Debug.LogWarning("Animator is not assigned.");
+            return;
+        }
         m_Anim.SetBool("IsScreaming", false);
     }
     public void AnimGrab()
     {
+        if (m_Anim == null)
+        {
+            Debug.LogWarning("Animator is not assigned.");
+            return;
+        }
         m_Anim.SetBool("Grabing", true);
     }
     // TRIGGERED BY ANIMATION EVENT
@@ -59,11 +74,21 @@ public class C_MAnim_Tree : C_MonsAnimBase
     }
     public void AnimGrabRelease()
     {
-        m_Anim.SetBool("Grabing", false);
         m_GrabPlayer = false;
+        if (m_Anim == null)
+        {
+            Debug.LogWarning("Animator is not assigned.");
+            return;
+        }
+        m_Anim.SetBool("Grabing", false);
     }
     public void AnimSlam()
     {
+        if (m_Anim == null)
+        {
+            Debug.LogWarning("Animator is not assigned.");
+            return;
+        }
         m_Anim.SetBool("Slamimg", true);
     }
     // TRIGGERED BY ANIMATION EVENT
@@ -73,6 +98,11 @@ public class C_MAnim_Tree : C_MonsAnimBase
     }
     public void AnimCharge()
     {
+        if (m_Anim == null)
+        {
+            Debug.LogWarning("Animator is not assigned.");
+            return;
+        }
         m_Anim.SetBool("Charging", true);
     }
     // TRIGGERED BY ANIMATION EVENT

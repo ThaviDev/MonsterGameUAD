@@ -16,6 +16,7 @@ public class C_HeartAnim : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (m_HeartRate == null) return;
         m_BPM = m_HeartRate.GetBPM;
         m_Animator.speed = m_BPM/60f;
         m_AudioSource.pitch = m_BPM/85f;

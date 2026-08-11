@@ -33,7 +33,7 @@ public class C_PlayerMovement : MonoBehaviour
     private float m_DashCurTime;
     private void Awake()
     {
-        C_PlayerMotor.OnPyrHit += PlayerWasHit;
+        C_PlayerMotor.OnPyrHit += PyrWasHitEvent;
         GMTestGameplay.OnGameOver += PlayerNoMove;
         C_PlayerMotor.OnPanic += PlayerNoMove;
         C_PlayerMotor.OnRelax += PlayerCanMove;
@@ -41,6 +41,11 @@ public class C_PlayerMovement : MonoBehaviour
     void Start()
     {
         m_RB = GetComponent<Rigidbody2D>();
+    }
+
+    void PyrWasHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
+    {
+        PlayerWasHit(collider, knockbackForce);
     }
     void Update()
     {
@@ -155,7 +160,7 @@ public class C_PlayerMovement : MonoBehaviour
     {
         if (m_DashCurTime > 0) {
             // DASH LOGIC
-            if (m_movementDirection != Vector2.zero)
+            if (m_movementDirection != Vector2.zero && m_CantMoveTime <= 0)
             {
                 m_RB.AddForce(m_movementDirection * m_DashImpulse, ForceMode2D.Impulse);
             }
@@ -176,7 +181,7 @@ public class C_PlayerMovement : MonoBehaviour
         }
     }
 
-    private void PlayerWasHit(Collider2D otherCol, float damageAmount, float fearAmount)
+    private void PlayerWasHit(Collider2D otherCol, float knockbackForce)
     {
         m_CantMoveTime += 1;
         Transform myTrans = transform;
@@ -185,13 +190,15 @@ public class C_PlayerMovement : MonoBehaviour
         Vector2 directionNormalized = direction.normalized;
         print(directionNormalized);
 
-        m_RB.AddForce(directionNormalized * (m_damageKnockbackMultiplier * damageAmount), ForceMode2D.Impulse);
+        m_RB.AddForce(directionNormalized * (m_damageKnockbackMultiplier * knockbackForce), ForceMode2D.Impulse);
     }
 
     private void PlayerNoMove()
     {
+        Debug.Log("PlayerNoMove");
         m_movementStatus = 0;
         m_CantMoveTime = 999;
+        m_RB.linearVelocity = Vector3.zero;
     }
     private void PlayerCanMove()
     {
@@ -199,7 +206,7 @@ public class C_PlayerMovement : MonoBehaviour
     }
     private void OnDestroy()
     {
-        C_PlayerMotor.OnPyrHit -= PlayerWasHit;
+        C_PlayerMotor.OnPyrHit -= PyrWasHitEvent;
         GMTestGameplay.OnGameOver -= PlayerNoMove;
         C_PlayerMotor.OnPanic -= PlayerNoMove;
         C_PlayerMotor.OnRelax -= PlayerCanMove;

@@ -60,6 +60,8 @@ public class C_PlayerStats : MonoBehaviour
 
     /* ---- Comunicar informacion de variables a otros codigos ---- */
     public float GetBPM { get { return m_BPM; } }
+    public float GetBPM_Maximum { get { return m_BPM_Maximum; } }
+    public float GetBPM_Minimum { get { return m_BPM_Minimum; } }
     public float GetDamageTaken { get { return m_DamageTaken; } }
     public float GetStaminaUsed { get { return m_Stamina; } }
     public float GetFear { get { return m_Fear; } }
@@ -74,8 +76,13 @@ public class C_PlayerStats : MonoBehaviour
     {
         //m_BateryPercent = 1; // 1 = 100%
         m_InvincibleTime = 0;
-        C_PlayerMotor.OnPyrHit += RecieveDamage;
+        C_PlayerMotor.OnPyrHit += PyrHitEvent;
         C_PlayerMotor.OnScreamedAt += RecieveFearFromPlayerGotScreamedAt;
+    }
+
+    void PyrHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
+    {
+        RecieveDamage(collider, damage,fear,stunDuration);
     }
 
     void Update()
@@ -289,6 +296,7 @@ public class C_PlayerStats : MonoBehaviour
 
     private void OnDestroy()
     {
-        C_PlayerMotor.OnPyrHit -= RecieveDamage;
+        C_PlayerMotor.OnPyrHit -= PyrHitEvent;
+        C_PlayerMotor.OnScreamedAt -= RecieveFearFromPlayerGotScreamedAt;
     }
 }

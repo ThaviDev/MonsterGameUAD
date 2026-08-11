@@ -12,6 +12,8 @@ public class S_Despawned : C_MonstState
         Motor.Boid.BoidMaxSpeed = 0;
         Motor.Boid.SeekTarget = null;
         Motor.Boid.StopMovementTime = 1;
+        Motor.RB.linearVelocity = Vector2.zero;
+        Motor.transform.position = Motor.DespawnedPoint;
     }
     public override void MyUpdate()
     {

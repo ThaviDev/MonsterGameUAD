@@ -85,12 +85,14 @@ public class GMTestGameplay : MonoBehaviour
 
     void SlowDownTime(float amount, float duration)
     {
-        SlowDownTimeCoroutine(amount, duration);
+        Debug.Log($"Slowing down time to {amount} for {duration} seconds.");
+        StartCoroutine(SlowDownTimeCoroutine(amount, duration));
     }
-    IEnumerable SlowDownTimeCoroutine(float amount, float duration)
+    IEnumerator SlowDownTimeCoroutine(float amount, float duration)
     {
         float originalTimeScale = Time.timeScale;
         Time.timeScale = amount;
+        Debug.Log($"Time scale set to {Time.timeScale}. Waiting for {duration} seconds in real time.");
         yield return new WaitForSecondsRealtime(duration);
         Time.timeScale = originalTimeScale;
     }

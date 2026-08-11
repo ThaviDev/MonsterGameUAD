@@ -61,9 +61,10 @@ public class C_Monst_Tree : C_MonsterMotor
         RandomizeSpawnAndDespawnValues();
         ChangeState(new S_Tree_Spawned(this));
     }
-    public void PlaySound(AudioClip myClip) // Testing
+    public void PlaySound(AudioClip myClip, bool isLoop) // Testing
     {
         m_AudioSource.clip = myClip;
+        m_AudioSource.loop = isLoop;
         m_AudioSource.Play();
     }
     public void StopSound() // Testing
@@ -237,7 +238,7 @@ public class C_Monst_Tree : C_MonsterMotor
         {
             base.MyEnter();
             //Debug.Log("Estoy sigiloso y ademas soy arbol");
-            m_Tree.PlaySound(m_Tree.m_StealthWalk);
+            m_Tree.PlaySound(m_Tree.m_StealthWalk, true);
         }
         public override void MyUpdate()
         {
@@ -284,7 +285,7 @@ public class C_Monst_Tree : C_MonsterMotor
     {
         private C_Monst_Tree m_Tree;
         private C_MAnim_Tree m_TreeAnim;
-        private float m_ScreamerTime = 1.55f;
+        private float m_ScreamerTime = 1f;
         private GameObject m_ScreamLight;
         private GameObject m_vfx_MonsterScream;
         public S_Tree_Screamer(C_MonsterMotor motor) : base(motor) {
@@ -307,7 +308,7 @@ public class C_Monst_Tree : C_MonsterMotor
                 m_Tree.transform.position.y + 1.6f),
                 Quaternion.identity);
 
-            m_Tree.PlaySound(m_Tree.m_Screamer);
+            m_Tree.PlaySound(m_Tree.m_Screamer, false);
             m_Tree.Boid.StopMovementTime = m_ScreamerTime;
             C_PlayerMotor.OnScreamedAt?.Invoke(m_Tree, m_Tree.m_ScreamingFearIncreaseAmount);
         }
@@ -359,7 +360,6 @@ public class C_Monst_Tree : C_MonsterMotor
         public override void MyEnter()
         {
             base.MyEnter();
-            // Llamar animación de agarre
             m_TreeAnim.AnimGrab();
             m_Tree.m_CharSound.OnPlaySoundEvent?.Invoke("GrabTry");
             m_GrabTrigger = true;

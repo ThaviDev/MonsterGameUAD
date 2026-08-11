@@ -6,7 +6,6 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-
 public enum TileType
 {
     START = 0,
@@ -15,7 +14,6 @@ public enum TileType
     GRASS,
     PATH
 }
-
 
 public class C_AStar : MonoBehaviour
 {
@@ -85,7 +83,6 @@ public class C_AStar : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 Algorithm();
-
             }
         }
     }

@@ -23,6 +23,8 @@ public class C_MonsterMotor : MonoBehaviour
     [SerializeField] protected AudioSource m_AudioSource;
     public C_CharSound CharSound { get { return m_CharSound; } }
     [SerializeField] protected C_CharSound m_CharSound;
+    public Rigidbody2D RB { get { return m_RB; } }
+    [SerializeField] protected Rigidbody2D m_RB;
 
     //[SerializeField] protected SpriteRenderer m_VisualSpr;
     //[SerializeField] protected Animator m_VisualAnim;
@@ -69,6 +71,9 @@ public class C_MonsterMotor : MonoBehaviour
 
     //[SerializeField] protected bool m_IsSpawnedIn;
 
+    [SerializeField] protected Vector3 m_DespawnedPoint;
+    public Vector3 DespawnedPoint { get { return m_DespawnedPoint; } }
+
     [SerializeField] protected Vector3 m_StealthPoint;
 
     public C_MonstState m_CurrentState;
@@ -76,7 +81,7 @@ public class C_MonsterMotor : MonoBehaviour
     protected List<Vector3> m_ChasePath;
 
     protected bool m_IsTurnedLeft;
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         m_Visual = gameObject.transform.GetChild(0).gameObject.transform.GetComponent<C_MonsAnimBase>();
         m_Boid = GetComponent<C_Boid>();
@@ -85,12 +90,29 @@ public class C_MonsterMotor : MonoBehaviour
         m_PathFinder = FindFirstObjectByType<C_AStar>();
         m_AudioSource = GetComponent<AudioSource>();
         m_CharSound = GetComponent<C_CharSound>();
+        m_RB = GetComponent<Rigidbody2D>();
+        /*
+        m_PlayerObjRef = GameObject.FindGameObjectWithTag("Player");
+        if (m_PlayerObjRef != null)
+        {
+            m_PlayerMotor = m_PlayerObjRef.GetComponent<C_PlayerMotor>();
+        }
+        else
+        {
+            Debug.LogError("Player object not found in the scene. Please ensure there is a GameObject with the 'Player' tag.");
+        }
+        */
+    }
+    protected virtual void Start()
+    {
         RandomizeSpawnAndDespawnValues();
         Despawn();
         //ChangeState(new S_Despawned(this));
     }
     protected virtual void Update()
     {
+        // Un pequenio ajuste: siempre buscar que la velocidad lineal sea 0
+        m_RB.linearVelocity = Vector2.zero;
         m_CurrentState?.MyUpdate();
 
         if (m_Boid.BoidMoveForce.x > 0)

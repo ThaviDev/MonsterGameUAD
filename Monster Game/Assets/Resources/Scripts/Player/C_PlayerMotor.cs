@@ -4,8 +4,9 @@ using UnityEngine.Events;
 
 public class C_PlayerMotor : MonoBehaviour
 {
-    // Colision que causo danio, Cantidad de Danio, Cantidad de Miedo
-    public static Action<Collider2D, float, float> OnPyrHit;
+    // Colision que causo danio, Cantidad de Danio, Cantidad de Miedo,
+    // Cantidad de tiempo que el jugador estara aturdido, Fuerza de Knockback
+    public static Action<Collider2D, float, float, float, float> OnPyrHit;
     public static Action OnPanic;
     public static Action OnRelax;
     // Otro Monstruo que agarro al jugador, Posicion del jugador agarrado, bool si puede hacer mash para liberarse
@@ -45,7 +46,7 @@ public class C_PlayerMotor : MonoBehaviour
         }
         OnGetGrabbed += GotGrabbed;
         OnScreamedAt += GotScreamedAt;
-        OnPyrHit += SlowDownTimeFromPyrHit;
+        OnPyrHit += PyrHitEvent;
         //OnScreamer += (monster, fearAmount) => m_PlayerStats.RecieveFear(fearAmount);
     }
 
@@ -53,11 +54,12 @@ public class C_PlayerMotor : MonoBehaviour
     {
         // ANIADIR LUEGO FUNCIONALIDAD DE KNOCKBACK
         m_PlayerStats.RecieveFear(fearAmount);
+        SlowDownTime();
     }
 
-    void SlowDownTimeFromPyrHit(Collider2D collider, float damage, float fear)
+    void PyrHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
     {
-        SlowDownTime();
+        //SlowDownTime();
     }
 
     void SlowDownTime()
@@ -322,6 +324,8 @@ public class C_PlayerMotor : MonoBehaviour
     private class GrabedState : PlayerState
     {
         private float m_GrabDamage;
+        private float m_GrabFear;
+        private float m_GrabHurtInterval;
         private int m_CurMashCount;
         private C_MonsterMotor m_MonsterThatGrabbed;
         private Vector2 m_PlayerGrabbedPos;
@@ -338,26 +342,39 @@ public class C_PlayerMotor : MonoBehaviour
             base.MyEnter();
             // Temporal Feedback Queue
             //_PM.m_sprite.color = Color.red;
-            OnPyrHit?.Invoke(m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),
+            // EVENTO DE DANIO ---
+            OnPyrHit?.Invoke
+                (m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),
                 m_GrabDamage,
-                (m_MonsterThatGrabbed as C_Monst_Tree).GrabFearAmountPerInterval);
+                m_GrabFear,
+                m_GrabHurtInterval,
+                0f);
             m_CurMashCount = _PM.m_GrabMashCount;
             if (m_MonsterThatGrabbed is C_Monst_Tree)
             {
                 // Do something specific for C_Monst_Tree
                 //m_GrabDamage = (_PM.m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
                 m_GrabDamage = (m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval;
+                m_GrabFear = (m_MonsterThatGrabbed as C_Monst_Tree).GrabFearAmountPerInterval;
+                m_GrabHurtInterval = (m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageIntervalTime;
             }
         }
         public override void MyUpdate()
         {
             base.MyUpdate();
+            /*
             _PM.PlayerStats.RecieveDamage 
                 (m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>()
                 ,(m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageAmountPerInterval
                 ,(m_MonsterThatGrabbed as C_Monst_Tree).GrabDamageIntervalTime,
                 (m_MonsterThatGrabbed as C_Monst_Tree).GrabFearAmountPerInterval);
-            
+            */
+            OnPyrHit?.Invoke
+                (m_MonsterThatGrabbed.gameObject.GetComponent<Collider2D>(),
+                m_GrabDamage,
+                m_GrabFear,
+                m_GrabHurtInterval,
+                0f);
             _PM.CheckIfDeath();
             //_PM.gameObject.transform.position = _PM.m_MonsterThatGrabbed.PlayerGrabbedPosition + (Vector2)_PM.m_MonsterThatGrabbed.transform.position;
             _PM.transform.position = m_PlayerGrabbedPos + (Vector2)m_MonsterThatGrabbed.transform.position;
@@ -401,5 +418,6 @@ public class C_PlayerMotor : MonoBehaviour
     {
         OnGetGrabbed -= GotGrabbed;
         OnScreamedAt -= GotScreamedAt;
+        OnPyrHit -= PyrHitEvent;
     }
 }
