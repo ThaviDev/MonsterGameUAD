@@ -3,6 +3,7 @@ using UnityEngine;
 public class C_PlayerStats : MonoBehaviour
 {
     [SerializeField] C_PlayerMovement m_PyrMoveScript;
+    [SerializeField] C_FlashLightMotor m_FlashLightScript;
 
     [SerializeField] float m_DamageTaken;
     private float m_DamageRegen = 2f;
@@ -74,15 +75,32 @@ public class C_PlayerStats : MonoBehaviour
 
     void Start()
     {
+        m_FlashLightScript = GetComponentInChildren<C_FlashLightMotor>();
+        m_PyrMoveScript = GetComponent<C_PlayerMovement>();
         //m_BateryPercent = 1; // 1 = 100%
         m_InvincibleTime = 0;
         C_PlayerMotor.OnPyrHit += PyrHitEvent;
         C_PlayerMotor.OnScreamedAt += RecieveFearFromPlayerGotScreamedAt;
+        C_ItemConsumableSCOB.OnItemUse += OnItemUseEvent;
     }
 
     void PyrHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
     {
         RecieveDamage(collider, damage,fear,stunDuration);
+    }
+
+    void OnItemUseEvent(float[] value)
+    {
+        Debug.Log("Item Use Event Triggered");
+        if (value.Length >= 5)
+        {
+            m_DamageTaken -= value[0];
+            m_Fear -= value[1];
+            m_Stamina -= value[2];
+            m_FlashLightScript.AddBatteryPercent(value[4]);
+            //m_StaminaRegen += value[3];
+            //m_BateryPercent += value[4];
+        }
     }
 
     void Update()

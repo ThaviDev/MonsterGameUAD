@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Collider: {fileID: 9163901104495577099}
   m_Damage: 10
   m_Fear: 0
+  m_Knockback: 5
 --- !u!1 &7255122983802163125
 GameObject:
   m_ObjectHideFlags: 0

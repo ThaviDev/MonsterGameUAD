@@ -94,4 +94,11 @@ public class C_FlashLightMotor : MonoBehaviour
         m_FLight.pointLightInnerAngle = m_LightAngle;
         m_FLight.pointLightOuterAngle = m_LightAngle + m_OuterAngleExcess;
     }
+
+    public void AddBatteryPercent(float rechargeAmount)
+    {
+        m_BateryPercentage += rechargeAmount;
+        if (m_BateryPercentage > 1)
+            m_BateryPercentage = 1;
+    }
 }

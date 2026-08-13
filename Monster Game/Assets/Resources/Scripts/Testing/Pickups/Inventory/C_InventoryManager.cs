@@ -1,3 +1,4 @@
+using Spine;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,6 +15,31 @@ public class C_InventoryManager : MonoBehaviour
     [SerializeField] private List<InventorySlot> m_InvSlots;
     public List<InventorySlot> InvSlots { get { return m_InvSlots; } }
     public Action OnInventoryChange;
+    private int m_SelectedSlot;
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+        {
+            m_SelectedSlot = 0;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            m_SelectedSlot = 1;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            m_SelectedSlot = 2;
+        }
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            m_SelectedSlot = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            UseItem();
+        }
+    }
     public bool InventoryHasSpace()
     {
         print(m_InvSlots);
@@ -30,6 +56,30 @@ public class C_InventoryManager : MonoBehaviour
         InventorySlot slot = new InventorySlot();
         slot.m_CurItem = item.m_ItemData;
         m_InvSlots.Add(slot);
+        OnInventoryChange?.Invoke();
+    }
+
+    public void UseItem()
+    {
+        if (m_SelectedSlot < 0 || m_SelectedSlot >= m_InvSlots.Count)
+        {
+            Debug.LogWarning("Selected slot is out of range.");
+            return;
+        }
+        if (m_InvSlots[m_SelectedSlot] == null)
+        {
+            Debug.LogWarning("Selected slot is null.");
+            return;
+        }
+        // Checar ese slot tiene un item
+        if (m_InvSlots[m_SelectedSlot].m_CurItem != null)
+        {
+            m_InvSlots[m_SelectedSlot].m_CurItem.UseItem(gameObject);
+        }
+        // Eliminar el item del inventario
+        //m_InvSlots[m_SelectedSlot].m_CurItem = null;
+        m_InvSlots.Remove(m_InvSlots[m_SelectedSlot]);
+        // Actualizar Inventario
         OnInventoryChange?.Invoke();
     }
 

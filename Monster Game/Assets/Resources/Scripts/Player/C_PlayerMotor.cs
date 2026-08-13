@@ -16,6 +16,7 @@ public class C_PlayerMotor : MonoBehaviour
 
     [SerializeField] private C_PlayerStats m_PlayerStats;
     public C_PlayerStats PlayerStats { get { return m_PlayerStats; } set { m_PlayerStats = value; } }
+    [SerializeField] private C_CharSound m_PlayerSound;
 
     /*
     // Temporal por clase de VFX
@@ -36,6 +37,7 @@ public class C_PlayerMotor : MonoBehaviour
     void Start()
     {
         m_PlayerStats = GetComponent<C_PlayerStats>();
+        m_PlayerSound = GetComponent<C_CharSound>();
         if (m_IsInvincible)
         {
             ChangeState(new InvincibleState(this));
@@ -62,6 +64,7 @@ public class C_PlayerMotor : MonoBehaviour
     void PyrHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
     {
         //SlowDownTime();
+        m_PlayerSound.OnPlaySoundEvent?.Invoke("PlayerHit");
     }
 
     void PyrPanicEvent()
