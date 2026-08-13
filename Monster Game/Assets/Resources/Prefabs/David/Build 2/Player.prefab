@@ -4890,7 +4890,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 678758717
   m_SortingLayer: 2
-  m_SortingOrder: 0
+  m_SortingOrder: -10
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 0
@@ -5002,6 +5002,7 @@ GameObject:
   - component: {fileID: 4331471192263996938}
   - component: {fileID: 5723223599905584006}
   - component: {fileID: 6166092532333525795}
+  - component: {fileID: 3137154374859760848}
   m_Layer: 0
   m_Name: Spine GameObject (skeleton)
   m_TagString: Untagged
@@ -5037,8 +5038,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_SkeletonAnimation: {fileID: 6166092532333525795}
+  m_Rb: {fileID: 4208689907875863805}
   m_boneAimName: objetivo_mirada
-  m_cam: {fileID: 0}
+  m_renderer: {fileID: 0}
 --- !u!33 &2521973341359288681
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -5189,6 +5191,20 @@ MonoBehaviour:
   addNormalsDeprecated: 0
   calculateTangentsDeprecated: 0
   maskInteractionDeprecated: 0
+--- !u!114 &3137154374859760848
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2635424483169190925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f837f386cf14a242836797edec942b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ColorRed: {r: 1, g: 0, b: 0, a: 1}
+  m_Time: 0.1
 --- !u!1 &3037788377439771747
 GameObject:
   m_ObjectHideFlags: 0
@@ -5218,7 +5234,7 @@ Transform:
   m_GameObject: {fileID: 3037788377439771747}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.000000029802322, z: 0}
+  m_LocalPosition: {x: 0, y: -0.0000003874302, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5471,9 +5487,9 @@ MonoBehaviour:
   m_ComponentVersion: 2
   m_LightType: 3
   m_BlendStyleIndex: 0
-  m_FalloffIntensity: 0.361
+  m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1
+  m_Intensity: 1.5
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 0000000043632d66
@@ -5733,7 +5749,7 @@ MonoBehaviour:
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 1.75
+  m_Intensity: 2.75
   m_LightVolumeIntensity: 0
   m_LightVolumeEnabled: 0
   m_ApplyToSortingLayers: 0000000043632d66
@@ -5754,8 +5770,8 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 70
-  m_PointLightOuterAngle: 140
+  m_PointLightInnerAngle: 90
+  m_PointLightOuterAngle: 160
   m_PointLightInnerRadius: 8
   m_PointLightOuterRadius: 8.5
   m_ShapeLightParametricSides: 5
@@ -5782,15 +5798,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BateryPercentage: 1
   m_BateryUsageReduction: 1
-  m_LightIntensity: 1.75
-  m_MaximumLight: 1.75
-  m_MinimumLight: 1
+  m_LightIntensity: 2
+  m_MaximumLight: 2.75
+  m_MinimumLight: 2
   m_LightRange: 8
-  m_MaximumRange: 5
-  m_MinimumRange: 3.5
+  m_MaximumRange: 6
+  m_MinimumRange: 4
   m_OuterRangeExcess: 0.5
-  m_LightAngle: 70
-  m_MaximumAngle: 70
+  m_LightAngle: 90
+  m_MaximumAngle: 90
   m_MinimumAngle: 30
   m_OuterAngleExcess: 70
 --- !u!114 &7240804613277081099
@@ -6019,9 +6035,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8064648078330909216}
+  - component: {fileID: 4513022464060270912}
   - component: {fileID: 2678588651706503277}
   - component: {fileID: 7535023169913121478}
   - component: {fileID: 6116470578589331392}
+  - component: {fileID: 525906017768004054}
   - component: {fileID: 633396302310108738}
   - component: {fileID: 8361813812467552510}
   - component: {fileID: 2546226091338135423}
@@ -6057,6 +6075,20 @@ Transform:
   - {fileID: 8539459001846488360}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4513022464060270912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022527536521404671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d425f2e53a717d4b880ac0f793254af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_MaxSlots: 4
+  m_InvSlots: []
 --- !u!114 &2678588651706503277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6140,6 +6172,21 @@ MonoBehaviour:
   - 4
   - 9
   - 18
+--- !u!114 &525906017768004054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9022527536521404671}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62a8333cd530ade4a90f08eab77748a8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SkeletonAnimation: {fileID: 6166092532333525795}
+  m_Rb: {fileID: 4208689907875863805}
+  m_startLeft: 0
 --- !u!114 &633396302310108738
 MonoBehaviour:
   m_ObjectHideFlags: 0

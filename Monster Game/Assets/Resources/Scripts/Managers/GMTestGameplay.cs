@@ -36,7 +36,7 @@ public class GMTestGameplay : MonoBehaviour
     public static Action<int, int> OnPageCollected;
     // Game Manager Test Gameplay
 
-    [SerializeField] static string _menuSceneName;
+    [SerializeField] string _menuSceneName;
     [SerializeField] string _levelSceneName;
 
     // Test Collectable Pages
@@ -74,6 +74,7 @@ public class GMTestGameplay : MonoBehaviour
             SetScenetoGameplay();
         }
         OnSlowDownTime += SlowDownTime;
+        OnVictory += StartVictorySequence;
     }
     void Update()
     {
@@ -146,7 +147,6 @@ public class GMTestGameplay : MonoBehaviour
     {
         m_PagesCollected = 0;
         print("Victory");
-        OnVictory?.Invoke();
     }
     public void CollectPage(int pages)
     {
@@ -155,7 +155,7 @@ public class GMTestGameplay : MonoBehaviour
         OnPageCollected?.Invoke(m_PagesCollected,m_PagesToCollect);
         if (m_PagesCollected >= m_PagesToCollect)
         {
-            StartVictorySequence();
+            OnVictory?.Invoke();
         }
     }
 }

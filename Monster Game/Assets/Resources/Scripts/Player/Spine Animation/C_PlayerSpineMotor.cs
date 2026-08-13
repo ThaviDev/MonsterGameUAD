@@ -7,6 +7,7 @@ public class C_PlayerSpineMotor : MonoBehaviour
 {
     [SerializeField] private SkeletonAnimation m_SkeletonAnimation;
     [SerializeField] private Rigidbody2D m_Rb;
+    C_SpineColorChange m_SpineColorChange;
 
     [SpineBone(dataField: "skeletonAnimation")]
     public string m_boneAimName;
@@ -21,6 +22,7 @@ public class C_PlayerSpineMotor : MonoBehaviour
     Bone m_boneAim;
     void Start()
     {
+        m_SpineColorChange = GetComponent<C_SpineColorChange>();
         m_boneAim = m_SkeletonAnimation.Skeleton.FindBone(m_boneAimName);
 
         //Debug.Log("Player Spine Motor Start");
@@ -29,6 +31,9 @@ public class C_PlayerSpineMotor : MonoBehaviour
         m_renderer = GetComponent<Renderer>();
         m_propertyBlock = new MaterialPropertyBlock();
         Idle(0);
+        C_PlayerMotor.OnPyrHit += PlayerHitEvent;
+        C_PlayerMotor.OnPanic += PlayerPanicEvent;
+        C_PlayerMotor.OnRelax += PlayerRelaxEvent;
     }
 
     void Update()
@@ -53,6 +58,19 @@ public class C_PlayerSpineMotor : MonoBehaviour
             Idle(1);
         }*/
 
+    }
+
+    private void PlayerHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
+    {
+        m_SpineColorChange.OnHit();
+    }
+    private void PlayerPanicEvent()
+    {
+        m_SpineColorChange.OnPanic();
+    }
+    private void PlayerRelaxEvent()
+    {
+        m_SpineColorChange.StopPanic();
     }
 
     private void UpdateWalk()

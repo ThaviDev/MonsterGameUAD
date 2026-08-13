@@ -47,6 +47,8 @@ public class C_PlayerMotor : MonoBehaviour
         OnGetGrabbed += GotGrabbed;
         OnScreamedAt += GotScreamedAt;
         OnPyrHit += PyrHitEvent;
+        OnPanic += PyrPanicEvent;
+        OnRelax += PyrOnRelaxEvent;
         //OnScreamer += (monster, fearAmount) => m_PlayerStats.RecieveFear(fearAmount);
     }
 
@@ -60,6 +62,16 @@ public class C_PlayerMotor : MonoBehaviour
     void PyrHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
     {
         //SlowDownTime();
+    }
+
+    void PyrPanicEvent()
+    {
+
+    }
+
+    void PyrOnRelaxEvent()
+    {
+
     }
 
     void SlowDownTime()

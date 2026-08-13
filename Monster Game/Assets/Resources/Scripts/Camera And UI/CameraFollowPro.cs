@@ -33,6 +33,11 @@ public class CameraFollowPro : MonoBehaviour
     Coroutine _shakeCoroutine;
     Vector3 _lastShakeOffset = Vector3.zero;
 
+    private void Start()
+    {
+        C_PlayerMotor.OnPyrHit += PlayerHitEvent;
+    }
+
     void Update()
     {
         Vector2 overshoot = CalculateOvershoot();
@@ -40,10 +45,11 @@ public class CameraFollowPro : MonoBehaviour
 
         HandleCameraMovement(targetPosition);
         ApplyDeadZones(targetPosition);
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TriggerScreenShake(_shakeDuration, _shakeMagnitude);
-        }
+    }
+
+    void PlayerHitEvent(Collider2D collider, float damage, float fear, float stunDuration, float knockbackForce)
+    {
+        TriggerScreenShake(_shakeDuration, _shakeMagnitude);
     }
 
     Vector2 CalculateOvershoot()

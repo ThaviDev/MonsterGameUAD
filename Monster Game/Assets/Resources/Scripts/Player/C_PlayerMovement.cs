@@ -188,7 +188,7 @@ public class C_PlayerMovement : MonoBehaviour
         Transform otherTrans = otherCol.transform;
         Vector2 direction = myTrans.position - otherTrans.position;
         Vector2 directionNormalized = direction.normalized;
-        print(directionNormalized);
+        Debug.Log("PlayerWasHit in direction: " + directionNormalized);
 
         m_RB.AddForce(directionNormalized * (m_damageKnockbackMultiplier * knockbackForce), ForceMode2D.Impulse);
     }

@@ -6,6 +6,7 @@ public class C_DoorLocked : C_Door
     //[SerializeField] private Dictionary m_keyValues;
     [SerializeField] private List<string> m_KeyReq;
     [SerializeField] private bool m_IsLocked;
+    [SerializeField] private List<GameObject> m_Locks;
     public override void Awake()
     {
         base.Awake();
@@ -52,6 +53,7 @@ public class C_DoorLocked : C_Door
     {
         // Eliminate key from keys needed
         m_KeyReq.Remove(key);
+        m_Locks[m_KeyReq.Count].SetActive(false);
         if (m_KeyReq.Count <= 0)
         {
             UnlockDoor();
