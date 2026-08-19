@@ -1,5 +1,20 @@
 # Changelog
 
+## [2.1.0] - 2026-04-20
+
+- Fixed issue [#8](https://github.com/skner-dev/skner.DualGrid/issues/8): Build error in Unity 2021
+- Added new SetTile and ClearTile methods in the DualGridTilemapModule
+
+## [2.0.4] - 2025-10-02
+
+- Optimized RenderTilemap refresh callbacks 
+- Updated samples with more visually cohesive tileset textures
+- Updated DualGridTilemap visual handles to react to tilemap's scale
+
+## [2.0.3] - 2025-05-24
+
+- Fixed issue [#7](https://github.com/skner-dev/DualGrid/issues/7): restricted transform component not using default inspector view
+
 ## [2.0.2] - 2025-02-17
 
 - Removed unnecessary usings which could cause compilation issues with some users

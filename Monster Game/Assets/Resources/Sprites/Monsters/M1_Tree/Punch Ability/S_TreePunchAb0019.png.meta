@@ -1,0 +1,624 @@
+fileFormatVersion: 2
+guid: a690ad6f05419414ba620465155c8c98
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -4217124298027088883
+    second: S_TreePunchAb0019_0
+  - first:
+      213: 2024368238048297798
+    second: S_TreePunchAb0019_1
+  - first:
+      213: 8417203858027986518
+    second: S_TreePunchAb0019_2
+  - first:
+      213: 4017326499154127375
+    second: S_TreePunchAb0019_3
+  - first:
+      213: 8363873218529594404
+    second: S_TreePunchAb0019_4
+  - first:
+      213: 6449511274822465495
+    second: S_TreePunchAb0019_5
+  - first:
+      213: -4441811679042347493
+    second: S_TreePunchAb0019_6
+  - first:
+      213: 3309352252835006979
+    second: S_TreePunchAb0019_7
+  - first:
+      213: 8078234534014731908
+    second: S_TreePunchAb0019_8
+  - first:
+      213: 3604945521292574983
+    second: S_TreePunchAb0019_9
+  - first:
+      213: 929080932092532748
+    second: S_TreePunchAb0019_10
+  - first:
+      213: -5263897701604041922
+    second: S_TreePunchAb0019_11
+  - first:
+      213: -8226157832763547880
+    second: S_TreePunchAb0019_12
+  - first:
+      213: 4062471364608338220
+    second: S_TreePunchAb0019_13
+  - first:
+      213: -7056890708773198306
+    second: S_TreePunchAb0019_14
+  - first:
+      213: 6608883689194549369
+    second: S_TreePunchAb0019_15
+  - first:
+      213: -7559484387550082040
+    second: S_TreePunchAb0019_16
+  - first:
+      213: 946572214246391838
+    second: S_TreePunchAb0019_17
+  - first:
+      213: -8145646847365439520
+    second: S_TreePunchAb0019_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 9
+  spritePivot: {x: 0.55, y: 0.21}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_0
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 238
+        width: 327
+        height: 269
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d044d625bc3c975c0800000000000000
+      internalID: -4217124298027088883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_1
+      rect:
+        serializedVersion: 2
+        x: 438
+        y: 461
+        width: 26
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 643c37bdf20081c10800000000000000
+      internalID: 2024368238048297798
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 138
+        width: 129
+        height: 159
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 65e3ec7005aefc470800000000000000
+      internalID: 8417203858027986518
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_3
+      rect:
+        serializedVersion: 2
+        x: 406
+        y: 165
+        width: 60
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0a68d09a2960c730800000000000000
+      internalID: 4017326499154127375
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_4
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 236
+        width: 6
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 42c0cd8e062721470800000000000000
+      internalID: 8363873218529594404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_5
+      rect:
+        serializedVersion: 2
+        x: 532
+        y: 218
+        width: 27
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d77bae5554418950800000000000000
+      internalID: 6449511274822465495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_6
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 185
+        width: 13
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1edf77cfc38b52c0800000000000000
+      internalID: -4441811679042347493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_7
+      rect:
+        serializedVersion: 2
+        x: 533
+        y: 207
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30a8eda175e2ded20800000000000000
+      internalID: 3309352252835006979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_8
+      rect:
+        serializedVersion: 2
+        x: 544
+        y: 163
+        width: 67
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 486cd342287ab1070800000000000000
+      internalID: 8078234534014731908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_9
+      rect:
+        serializedVersion: 2
+        x: 467
+        y: 169
+        width: 6
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 701874f0ad6570230800000000000000
+      internalID: 3604945521292574983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_10
+      rect:
+        serializedVersion: 2
+        x: 477
+        y: 158
+        width: 6
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c08d6fc6f22c4ec00800000000000000
+      internalID: 929080932092532748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_11
+      rect:
+        serializedVersion: 2
+        x: 542
+        y: 177
+        width: 6
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3b55e10ee0e2f6b0800000000000000
+      internalID: -5263897701604041922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_12
+      rect:
+        serializedVersion: 2
+        x: 551
+        y: 90
+        width: 143
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81fd4dff801d6dd80800000000000000
+      internalID: -8226157832763547880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_13
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 66
+        width: 177
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c292da5ae2cc06830800000000000000
+      internalID: 4062471364608338220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_14
+      rect:
+        serializedVersion: 2
+        x: 470
+        y: 147
+        width: 6
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e16a1d41a43e01e90800000000000000
+      internalID: -7056890708773198306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_15
+      rect:
+        serializedVersion: 2
+        x: 479
+        y: 135
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 970705033b877bb50800000000000000
+      internalID: 6608883689194549369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_16
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 19
+        width: 170
+        height: 92
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 80c47fa5001571790800000000000000
+      internalID: -7559484387550082040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_17
+      rect:
+        serializedVersion: 2
+        x: 494
+        y: 26
+        width: 154
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e104968e966e22d00800000000000000
+      internalID: 946572214246391838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: S_TreePunchAb0019_18
+      rect:
+        serializedVersion: 2
+        x: 572
+        y: 83
+        width: 97
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef900d8959d4fe80800000000000000
+      internalID: -8145646847365439520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      S_TreePunchAb0019_0: -4217124298027088883
+      S_TreePunchAb0019_1: 2024368238048297798
+      S_TreePunchAb0019_10: 929080932092532748
+      S_TreePunchAb0019_11: -5263897701604041922
+      S_TreePunchAb0019_12: -8226157832763547880
+      S_TreePunchAb0019_13: 4062471364608338220
+      S_TreePunchAb0019_14: -7056890708773198306
+      S_TreePunchAb0019_15: 6608883689194549369
+      S_TreePunchAb0019_16: -7559484387550082040
+      S_TreePunchAb0019_17: 946572214246391838
+      S_TreePunchAb0019_18: -8145646847365439520
+      S_TreePunchAb0019_2: 8417203858027986518
+      S_TreePunchAb0019_3: 4017326499154127375
+      S_TreePunchAb0019_4: 8363873218529594404
+      S_TreePunchAb0019_5: 6449511274822465495
+      S_TreePunchAb0019_6: -4441811679042347493
+      S_TreePunchAb0019_7: 3309352252835006979
+      S_TreePunchAb0019_8: 8078234534014731908
+      S_TreePunchAb0019_9: 3604945521292574983
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
